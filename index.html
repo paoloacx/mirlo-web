@@ -90,6 +90,33 @@
                 inset 0 1px 0 rgba(255,255,255,0.5),
                 0 6px 12px -1px rgba(255, 158, 0, 0.4);
         }
+        /* --- 4. TARJETAS PRO (Estilo ColorPalette) --- */
+        .tech-card {
+            position: relative;
+            background-color: #111111; /* Fondo oscuro */
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 
+                0 20px 40px -10px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        /* Luz superior */
+        .tech-card::before {
+            content: ""; position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
+        }
+        /* Grano Overlay */
+        .tech-card::after {
+            content: ""; position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.5;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
@@ -165,32 +192,38 @@
                 <p class="text-xl text-gray-500">No es solo software, es una experiencia útil y cálida.</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-mirlo-orange/30 hover:shadow-xl bg-white group">
-                    <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-fingerprint text-2xl text-mirlo-orange"></i>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10"> <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-fingerprint text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Táctil</h3>
+                        <p class="text-gray-400 leading-relaxed">Botones que dan ganas de tocar. Texturas que puedes sentir con la mirada.</p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Táctil</h3>
-                    <p class="text-gray-600">Botones que dan ganas de tocar. Texturas que puedes sentir.</p>
                 </div>
                 
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-mirlo-orange/30 hover:shadow-xl bg-white group">
-                    <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-bolt text-2xl text-mirlo-orange"></i>
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-bolt text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Instantánea</h3>
+                        <p class="text-gray-400 leading-relaxed">Código Swift nativo optimizado. Sin tiempos de carga, sin esperas.</p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Instantánea</h3>
-                    <p class="text-gray-600">Código Swift nativo optimizado. Sin tiempos de carga, sin esperas.</p>
                 </div>
                 
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-mirlo-orange/30 hover:shadow-xl bg-white group">
-                    <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Privada</h3>
+                        <p class="text-gray-400 leading-relaxed">Tus datos se quedan en tu iPhone. Sin servidores externos, sin tracking.</p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Privada</h3>
-                    <p class="text-gray-600">Tus datos se quedan en tu iPhone. Sin servidores externos, sin tracking.</p>
                 </div>
+
             </div>
-        </div>
     </section>
 
     <section id="nosotros" class="py-24 px-6 border-t border-gray-100">
@@ -235,7 +268,7 @@
             </div>
             
             <div class="flex space-x-6 text-sm font-medium text-gray-600">
-                <a href="#" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
+                <a href="privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
                 <a href="#" class="hover:text-mirlo-orange transition-colors">Términos</a>
                 <a href="#" class="hover:text-mirlo-orange transition-colors">Soporte</a>
             </div>

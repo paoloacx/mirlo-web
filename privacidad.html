@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - mirlo apps.</title>
+    <meta name="robots" content="noindex"> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'mirlo-orange': '#FF9E00' },
+                    fontFamily: { 'sans': ['system-ui', '-apple-system', 'Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Mismo efecto de grano que la home */
+        .bg-grain { position: relative; background-color: #f9fafb; }
+        .bg-grain::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .bg-grain > * { position: relative; z-index: 1; }
+    </style>
+</head>
+<body class="bg-grain text-gray-900 font-sans antialiased min-h-screen flex flex-col">
+
+    <header class="w-full bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-gray-900 tracking-tight hover:opacity-70 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-mirlo-orange">
+                Volver a Inicio
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow py-16 px-6">
+        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+            
+            <h1 class="text-3xl font-bold mb-2">Política de Privacidad</h1>
+            <p class="text-gray-500 mb-8 text-sm">Última actualización: Noviembre 2025</p>
+
+            <div class="space-y-6 text-gray-700 leading-relaxed">
+                <p>
+                    En <strong>mirlo apps</strong>, creemos que tu privacidad es un derecho fundamental, no una opción. 
+                    Esta política de privacidad aplica a la app <strong>Yeah!</strong> y a nuestros futuros servicios.
+                </p>
+
+                <h2 class="text-xl font-bold text-gray-900 mt-8">1. Datos que NO recopilamos</h2>
+                <p>
+                    Para ser claros: <strong>No recopilamos, almacenamos ni compartimos tus datos personales.</strong>
+                </p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                    <li>No tenemos registro de usuarios (sin email, sin contraseñas).</li>
+                    <li>No rastreamos tu ubicación GPS.</li>
+                    <li>No vendemos datos a terceros ni anunciantes.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-gray-900 mt-8">2. Datos almacenados en tu dispositivo</h2>
+                <p>
+                    Toda la información que generas dentro de la app (ajustes, preferencias, contenidos creados) se almacena <strong>localmente en tu iPhone/iPad</strong> o en tu cuenta privada de iCloud si decides sincronizarlo. Nosotros, como desarrolladores, no tenemos acceso a esos datos.
+                </p>
+
+                <h2 class="text-xl font-bold text-gray-900 mt-8">3. Analíticas Anónimas</h2>
+                <p>
+                    Podemos utilizar las métricas estándar de Apple (App Analytics) que son totalmente anónimas y agregadas (por ejemplo: "la app se ha bloqueado 3 veces hoy" o "hay 10 descargas desde España"). Esto nos ayuda a corregir errores sin saber quién eres.
+                </p>
+
+                <h2 class="text-xl font-bold text-gray-900 mt-8">4. Contacto y Responsable</h2>
+                <p>
+                    Si tienes cualquier duda sobre nuestra (inexistente) gestión de datos, puedes contactar con el responsable legal:
+                </p>
+                
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mt-4 text-sm">
+                    <p><strong>Responsable:</strong> [Paolo Álvarez Rodríguez]</p>
+                    <p><strong>Email:</strong> soporte@mirloapps.es</p>
+                    <p><strong>Web:</strong> mirloapps.es</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+        <p>© 2025 mirlo apps. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
