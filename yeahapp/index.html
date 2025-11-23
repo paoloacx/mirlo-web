@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mirlo apps - Estudio de Desarrollo iOS</title>
-    <meta name="description"
-        content="Desarrollo apps con personalidad y funcionalidad. Descubre yeah! y mis próximos proyectos.">
+    <title>yeah! - mirlo apps</title>
+    <meta name="description" content="yeah! - Retro & Veloz. Vuelve a sentir la tecnología.">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -32,26 +31,22 @@
     </script>
 
     <style>
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Transiciones generales */
         * {
             transition: all 0.3s ease;
         }
 
-        /* --- 1. EFECTO GRANO (NOISE TEXTURE) --- */
+        /* --- EFECTO GRANO --- */
         .bg-grain {
             position: relative;
             background-color: #f3f4f6;
-            /* un gris suave base */
         }
 
         .dark .bg-grain {
             background-color: #0a0a0a;
-            /* Fondo oscuro para dark mode */
         }
 
         .bg-grain::before {
@@ -64,7 +59,6 @@
             pointer-events: none;
             z-index: 0;
             opacity: 0.06;
-            /* Opacidad del ruido */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
@@ -73,66 +67,49 @@
             z-index: 1;
         }
 
-        /* --- 2. BOTONES PLÁSTICO (GLOSSY NEGRO) --- */
+        /* --- BOTONES PLÁSTICO --- */
         .btn-plastic {
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            /* Brillo superior (inset) + Sombra caída */
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                inset 0 0 2px rgba(255, 255, 255, 0.1),
-                0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 0, 0, 0.8);
         }
 
         .btn-plastic:hover {
             transform: translateY(-1px);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
             filter: brightness(1.1);
         }
 
         .btn-plastic:active {
             transform: translateY(1px);
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            /* CAMBIO AQUÍ: Borde verde lima sutil */
             border: 2px solid #A3E635;
             color: #A3E635;
-            /* Texto verde lima también? O blanco? Pruébalo. */
         }
 
-        /* --- 3. BOTÓN PLÁSTICO NARANJA --- */
         .btn-plastic-orange {
             background: linear-gradient(to bottom, #ffb347 0%, #ff9e00 100%);
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                0 4px 6px -1px rgba(255, 158, 0, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 6px -1px rgba(255, 158, 0, 0.3);
             border: 1px solid #d18200;
         }
 
         .btn-plastic-orange:hover {
             transform: translateY(-1px);
             filter: brightness(1.05);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                0 6px 12px -1px rgba(255, 158, 0, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 12px -1px rgba(255, 158, 0, 0.4);
         }
 
-        /* --- 4. TARJETAS PRO (Estilo ColorPalette) --- */
+        /* --- TARJETAS PRO --- */
         .tech-card {
             position: relative;
             background-color: #111111;
-            /* Fondo oscuro */
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow:
-                0 20px 40px -10px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* Luz superior */
         .tech-card::before {
             content: "";
             position: absolute;
@@ -144,7 +121,6 @@
             pointer-events: none;
         }
 
-        /* Grano Overlay */
         .tech-card::after {
             content: "";
             position: absolute;
@@ -183,18 +159,19 @@
     <header
         class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+            <a href="../index.html"
+                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
                 mirlo apps<span class="text-mirlo-orange">.</span>
-            </div>
+            </a>
 
             <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="apps/index.html"
+                <li><a href="../apps/index.html"
                         class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
                 </li>
-                <li><a href="#nosotros"
+                <li><a href="../index.html#nosotros"
                         class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
                 </li>
-                <li><a href="#contacto"
+                <li><a href="../index.html#contacto"
                         class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
                 </li>
 
@@ -215,83 +192,78 @@
         </nav>
     </header>
 
-    <section id="apps" class="pt-36 pb-24 px-6 bg-grain">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
                     <div
                         class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
-                        Nuevo Lanzamiento
+                        Disponible Ahora
                     </div>
 
-                    <a href="yeahapp/index.html" class="block group">
-                        <h1
-                            class="text-5xl md:text-7xl font-bold leading-tight tracking-tight group-hover:text-mirlo-orange transition-colors">
-                            yeah! <br>
-                            <span
-                                class="text-gray-500 dark:text-gray-400 text-4xl md:text-5xl font-medium group-hover:text-mirlo-orange/80">Retro
-                                &
-                                Veloz.</span>
-                        </h1>
-                    </a>
+                    <h1 class="text-6xl md:text-8xl font-bold leading-none tracking-tight">
+                        yeah!
+                    </h1>
+                    <p class="text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Retro & Veloz.</p>
 
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-md">
-                        Vuelve a sentir la tecnología. Una interfaz táctil con texturas, diseñadas para la privacidad y
-                        la eficiencia.
+                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
+                        Una interfaz táctil con texturas, diseñada para quienes valoran la privacidad, la eficiencia y
+                        el buen diseño. Redescubre el placer de usar software.
                     </p>
 
-                    <a href="#"
-                        class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-apple text-2xl"></i>
-                        <div class="text-left leading-tight">
-                            <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                            <div class="font-bold">App Store</div>
-                        </div>
-                    </a>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#"
+                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left leading-tight">
+                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
+                                <div class="font-bold">App Store</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="flex justify-center relative">
                     <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-mirlo-orange/30 rounded-full blur-[80px]">
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mirlo-orange/20 rounded-full blur-[100px]">
                     </div>
 
-                    <a href="yeahapp/index.html"
-                        class="block relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-1.5 shadow-2xl border-4 border-gray-100 dark:border-gray-700 transition-transform duration-500 hover:scale-105 cursor-pointer">
-
+                    <div
+                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[304px] h-[616px]">
                         <div
                             class="bg-black rounded-[2.5rem] w-72 h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-
-                            <img src="yeah-dark.png" alt="Yeah App Dark Mode"
+                            <img src="../yeah-dark.png" alt="Yeah App Dark Mode"
                                 class="absolute inset-0 w-full h-full object-cover">
-
-                            <img src="yeah-light.png" alt="Yeah App Light Mode"
-                                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0">
-
                             <div
                                 class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
                             </div>
-
                         </div>
-                    </a>
+                    </div>
+                    <div
+                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[5deg] hover:rotate-0 transition-transform duration-500 -ml-24 mt-24 z-0 w-[304px] h-[616px]">
+                        <div
+                            class="bg-black rounded-[2.5rem] w-72 h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
+                            <img src="../yeah-light.png" alt="Yeah App Light Mode"
+                                class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
         </div>
     </section>
 
     <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div class="max-w-7xl mx-auto">
-
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Diseño con alma</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">No es sólo software, es una experiencia útil y viva.
-                </p>
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Características Principales</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Todo lo que necesitas, nada que te sobre.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-
                 <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
                     <div class="relative z-10">
                         <div
@@ -299,8 +271,8 @@
                             <i class="fas fa-fingerprint text-2xl text-mirlo-orange"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-white">Táctil</h3>
-                        <p class="text-gray-400 leading-relaxed">Botones que dan ganas de tocar. Texturas que puedes
-                            sentir.</p>
+                        <p class="text-gray-400 leading-relaxed">Botones grandes, respuesta háptica y sonidos mecánicos.
+                            Una experiencia física en una pantalla digital.</p>
                     </div>
                 </div>
 
@@ -311,8 +283,8 @@
                             <i class="fas fa-bolt text-2xl text-mirlo-orange"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-white">Instantánea</h3>
-                        <p class="text-gray-400 leading-relaxed">Código Swift nativo optimizado. Sin tiempos de carga,
-                            sin esperas.</p>
+                        <p class="text-gray-400 leading-relaxed">Sin pantallas de carga. Abre la app y empieza a usarla.
+                            Optimizada para la velocidad.</p>
                     </div>
                 </div>
 
@@ -323,75 +295,11 @@
                             <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-white">Privada</h3>
-                        <p class="text-gray-400 leading-relaxed">Tus datos se quedan en tu iPhone. Sin servidores
-                            externos, sin tracking, sin publicidad</p>
-                    </div>
-                </div>
-
-            </div>
-    </section>
-
-    <section id="nosotros"
-        class="py-24 px-6 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            <div
-                class="inline-flex items-center justify-center w-20 h-20 bg-black text-white rounded-2xl shadow-2xl mb-4 transform rotate-6 transition-transform hover:rotate-12">
-                <span class="font-bold text-3xl">
-                    M<span class="text-mirlo-orange">.</span>
-                </span>
-            </div>
-
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tight">El renacer del software artesanal</h2>
-
-            <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                En <strong>mirlo apps</strong> las apps tienen vida y respiran.
-                Con personalidad, con una mirada retro futurista, con alas.
-            </p>
-
-            <div class="pt-8">
-                <div class="flex justify-center gap-4 mt-4">
-                    <div class="pt-8">
-                        <span class="text-s font-bold text-gray-400 uppercase tracking-[0.4em]">Próximamente</span>
-
-                        <div class="flex justify-center items-center gap-6 mt-6">
-
-                            <div class="group relative">
-                                <img src="icon-app2.png" alt="Próxima App 1"
-                                    class="w-16 h-16 rounded-2xl shadow-md border border-gray-200 transform transition-transform duration-300 hover:scale-110 hover:rotate-3 cursor-help"
-                                    title="Coming Soon...">
-                                <div
-                                    class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none">
-                                </div>
-                            </div>
-
-                            <div class="group relative">
-                                <img src="icon-app3.png" alt="Próxima App 2"
-                                    class="w-16 h-16 rounded-2xl shadow-md border border-gray-200 transform transition-transform duration-300 hover:scale-110 hover:-rotate-3 cursor-help"
-                                    title="Coming Soon...">
-                                <div
-                                    class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none">
-                                </div>
-                            </div>
-
-                        </div>
+                        <p class="text-gray-400 leading-relaxed">Tus datos son tuyos. Almacenamiento local y
+                            sincronización iCloud opcional. Cero rastreadores.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="contacto"
-        class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div
-            class="max-w-3xl mx-auto text-center bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-12 rounded-[3rem] border border-white dark:border-gray-700 shadow-xl">
-            <h2 class="text-3xl font-bold mb-4">¿Hablamos?</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Soporte, sugerencias o simplemente saludar.</p>
-
-            <a href="mailto:soporte@mirloapps.es"
-                class="inline-flex items-center space-x-2 btn-plastic-orange text-white px-8 py-4 rounded-xl font-bold text-lg transition-transform">
-                <i class="fas fa-paper-plane"></i>
-                <span>Enviar Email</span>
-            </a>
         </div>
     </section>
 
@@ -403,9 +311,9 @@
             </div>
 
             <div class="flex space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400">
-                <a href="privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
+                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
                 <a href="#" class="hover:text-mirlo-orange transition-colors">Términos</a>
-                <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
             </div>
 
             <div class="flex space-x-4">
@@ -421,11 +329,13 @@
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <a href="apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
             onclick="toggleMenu()">Apps</a>
-        <a href="#nosotros" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+        <a href="../index.html#nosotros"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
             onclick="toggleMenu()">Nosotros</a>
-        <a href="#contacto" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+        <a href="../index.html#contacto"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
             onclick="toggleMenu()">Contacto</a>
 
         <!-- Mobile Dark Mode Switch -->
