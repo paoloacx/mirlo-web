@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps - mirlo apps</title>
+    <meta name="description" content="Descubre las aplicaciones de mirlo apps. Diseño con alma y funcionalidad.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'yeah-pin': '#FF4500',
+                        'yeah-lime': '#A3E635',
+                        'yeah-cyan': '#00C4B4',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #f3f4f6;
+        }
+
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Card Style */
+        .app-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .app-card {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .app-card:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <script src="../script.js"></script>
+</head>
+
+<body
+    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 flex flex-col min-h-screen">
+
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="#" class="text-mirlo-orange">Apps</a></li>
+                <li><a href="../index.html#nosotros"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
+                </li>
+                <li><a href="../index.html#contacto"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
+                </li>
+
+                <!-- Dark Mode Switch -->
+                <li class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-36 pb-24 px-6 bg-grain">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center">Nuestras Apps</h1>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Yeah! App Card -->
+                <a href="../yeahapp/index.html" class="app-card group block">
+                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
+                        <!-- Placeholder for app preview image, using a gradient for now if image missing -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
+                            <h2 class="text-4xl font-bold text-gray-900 dark:text-white">yeah!</h2>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-mirlo-orange transition-colors">yeah!</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Retro & Veloz. Vuelve a sentir la tecnología.</p>
+                        <div class="mt-4 flex items-center text-sm font-medium text-mirlo-orange">
+                            Ver detalles <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+                © 2025 mirlo apps. Hecho en España 🇪🇸
+            </div>
+            <div class="flex space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
+                <a href="../terminos.html" class="hover:text-mirlo-orange transition-colors">Términos</a>
+                <a href="#" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize switch state
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+</body>
+
+</html>
