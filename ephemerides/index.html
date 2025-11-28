@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ephemerides - mirlo apps</title>
+    <meta name="description" content="Ephemerides - Calendar, Memories & History. Connect your story with the world.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'yeah-pin': '#FF4500',
+                        'yeah-lime': '#A3E635',
+                        'yeah-cyan': '#00C4B4',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* --- EFECTO GRANO --- */
+        .bg-grain {
+            position: relative;
+            background-color: #f3f4f6;
+        }
+
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- BOTONES PLÁSTICO --- */
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-plastic:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            border: 2px solid #A3E635;
+            color: #A3E635;
+        }
+
+        .btn-plastic-orange {
+            background: linear-gradient(to bottom, #ffb347 0%, #ff9e00 100%);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 6px -1px rgba(255, 158, 0, 0.3);
+            border: 1px solid #d18200;
+        }
+
+        .btn-plastic-orange:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 12px -1px rgba(255, 158, 0, 0.4);
+        }
+
+        /* --- TARJETAS PRO --- */
+        .tech-card {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .tech-card {
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
+        }
+
+        .tech-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        // Dark Mode Logic
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html"
+                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="../apps/index.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
+                </li>
+                <li><a href="../index.html#nosotros"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
+                </li>
+                <li><a href="../index.html#contacto"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
+                </li>
+
+                <!-- Dark Mode Switch -->
+                <li class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        </div>
+                    </label>
+                </li>
+            </ul>
+
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+
+                    <div
+                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
+                        Nuevo Lanzamiento
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
+                        Ephemerides
+                    </h1>
+                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Calendar,
+                        Memories & History.</p>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
+                        Discover what happened today in history and save what happened to you. A circular journal
+                        designed to connect your personal story with the world's History.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#"
+                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left leading-tight">
+                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
+                                <div class="font-bold">App Store</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex justify-center relative">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mirlo-orange/20 rounded-full blur-[100px]">
+                    </div>
+
+                    <div
+                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
+                        <div
+                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
+                            <img src="ephemerides-dark.png" alt="Ephemerides Dark Mode"
+                                class="absolute inset-0 w-full h-full object-contain">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[5deg] hover:rotate-0 transition-transform duration-500 -ml-24 mt-24 z-0 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
+                        <div
+                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
+                            <img src="ephemerides-light.png" alt="Ephemerides Light Mode"
+                                class="absolute inset-0 w-full h-full object-contain">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL SECTION -->
+    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Your Personal Legacy</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Build your story. Feed your memories.</p>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="relative group">
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar"
+                    style="-ms-overflow-style: none; scrollbar-width: none;">
+
+                    <!-- Slide 1: Personal Legacy -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
+                            <img src="carousel-legacy.png" alt="Personal Legacy"
+                                class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-mirlo-orange text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Memories</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Save Everything</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Save photos, music
+                                (Apple Music integration), locations, and special moments. Your life, curated.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Perpetual Calendar -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
+                            <img src="carousel-calendar.png" alt="Perpetual Calendar"
+                                class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-yeah-pin text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Cycles</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Perpetual Calendar</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Visualize your life
+                                cycle on a perpetual calendar. See patterns and remember dates.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Nostalgic Widgets -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
+                            <img src="carousel-widgets.png" alt="Nostalgic Widgets"
+                                class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-yeah-cyan text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Home</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Nostalgic Widgets</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Beautiful widgets for
+                                your Home Screen that bring back memories from this day in history.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Shuffle Mode -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
+                            <img src="carousel-shuffle.png" alt="Shuffle Mode"
+                                class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-yeah-lime text-black text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Rediscover</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Shuffle Mode</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Rediscover what you were
+                                doing on this day years ago. A surprise from your past self.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Customizable Categories -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
+                            <img src="carousel-categories.png" alt="Customizable Categories"
+                                class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Curate</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Your Interests</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Customizable categories:
+                                History, Science, Art, and more. Filter history by what matters to you.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Soulful Design</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">An aesthetic that feels crafted, not industrial.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-palette text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Retro iOS Style</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Tactile textures, careful sounds,
+                            and Dopamine design principles. An interface that feels good to use.</p>
+                    </div>
+                </div>
+
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Privacy First</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Your memories belong to you. iCloud
+                            sync, no external servers, no tracking, no selling your data.</p>
+                    </div>
+                </div>
+
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-globe-americas text-2xl text-mirlo-orange"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">History & You</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Connect your personal story with the
+                            world's History. See your life in context.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+                © 2025 mirlo apps. Hecho en España 🇪🇸
+            </div>
+
+            <div class="flex space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
+                <a href="../terminos.html" class="hover:text-mirlo-orange transition-colors">Términos</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+            </div>
+
+            <div class="flex space-x-4">
+                <a href="https://x.com/mirloapps" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Apps</a>
+        <a href="../index.html#nosotros"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Nosotros</a>
+        <a href="../index.html#contacto"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Contacto</a>
+
+        <!-- Mobile Dark Mode Switch -->
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        // Initialize switch state
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+</body>
+
+</html>
