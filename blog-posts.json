@@ -2,16 +2,16 @@
   "posts": [
     {
       "id": "1764441058361",
-      "title": "Timeline of these first 39 days",
+      "title": "Timeline of these 39 days",
       "category": "Aplicaciones",
       "tags": [],
-      "excerpt": "Timeline of these first 39 days",
+      "excerpt": "Timeline of these 39 days",
       "content": "<ul><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">Let's try this out</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">I'm amazed, AI is the best teacher in the world</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">I like it, it's a challenge</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">This stuff is for me, difficult, satisfying, creative</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\"> Am I really going to be able to make a pretty cool webapp out of thin air?</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\"> I'm starting two more web app in parallel</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Yes, I did it. Now let's try it on Android, which seems easier and is free.</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">What the hell is this Android Studio thing?</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Come on, it's a challenge, calm down</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Android is a fucking nightmare to develop for</span></li><li><span style=\"color: rgb(15, 20, 25);\">I'm giving up on it, I'm focusing on the web app, period</span></li><li><span style=\"color: rgb(15, 20, 25);\">What if I try it for iOS? I'd have to redo everything from scratch</span></li><li><span style=\"color: rgb(15, 20, 25);\">Well, it's cool, I like it, it's convenient and pretty.</span></li><li><span style=\"color: rgb(15, 20, 25);\">I love it.</span></li><li><span style=\"color: rgb(15, 20, 25);\">What? I've already finished the first iOS app?</span></li><li><span style=\"color: rgb(15, 20, 25);\">\"Your app is pending approval\"</span></li><li>Approved</li></ul><p><br></p><p><strong style=\"color: rgb(0, 0, 0);\">My app launches on Monday, December 1st</strong></p><p><strong style=\"color: rgb(0, 0, 0);\">Yeah! App - Stats:</strong></p><p><span style=\"color: rgb(0, 0, 0);\">* Total lines of Swift code: ~10,004 lines</span></p><p><span style=\"color: rgb(0, 0, 0);\">* Number of files: 35 files</span></p><p><strong style=\"color: rgb(0, 0, 0);\">Breakdown:</strong></p><p><span style=\"color: rgb(0, 0, 0);\">* Views (UI): ~4,500 lines</span></p><p><span style=\"color: rgb(0, 0, 0);\">* Managers (Business Logic): ~2,500 lines</span></p><p><span style=\"color: rgb(0, 0, 0);\">* Models (Data): ~800 lines</span></p><p><span style=\"color: rgb(0, 0, 0);\">* Widgets &amp; Extensions: ~1,500 lines</span></p><p><span style=\"color: rgb(0, 0, 0);\">* App Intents &amp; Shortcuts: ~700 lines</span></p>",
       "image": "https://i.ibb.co/VYgxCkNJ/Captura-de-pantalla-2025-11-25-a-las-11-45-53.png",
       "date": "2025-11-25",
-      "updatedAt": "2025-11-29T18:59:54.118Z"
+      "updatedAt": "2025-11-29T19:04:05.931Z"
     }
   ],
-  "lastUpdated": "2025-11-29T18:59:54.477Z",
+  "lastUpdated": "2025-11-29T19:04:06.380Z",
   "version": "1.0"
 }
