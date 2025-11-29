@@ -435,16 +435,23 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    allPosts = data.posts || [];
+                    const githubPosts = data.posts || [];
 
-                    // Cache in localStorage for offline access
-                    localStorage.setItem('blogPosts', JSON.stringify(allPosts));
+                    // If GitHub has posts, use them
+                    if (githubPosts.length > 0) {
+                        allPosts = githubPosts;
+                        // Cache in localStorage for offline access
+                        localStorage.setItem('blogPosts', JSON.stringify(allPosts));
+                    } else {
+                        // GitHub is empty, use localStorage
+                        throw new Error('GitHub is empty, using localStorage');
+                    }
                 } else {
                     throw new Error('GitHub fetch failed');
                 }
             } catch (error) {
                 // Fallback to localStorage
-                console.log('Loading from localStorage (GitHub unavailable)');
+                console.log('Loading from localStorage:', error.message);
                 allPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
             }
 
