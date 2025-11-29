@@ -546,7 +546,6 @@
             document.getElementById('submit-text').textContent = 'Publicar Post';
 
             loadPostsList();
-            generateRSS();
             showNotification('Post guardado exitosamente!');
         }
 
@@ -641,7 +640,6 @@
             localStorage.setItem('blogPosts', JSON.stringify(filtered));
 
             loadPostsList();
-            generateRSS();
             showNotification('Post eliminado');
         }
 
