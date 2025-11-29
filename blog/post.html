@@ -11,6 +11,26 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="mirlo apps">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="" id="canonical-url">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:title" content="" id="og-title">
+    <meta property="og:description" content="" id="og-description">
+    <meta property="og:image" content="" id="og-image">
+    <meta property="og:site_name" content="mirlo apps Blog">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="" id="twitter-url">
+    <meta property="twitter:title" content="" id="twitter-title">
+    <meta property="twitter:description" content="" id="twitter-description">
+    <meta property="twitter:image" content="" id="twitter-image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -102,6 +122,15 @@
         .post-content ol {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .post-content ul {
+            list-style-type: disc;
+        }
+
+        .post-content ol {
+            list-style-type: decimal;
         }
 
         .post-content li {
@@ -116,6 +145,8 @@
         .post-content img {
             border-radius: 1rem;
             margin: 2rem 0;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 
@@ -286,9 +317,29 @@
             document.getElementById('post-not-found').classList.add('hidden');
             document.getElementById('post-content').classList.remove('hidden');
 
+            // Build URLs
+            const postUrl = `https://mirloapps.es/blog/post.html?id=${post.id}`;
+            const imageUrl = post.image || 'https://mirloapps.es/mirloapps-icon.png';
+            const description = post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160);
+
             // Update page title and meta
             document.getElementById('page-title').textContent = `${post.title} - mirlo apps`;
-            document.getElementById('page-description').setAttribute('content', post.excerpt || post.content.substring(0, 150));
+            document.getElementById('page-description').setAttribute('content', description);
+
+            // Update SEO meta tags
+            document.getElementById('canonical-url').setAttribute('href', postUrl);
+
+            // Open Graph
+            document.getElementById('og-url').setAttribute('content', postUrl);
+            document.getElementById('og-title').setAttribute('content', post.title);
+            document.getElementById('og-description').setAttribute('content', description);
+            document.getElementById('og-image').setAttribute('content', imageUrl);
+
+            // Twitter
+            document.getElementById('twitter-url').setAttribute('content', postUrl);
+            document.getElementById('twitter-title').setAttribute('content', post.title);
+            document.getElementById('twitter-description').setAttribute('content', description);
+            document.getElementById('twitter-image').setAttribute('content', imageUrl);
 
             // Update post content
             document.getElementById('post-category').textContent = post.category;
