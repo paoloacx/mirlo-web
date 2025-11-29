@@ -184,11 +184,17 @@
                 </h1>
 
                 <!-- Meta Info -->
-                <div
-                    class="flex items-center gap-4 text-gray-600 dark:text-gray-400 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400 mb-4">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-calendar"></i>
                         <span id="post-date"></span>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div id="post-tags-container" class="hidden mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-wrap gap-2" id="post-tags">
+                        <!-- Tags will be loaded here -->
                     </div>
                 </div>
 
@@ -289,6 +295,18 @@
             document.getElementById('post-title').textContent = post.title;
             document.getElementById('post-date').textContent = formatDate(post.date);
             document.getElementById('post-body').innerHTML = post.content;
+
+            // Show tags if exists
+            if (post.tags && post.tags.length > 0) {
+                document.getElementById('post-tags-container').classList.remove('hidden');
+                const tagsContainer = document.getElementById('post-tags');
+                tagsContainer.innerHTML = post.tags.map(tag => `
+                    <a href="index.html?tag=${encodeURIComponent(tag)}" 
+                       class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-mirlo-orange hover:text-white rounded-full text-sm font-medium transition-colors">
+                        <i class="fas fa-tag mr-2 text-xs"></i>${tag}
+                    </a>
+                `).join('');
+            }
 
             // Show image if exists
             if (post.image) {

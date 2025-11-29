@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="alternate" type="application/rss+xml" title="mirlo apps Blog RSS" href="rss.xml">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -154,6 +155,33 @@
         .blog-post-card:hover {
             transform: translateY(-4px);
         }
+
+        .filter-tag {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .filter-tag.active {
+            background: #FF9E00;
+            color: white;
+        }
+
+        .pagination-btn {
+            min-width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn.active {
+            background: #FF9E00;
+            color: white;
+        }
     </style>
 
     <script>
@@ -175,24 +203,34 @@
     </script>
 </head>
 
-<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+<body
+    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
 
-    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
                 <a href="../index.html">mirlo apps<span class="text-mirlo-orange">.</span></a>
             </div>
 
             <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a></li>
-                <li><a href="../index.html#nosotros" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a></li>
+                <li><a href="../apps/index.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
+                </li>
                 <li><a href="index.html" class="text-mirlo-orange font-bold">Blog</a></li>
-                <li><a href="../index.html#contacto" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a></li>
+                <li><a href="../index.html#nosotros"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
+                </li>
+                <li><a href="../index.html#contacto"
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
+                </li>
 
                 <li class="flex items-center">
                     <label class="inline-flex items-center cursor-pointer">
                         <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        </div>
                     </label>
                 </li>
             </ul>
@@ -206,26 +244,102 @@
     <section class="pt-36 pb-24 px-6 bg-grain">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <div class="inline-block px-3 py-1 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm mb-6">
+                <div
+                    class="inline-block px-3 py-1 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm mb-6">
                     Blog
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
                     Noticias y Actualizaciones
                 </h1>
-                <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto mb-8">
                     Descubre las últimas novedades, actualizaciones y artículos sobre nuestras apps.
                 </p>
+
+                <!-- RSS Link -->
+                <a href="rss.xml"
+                    class="inline-flex items-center gap-2 text-mirlo-orange hover:underline font-semibold">
+                    <i class="fas fa-rss"></i>
+                    <span>Suscríbete al RSS</span>
+                </a>
             </div>
 
-            <div id="blog-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Filters -->
+            <div class="mb-12 tech-card p-6">
+                <div class="space-y-4">
+                    <!-- Category Filter -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-3">Categoría</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="filterByCategory('')"
+                                class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium active"
+                                data-category="">
+                                Todas
+                            </button>
+                            <button onclick="filterByCategory('Actualizaciones')"
+                                class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium"
+                                data-category="Actualizaciones">
+                                Actualizaciones
+                            </button>
+                            <button onclick="filterByCategory('Aplicaciones')"
+                                class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium"
+                                data-category="Aplicaciones">
+                                Aplicaciones
+                            </button>
+                            <button onclick="filterByCategory('Personal')"
+                                class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium"
+                                data-category="Personal">
+                                Personal
+                            </button>
+                            <button onclick="filterByCategory('Otros')"
+                                class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium"
+                                data-category="Otros">
+                                Otros
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tag Filter -->
+                    <div id="tag-filter-section" class="hidden">
+                        <label class="block text-sm font-semibold mb-3">Etiquetas</label>
+                        <div id="tag-filters" class="flex flex-wrap gap-2">
+                            <!-- Tags will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Active Filters -->
+                    <div id="active-filters" class="hidden">
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="font-semibold">Filtros activos:</span>
+                            <div id="active-filters-list" class="flex flex-wrap gap-2"></div>
+                            <button onclick="clearFilters()" class="text-red-500 hover:underline ml-2">
+                                Limpiar filtros
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts Counter -->
+            <div id="posts-counter" class="mb-6 text-center text-gray-600 dark:text-gray-400">
+                <!-- Counter will be loaded here -->
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div id="blog-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- Blog posts will be loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="flex justify-center items-center gap-2 mb-8">
+                <!-- Pagination will be loaded here -->
             </div>
 
             <div id="no-posts" class="hidden text-center py-20">
                 <i class="fas fa-newspaper text-6xl text-gray-300 dark:text-gray-700 mb-6"></i>
                 <h3 class="text-2xl font-bold mb-4">No hay posts todavía</h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-8">Pronto publicaremos contenido interesante.</p>
-                <a href="admin.html" class="inline-flex items-center space-x-2 btn-plastic-orange text-white px-6 py-3 rounded-xl font-semibold">
+                <a href="admin.html"
+                    class="inline-flex items-center space-x-2 btn-plastic-orange text-white px-6 py-3 rounded-xl font-semibold">
                     <i class="fas fa-plus"></i>
                     <span>Crear primer post</span>
                 </a>
@@ -233,7 +347,8 @@
         </div>
     </section>
 
-    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+    <footer
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
@@ -242,34 +357,49 @@
                     </a>
                 </div>
                 <div class="flex space-x-6 text-sm">
-                    <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y Términos</a>
+                    <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y
+                        Términos</a>
                     <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
-                    <a href="admin.html" class="hover:text-mirlo-orange transition-colors">Admin</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
         <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
-        <a href="../index.html#nosotros" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Nosotros</a>
+        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Apps</a>
         <a href="index.html" class="text-3xl font-bold text-mirlo-orange" onclick="toggleMenu()">Blog</a>
-        <a href="../index.html#contacto" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Contacto</a>
+        <a href="../index.html#nosotros"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Nosotros</a>
+        <a href="../index.html#contacto"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Contacto</a>
 
         <div class="flex items-center gap-4 mt-8">
             <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
             <label class="inline-flex items-center cursor-pointer">
                 <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                </div>
             </label>
         </div>
     </div>
 
     <script>
+        const POSTS_PER_PAGE = 10;
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentPage = 1;
+        let selectedCategory = '';
+        let selectedTags = [];
+
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -286,25 +416,181 @@
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = isDark);
 
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            currentPage = parseInt(urlParams.get('page')) || 1;
+            selectedCategory = urlParams.get('category') || '';
+            const tagParam = urlParams.get('tag');
+            if (tagParam) {
+                selectedTags = [tagParam];
+            }
+
             loadBlogPosts();
         });
 
         function loadBlogPosts() {
-            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-            const postsContainer = document.getElementById('blog-posts');
-            const noPosts = document.getElementById('no-posts');
+            allPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
 
-            if (posts.length === 0) {
-                noPosts.classList.remove('hidden');
+            if (allPosts.length === 0) {
+                document.getElementById('no-posts').classList.remove('hidden');
+                document.getElementById('blog-posts').classList.add('hidden');
+                document.getElementById('pagination').classList.add('hidden');
                 return;
             }
 
-            noPosts.classList.add('hidden');
-            
-            // Sort by date (newest first)
-            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            document.getElementById('no-posts').classList.add('hidden');
+            document.getElementById('blog-posts').classList.remove('hidden');
 
-            postsContainer.innerHTML = posts.map(post => `
+            // Sort by date (newest first)
+            allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // Load all available tags
+            loadAvailableTags();
+
+            // Apply filters
+            applyFilters();
+        }
+
+        function loadAvailableTags() {
+            const allTags = new Set();
+            allPosts.forEach(post => {
+                if (post.tags && Array.isArray(post.tags)) {
+                    post.tags.forEach(tag => allTags.add(tag));
+                }
+            });
+
+            if (allTags.size > 0) {
+                document.getElementById('tag-filter-section').classList.remove('hidden');
+                const tagFilters = document.getElementById('tag-filters');
+                tagFilters.innerHTML = Array.from(allTags).map(tag => `
+                    <button onclick="toggleTag('${tag}')" 
+                        class="filter-tag px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium ${selectedTags.includes(tag) ? 'active' : ''}"
+                        data-tag="${tag}">
+                        ${tag}
+                    </button>
+                `).join('');
+            }
+        }
+
+        function filterByCategory(category) {
+            selectedCategory = category;
+            currentPage = 1;
+            updateURL();
+            applyFilters();
+
+            // Update active state
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+        }
+
+        function toggleTag(tag) {
+            if (selectedTags.includes(tag)) {
+                selectedTags = selectedTags.filter(t => t !== tag);
+            } else {
+                selectedTags.push(tag);
+            }
+            currentPage = 1;
+            updateURL();
+            applyFilters();
+
+            // Update active state
+            document.querySelectorAll('[data-tag]').forEach(btn => {
+                btn.classList.toggle('active', selectedTags.includes(btn.dataset.tag));
+            });
+        }
+
+        function clearFilters() {
+            selectedCategory = '';
+            selectedTags = [];
+            currentPage = 1;
+            updateURL();
+            applyFilters();
+
+            // Reset UI
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === '');
+            });
+            document.querySelectorAll('[data-tag]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+        function applyFilters() {
+            filteredPosts = allPosts.filter(post => {
+                // Category filter
+                if (selectedCategory && post.category !== selectedCategory) {
+                    return false;
+                }
+
+                // Tag filter (post must have ALL selected tags)
+                if (selectedTags.length > 0) {
+                    if (!post.tags || !Array.isArray(post.tags)) {
+                        return false;
+                    }
+                    return selectedTags.every(tag => post.tags.includes(tag));
+                }
+
+                return true;
+            });
+
+            // Show active filters
+            updateActiveFilters();
+
+            // Render posts
+            renderPosts();
+            renderPagination();
+        }
+
+        function updateActiveFilters() {
+            const hasFilters = selectedCategory || selectedTags.length > 0;
+            const activeFiltersDiv = document.getElementById('active-filters');
+            const activeFiltersList = document.getElementById('active-filters-list');
+
+            if (hasFilters) {
+                activeFiltersDiv.classList.remove('hidden');
+                const filters = [];
+
+                if (selectedCategory) {
+                    filters.push(`<span class="px-3 py-1 bg-mirlo-orange text-white rounded-full text-xs">${selectedCategory}</span>`);
+                }
+
+                selectedTags.forEach(tag => {
+                    filters.push(`<span class="px-3 py-1 bg-mirlo-orange text-white rounded-full text-xs">${tag}</span>`);
+                });
+
+                activeFiltersList.innerHTML = filters.join('');
+            } else {
+                activeFiltersDiv.classList.add('hidden');
+            }
+        }
+
+        function renderPosts() {
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const end = start + POSTS_PER_PAGE;
+            const postsToShow = filteredPosts.slice(start, end);
+            const postsContainer = document.getElementById('blog-posts');
+            const counter = document.getElementById('posts-counter');
+
+            // Update counter
+            const totalPosts = filteredPosts.length;
+            if (totalPosts > 0) {
+                counter.textContent = `Mostrando ${start + 1}-${Math.min(end, totalPosts)} de ${totalPosts} posts`;
+            } else {
+                counter.textContent = 'No se encontraron posts con los filtros seleccionados';
+            }
+
+            if (postsToShow.length === 0 && filteredPosts.length === 0) {
+                postsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-filter text-4xl text-gray-300 dark:text-gray-700 mb-4"></i>
+                        <p class="text-gray-600 dark:text-gray-400">No hay posts que coincidan con los filtros seleccionados</p>
+                    </div>
+                `;
+                return;
+            }
+
+            postsContainer.innerHTML = postsToShow.map(post => `
                 <article class="tech-card blog-post-card p-8 group" onclick="viewPost('${post.id}')">
                     <div class="relative z-10">
                         ${post.image ? `
@@ -330,6 +616,12 @@
                             ${post.excerpt || post.content.substring(0, 150) + '...'}
                         </p>
 
+                        ${post.tags && post.tags.length > 0 ? `
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${post.tags.map(tag => `<span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">${tag}</span>`).join('')}
+                            </div>
+                        ` : ''}
+
                         <div class="flex items-center text-mirlo-orange font-semibold text-sm">
                             <span>Leer más</span>
                             <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
@@ -337,6 +629,77 @@
                     </div>
                 </article>
             `).join('');
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+            const paginationContainer = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                paginationContainer.classList.add('hidden');
+                return;
+            }
+
+            paginationContainer.classList.remove('hidden');
+
+            let pages = [];
+
+            // Previous button
+            pages.push(`
+                <button onclick="changePage(${currentPage - 1})" 
+                    ${currentPage === 1 ? 'disabled' : ''}
+                    class="pagination-btn px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    pages.push(`
+                        <button onclick="changePage(${i})" 
+                            class="pagination-btn rounded-lg ${i === currentPage ? 'active' : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'} font-semibold">
+                            ${i}
+                        </button>
+                    `);
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    pages.push(`<span class="px-2">...</span>`);
+                }
+            }
+
+            // Next button
+            pages.push(`
+                <button onclick="changePage(${currentPage + 1})" 
+                    ${currentPage === totalPages ? 'disabled' : ''}
+                    class="pagination-btn px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `);
+
+            paginationContainer.innerHTML = pages.join('');
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+            if (page < 1 || page > totalPages) return;
+
+            currentPage = page;
+            updateURL();
+            renderPosts();
+            renderPagination();
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateURL() {
+            const params = new URLSearchParams();
+            if (currentPage > 1) params.set('page', currentPage);
+            if (selectedCategory) params.set('category', selectedCategory);
+            if (selectedTags.length === 1) params.set('tag', selectedTags[0]);
+
+            const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
+            window.history.replaceState({}, '', newURL);
         }
 
         function formatDate(dateString) {
