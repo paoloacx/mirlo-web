@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "id": "1764443071151",
+      "title": "Yeah! app",
+      "category": "Actualizaciones",
+      "tags": [],
+      "excerpt": "",
+      "content": "<p><br></p>",
+      "image": "",
+      "date": "2025-12-01",
+      "updatedAt": "2025-11-29T19:04:31.151Z"
+    },
+    {
       "id": "1764441058361",
       "title": "Timeline of these 39 days",
       "category": "Aplicaciones",
@@ -12,6 +23,6 @@
       "updatedAt": "2025-11-29T19:04:05.931Z"
     }
   ],
-  "lastUpdated": "2025-11-29T19:04:06.380Z",
+  "lastUpdated": "2025-11-29T19:04:31.487Z",
   "version": "1.0"
 }
