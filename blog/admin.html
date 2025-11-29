@@ -557,6 +557,11 @@
                     document.getElementById('preview-img').src = imageUrl;
                     document.getElementById('image-preview').classList.remove('hidden');
 
+                    // Insert image into Quill editor at cursor position
+                    const range = quill.getSelection(true);
+                    quill.insertEmbed(range.index, 'image', imageUrl);
+                    quill.setSelection(range.index + 1);
+
                     // Complete progress
                     document.getElementById('upload-progress-bar').style.width = '100%';
                     setTimeout(() => {
@@ -564,7 +569,7 @@
                         document.getElementById('upload-progress-bar').style.width = '0%';
                     }, 500);
 
-                    showNotification('Imagen subida exitosamente');
+                    showNotification('Imagen subida e insertada en el editor. Haz click en ella para redimensionar.');
                 } else {
                     throw new Error('Error en la respuesta de ImgBB');
                 }
