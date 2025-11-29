@@ -1,5 +1,17 @@
 {
-  "posts": [],
-  "lastUpdated": "2025-11-29T18:15:00Z",
+  "posts": [
+    {
+      "id": "1764441058361",
+      "title": "Timeline dev",
+      "category": "Aplicaciones",
+      "tags": [],
+      "excerpt": "Timeline of these first 39 days",
+      "content": "<ul><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">Let's try this out</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">I'm amazed, AI is the best teacher in the world</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">I like it, it's a challenge</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\">This stuff is for me, difficult, satisfying, creative</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0.03); color: rgb(15, 20, 25);\"> Am I really going to be able to make a pretty cool webapp out of thin air?</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\"> I'm starting two more web app in parallel</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Yes, I did it. Now let's try it on Android, which seems easier and is free.</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">What the hell is this Android Studio thing?</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Come on, it's a challenge, calm down</span></li><li><span style=\"background-color: rgba(0, 0, 0, 0); color: inherit;\">Android is a fucking nightmare to develop for</span></li><li><span style=\"color: rgb(15, 20, 25);\">I'm giving up on it, I'm focusing on the web app, period</span></li><li><span style=\"color: rgb(15, 20, 25);\">What if I try it for iOS? I'd have to redo everything from scratch</span></li><li><span style=\"color: rgb(15, 20, 25);\">Well, it's cool, I like it, it's convenient and pretty.</span></li><li><span style=\"color: rgb(15, 20, 25);\">I love it.</span></li><li><span style=\"color: rgb(15, 20, 25);\">What? I've already finished the first iOS app?</span></li><li><span style=\"color: rgb(15, 20, 25);\">\"Your app is pending approval\"</span></li></ul>",
+      "image": "",
+      "date": "2025-11-25",
+      "updatedAt": "2025-11-29T18:30:58.362Z"
+    }
+  ],
+  "lastUpdated": "2025-11-29T18:30:59.108Z",
   "version": "1.0"
 }
