@@ -428,8 +428,25 @@
             loadBlogPosts();
         });
 
-        function loadBlogPosts() {
-            allPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+        async function loadBlogPosts() {
+            // Try to load from GitHub first
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/paoloacx/mirlo-web/main/blog-posts.json?t=' + Date.now());
+
+                if (response.ok) {
+                    const data = await response.json();
+                    allPosts = data.posts || [];
+
+                    // Cache in localStorage for offline access
+                    localStorage.setItem('blogPosts', JSON.stringify(allPosts));
+                } else {
+                    throw new Error('GitHub fetch failed');
+                }
+            } catch (error) {
+                // Fallback to localStorage
+                console.log('Loading from localStorage (GitHub unavailable)');
+                allPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            }
 
             if (allPosts.length === 0) {
                 document.getElementById('no-posts').classList.remove('hidden');
