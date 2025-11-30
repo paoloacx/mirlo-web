@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Recuperar Posts</title>
+</head>
+
+<body>
+    <h1>Recuperar Posts del Blog</h1>
+    <button onclick="checkPosts()">Ver Posts en localStorage</button>
+    <button onclick="exportPosts()">Exportar Posts</button>
+    <pre id="output"></pre>
+
+    <script>
+        function checkPosts() {
+            const posts = localStorage.getItem('blogPosts');
+            document.getElementById('output').textContent = posts || 'No hay posts en localStorage';
+        }
+
+        function exportPosts() {
+            const posts = localStorage.getItem('blogPosts');
+            if (posts) {
+                const blob = new Blob([posts], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'blog-posts-backup.json';
+                a.click();
+            } else {
+                alert('No hay posts para exportar');
+            }
+        }
+    </script>
+</body>
+
+</html>
