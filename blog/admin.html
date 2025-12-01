@@ -298,6 +298,18 @@
                         </div>
 
                         <div>
+                            <label class="block text-sm font-semibold mb-2">URL Personalizada (Slug)</label>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-500 text-sm">.../blog/post.html?id=</span>
+                                <input type="text" id="post-slug" required
+                                    class="flex-1 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-mirlo-orange font-mono text-sm"
+                                    placeholder="mi-titulo-genial">
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">Identificador único para la URL. Solo letras, números
+                                y guiones.</p>
+                        </div>
+
+                        <div>
                             <label class="block text-sm font-semibold mb-2">Categoría</label>
                             <select id="post-category"
                                 class="w-full px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-mirlo-orange">
@@ -810,14 +822,38 @@
             savePost();
         });
 
+        // Auto-generate slug from title
+        document.getElementById('post-title').addEventListener('input', (e) => {
+            if (!editingPostId) { // Only auto-generate for new posts
+                const title = e.target.value;
+                const slug = title.toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/(^-|-$)+/g, '');
+                document.getElementById('post-slug').value = slug;
+            }
+        });
+
         async function savePost() {
             const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            const slug = document.getElementById('post-slug').value.trim();
+
+            // Validate slug uniqueness
+            if (!slug) {
+                showNotification('El slug es obligatorio', 'error');
+                return;
+            }
+
+            const existingPost = posts.find(p => p.id === slug);
+            if (existingPost && existingPost.id !== editingPostId) {
+                showNotification('Esta URL ya existe, elige otra', 'error');
+                return;
+            }
 
             // Get content from Quill editor
             const content = quill.root.innerHTML;
 
             const post = {
-                id: editingPostId || Date.now().toString(),
+                id: slug, // Use slug as ID
                 title: document.getElementById('post-title').value,
                 category: document.getElementById('post-category').value,
                 tags: [...currentTags],
@@ -830,8 +866,15 @@
             };
 
             if (editingPostId) {
-                const index = posts.findIndex(p => p.id === editingPostId);
-                posts[index] = post;
+                // If ID changed (slug changed), remove old post
+                if (editingPostId !== slug) {
+                    const oldIndex = posts.findIndex(p => p.id === editingPostId);
+                    if (oldIndex > -1) posts.splice(oldIndex, 1);
+                    posts.unshift(post); // Add as new to top
+                } else {
+                    const index = posts.findIndex(p => p.id === editingPostId);
+                    posts[index] = post;
+                }
             } else {
                 posts.unshift(post);
             }
@@ -913,6 +956,7 @@
 
             editingPostId = postId;
             document.getElementById('post-title').value = post.title;
+            document.getElementById('post-slug').value = post.id; // ID is the slug
             document.getElementById('post-category').value = post.category;
             currentTags = post.tags || [];
             renderTags();

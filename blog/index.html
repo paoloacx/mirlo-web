@@ -430,10 +430,9 @@
         });
 
         async function loadBlogPosts() {
-            // Try to load from GitHub first
+            // Try to fetch from GitHub first (with cache busting)
             try {
                 const response = await fetch('https://raw.githubusercontent.com/paoloacx/mirlo-web/main/blog-posts.json?t=' + Date.now());
-
                 if (response.ok) {
                     const data = await response.json();
                     const githubPosts = data.posts || [];
