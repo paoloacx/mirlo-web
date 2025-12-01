@@ -392,11 +392,15 @@
                 `).join('');
             }
 
-            // Show image if exists
             if (post.image) {
                 document.getElementById('post-image-container').classList.remove('hidden');
-                document.getElementById('post-image').src = post.image;
-                document.getElementById('post-image').alt = post.title;
+                const img = document.getElementById('post-image');
+                img.src = post.image;
+                img.alt = post.title;
+
+                // Apply positioning
+                img.classList.remove('object-top', 'object-center', 'object-bottom');
+                img.classList.add(`object-${post.imagePosition || 'center'}`);
             }
         }
 
