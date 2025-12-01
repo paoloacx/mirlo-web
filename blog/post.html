@@ -365,109 +365,110 @@
                     const localPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
                     post = localPosts.find(p => p.id === postId);
                 }
-
-                if (!post) {
-                    showNotFound();
-                    return;
-                }
-
-                currentPost = post;
-                displayPost(post);
             }
 
-            function displayPost(post) {
-                document.getElementById('post-not-found').classList.add('hidden');
-                document.getElementById('post-content').classList.remove('hidden');
+            if (!post) {
+                showNotFound();
+                return;
+            }
 
-                // Build URLs
-                const postUrl = `https://mirloapps.es/blog/post.html?id=${post.id}`;
-                const imageUrl = post.image || 'https://mirloapps.es/mirloapps-icon.png';
-                const description = post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160);
+            currentPost = post;
+            displayPost(post);
+        }
 
-                // Update page title and meta
-                document.getElementById('page-title').textContent = `${post.title} - mirlo apps`;
-                document.getElementById('page-description').setAttribute('content', description);
+        function displayPost(post) {
+            document.getElementById('post-not-found').classList.add('hidden');
+            document.getElementById('post-content').classList.remove('hidden');
 
-                // Update SEO meta tags
-                document.getElementById('canonical-url').setAttribute('href', postUrl);
+            // Build URLs
+            const postUrl = `https://mirloapps.es/blog/post.html?id=${post.id}`;
+            const imageUrl = post.image || 'https://mirloapps.es/mirloapps-icon.png';
+            const description = post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160);
 
-                // Open Graph
-                document.getElementById('og-url').setAttribute('content', postUrl);
-                document.getElementById('og-title').setAttribute('content', post.title);
-                document.getElementById('og-description').setAttribute('content', description);
-                document.getElementById('og-image').setAttribute('content', imageUrl);
+            // Update page title and meta
+            document.getElementById('page-title').textContent = `${post.title} - mirlo apps`;
+            document.getElementById('page-description').setAttribute('content', description);
 
-                // Twitter
-                document.getElementById('twitter-url').setAttribute('content', postUrl);
-                document.getElementById('twitter-title').setAttribute('content', post.title);
-                document.getElementById('twitter-description').setAttribute('content', description);
-                document.getElementById('twitter-image').setAttribute('content', imageUrl);
+            // Update SEO meta tags
+            document.getElementById('canonical-url').setAttribute('href', postUrl);
 
-                // Update post content
-                document.getElementById('post-category').textContent = post.category;
-                document.getElementById('post-title').textContent = post.title;
-                document.getElementById('post-date').textContent = formatDate(post.date);
-                document.getElementById('post-body').innerHTML = post.content;
+            // Open Graph
+            document.getElementById('og-url').setAttribute('content', postUrl);
+            document.getElementById('og-title').setAttribute('content', post.title);
+            document.getElementById('og-description').setAttribute('content', description);
+            document.getElementById('og-image').setAttribute('content', imageUrl);
 
-                // Show tags if exists
-                if (post.tags && post.tags.length > 0) {
-                    document.getElementById('post-tags-container').classList.remove('hidden');
-                    const tagsContainer = document.getElementById('post-tags');
-                    tagsContainer.innerHTML = post.tags.map(tag => `
+            // Twitter
+            document.getElementById('twitter-url').setAttribute('content', postUrl);
+            document.getElementById('twitter-title').setAttribute('content', post.title);
+            document.getElementById('twitter-description').setAttribute('content', description);
+            document.getElementById('twitter-image').setAttribute('content', imageUrl);
+
+            // Update post content
+            document.getElementById('post-category').textContent = post.category;
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-date').textContent = formatDate(post.date);
+            document.getElementById('post-body').innerHTML = post.content;
+
+            // Show tags if exists
+            if (post.tags && post.tags.length > 0) {
+                document.getElementById('post-tags-container').classList.remove('hidden');
+                const tagsContainer = document.getElementById('post-tags');
+                tagsContainer.innerHTML = post.tags.map(tag => `
                     <a href="index.html?tag=${encodeURIComponent(tag)}" 
                        class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-mirlo-orange hover:text-white rounded-full text-sm font-medium transition-colors">
                         <i class="fas fa-tag mr-2 text-xs"></i>${tag}
                     </a>
                 `).join('');
-                }
-
-                if (post.image) {
-                    document.getElementById('post-image-container').classList.remove('hidden');
-                    const img = document.getElementById('post-image');
-                    img.src = post.image;
-                    img.alt = post.title;
-
-                    // Apply positioning
-                    img.classList.remove('object-top', 'object-center', 'object-bottom');
-                    img.classList.add(`object-${post.imagePosition || 'center'}`);
-                }
             }
 
-            function showNotFound() {
-                document.getElementById('post-not-found').classList.remove('hidden');
-                document.getElementById('post-content').classList.add('hidden');
-            }
+            if (post.image) {
+                document.getElementById('post-image-container').classList.remove('hidden');
+                const img = document.getElementById('post-image');
+                img.src = post.image;
+                img.alt = post.title;
 
-            function formatDate(dateString) {
-                const date = new Date(dateString);
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                return date.toLocaleDateString('es-ES', options);
+                // Apply positioning
+                img.classList.remove('object-top', 'object-center', 'object-bottom');
+                img.classList.add(`object-${post.imagePosition || 'center'}`);
             }
+        }
 
-            function shareOnTwitter() {
-                if (!currentPost) return;
-                const text = encodeURIComponent(currentPost.title);
-                const url = encodeURIComponent(window.location.href);
-                window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-            }
+        function showNotFound() {
+            document.getElementById('post-not-found').classList.remove('hidden');
+            document.getElementById('post-content').classList.add('hidden');
+        }
 
-            function copyLink() {
-                navigator.clipboard.writeText(window.location.href).then(() => {
-                    showNotification('Enlace copiado al portapapeles');
-                });
-            }
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('es-ES', options);
+        }
 
-            function showNotification(message) {
-                const notification = document.createElement('div');
-                notification.className = 'fixed top-4 right-4 bg-mirlo-orange text-white px-6 py-3 rounded-xl shadow-lg z-50';
-                notification.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
-                document.body.appendChild(notification);
+        function shareOnTwitter() {
+            if (!currentPost) return;
+            const text = encodeURIComponent(currentPost.title);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
 
-                setTimeout(() => {
-                    notification.style.opacity = '0';
-                    setTimeout(() => notification.remove(), 300);
-                }, 2000);
-            }
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showNotification('Enlace copiado al portapapeles');
+            });
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-mirlo-orange text-white px-6 py-3 rounded-xl shadow-lg z-50';
+            notification.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
     </script>
 
 </body>
