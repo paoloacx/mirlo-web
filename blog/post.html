@@ -118,6 +118,14 @@
             margin-bottom: 1rem;
         }
 
+        /* Fix for empty lines showing huge gaps */
+        .post-content p:empty,
+        .post-content p:has(br:only-child) {
+            margin-bottom: 0;
+            line-height: 1;
+            height: 1em;
+        }
+
         .post-content ul,
         .post-content ol {
             margin-left: 1.5rem;
@@ -147,6 +155,30 @@
             margin: 2rem 0;
             max-width: 100%;
             height: auto;
+        }
+
+        /* Image Alignment Styles */
+        .post-content img[style*="float: left"],
+        .post-content img[align="left"] {
+            float: left;
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .post-content img[style*="float: right"],
+        .post-content img[align="right"] {
+            float: right;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .post-content img[style*="display: block; margin: auto"],
+        .post-content img[align="center"] {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 
