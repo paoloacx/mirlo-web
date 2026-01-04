@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Wishlist Genie by Mirlo Apps</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'genie-primary': '#8B5CF6',
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        // Dark Mode Logic
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html"
+                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="../index.html"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">
+                    Back to Home
+                </a>
+
+                <!-- Dark Mode Switch -->
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div
+                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                    </div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-16 pt-32">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold mb-4">Support Center</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400">We are here to help you with Wishlist Genie</p>
+        </div>
+
+        <!-- Quick Contact -->
+        <div class="bg-gradient-to-br from-genie-primary/10 to-genie-primary/5 rounded-2xl p-8 mb-16 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-genie-primary/20 rounded-full mb-4">
+                <i class="fas fa-envelope text-3xl text-genie-primary"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-3">Need help?</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Our team replies in less than 24 hours</p>
+            <a href="mailto:soporte@mirloapps.es"
+                class="inline-flex items-center space-x-2 bg-genie-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-genie-primary/90 hover:scale-105 shadow-lg transition-all">
+                <span>soporte@mirloapps.es</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+
+                <!-- FAQ Item 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm overflow-hidden">
+                    <button
+                        class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <h3 class="text-lg font-semibold">Is Wishlist Genie free?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="px-8 pb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p>Yes, the core features are free. You can create lists and add items.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm overflow-hidden">
+                    <button
+                        class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <h3 class="text-lg font-semibold">How do I share a list?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="px-8 pb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p>Open the list you want to share, tap the share icon, and choose how you want to send it
+                            (Message, Email, etc.).</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm overflow-hidden">
+                    <button
+                        class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <h3 class="text-lg font-semibold">Are my lists private?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="px-8 pb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p>Yes, your data is stored securely on your device and iCloud.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Troubleshooting Section -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Troubleshooting</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Issue 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-exclamation-triangle text-red-600"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Sync Issues</h3>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                1. Ensure you are signed into iCloud<br>
+                                2. Check internet connection<br>
+                                3. Restart the app
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contact Us</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Email -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-genie-primary/10 rounded-2xl mb-4">
+                        <i class="fas fa-envelope text-3xl text-genie-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">The fastest way to get help</p>
+                    <a href="mailto:soporte@mirloapps.es" class="text-genie-primary hover:underline font-medium">
+                        soporte@mirloapps.es
+                    </a>
+                </div>
+
+                <!-- Twitter -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-genie-primary/10 rounded-2xl mb-4">
+                        <i class="fab fa-twitter text-3xl text-genie-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Twitter</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">Follow us for updates</p>
+                    <a href="https://x.com/mirloapps" class="text-genie-primary hover:underline font-medium">
+                        @MirloApps
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="mt-12 text-center">
+            <a href="../index.html" class="text-genie-primary hover:underline text-lg">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Mirlo Apps
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // Initialize switch state
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+</body>
+
+</html>

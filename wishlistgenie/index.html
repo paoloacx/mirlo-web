@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Genie - Smart Shopping & Gift Wishlist</title>
+    <meta name="description"
+        content="Create, organize, and share your wishlists. The smart way to handle your shopping and gifts.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'genie-primary': '#8B5CF6',
+                        'genie-secondary': '#EC4899',
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        // Dark Mode Logic
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html"
+                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="../index.html"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">
+                    Volver a Inicio
+                </a>
+
+                <!-- Dark Mode Switch -->
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div
+                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                    </div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24">
+
+        <!-- Hero Section -->
+        <section class="px-6 mb-24">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="w-24 h-24 rounded-3xl bg-black shadow-2xl overflow-hidden animate-fade-in-up">
+                        <img src="icon.jpg" alt="Wishlist Genie Icon" class="w-full h-full object-cover">
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                        Wishlist <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-genie-primary to-genie-secondary">Genie</span>
+                    </h1>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
+                        The smart way to handle your shopping and gifts. Create, organize, and share your wishlists
+                        effortlessly.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://apps.apple.com/us/app/wishlist-genie/id6756264289"
+                            class="inline-flex items-center space-x-3 bg-gradient-to-r from-genie-primary to-genie-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-lg shadow-genie-primary/30">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left leading-tight">
+                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
+                                <div class="font-bold">App Store</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Screenshots Carousel -->
+                <div class="relative w-full max-w-sm mx-auto md:max-w-full">
+                    <div class="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x snap-mandatory">
+                        <!-- Screen 1 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen1.webp" class="w-full h-auto" alt="Screenshot 1">
+                            </div>
+                        </div>
+                        <!-- Screen 2 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen2.webp" class="w-full h-auto" alt="Screenshot 2">
+                            </div>
+                        </div>
+                        <!-- Screen 3 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen3.webp" class="w-full h-auto" alt="Screenshot 2">
+                            </div>
+                        </div>
+                        <!-- Screen 4 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen4.webp" class="w-full h-auto" alt="Screenshot 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="px-6 py-24 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                        <div class="w-12 h-12 bg-genie-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-magic text-2xl text-genie-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Smart Organization</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Categorize your wishes and keep everything tidy. Never lose a gift idea again.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                        <div class="w-12 h-12 bg-genie-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-gift text-2xl text-genie-secondary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Easy Sharing</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Share your lists with friends and family seamlessly. Perfect for birthdays and holidays.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                        <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-cart-shopping text-2xl text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Shopping Assistant</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Track prices and availability. Your genie helps you shop smarter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Call to Action -->
+        <section class="px-6 py-24 text-center">
+            <h2 class="text-4xl font-bold mb-8">Ready to grant your wishes?</h2>
+            <a href="https://apps.apple.com/us/app/wishlist-genie/id6756264289"
+                class="inline-flex items-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform">
+                <span>Download Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <footer
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        mirlo apps<span class="text-mirlo-orange">.</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
+                    <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize switch state
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+</body>
+
+</html>
