@@ -231,165 +231,134 @@
         </nav>
     </header>
 
-    <section id="apps" class="pt-36 pb-24 px-6 bg-grain">
+    <section id="apps" class="pt-36 pb-24 px-6 bg-grain min-h-screen">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
-                        Nuevo Lanzamiento
-                    </div>
-
-                    <a href="yeahapp/index.html" class="block group">
-                        <h1
-                            class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight group-hover:text-mirlo-orange transition-colors">
-                            yeah¡ - Check-in & Log Places <br>
-                            <span
-                                class="text-gray-500 dark:text-gray-400 text-2xl sm:text-3xl md:text-5xl font-medium group-hover:text-mirlo-orange/80">Track
-                                your life on a map.</span>
-                        </h1>
-                    </a>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-md">
-                        yeah¡ is the beautiful, private way to keep a history of your favorite places, travels, and
-                        daily spots. No social feed, no ads, no tracking—just you and your memories.
-                    </p>
-
-                    <a href="https://apps.apple.com/app/yeah-check-in-log-places/id6755683790"
-                        class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-apple text-2xl"></i>
-                        <div class="text-left leading-tight">
-                            <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                            <div class="font-bold">App Store</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="flex justify-center relative scale-[0.8] md:scale-100 origin-center">
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-mirlo-orange/30 rounded-full blur-[80px]">
-                    </div>
-
-                    <a href="yeahapp/index.html"
-                        class="block relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-1.5 shadow-2xl border-4 border-gray-100 dark:border-gray-700 transition-transform duration-500 hover:scale-105 cursor-pointer">
-
-                        <div
-                            class="bg-black rounded-[2.5rem] w-72 h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-
-                            <img src="yeah-dark.png" alt="Yeah App Dark Mode"
-                                class="absolute inset-0 w-full h-full object-contain">
-
-                            <img src="yeah-light.png" alt="Yeah App Light Mode"
-                                class="absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ease-in-out group-hover:opacity-0">
-
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">Nuestras
+                    Apps</h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Software artesanal con
+                    personalidad propia. Diseñado para ser útil, privado y bonito.</p>
             </div>
 
-        </div>
-        </div>
-    </section>
+            <div class="grid md:grid-cols-2 gap-8">
 
-    <!-- EPHEMERIDES BANNER -->
-    <section class="py-12 px-6 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div
-                class="relative overflow-hidden rounded-[3rem] bg-black border border-gray-800 shadow-2xl group cursor-pointer transition-transform hover:scale-[1.01] duration-500">
+                <!-- 1. Yeah! Card -->
+                <a href="yeahapp/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
 
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="yeah-icon.png" alt="Yeah Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-mirlo-orange transition-colors">
+                            yeah!</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Check-in & Log Places
+                        </p>
+
+                        <div class="mt-8 inline-flex items-center text-mirlo-orange font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Decoración visual sutil -->
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-mirlo-orange/10 rounded-full blur-3xl group-hover:bg-mirlo-orange/20 transition-colors">
+                    </div>
+                </a>
+
+                <!-- 2. Ephemerides Card -->
                 <a href="ephemerides/index.html"
-                    class="block relative z-10 p-12 md:p-24 flex flex-col items-center text-center">
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
                     <div
-                        class="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold text-white uppercase tracking-wider mb-8 backdrop-blur-md">
-                        Nuevo
+                        class="absolute inset-0 bg-gradient-to-br from-purple-100 to-indigo-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
                     </div>
 
-                    <div class="w-24 h-24 rounded-2xl overflow-hidden mb-8 shadow-lg shadow-purple-400/20">
-                        <img src="icon-app2.png" alt="Ephemerides" class="w-full h-full object-cover">
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="ephemerides-icon.png" alt="Ephemerides Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-500 transition-colors">
+                            Ephemerides</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Calendar, Memories &
+                            History</p>
+
+                        <div class="mt-8 inline-flex items-center text-purple-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
                     </div>
 
-                    <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">Ephemerides</h2>
-                    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                        Calendar, Memories & History. <br>
-                        <span class="text-gray-500">Connect your personal story with the world.</span>
-                    </p>
-
                     <div
-                        class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg group-hover:scale-105 transition-transform">
-                        <span>Descubrir</span>
-                        <i class="fas fa-arrow-right"></i>
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors">
                     </div>
                 </a>
 
-                <!-- Background Effects -->
-                <div
-                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black pointer-events-none">
-                </div>
-                <div
-                    class="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-overlay">
-                </div>
-
-                <!-- Decorative Circles -->
-                <div
-                    class="absolute top-0 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2">
-                </div>
-                <div
-                    class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- A SUN IN YOUR POCKET BANNER -->
-    <section class="py-12 px-6 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div
-                class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-yellow-500/20 shadow-2xl group cursor-pointer transition-transform hover:scale-[1.01] duration-500">
-
+                <!-- 3. A Sun in Your Pocket Card -->
                 <a href="asuninyourpocket/index.html"
-                    class="block relative z-10 p-12 md:p-24 flex flex-col items-center text-center">
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
                     <div
-                        class="inline-block px-4 py-1.5 rounded-full bg-yellow-400/20 border border-yellow-400/30 text-xs font-bold text-yellow-400 uppercase tracking-wider mb-8 backdrop-blur-md">
-                        Nuevo
+                        class="absolute inset-0 bg-gradient-to-br from-yellow-100 to-orange-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
                     </div>
 
-                    <div class="w-24 h-24 rounded-2xl overflow-hidden mb-8 shadow-lg shadow-yellow-400/20">
-                        <img src="sun.png" alt="A Sun in Your Pocket" class="w-full h-full object-cover">
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="sun.png" alt="Sun Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-yellow-500 transition-colors">
+                            A Sun in Your Pocket</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Sun & Moon Tracker</p>
+
+                        <div class="mt-8 inline-flex items-center text-yellow-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
                     </div>
 
-                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">A Sun in Your Pocket</h2>
-                    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                        Sun & Moon Tracker. <br>
-                        <span class="text-gray-500">Turn your iPhone into a personal planetarium.</span>
-                    </p>
-
                     <div
-                        class="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-xl font-semibold text-lg group-hover:scale-105 transition-transform shadow-lg shadow-yellow-400/20">
-                        <span>Descubrir</span>
-                        <i class="fas fa-arrow-right"></i>
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-colors">
                     </div>
                 </a>
 
-                <!-- Background Effects -->
-                <div
-                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-900/10 via-transparent to-orange-900/10 pointer-events-none">
-                </div>
-                <div
-                    class="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-overlay">
-                </div>
+                <!-- 4. 24h Routines Card -->
+                <a href="24hroutines/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-teal-100 to-emerald-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
 
-                <!-- Decorative Circles -->
-                <div
-                    class="absolute top-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2">
-                </div>
-                <div
-                    class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2">
-                </div>
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="icon-24h.png" alt="24h Routines Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-500 transition-colors">
+                            24h Routines</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Minimalist routines
+                            planner</p>
+
+                        <div class="mt-8 inline-flex items-center text-teal-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl group-hover:bg-teal-500/20 transition-colors">
+                    </div>
+                </a>
+
             </div>
         </div>
     </section>
@@ -464,26 +433,7 @@
                 Con personalidad, con una mirada retro futurista, con alas.
             </p>
 
-            <div class="pt-8">
-                <div class="flex justify-center gap-4 mt-4">
-                    <div class="pt-8">
-                        <span class="text-s font-bold text-gray-400 uppercase tracking-[0.4em]">Próximamente</span>
 
-                        <div class="flex justify-center items-center gap-6 mt-6">
-
-                            <div class="group relative">
-                                <img src="icon-app3.png" alt="Próxima App"
-                                    class="w-16 h-16 rounded-2xl shadow-md border border-gray-200 transform transition-transform duration-300 hover:scale-110 hover:rotate-3 cursor-help"
-                                    title="Coming Soon...">
-                                <div
-                                    class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
