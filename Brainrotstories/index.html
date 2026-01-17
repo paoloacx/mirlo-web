@@ -140,10 +140,10 @@
                         class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
                 </li>
                 <li><a href="../index.html#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">About</a>
                 </li>
                 <li><a href="../index.html#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
                 </li>
 
                 <!-- Dark Mode Switch -->
@@ -305,75 +305,134 @@
                 </div>
             </div>
 
-            <footer
-                class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col md:flex-row justify-between items-center">
-                        <div class="mb-4 md:mb-0">
-                            <a href="../index.html"
-                                class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                                mirlo apps<span class="text-mirlo-orange">.</span>
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-6 text-sm">
-                            <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y
-                                Términos</a>
-                            <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
-                            <a href="https://x.com/PaoloAC"
-                                class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                                    class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+        </div>
+        </div>
+    </section>
 
-            <div id="mobile-menu"
-                class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-                <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
-                    <i class="fas fa-times text-3xl"></i>
-                </button>
-
-                <a href="../apps/index.html"
-                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-                    onclick="toggleMenu()">Apps</a>
-                <a href="../index.html#nosotros"
-                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-                    onclick="toggleMenu()">Nosotros</a>
-                <a href="../index.html#contacto"
-                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-                    onclick="toggleMenu()">Contacto</a>
-
-                <!-- Mobile Dark Mode Switch -->
-                <div class="flex items-center gap-4 mt-8">
-                    <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
-                    </label>
-                </div>
+    <!-- CHANGELOG SECTION -->
+    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">The madness continues.</p>
             </div>
 
-            <script>
-                function toggleMenu() {
-                    const menu = document.getElementById('mobile-menu');
-                    if (menu.classList.contains('hidden')) {
-                        menu.classList.remove('hidden');
-                        menu.classList.add('flex');
-                    } else {
-                        menu.classList.add('hidden');
-                        menu.classList.remove('flex');
-                    }
-                }
+            <div class="space-y-12">
 
-                // Initialize switch state
-                document.addEventListener('DOMContentLoaded', () => {
-                    const isDark = document.documentElement.classList.contains('dark');
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                    checkboxes.forEach(cb => cb.checked = isDark);
-                });
-            </script>
+                <!-- Version 1.1 -->
+                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brainrot-primary ring-4 ring-gray-100 dark:ring-black">
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">January 5, 2026</span>
+                    </div>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>iCloud
+                                backup.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Create your
+                                own creator profile and check statistics on the type of creator you are.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>New, better
+                                AIs for generating stories.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Unlock 3 new
+                                pets at levels 8, 10, and 13.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Added Levels
+                                11-20 (Available from February 1st).</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Cover styles
+                                fixed and new Anime style added.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Better voice
+                                model for narration mode.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>New volcanic
+                                animated background upon reaching level 6.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>New
+                                Launchscreen.</span></li>
+                        <li class="flex items-start"><i
+                                class="fas fa-check text-brainrot-primary mt-1.5 mr-3 text-xs"></i> <span>Minor bug
+                                fixes and improvements.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        mirlo apps<span class="text-mirlo-orange">.</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy &
+                        Terms</a>
+                    <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
+                    <a href="https://x.com/PaoloAC"
+                        class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Apps</a>
+        <a href="../index.html#nosotros"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">About</a>
+        <a href="../index.html#contacto"
+            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+            onclick="toggleMenu()">Contact</a>
+
+        <!-- Mobile Dark Mode Switch -->
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        // Initialize switch state
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
 
 </body>
 
