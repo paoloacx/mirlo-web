@@ -53,10 +53,15 @@
             /* un gris suave base */
         }
 
-        .dark .bg-grain { background-color: #0a0a0a; } .dark .bg-grain::before { display: none; } /* removed */ 
+        .dark .bg-grain {
             background-color: #0a0a0a;
-            /* Fondo oscuro para dark mode */
         }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+
 
         .bg-grain::before {
             content: "";
@@ -233,13 +238,14 @@
         <div class="max-w-7xl mx-auto">
 
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">Nuestras
-                    Apps</h1>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">Mirlo apps
+                </h1>
                 <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Software artesanal con
-                    personalidad propia. Diseñado para ser útil, privado y bonito.</p>
+                    personalidad y carácter. <br class="hidden md:inline">Diseñado para ser útil, privado y eficiente.
+                </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
 
                 <!-- 1. Yeah! Card -->
                 <a href="yeahapp/index.html"
@@ -265,7 +271,6 @@
                         </div>
                     </div>
 
-                    <!-- Decoración visual sutil -->
                     <div
                         class="absolute -bottom-10 -right-10 w-48 h-48 bg-mirlo-orange/10 rounded-full blur-3xl group-hover:bg-mirlo-orange/20 transition-colors">
                     </div>
@@ -357,40 +362,148 @@
                     </div>
                 </a>
 
-                <!-- 5. Wishlist Genie Card (Centered/Full Width on MD) -->
+                <!-- 5. Wishlist Genie Card -->
                 <a href="wishlistgenie/index.html"
-                    class="md:col-span-2 group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.01] border border-gray-100 dark:border-gray-800">
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-indigo-100 to-pink-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
                     </div>
 
-                    <div
-                        class="relative p-10 flex flex-col md:flex-row items-center md:items-start md:space-x-8 h-full">
-                        <div
-                            class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-black mb-6 md:mb-0 shadow-lg overflow-hidden flex-shrink-0">
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
                             <img src="wishlistgenie/icon.jpg" alt="Wishlist Genie Icon"
                                 class="w-full h-full object-cover">
                         </div>
 
-                        <div class="flex flex-col items-center md:items-start text-center md:text-left flex-grow">
-                            <h2
-                                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-500 transition-colors">
-                                Wishlist Genie</h2>
-                            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium mb-6">Smart
-                                Shopping & Gift Wishlist</p>
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-500 transition-colors">
+                            Wishlist Genie</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Smart Shopping & Gift
+                            Wishlist</p>
 
-                            <div class="inline-flex items-center text-indigo-500 font-bold text-lg">
-                                Descubrir <i
-                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
+                        <div class="mt-8 inline-flex items-center text-indigo-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
 
                     <div
-                        class="absolute -bottom-20 -right-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors">
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors">
                     </div>
+                </a>
+
+                <!-- 6. Brainrot Stories Card -->
+                <a href="Brainrotstories/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
                     <div
-                        class="absolute -top-20 -left-20 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl group-hover:bg-pink-500/20 transition-colors">
+                        class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
+
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="Brainrotstories/brainrot-stories.png" alt="Brainrot Stories Icon"
+                                class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-500 transition-colors">
+                            Brainrot Stories</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">AI Story Generator</p>
+
+                        <div class="mt-8 inline-flex items-center text-purple-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors">
+                    </div>
+                </a>
+
+                <!-- 7. I'm OK Card -->
+                <a href="ImOK/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
+
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="ImOK/IMOK.png" alt="I'm OK Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-500 transition-colors">
+                            I'm OK</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Peace of mind for
+                            families</p>
+
+                        <div class="mt-8 inline-flex items-center text-green-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-colors">
+                    </div>
+                </a>
+
+                <!-- 8. Who am I? Card -->
+                <a href="Whoami/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-cyan-100 to-blue-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
+
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="icon-app3.png" alt="Who am I? Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-cyan-500 transition-colors">
+                            Who am I?</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Compare With The World
+                        </p>
+
+                        <div class="mt-8 inline-flex items-center text-cyan-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-colors">
+                    </div>
+                </a>
+
+                <!-- 9. Balizas España Card -->
+                <a href="balizas/index.html"
+                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    </div>
+
+                    <div class="relative p-10 flex flex-col h-full items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
+                            <img src="balizas/balizas.png" alt="Balizas España Icon" class="w-full h-full object-cover">
+                        </div>
+
+                        <h2
+                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-500 transition-colors">
+                            Balizas España</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Mapa V-16 en vivo</p>
+
+                        <div class="mt-8 inline-flex items-center text-red-500 font-bold">
+                            Descubrir <i
+                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-red-500/10 rounded-full blur-3xl group-hover:bg-red-500/20 transition-colors">
                     </div>
                 </a>
 
@@ -402,9 +515,9 @@
         <div class="max-w-7xl mx-auto">
 
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Diseño con alma</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">No es sólo software, es una experiencia útil y viva.
-                </p>
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Diseñado con alma</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">No son sólo aplicaciones, son experiencias,
+                    herramientas vitales y alimento visual.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
