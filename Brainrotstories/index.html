@@ -53,7 +53,13 @@
             background-color: #f3f4f6;
         }
 
-        .dark .bg-grain { background-color: #0a0a0a; } .dark .bg-grain::before { display: none; }
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
 
         .bg-grain::before {
             content: "";
@@ -172,11 +178,15 @@
                     </p>
 
                     <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Unleash your creativity with AI-powered storytelling. Generate unique, engaging stories in
-                        seconds.
+                        Create amazing stories with AI! Type an idea or snap a photo, and watch the magic unfold.
+                        Featuring your favorite brainrot characters!
+                    </p>
+                    <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg mt-4">
+                        Whether you have a wild idea, a funny thought, or just a photo you want to turn into an
+                        adventure, our artificial intelligence creates unique, engaging stories in seconds.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
                         <a href="https://apps.apple.com/app/brainrot-ia-stories/id6756977509"
                             class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
                             <i class="fab fa-apple text-2xl"></i>
@@ -188,90 +198,182 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center relative">
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brainrot-primary/20 rounded-full blur-[100px]">
-                    </div>
+                <!-- Screenshots Carousel -->
+                <div class="relative w-full max-w-sm mx-auto md:max-w-full">
+                    <style>
+                        /* Hide scrollbar for Chrome, Safari and Opera */
+                        .no-scrollbar::-webkit-scrollbar {
+                            display: none;
+                        }
 
-                    <!-- App Icon Placeholder as Hero Image -->
-                    <div
-                        class="relative w-64 h-64 md:w-96 md:h-96 bg-white dark:bg-gray-800 rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden border-4 border-gray-100 dark:border-gray-700">
-                        <img src="brainrot-stories.png" alt="Brainrot Stories Icon" class="w-full h-full object-cover">
+                        /* Hide scrollbar for IE, Edge and Firefox */
+                        .no-scrollbar {
+                            -ms-overflow-style: none;
+                            /* IE and Edge */
+                            scrollbar-width: none;
+                            /* Firefox */
+                        }
+                    </style>
+                    <div class="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x snap-mandatory">
+                        <!-- Screen 1 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen1.webp" class="w-full h-auto" alt="Screenshot 1">
+                            </div>
+                        </div>
+                        <!-- Screen 2 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen2.webp" class="w-full h-auto" alt="Screenshot 2">
+                            </div>
+                        </div>
+                        <!-- Screen 3 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen3.webp" class="w-full h-auto" alt="Screenshot 3">
+                            </div>
+                        </div>
+                        <!-- Screen 4 -->
+                        <div class="flex-none snap-center first:pl-4 last:pr-4">
+                            <div
+                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="screen4.webp" class="w-full h-auto" alt="Screenshot 4">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+    <!-- Features Grid -->
+    <section class="px-6 py-24 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                        mirlo apps<span class="text-mirlo-orange">.</span>
-                    </a>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-magic text-2xl text-purple-600 dark:text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI Magic</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Generate unique stories from text prompts or photos in seconds.
+                    </p>
                 </div>
-                <div class="flex items-center space-x-6 text-sm">
-                    <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y
-                        Términos</a>
-                    <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
-                    <a href="https://x.com/PaoloAC"
-                        class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                            class="fab fa-twitter"></i></a>
+
+                <!-- Feature 2 -->
+                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-ghost text-2xl text-pink-600 dark:text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Brainrot Characters</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Featuring your favorite viral characters to star in your adventures.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-image text-2xl text-indigo-600 dark:text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Custom Covers</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Each story comes with a beautiful AI-generated cover image.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                    <div
+                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-share-nodes text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Share Instantly</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Share your wild creations with friends on social media easily.
+                    </p>
                 </div>
             </div>
-        </div>
-    </footer>
 
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
-            <i class="fas fa-times text-3xl"></i>
-        </button>
-
-        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../blog/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Blog</a>
-        <a href="../index.html#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Nosotros</a>
-        <a href="../index.html#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contacto</a>
-
-        <!-- Mobile Dark Mode Switch -->
-        <div class="flex items-center gap-4 mt-8">
-            <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
-            <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+            <footer
+                class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="mb-4 md:mb-0">
+                            <a href="../index.html"
+                                class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                                mirlo apps<span class="text-mirlo-orange">.</span>
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-6 text-sm">
+                            <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y
+                                Términos</a>
+                            <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+                            <a href="https://x.com/PaoloAC"
+                                class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
+                                    class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
                 </div>
-            </label>
-        </div>
-    </div>
+            </footer>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            }
-        }
+            <div id="mobile-menu"
+                class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+                <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+                    <i class="fas fa-times text-3xl"></i>
+                </button>
 
-        // Initialize switch state
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
-        });
-    </script>
+                <a href="../apps/index.html"
+                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+                    onclick="toggleMenu()">Apps</a>
+                <a href="../blog/index.html"
+                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+                    onclick="toggleMenu()">Blog</a>
+                <a href="../index.html#nosotros"
+                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+                    onclick="toggleMenu()">Nosotros</a>
+                <a href="../index.html#contacto"
+                    class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+                    onclick="toggleMenu()">Contacto</a>
+
+                <!-- Mobile Dark Mode Switch -->
+                <div class="flex items-center gap-4 mt-8">
+                    <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <script>
+                function toggleMenu() {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu.classList.contains('hidden')) {
+                        menu.classList.remove('hidden');
+                        menu.classList.add('flex');
+                    } else {
+                        menu.classList.add('hidden');
+                        menu.classList.remove('flex');
+                    }
+                }
+
+                // Initialize switch state
+                document.addEventListener('DOMContentLoaded', () => {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(cb => cb.checked = isDark);
+                });
+            </script>
 
 </body>
 
