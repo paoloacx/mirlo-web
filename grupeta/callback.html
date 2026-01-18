@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grupeta</title>
+    <script>
+        // Get the code from URL and redirect to app
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        if (code) {
+            window.location.href = 'grupeta://oauth?code=' + code;
+        }
+    </script>
+</head>
+
+<body>
+    <p>Redirecting to Grupeta...</p>
+</body>
+
+</html>
