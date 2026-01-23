@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I'm OK - mirlo apps</title>
-    <meta name="description" content="I'm OK - Peace of mind for families">
+    <meta name="description" content="I'm OK - Peace of mind for families. Simple check-ins to stay connected.">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mirloapps.es/ImOK/">
@@ -55,6 +55,7 @@
             transition: all 0.3s ease;
         }
 
+        /* --- EFECTO GRANO --- */
         .bg-grain {
             position: relative;
             background-color: #f3f4f6;
@@ -86,6 +87,7 @@
             z-index: 1;
         }
 
+        /* --- BOTONES PLÁSTICO --- */
         .btn-plastic {
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
@@ -103,6 +105,50 @@
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
             border: 2px solid #10B981;
             color: #10B981;
+        }
+
+        /* --- TARJETAS PRO --- */
+        .tech-card {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .tech-card {
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
+        }
+
+        .tech-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
         }
     </style>
     <script>
@@ -182,18 +228,19 @@
                     </p>
 
                     <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Simple, private check-ins for families. Let your loved ones know you're safe with a single tap.
+                        The simplest, most private way to let your loved ones know you're safe. A single habit, a world
+                        of tranquility.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg opacity-70 cursor-not-allowed">
+                        <a href="https://apps.apple.com/app/im-ok-safety-check/id6757763851"
+                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
                             <i class="fab fa-apple text-2xl"></i>
                             <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Coming Soon to</div>
+                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
                                 <div class="font-bold">App Store</div>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -202,11 +249,212 @@
                         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-imok-primary/20 rounded-full blur-[100px]">
                     </div>
 
-                    <!-- App Icon Placeholder as Hero Image -->
                     <div
-                        class="relative w-64 h-64 md:w-96 md:h-96 bg-white dark:bg-gray-800 rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden border-4 border-gray-100 dark:border-gray-700">
-                        <img src="IMOK.png" alt="I'm OK Icon" class="w-full h-full object-cover">
+                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
+                        <div
+                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
+                            <img src="IMOK.png" alt="I'm OK Screenshot" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL SECTION -->
+    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Simplicity is Safety</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Designed to be used by anyone, anywhere.</p>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="relative group">
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar"
+                    style="-ms-overflow-style: none; scrollbar-width: none;">
+
+                    <!-- Slide 1: One-Tap -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div
+                            class="aspect-[9/16] bg-imok-primary/10 relative overflow-hidden flex items-center justify-center p-8">
+                            <i class="fas fa-hand-pointer text-9xl text-imok-primary/40"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-imok-primary text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Fast</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">One-Tap Check-in</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Turn daily safety into a
+                                simple habit. Just one tap a day is enough to keep your family connected and worry-free.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Passive Safety -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div
+                            class="aspect-[9/16] bg-imok-primary/10 relative overflow-hidden flex items-center justify-center p-8">
+                            <i class="fas fa-shield-heart text-9xl text-imok-primary/40"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-imok-primary text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Passive</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Passive Safety</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">If you ever forget or
+                                miss your deadline, the app automatically alerts your trusted contacts. We watch over
+                                you.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Interactive Widgets -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div
+                            class="aspect-[9/16] bg-imok-primary/10 relative overflow-hidden flex items-center justify-center p-8">
+                            <i class="fas fa-square-poll-horizontal text-9xl text-imok-primary/40"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-imok-primary text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Home</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Smart Widgets</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Check in directly from
+                                your Home Screen with beautiful widgets. Check the status of your loved ones at a
+                                glance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Privacy -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div
+                            class="aspect-[9/16] bg-imok-primary/10 relative overflow-hidden flex items-center justify-center p-8">
+                            <i class="fas fa-user-secret text-9xl text-imok-primary/40"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-imok-primary text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Private</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Privacy First</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">No real-time GPS
+                                tracking. No data selling. Your location and status are only shared when it matters,
+                                secure on iCloud.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Fair Price -->
+                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
+                        <div
+                            class="aspect-[9/16] bg-imok-primary/10 relative overflow-hidden flex items-center justify-center p-8">
+                            <i class="fas fa-star text-9xl text-imok-primary/40"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="bg-imok-primary text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Simple</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col relative z-10">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">No Subscriptions</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Peace of mind shouldn't
+                                be a monthly fee. Pay once, use forever. No hidden costs or in-app purchases.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Main Features</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Built for real family needs.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-bell text-2xl text-imok-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Smart Reminders</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Personalized alerts so you never
+                            forget to check in. Respectful notifications for your family.</p>
+                    </div>
+                </div>
+
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-clock-rotate-left text-2xl text-imok-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Activity History</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">A visual log of your daily
+                            confirmations. Keep a history of your well-being habits.</p>
+                    </div>
+                </div>
+
+                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-message text-2xl text-imok-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Custom Status</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Add context: "Working," "Traveling,"
+                            or send a quick photo to brighten their day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHANGELOG SECTION -->
+    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Freshly launched.</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Version 1.0 -->
+                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-imok-primary ring-4 ring-gray-100 dark:ring-black">
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.0</h3>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">January 2026</span>
+                    </div>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1.5 mr-3 text-xs"></i>
+                            <span>Initial release: Safe check-ins for families.</span>
+                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1.5 mr-3 text-xs"></i>
+                            <span>Interactive Home Screen Widgets.</span>
+                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1.5 mr-3 text-xs"></i>
+                            <span>Passive safety alert system.</span>
+                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1.5 mr-3 text-xs"></i>
+                            <span>Full iCloud encryption and privacy first design.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -231,6 +479,9 @@
                 <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
                 <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
                         class="fab fa-twitter"></i></a>
+                <a href="https://www.threads.com/@paoloac"
+                    class="text-gray-400 hover:text-purple-400 text-xl transition-colors"><i
+                        class="fab fa-threads"></i></a>
             </div>
         </div>
     </footer>
