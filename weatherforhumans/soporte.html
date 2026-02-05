@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Weather for humans by Mirlo Apps</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'weather-blue': '#7fbdec',
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <header
+        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html"
+                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="index.html"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">
+                    Back to App
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div
+                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                    </div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-16 pt-32">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg">
+                <img src="icon.webp" alt="Weather for humans" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Support Center</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400">We're here to help you with Weather for humans: Made to
+                understand weather</p>
+        </div>
+
+        <!-- Quick Contact -->
+        <div class="bg-gradient-to-br from-weather-blue/10 to-weather-blue/5 rounded-2xl p-8 mb-16 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-weather-blue/20 rounded-full mb-4">
+                <i class="fas fa-envelope text-3xl text-weather-blue"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-3">Need help?</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Our team responds in less than 24 hours</p>
+            <a href="mailto:soporte@mirloapps.es"
+                class="inline-flex items-center space-x-2 bg-weather-blue text-white px-8 py-4 rounded-xl font-semibold hover:bg-weather-blue/90 hover:scale-105 shadow-lg transition-all">
+                <span>soporte@mirloapps.es</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contact Us</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <!-- Email -->
+                <div class="text-center p-8 tech-card">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-weather-blue/10 rounded-2xl mb-4">
+                        <i class="fas fa-envelope text-3xl text-weather-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">The fastest way to get help</p>
+                    <a href="mailto:soporte@mirloapps.es" class="text-weather-blue hover:underline font-medium">
+                        soporte@mirloapps.es
+                    </a>
+                </div>
+
+                <!-- Twitter -->
+                <div class="text-center p-8 tech-card">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-weather-blue/10 rounded-2xl mb-4">
+                        <i class="fab fa-twitter text-3xl text-weather-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Twitter</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">Follow us for updates</p>
+                    <a href="https://x.com/PaoloAC" class="text-weather-blue hover:underline font-medium">
+                        @MirloApps
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="mt-12 text-center">
+            <a href="../index.html" class="text-weather-blue hover:underline text-lg">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Mirlo Apps
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+</body>
+
+</html>
