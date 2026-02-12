@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry companion - mirlo apps</title>
+    <meta name="description" content="Poetry companion - Editor and creator of poems. Your pocket literary workshop.">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mirloapps.es/poetrycompanion/">
+    <meta property="og:title" content="Poetry companion - Pocket Literary Workshop">
+    <meta property="og:description"
+        content="AI Poetry Generator, Rhyme Dictionary, and Meter Analysis. Perfect your poems with AI assistance.">
+    <meta property="og:image" content="https://mirloapps.es/poetrycompanion/icon.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'poetry-violet': '#8B5CF6',
+                        'poetry-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .bg-poetry {
+            background-color: #FAF9F6;
+        }
+
+        .dark .bg-poetry {
+            background-color: #0f172a;
+        }
+
+        .poetry-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .poetry-card {
+            background: #1e293b;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .serif-text {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-poetry text-gray-900 dark:text-white transition-colors duration-300">
+
+    <header
+        class="fixed top-0 w-full bg-poetry/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300 px-6">
+        <nav class="max-w-7xl mx-auto py-4 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="../apps/index.html" class="text-sm font-medium hover:text-poetry-violet">Apps</a>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div
+                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-poetry-violet">
+                    </div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 overflow-x-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1 space-y-8 text-center md:text-left">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full bg-poetry-violet/10 text-poetry-violet text-sm font-bold uppercase tracking-widest">
+                    Available on iOS
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tight serif-text leading-none">
+                    Poetry <br><span class="text-poetry-violet italic">companion</span>
+                </h1>
+                <p class="text-2xl text-gray-600 dark:text-gray-400 font-medium max-w-xl">
+                    Your personal assistant for writing, editing, and perfecting poetry.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="https://apps.apple.com/app/poetry-companion/id6758765026"
+                        class="inline-flex items-center space-x-4 bg-black text-white px-10 py-5 rounded-2xl hover:scale-105 transition-all shadow-xl">
+                        <i class="fab fa-apple text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-[11px] uppercase opacity-70">Download on</div>
+                            <div class="font-bold text-xl leading-tight">App Store</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex-1 relative flex justify-center">
+                <div class="absolute -inset-10 bg-poetry-violet/20 blur-[120px] rounded-full"></div>
+                <div
+                    class="relative w-[300px] h-[600px] bg-white dark:bg-slate-800 rounded-[3rem] p-3 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[3deg] hover:rotate-0 transition-transform duration-500">
+                    <div class="bg-black rounded-[2.5rem] w-full h-full overflow-hidden border border-gray-800">
+                        <img src="screen1.webp" alt="Poetry Companion App View" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-48 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="poetry-card p-10 group">
+                    <div
+                        class="w-16 h-16 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-8 border border-poetry-violet/10 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-magic text-2xl text-poetry-violet"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 serif-text">AI Poetry Generator</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Create unique poems using advanced
+                        artificial intelligence. Just provide a theme and let the inspiration flow.</p>
+                </div>
+                <div class="poetry-card p-10 group">
+                    <div
+                        class="w-16 h-16 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-8 border border-poetry-violet/10 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-book-open text-2xl text-poetry-violet"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 serif-text">Rhyme Dictionary</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Find perfect and slant rhymes instantly.
+                        Expand your vocabulary and enrich your poems with ease.</p>
+                </div>
+                <div class="poetry-card p-10 group">
+                    <div
+                        class="w-16 h-16 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-8 border border-poetry-violet/10 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-feather-pointed text-2xl text-poetry-violet"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 serif-text">Meter Analysis</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Visualize the meter and rhythm of each
+                        verse in real time. Perfect your technique with automatic meter analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="mt-48 max-w-7xl mx-auto py-24 bg-white/50 dark:bg-slate-900/50 rounded-3xl backdrop-blur-lg border border-white/20 dark:border-white/5">
+            <div class="text-center mb-20 px-6">
+                <h2 class="text-5xl font-bold serif-text mb-4">A Workshop in Your Pocket</h2>
+                <p class="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Discover the features that make
+                    Poetry companion the best choice for modern writers.</p>
+            </div>
+
+            <div class="flex overflow-x-auto gap-8 px-6 pb-12 snap-x snap-mandatory hide-scrollbar">
+                <div class="snap-center shrink-0 w-[280px]">
+                    <img src="screen2.webp" alt="Screenshot 2"
+                        class="rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+                </div>
+                <div class="snap-center shrink-0 w-[280px]">
+                    <img src="screen3.webp" alt="Screenshot 3"
+                        class="rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+                </div>
+                <div class="snap-center shrink-0 w-[280px]">
+                    <img src="screen4.webp" alt="Screenshot 4"
+                        class="rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+                </div>
+                <div class="snap-center shrink-0 w-[280px]">
+                    <img src="screen5.webp" alt="Screenshot 5"
+                        class="rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-200 dark:border-gray-800 py-16 px-6 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <span class="text-2xl font-extrabold tracking-tight">mirlo apps<span
+                        class="text-mirlo-orange">.</span></span>
+                <p class="text-gray-500 text-sm">© 2026 mirlo apps. Made in Spain 🇪🇸</p>
+            </div>
+            <div class="flex items-center space-x-8 text-sm font-medium">
+                <a href="../privacidad.html" class="hover:text-poetry-violet">Privacy</a>
+                <a href="soporte.html" class="hover:text-poetry-violet">Support</a>
+                <a href="https://x.com/PaoloAC" class="text-xl text-gray-400 hover:text-poetry-violet"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
