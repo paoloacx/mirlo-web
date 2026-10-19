@@ -2,15 +2,11 @@
 <html lang="es">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6KBEYNZEV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Y6KBEYNZEV');
-    </script>
+    <link rel="canonical" href="https://www.mirloapps.es/balizas/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Balizas España - Mapa V-16 en vivo">
+    <meta name="twitter:description" content="Visualiza en tiempo real todas las incidencias de tráfico y balizas V-16 conectadas a la DGT 3.0.">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +14,11 @@
     <meta name="description" content="Balizas España - Mapa de balizas V-16 en vivo">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mirloapps.es/balizas/">
+    <meta property="og:url" content="https://www.mirloapps.es/balizas/">
     <meta property="og:title" content="Balizas España - Mapa V-16 en vivo">
     <meta property="og:description"
         content="Visualiza en tiempo real todas las incidencias de tráfico y balizas V-16 conectadas a la DGT 3.0.">
-    <meta property="og:image" content="https://mirloapps.es/balizas/balizas.png">
+    <meta property="og:image" content="https://www.mirloapps.es/balizas/balizas.png">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -134,6 +130,22 @@
                 localStorage.theme = 'dark';
             }
         }
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Balizas España",
+  "operatingSystem": "iOS",
+  "applicationCategory": "NavigationApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "url": "https://www.mirloapps.es/balizas/",
+  "downloadUrl": "https://apps.apple.com/app/balizas-espa%C3%B1a/id6757344393"
+}
     </script>
 </head>
 
@@ -459,6 +471,7 @@
             <div
                 class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
                 <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y Términos</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
                 <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
                 <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
                         class="fab fa-twitter"></i></a>
@@ -513,6 +526,7 @@
         });
     </script>
 
+    <script src="/cookies.js" defer></script>
 </body>
 
 </html>

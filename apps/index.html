@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6KBEYNZEV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Y6KBEYNZEV');
-    </script>
+    <link rel="canonical" href="https://www.mirloapps.es/apps/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Apps - mirlo apps">
+    <meta name="twitter:description" content="Discover the mirlo apps. Soulful design and functionality.">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps - mirlo apps</title>
-    <meta name="description" content="Descubre las apps de mirlo apps. Diseño con alma y funcionalidad.">
+    <meta name="description" content="Discover the mirlo apps. Soulful design and functionality.">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -180,7 +176,7 @@
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400">Editor and creator of poems</p>
                         <div class="mt-4 flex items-center text-sm font-medium text-violet-500">
-                            Descubrir <i
+                            View details <i
                                 class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
@@ -367,9 +363,9 @@
             <!-- Retired Apps Section -->
             <div class="mt-24 pt-16 border-t border-gray-200 dark:border-gray-800">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-3 tracking-tight">Apps retiradas</h2>
+                    <h2 class="text-3xl font-bold mb-3 tracking-tight">Retired apps</h2>
                     <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-                        Estas apps ya no están disponibles en la App Store, pero forman parte de nuestra historia.
+                        These apps are no longer available on the App Store, but they are part of our story.
                     </p>
                 </div>
 
@@ -383,7 +379,7 @@
                                     class="w-32 h-32 object-contain shadow-lg rounded-2xl">
                             </div>
                             <span class="absolute top-4 right-4 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 text-gray-700 dark:text-gray-300 backdrop-blur-md">
-                                Retirada
+                                Retired
                             </span>
                         </div>
                         <div class="p-6">
@@ -406,7 +402,7 @@
                                     class="w-32 h-32 object-contain shadow-lg rounded-2xl">
                             </div>
                             <span class="absolute top-4 right-4 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 text-gray-700 dark:text-gray-300 backdrop-blur-md">
-                                Retirada
+                                Retired
                             </span>
                         </div>
                         <div class="p-6">
@@ -439,6 +435,7 @@
             <div
                 class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
                 <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
                 <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
                 <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
                         class="fab fa-twitter"></i></a>
@@ -495,6 +492,7 @@
             checkboxes.forEach(cb => cb.checked = isDark);
         });
     </script>
+    <script src="/cookies.js" defer></script>
 </body>
 
 </html>

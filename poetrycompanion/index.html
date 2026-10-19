@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6KBEYNZEV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Y6KBEYNZEV');
-    </script>
+    <link rel="canonical" href="https://www.mirloapps.es/poetrycompanion/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Poetry companion - Pocket Literary Workshop">
+    <meta name="twitter:description" content="AI Poetry Generator, Rhyme Dictionary, and Meter Analysis. Perfect your poems with AI assistance.">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +14,11 @@
     <meta name="description" content="Poetry companion - Editor and creator of poems. Your pocket literary workshop.">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mirloapps.es/poetrycompanion/">
+    <meta property="og:url" content="https://www.mirloapps.es/poetrycompanion/">
     <meta property="og:title" content="Poetry companion - Pocket Literary Workshop">
     <meta property="og:description"
         content="AI Poetry Generator, Rhyme Dictionary, and Meter Analysis. Perfect your poems with AI assistance.">
-    <meta property="og:image" content="https://mirloapps.es/poetrycompanion/icon.png">
+    <meta property="og:image" content="https://www.mirloapps.es/poetrycompanion/icon.png">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -111,6 +107,22 @@
                 localStorage.theme = 'dark';
             }
         }
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Poetry companion",
+  "operatingSystem": "iOS",
+  "applicationCategory": "EntertainmentApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "url": "https://www.mirloapps.es/poetrycompanion/",
+  "downloadUrl": "https://apps.apple.com/app/poetry-companion/id6758765026"
+}
     </script>
 </head>
 
@@ -309,6 +321,7 @@
             </div>
             <div class="flex items-center space-x-8 text-sm font-medium">
                 <a href="../privacidad.html" class="hover:text-poetry-violet">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-poetry-violet">Cookies</a>
                 <a href="soporte.html" class="hover:text-poetry-violet">Support</a>
                 <a href="https://x.com/PaoloAC" class="text-xl text-gray-400 hover:text-poetry-violet"><i
                         class="fab fa-twitter"></i></a>
@@ -316,6 +329,7 @@
         </div>
     </footer>
 
+    <script src="/cookies.js" defer></script>
 </body>
 
 </html>

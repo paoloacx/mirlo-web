@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6KBEYNZEV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Y6KBEYNZEV');
-    </script>
+    <link rel="canonical" href="https://www.mirloapps.es/yeahapp/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="yeah! - mirlo apps">
+    <meta name="twitter:description" content="yeah! - Check-in & Log Places">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -184,6 +180,22 @@
                 localStorage.theme = 'dark';
             }
         }
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "yeah!",
+  "operatingSystem": "iOS",
+  "applicationCategory": "TravelApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "url": "https://www.mirloapps.es/yeahapp/",
+  "downloadUrl": "https://apps.apple.com/app/yeah-check-in-log-places/id6755683790"
+}
     </script>
 </head>
 
@@ -639,6 +651,7 @@
             <div
                 class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
                 <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
                 <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
                 <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
                         class="fab fa-twitter"></i></a>
@@ -696,6 +709,7 @@
         });
     </script>
 
+    <script src="/cookies.js" defer></script>
 </body>
 
 </html>

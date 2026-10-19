@@ -2,15 +2,7 @@
 <html lang="es">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6KBEYNZEV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Y6KBEYNZEV');
-    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +19,10 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="" id="canonical-url">
 
-    <!-- Open Graph / Facebook -->
+        <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Post - mirlo apps">
+    <meta name="twitter:description" content="Post - mirlo apps">
+<!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="" id="og-url">
     <meta property="og:title" content="" id="og-title">
@@ -317,6 +312,7 @@
                 </div>
                 <div class="flex space-x-6 text-sm">
                     <a href="../privacidad.html" class="hover:text-mirlo-orange">Privacidad y Términos</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange">Cookies</a>
                     <a href="../soporte.html" class="hover:text-mirlo-orange">Soporte</a>
                 </div>
             </div>
@@ -480,6 +476,7 @@
         }
     </script>
 
+    <script src="/cookies.js" defer></script>
 </body>
 
 </html>
