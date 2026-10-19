@@ -50,8 +50,8 @@
       '<div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-700 dark:text-gray-300">' +
         '<p class="flex-1">' + T.msg + ' <a href="/privacidad.html#cookies" class="underline">' + T.more + '</a>.</p>' +
         '<div class="flex gap-3 shrink-0">' +
-          '<button id="mirlo-cookie-reject" class="px-4 py-2 rounded-lg border border-gray-400 dark:border-gray-500 text-gray-700 dark:text-gray-200 font-medium">' + T.reject + '</button>' +
-          '<button id="mirlo-cookie-accept" class="px-4 py-2 rounded-lg border border-mirlo-orange bg-mirlo-orange text-white font-medium">' + T.accept + '</button>' +
+          '<button id="mirlo-cookie-reject" class="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium">' + T.reject + '</button>' +
+          '<button id="mirlo-cookie-accept" class="px-4 py-2 rounded-lg bg-mirlo-orange hover:bg-orange-600 text-white font-medium">' + T.accept + '</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(b);
