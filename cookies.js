@@ -46,12 +46,13 @@
     b.id = 'mirlo-cookie-banner';
     b.setAttribute('role', 'dialog');
     b.className = 'fixed bottom-0 inset-x-0 z-50 p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg';
+    var btnClass = 'px-4 py-2 rounded-lg border border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium transition-colors';
     b.innerHTML =
       '<div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-700 dark:text-gray-300">' +
         '<p class="flex-1">' + T.msg + ' <a href="/privacidad.html#cookies" class="underline">' + T.more + '</a>.</p>' +
         '<div class="flex gap-3 shrink-0">' +
-          '<button id="mirlo-cookie-reject" class="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium">' + T.reject + '</button>' +
-          '<button id="mirlo-cookie-accept" class="px-4 py-2 rounded-lg bg-mirlo-orange hover:bg-orange-600 text-white font-medium">' + T.accept + '</button>' +
+          '<button id="mirlo-cookie-reject" class="' + btnClass + '">' + T.reject + '</button>' +
+          '<button id="mirlo-cookie-accept" class="' + btnClass + '">' + T.accept + '</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(b);
