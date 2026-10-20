@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/embalses/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/embalses/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/embalses/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/embalses/">
+
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6758863322">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Embalses España - Water Reservoirs & Dam Levels">
+    <meta name="twitter:description" content="Track official water levels across reservoirs and dams in Spain. Real-time official data from MITECO and river basin authorities, interactive maps, 10-year averages, and iOS widgets.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/embalses/embalses.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embalses España - mirlo apps</title>
+    <meta name="description" content="Track official water levels across reservoirs and dams in Spain. Real-time official data from MITECO and river basin authorities, interactive maps, 10-year averages, and iOS widgets.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/embalses/en/">
+    <meta property="og:title" content="Embalses España - Water Reservoirs & Dams in Spain">
+    <meta property="og:description" content="Monitor Spanish water reservoirs with official government data, interactive maps by province and basin, iOS widgets, and 10-year historical trends.">
+    <meta property="og:image" content="https://www.mirloapps.es/embalses/embalses.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Embalses España",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later, macOS 14.0 or later (Apple Silicon), visionOS 1.0 or later",
+          "applicationCategory": "ReferenceApplication",
+          "applicationSubCategory": "Weather & Environment",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Free download with core features. Optional Pro upgrade for €1.99 lifetime (one-time payment)."
+          },
+          "url": "https://www.mirloapps.es/embalses/en/",
+          "downloadUrl": "https://apps.apple.com/es/app/embalses-espa%C3%B1a/id6758863322",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "es",
+          "fileSize": "25MB",
+          "featureList": [
+            "Consolidated official data from 16 river basin authorities and MITECO",
+            "Interactive choropleth map across Autonomous Communities and Provinces",
+            "Standard and satellite map views with MapKit",
+            "Detailed reservoir cards with capacity, current volume, and weekly changes",
+            "Comparison with previous year and 10-year historical averages",
+            "Weekly trend chart covering 53 weeks",
+            "Home screen widgets (Small, Medium, and Regional)",
+            "Weekly bulletin alerts, favorite updates, and custom provincial threshold alerts",
+            "Exportable share cards with water metrics and charts",
+            "Offline cached data with local database storage"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Where does the reservoir data come from?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All data is retrieved from official public bodies in Spain: the Ministry for Ecological Transition (MITECO) and the Automated Hydrological Information Systems (SAIH) of all major river basin authorities."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often are reservoir levels updated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Official hydrological bulletins are published weekly, typically on Tuesdays. The app updates its records as soon as official data is released and also supports manual pull-to-refresh at any time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the app work without an internet connection?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Queried data is stored locally in device cache, and an offline reference database is included to view recent numbers when cellular connection is unavailable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is included in the free version vs. the Pro upgrade?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The free version includes the interactive map, complete reservoir listings, individual reservoir sheets, search tools, and national statistics. The Pro upgrade (€1.99 lifetime, one-time payment) unlocks home screen widgets, scheduled notifications, and detailed historical charts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What data does the application collect?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The developer does not collect any data (App Store privacy label: Data Not Collected)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which Apple devices are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is universally compatible with iPhone and iPad (iOS/iPadOS 17.0+), Mac computers with Apple Silicon (macOS 14.0+), and Apple Vision Pro (visionOS 1.0+)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'embalses-primary': '#0EA5E9',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        * {
+            transition: all 0.3s ease;
+        }
+        .bg-grain {
+            position: relative;
+            background-color: #f3f4f6;
+        }
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+        .dark .bg-grain::before {
+            display: none;
+        }
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-plastic:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            border: 2px solid #0EA5E9;
+            color: #0EA5E9;
+        }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-grain text-gray-900 dark:text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../../apps/index.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a>
+                <a href="../../index.html#nosotros" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">About</a>
+                <a href="../../index.html#contacto" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Contact</a>
+                <a href="#how-it-works" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">How it works</a>
+                <a href="#features" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Features</a>
+                <a href="#faq" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a>
+                <a href="../soporte.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Support</a>
+                <a href="../index.html" class="text-xs font-semibold px-2 py-1 rounded border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-sky-500">ES</a>
+
+                <!-- Dark Mode Switch -->
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                </label>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <a href="../index.html" class="text-xs font-semibold px-2 py-1 rounded border border-gray-300 dark:border-gray-700">ES</a>
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-24">
+
+        <!-- Hero Section -->
+        <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-6 overflow-hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col items-center text-center">
+
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-black mb-8 shadow-2xl overflow-hidden p-1 border border-gray-800">
+                        <img src="../embalses.webp" width="1024" height="1024" alt="Embalses España App Icon" class="w-full h-full object-cover rounded-[1.3rem]">
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-sm font-semibold mb-6 border border-sky-500/20">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                        iOS 17.0+ · iPhone, iPad, Mac and Apple Vision Pro
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6">
+                        Water Reservoirs & Drought Levels in Spain
+                    </h1>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-normal">
+                        Consolidate and visualize official data from all Spanish river basin authorities and the Ministry for Ecological Transition (MITECO). Interactive maps, historical analysis, and widgets.
+                    </p>
+
+                    <!-- App Store Button -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-14">
+                        <a href="https://apps.apple.com/es/app/embalses-espa%C3%B1a/id6758863322" target="_blank" rel="noopener"
+                            class="btn-plastic text-white px-8 py-3.5 rounded-2xl font-bold flex items-center gap-3 transition-transform">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider opacity-80 leading-none">Download on the</div>
+                                <div class="text-lg leading-tight font-semibold">App Store</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Screenshots Carousel -->
+                    <div class="w-full max-w-5xl mt-6">
+                        <div class="flex gap-4 overflow-x-auto pb-8 pt-4 px-4 snap-x snap-mandatory scrollbar-none justify-start md:justify-center">
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                                <img src="../screen1.webp" loading="lazy" width="400" height="866" alt="Interactive reservoir map" class="w-full h-auto">
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                                <img src="../screen2.webp" loading="lazy" width="400" height="866" alt="Detailed reservoir sheet" class="w-full h-auto">
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                                <img src="../screen3.webp" loading="lazy" width="400" height="866" alt="53-week historical evolution" class="w-full h-auto">
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                                <img src="../screen4.webp" loading="lazy" width="400" height="866" alt="Reservoir list grouped by basin" class="w-full h-auto">
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                                <img src="../screen5.webp" loading="lazy" width="400" height="866" alt="iOS home screen widgets" class="w-full h-auto">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">How it works</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Consolidates official hydrological data across Spanish river basins into one clear interface.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-500 font-bold text-xl mb-6">1</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Official data retrieval</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Direct connection to the Automated Hydrological Information Systems (SAIH) across 16 basin authorities and MITECO mapping services to pull current volume (hm³), total capacity, and weekly trends.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-500 font-bold text-xl mb-6">2</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Historical analysis</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Using a local database with over 74,000 historical records, the app compares every reservoir against the same week of the previous year and calculates the 10-year historical average.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-500 font-bold text-xl mb-6">3</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Local caching & offline mode</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Queried data is cached locally on device to allow browsing recent measurements even without network coverage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Application features</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Breakdown of tools and screens implemented in the code:</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-map-marked-alt text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Choropleth Map</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Vector layers of Autonomous Communities and Provinces color-coded by water capacity.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-layer-group text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">MapKit Satellite</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Geographic pinpoints on Apple Maps with standard and satellite styles and favorite filters.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-search text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Search & Filters</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Real-time search and grouping by River Basin, Autonomous Community, or Province.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-tint text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Reservoir Sheets</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Current volume (hm³), total capacity, weekly change, and national capacity share.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-chart-line text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Weekly Curves</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">53-week evolution chart of the current year compared to the previous year and 10-year baseline.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-table-cells text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">iOS Widgets</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Home screen widgets: Small (single reservoir), Medium (list), and Regional (national, regional, or provincial).</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-bell text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Scheduled Alerts</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Weekly Tuesday bulletin at 20:00, favorite change notices, and provincial threshold alerts.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <i class="fas fa-share-nodes text-2xl text-sky-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Share Cards</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Generate high-resolution visual infographics of individual dams or Spain's total to share or save.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Changelog</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">Official update history of the application.</p>
+                <div class="space-y-6">
+                    <!-- Version 1.0.2 -->
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Version 1.0.2</h3>
+                            <span class="text-sm font-semibold text-sky-500">Recent</span>
+                        </div>
+                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-sky-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>Fixed a data reading issue with Basque Country reservoirs</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-sky-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>Improved national total percentage calculation</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-sky-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>Prepared for accurate data display starting in 2027</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-sky-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>Minor statistical refinements and adjustments</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-sky-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>Adapted for iPhone Duo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Version 1.0 -->
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Version 1.0</h3>
+                            <span class="text-sm text-gray-400">Initial Release</span>
+                        </div>
+                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
+                                <span>Initial App Store launch.</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
+                                <span>Real-time monitoring of reservoirs and river basins in Spain.</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
+                                <span>Interactive choropleth map and 10-year historical baseline comparison.</span>
+                            </li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
+                                <span>Integration with iOS widgets and Siri shortcuts.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Frequently asked questions</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Direct answers about the app and data.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Where does reservoir data come from?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">All data is retrieved from official public bodies: the Ministry for Ecological Transition (MITECO) and the Automated Hydrological Information Systems (SAIH) of the river basin authorities (Ebro, Duero, Tajo, Guadiana, Guadalquivir, Segura, Júcar, Miño-Sil, Cantábrico, and regional districts).</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">How frequently are water levels updated?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Official bulletins are published weekly on Tuesdays. The app updates records as public agencies publish new measurements and allows manual pull-to-refresh at any time.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Does the app work offline?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Yes. All queried information is cached on device, and an offline reference database is included to view recent numbers when cellular coverage is unavailable.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">What does the free version include vs. the Pro upgrade?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">The free download includes the interactive map, complete reservoir directory, search tools, individual reservoir sheets, and national statistics. The Pro upgrade (€1.99 lifetime, one-time payment) unlocks home screen widgets, scheduled notifications, and detailed historical charts.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">What data does the application collect?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">The developer does not collect any data (App Store privacy label: Data Not Collected).</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Which Apple devices are supported?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">It is compatible with iPhone and iPad (iOS/iPadOS 17.0+), Mac computers with Apple Silicon (macOS 14.0+), and Apple Vision Pro (visionOS 1.0+).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specs -->
+        <section class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Technical specifications</h2>
+                <div class="bg-white dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Official Name:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Embalses España</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Developer:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Compatibility:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">iOS 17.0+ / iPadOS 17.0+ / macOS 14.0+ (Apple Silicon) / visionOS 1.0</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Pricing Model:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Free (Pro upgrade for €1.99 lifetime, one-time payment)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Privacy:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">The developer does not collect any data (App Store privacy label: Data Not Collected)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">App Store ID:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">6758863322</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Primary Sources:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">SAIH (River Basin Authorities) and MITECO</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="../../privacidad.html" class="hover:text-mirlo-orange">Privacy & Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange">Cookies</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange">Support</a>
+                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="../../index.html#nosotros" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">About</a>
+        <a href="../../index.html#contacto" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Contact</a>
+        <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Features</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="../soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Support</a>
+        <a href="../index.html" class="text-2xl font-bold text-sky-500" onclick="toggleMenu()">Versión en Español</a>
+
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+    <script src="/cookies.js" defer></script>
+</body>
+</html>

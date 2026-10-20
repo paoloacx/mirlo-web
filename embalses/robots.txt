@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Permitir explícitamente a rastreadores de motores de búsqueda e IAs
+User-agent: Googlebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.mirloapps.es/embalses/sitemap.xml
