@@ -2,22 +2,29 @@
 <html lang="es">
 
 <head>
-
     <link rel="canonical" href="https://www.mirloapps.es/balizas/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/balizas/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/balizas/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/balizas/">
+
+    <!-- Safari Smart App Banner con ID real de la App Store -->
+    <meta name="apple-itunes-app" content="app-id=6757344393">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Balizas España - Mapa V-16 en vivo">
-    <meta name="twitter:description" content="Visualiza en tiempo real todas las incidencias de tráfico y balizas V-16 conectadas a la DGT 3.0.">
+    <meta name="twitter:title" content="Balizas España - Mapa V-16, Radares, Cámaras e Incidencias en tiempo real">
+    <meta name="twitter:description" content="Visualiza en tiempo real las balizas V-16, incidencias de tráfico, cámaras, gasolineras y modo conducción con CarPlay.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/balizas/balizas.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balizas España - mirlo apps</title>
-    <meta name="description" content="Balizas España - Mapa de balizas V-16 en vivo">
+    <title>Balizas España - Mapa de Balizas V-16, Incidencias, Cámaras y Radares</title>
+    <meta name="description" content="Consulta en tiempo real la ubicación de balizas V-16, incidencias de tráfico, cámaras en directo, gasolineras y modo conducción 3D con CarPlay. Datos públicos abiertos de tráfico.">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/balizas/">
-    <meta property="og:title" content="Balizas España - Mapa V-16 en vivo">
-    <meta property="og:description"
-        content="Visualiza en tiempo real todas las incidencias de tráfico y balizas V-16 conectadas a la DGT 3.0.">
+    <meta property="og:title" content="Balizas España - Mapa V-16, Incidencias y Cámaras en vivo">
+    <meta property="og:description" content="Consulta en directo balizas V-16, incidencias viales, cámaras de tráfico y gasolineras con precios oficiales en España.">
     <meta property="og:image" content="https://www.mirloapps.es/balizas/balizas.png">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -27,7 +34,6 @@
     <link rel="shortcut icon" href="../favicon.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
@@ -36,7 +42,8 @@
                 extend: {
                     colors: {
                         'mirlo-orange': '#FF9E00',
-                        'balizas-primary': '#EF4444',
+                        'balizas-primary': '#F97316',
+                        'balizas-dark': '#C2410C',
                     },
                     fontFamily: {
                         'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
@@ -109,16 +116,24 @@
         .btn-plastic:active {
             transform: translateY(1px);
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #EF4444;
-            color: #EF4444;
+            border: 2px solid #F97316;
+            color: #F97316;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary {
+            list-style: none;
         }
     </style>
+
     <script>
         // Dark Mode Logic
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark');
         }
 
         function toggleDarkMode() {
@@ -131,332 +146,672 @@
             }
         }
     </script>
+
+    <!-- Schema.org Datos Estructurados: SoftwareApplication + FAQPage -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Balizas España",
-  "operatingSystem": "iOS",
-  "applicationCategory": "NavigationApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "url": "https://www.mirloapps.es/balizas/",
-  "downloadUrl": "https://apps.apple.com/app/balizas-espa%C3%B1a/id6757344393"
-}
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Balizas España",
+          "operatingSystem": "iOS 17.0 o superior, iPadOS 17.0 o superior, CarPlay",
+          "applicationCategory": "NavigationApplication",
+          "applicationSubCategory": "Travel & Local",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Descarga gratuita con mapa de balizas V-16, incidencias, gasolineras y cámaras de tráfico. Opciones Pro disponibles: 0,99 €/semana y 9,99 € de por vida para radares fijos y alertas por voz."
+          },
+          "url": "https://www.mirloapps.es/balizas/",
+          "downloadUrl": "https://apps.apple.com/es/app/balizas-espa%C3%B1a/id6757344393",
+          "datePublished": "2026-01-06",
+          "softwareVersion": "1.4",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "es",
+          "featureList": [
+            "Visualización en tiempo real de balizas V-16",
+            "Mapa de incidencias de tráfico (DGT, Servei Català de Trànsit y Trafikoa)",
+            "Modo conducción 3D con velocímetro y alertas en trayecto",
+            "Alertas habladas por voz sintetizada en aproximación (Pro)",
+            "Capa de radares fijos y de tramo de la DGT y Catalunya (Pro)",
+            "Gasolineras con precios de carburantes del Ministerio para la Transición Ecológica",
+            "Más de 2.000 cámaras de tráfico oficiales con gestión de favoritas",
+            "Widgets para la pantalla de inicio de iOS",
+            "Integración con Apple CarPlay"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué muestra Balizas España?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La app muestra datos públicos abiertos de tráfico procedentes de la DGT, el Servei Català de Trànsit, Trafikoa y el MITECO, incluyendo la posición de balizas V-16 activas, incidencias en carretera, cámaras, gasolineras con precios y radares."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Esta aplicación sustituye a una baliza física?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Balizas España es una aplicación informativa para consultar incidencias en el mapa. No es un dispositivo físico ni sustituye a ningún dispositivo físico para el vehículo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿La app envía mi avería o guarda mi ubicación?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados). La app usa la ubicación en tu dispositivo para el mapa y los avisos; no hay servidor propio."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿De dónde proceden los datos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La app muestra datos públicos abiertos de tráfico procedentes de la Dirección General de Tráfico (DGT), el Servei Català de Trànsit, Trafikoa (Gobierno Vasco) y el Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Es una aplicación oficial de la DGT?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Balizas España es un desarrollo independiente de mirlo apps. No está afiliada, patrocinada ni respaldada por la Dirección General de Tráfico ni por ningún organismo público."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuáles son los precios de la app?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La descarga es gratuita. Las funciones Pro (radares fijos y alertas por voz) están disponibles por 0,99 €/semana o 9,99 € de por vida."
+              }
+            }
+          ]
+        }
+      ]
+    }
     </script>
 </head>
 
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
 
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../index.html"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
                 mirlo apps<span class="text-mirlo-orange">.</span>
             </a>
 
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/index.html"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
-                </li>
-                <li><a href="../index.html#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Nosotros</a>
-                </li>
-                <li><a href="../index.html#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contacto</a>
-                </li>
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a></li>
+                <li><a href="#que-es" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Qué es</a></li>
+                <li><a href="#como-funciona" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cómo funciona</a></li>
+                <li><a href="#funciones" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Funciones</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a></li>
+                <li><a href="#cambios" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cambios</a></li>
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Soporte</a></li>
+                <li><a href="en/index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-mirlo-orange hover:text-mirlo-orange transition-colors">EN</a></li>
 
                 <!-- Dark Mode Switch -->
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
+                <li class="flex items-center pl-2">
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar modo oscuro">
                         <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
                         </div>
                     </label>
                 </li>
             </ul>
 
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none p-2" aria-label="Abrir menú de navegación">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </nav>
     </header>
 
-    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                            <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                            Datos públicos abiertos de tráfico en tiempo real
+                        </div>
 
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
-                        Disponible YA
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6">
+                            Balizas España
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+                            El mapa en vivo de balizas V-16, incidencias, radares y cámaras de tráfico.
+                        </p>
+
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl leading-relaxed">
+                            La primera app de la App Store de España con baliza V16, lanzada el 6 de enero de 2026. Anticipa vehículos detenidos en la calzada, accidentes y retenciones con vista 3D, CarPlay y widgets nativos.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://apps.apple.com/es/app/balizas-espa%C3%B1a/id6757344393" class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform w-full sm:w-auto justify-center">
+                                <i class="fab fa-apple text-2xl"></i>
+                                <div class="text-left leading-tight">
+                                    <div class="text-xs uppercase tracking-wider opacity-80">Descargar en</div>
+                                    <div class="text-lg font-bold">App Store</div>
+                                </div>
+                            </a>
+
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left">
+                                <div>iOS 17.0+ · CarPlay · Widgets</div>
+                                <div>Descarga gratuita · Pro: 0,99 €/sem o 9,99 € de por vida</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-2 text-xs text-gray-600 dark:text-gray-400 text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-shield-alt text-green-500"></i>
+                                <span>El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados).</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-location-arrow text-orange-500"></i>
+                                <span>La app usa la ubicación en tu dispositivo para el mapa y los avisos; no hay servidor propio.</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-database text-blue-500"></i>
+                                <span>Muestra datos públicos abiertos de tráfico (DGT, Servei Català de Trànsit, Trafikoa, MITECO).</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                        Balizas España
-                    </h1>
-                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Mapa de
-                        balizas V-16 en vivo
-                    </p>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Consulta en directo las balizas V-16 conectadas, incidencias de tráfico, radares y cámaras de
-                        carreteras de toda España.
-                    </p>
-                    <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg mt-4">
-                        Información oficial de la DGT actualizada constantemente para que conduzcas más seguro.
-                        <strong>Ahora con Modo Conducción y Radar 3D.</strong>
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="https://apps.apple.com/app/balizas-espa%C3%B1a/id6757344393"
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                            <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Consíguelo en el</div>
-                                <div class="font-bold">App Store</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Screenshots Carousel -->
-                <div class="relative w-full max-w-sm mx-auto md:max-w-full">
-                    <style>
-                        /* Hide scrollbar for Chrome, Safari and Opera */
-                        .no-scrollbar::-webkit-scrollbar {
-                            display: none;
-                        }
-
-                        /* Hide scrollbar for IE, Edge and Firefox */
-                        .no-scrollbar {
-                            -ms-overflow-style: none;
-                            /* IE and Edge */
-                            scrollbar-width: none;
-                            /* Firefox */
-                        }
-                    </style>
-                    <div class="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x snap-mandatory">
-                        <!-- Screen 1 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen1.webp" width="460" height="996" class="w-full h-auto" alt="Screenshot 1">
-                            </div>
-                        </div>
-                        <!-- Screen 2 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen2.webp" loading="lazy" width="460" height="996" class="w-full h-auto" alt="Screenshot 2">
-                            </div>
-                        </div>
-                        <!-- Screen 3 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen3.webp" loading="lazy" width="460" height="996" class="w-full h-auto" alt="Screenshot 3">
-                            </div>
-                        </div>
-                        <!-- Screen 4 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen4.webp" loading="lazy" width="460" height="996" class="w-full h-auto" alt="Screenshot 4">
-                            </div>
+                    <!-- App Icon / Visual Hero -->
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-amber-300 rounded-[48px] blur-2xl opacity-40 dark:opacity-20 animate-pulse"></div>
+                            <img src="balizas.png" alt="Icono de la app Balizas España" class="relative z-10 w-full h-full object-contain rounded-[48px] shadow-2xl border border-white/20">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Grid -->
-    <section class="px-6 py-24 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-tower-broadcast text-2xl text-red-600 dark:text-red-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Balizas V-16</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Visualiza todas las balizas V-16 conectadas en tiempo real.
-                    </p>
+        <!-- Screenshots Gallery -->
+        <section class="py-16 bg-white dark:bg-black border-y border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Capturas de pantalla</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Diseñada para una conducción informada</p>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-video text-2xl text-orange-600 dark:text-orange-400"></i>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screen1.webp" alt="Mapa de Balizas V-16 en vivo" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Mapa de balizas</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Cámaras DGT</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Acceso a más de 2000 cámaras de tráfico de la DGT.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-triangle-exclamation text-2xl text-yellow-600 dark:text-yellow-400"></i>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screen2.webp" alt="Modo Navegación 3D con velocímetro" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Modo Conducción 3D</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Incidencias</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Alertas de accidentes, obras y retenciones en tu ruta.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-white dark:bg-black p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-car text-2xl text-gray-600 dark:text-gray-400"></i>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screen3.webp" alt="Cámaras de tráfico y capas" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Cámaras e incidencias</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Modo Conducción</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Interfaz simplificada con Radar 3D y velocímetro.
-                    </p>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screen4.webp" alt="Integración con Apple CarPlay" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Apple CarPlay y Widgets</div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-        </div>
-    </section>
+        <!-- Sección: ¿Qué es Balizas España? -->
+        <section id="que-es" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Información general</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">¿Qué es Balizas España?</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Balizas España es una aplicación independiente para iOS y CarPlay creada para consultar en tiempo real las alertas de tráfico publicadas a través de datos públicos abiertos por los organismos de tráfico.
+                    </p>
+                </div>
 
-    <!-- CHANGELOG SECTION -->
-    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Registro de Cambios</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Siempre alerta.</p>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+                                <i class="fas fa-check text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Lo que hace la app</h4>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Muestra datos públicos abiertos de tráfico procedentes de la DGT, el Servei Català de Trànsit, Trafikoa y el MITECO.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Permite visualizar balizas V-16, accidentes, cortes de vía, retenciones, cámaras y precios de gasolineras.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Ofrece modo de conducción 3D con velocímetro, alertas de aproximación en pantalla y avisos de voz.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-500/10 flex items-center justify-center text-gray-500">
+                                <i class="fas fa-info text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Aclaraciones</h4>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>No es un dispositivo físico:</strong> La app no sustituye a ninguna baliza física ni dispositivo para el automóvil.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>No emite averías:</strong> La app solo consulta datos públicos; no envía la posición de avería a los organismos de tráfico.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>Proyecto independiente:</strong> No es una app oficial ni está afiliada con la DGT ni organismos gubernamentales.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="space-y-12">
-
-                <!-- Version 1.4 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-balizas-primary ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Versión 1.4</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Integración nativa con CarPlay. Más cómodo, seguro y eficiente.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Nuevos widgets: Minimapas con Incidentes y balizas cercanas.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Mejora en la agrupación de tipos de incidencia en el mapa.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Nuevo: Marca tu trayecto y te avisa por anticipado si hay incidencias de algún tipo en él.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Corrección de errores y mejoras de rendimiento.</span></li>
-                    </ul>
+        <!-- Sección: ¿Cómo funciona? -->
+        <section id="como-funciona" class="py-20 bg-white dark:bg-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Funcionamiento</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">¿Cómo funciona Balizas España?</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        La app consulta directamente las fuentes públicas abiertas y procesa la información en tu dispositivo.
+                    </p>
                 </div>
 
-                <!-- Version 1.3 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Paso 1 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            1
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Datos Abiertos</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            La app descarga periódicamente los feeds públicos abiertos en formato estándar con las incidencias activas.
+                        </p>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Versión 1.3</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i> <span>Nueva vista por
-                                capas. Más sencillo, práctico y unificado.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Nueva vista de
-                                gasolineras cercanas y el precio de la gasolina.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Ahora puedes
-                                marcar las cámaras de tráfico como favoritas y verlas en widgets.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Simplificación
-                                del mapa agrupando los datos y mejorando la actualización de datos automática.</span>
-                        </li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Corrección de
-                                la visualización de las cámaras de Euskadi y Catalunya.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Corrección de
-                                errores, mejoras de rendimiento y batería.</span></li>
-                    </ul>
-                </div>
 
-                <!-- Version 1.2 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
+                    <!-- Paso 2 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            2
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">En tu Dispositivo</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Tu iPhone procesa localmente las coordenadas, vía y punto kilométrico. Sin servidores intermedios de registro.
+                        </p>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Versión 1.2</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Nueva vista
-                                detallada de radares fijos y de tramo.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Aviso
-                                inteligente de radares en el modo navegación.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Notificación
-                                hablada de incidentes, cortes, obras, etc.. en el modo navegación.</span></li>
-                        <li class="flex items-start"><i
-                                class="fas fa-check text-balizas-primary mt-1.5 mr-3 text-xs"></i> <span>Mejoras de
-                                rendimiento, seguridad y eficiencia.</span></li>
-                    </ul>
-                </div>
 
-                <!-- Version 1.1 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
+                    <!-- Paso 3 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            3
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Avisos en Ruta</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            En el Modo Conducción, la app compara tu avance y calcula avisos visuales o sonoros antes de llegar a la incidencia.
+                        </p>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Versión 1.1</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Modo navegación integrado mejorado.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Alerta de balizas en carretera.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Añadidas incidencias y avisos de tráfico en Catalunya y Euskadi.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Avisos de incidencias en tiempo real en modo navegación.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Filtra el mapa por tipo de incidencias.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Mejoras de rendimiento, estabilidad y eficiencia.</span>
-                        </li>
-                    </ul>
-                </div>
 
+                    <!-- Paso 4 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            4
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">CarPlay y Widgets</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Muestra la información en la pantalla del coche con Apple CarPlay y en la pantalla de inicio con widgets.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <!-- Sección: Funciones de la app -->
+        <section id="funciones" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Capacidades</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Funciones de la aplicación</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Herramientas para consultar el estado de las carreteras y viajar informado.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Función 1 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Balizas V-16 en vivo</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Marcadores con información de carretera, punto kilométrico (PK), municipio, tiempo transcurrido y botón para abrir en Apple Maps o Google Maps.
+                        </p>
+                    </div>
+
+                    <!-- Función 2 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Incidencias de Tráfico</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Visualización de incidencias reportadas (DGT, Servei Català de Trànsit y Trafikoa): accidentes, carreteras cortadas, retenciones, meteorología y obras.
+                        </p>
+                    </div>
+
+                    <!-- Función 3 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Radares Fijos y de Tramo <span class="text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">Pro</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Capa de cinemómetros fijos y de tramo de la DGT y el Servei Català de Trànsit, con filtros configurables por zonas geográficas.
+                        </p>
+                    </div>
+
+                    <!-- Función 4 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Gasolineras y Precios</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Estaciones de servicio con precios oficiales del Ministerio para la Transición Ecológica (Gasóleo A, Gasolina 95 y Gasolina 98) y filtro de radio de 5 a 50 km.
+                        </p>
+                    </div>
+
+                    <!-- Función 5 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Más de 2.000 Cámaras DGT</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Imágenes actualizadas de cámaras de la DGT, Catalunya y Euskadi. Incluye opción para marcar favoritas, asignar nombres personalizados y pantalla completa.
+                        </p>
+                    </div>
+
+                    <!-- Función 6 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Modo Conducción 3D</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Perspectiva 3D orientada según el rumbo, velocímetro digital en km/h, radar de proximidad y resumen previo de alertas en trayecto.
+                        </p>
+                    </div>
+
+                    <!-- Función 7 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Alertas de Voz (TTS) <span class="text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">Pro</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Avisos hablados naturales en español en proximidad a balizas o incidencias, atenuando temporalmente el audio del coche.
+                        </p>
+                    </div>
+
+                    <!-- Función 8 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-table-cells-large"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Widgets en Pantalla de Inicio</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Widgets en tamaños pequeño y mediano para consultar en directo tu cámara favorita o un minimapa con incidentes cercanos.
+                        </p>
+                    </div>
+
+                    <!-- Función 9 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-gray-500/10 text-gray-700 dark:text-gray-300 flex items-center justify-center text-xl mb-4">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Apple CarPlay</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Integración con la pantalla del vehículo con mapa de puntos de interés y lista de eventos cercanos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Preguntas Frecuentes (FAQ) -->
+        <section id="faq" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Respuestas directas</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Preguntas frecuentes</h3>
+                    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
+                        Información clara sobre el funcionamiento, los datos y las opciones de la aplicación.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Qué muestra la aplicación Balizas España?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            La app muestra datos públicos abiertos de tráfico (DGT, Servei Català de Trànsit, Trafikoa, MITECO), permitiendo visualizar en un mapa interactivo balizas V-16 activas, accidentes, cortes de carretera, retenciones, cámaras de tráfico, gasolineras y radares.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 2 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Esta aplicación sustituye a una baliza física?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <strong>No.</strong> Balizas España es una aplicación informativa para consultar incidencias y balizas en el mapa. No es un dispositivo físico ni sustituye a ningún dispositivo físico para el vehículo.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Cómo trata la app la privacidad y la ubicación?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados). La app usa la ubicación en tu dispositivo para el mapa y los avisos; no hay servidor propio.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿De dónde proceden los datos de tráfico?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            La app muestra datos públicos abiertos de tráfico procedentes de la Dirección General de Tráfico (DGT), el Servei Català de Trànsit, Trafikoa (Gobierno Vasco) y el Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO).
+                        </div>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Esta aplicación es oficial de la DGT?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            No. Balizas España es una aplicación independiente desarrollada por mirlo apps. No está afiliada, patrocinada ni respaldada por la Dirección General de Tráfico ni por ningún organismo público.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 6 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Qué precio tiene la aplicación?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            La descarga de la aplicación es gratuita e incluye el mapa de balizas V-16, incidencias de tráfico, cámaras, gasolineras, CarPlay y widgets. Las funciones Pro (radares fijos y alertas por voz) están disponibles con suscripción semanal de <strong>0,99 €/semana</strong> o pago único de <strong>9,99 € de por vida</strong>.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ficha Técnica -->
+        <section class="py-16 bg-gray-50 dark:bg-zinc-950 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <h3 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest text-center mb-6">Especificaciones de la aplicación</h3>
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-hidden text-sm">
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Nombre:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Balizas España</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Lanzamiento:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">La primera app de la App Store de España con baliza V16, lanzada el 6 de enero de 2026</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Versión actual:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">1.4</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Desarrollador:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Compatibilidad:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">iOS 17.0 o superior, iPadOS 17.0+, Apple CarPlay</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Idioma:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Español</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Precios:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Gratuita · Pro: 0,99 €/semana o 9,99 € de por vida</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Privacidad:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Sin datos recopilados · Sin servidor propio</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Fuentes primarias:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Datos públicos abiertos de tráfico (DGT, Servei Català de Trànsit, Trafikoa, MITECO)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registro de Cambios (Changelog) -->
+        <section id="cambios" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-grain">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Historial de actualizaciones</h2>
+                    <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">Registro de Cambios</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Evolución y mejoras de Balizas España.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Version 1.4 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.4</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 font-semibold">Actual</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Integración nativa con CarPlay. Más cómodo, seguro y eficiente.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nuevos widgets: Minimapas con incidentes y balizas cercanas.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Mejora en la agrupación de tipos de incidencia en el mapa.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nuevo: Marca tu trayecto y te avisa por anticipado si hay incidencias en él.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Corrección de errores y mejoras de rendimiento.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.3 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.3</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nueva vista por capas. Más sencillo, práctico y unificado.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nueva vista de gasolineras cercanas y precios oficiales de carburante.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Cámaras de tráfico favoritas con sincronización en widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Simplificación del mapa agrupando los datos y mejorando la actualización automática.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Corrección de la visualización de cámaras de Euskadi y Catalunya.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Corrección de errores, mejoras de rendimiento y batería.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.2 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.2</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nueva vista detallada de radares fijos y de tramo.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Aviso inteligente de radares en el modo navegación.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Notificación hablada de incidentes, cortes, obras, etc. en el modo navegación.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Mejoras de rendimiento, seguridad y eficiencia.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.1 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.1</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Modo navegación integrado mejorado.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Alerta de balizas en carretera.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Añadidas incidencias y avisos de tráfico en Catalunya y Euskadi.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Avisos de incidencias en tiempo real en modo navegación.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Filtro del mapa por tipo de incidencias.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Mejoras de rendimiento, estabilidad y eficiencia.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex-1 min-w-0 flex justify-center md:justify-start">
                 <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -468,39 +823,37 @@
                 © 2026 mirlo apps. Made in Spain 🇪🇸
             </div>
 
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="#cambios" class="hover:text-mirlo-orange transition-colors">Cambios</a>
                 <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad y Términos</a>
                 <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
                 <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </footer>
 
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Cerrar menú">
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../index.html#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Nosotros</a>
-        <a href="../index.html#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contacto</a>
+        <a href="../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="#que-es" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Qué es</a>
+        <a href="#como-funciona" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cómo funciona</a>
+        <a href="#funciones" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Funciones</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="#cambios" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cambios</a>
+        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Soporte</a>
+        <a href="en/index.html" class="text-2xl font-bold text-orange-500" onclick="toggleMenu()">English version</a>
 
         <!-- Mobile Dark Mode Switch -->
         <div class="flex items-center gap-4 mt-8">
             <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
             <label class="inline-flex items-center cursor-pointer">
                 <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
                 </div>
             </label>
         </div>
@@ -518,7 +871,6 @@
             }
         }
 
-        // Initialize switch state
         document.addEventListener('DOMContentLoaded', () => {
             const isDark = document.documentElement.classList.contains('dark');
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');

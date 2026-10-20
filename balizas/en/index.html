@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/balizas/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/balizas/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/balizas/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/balizas/">
+
+    <!-- Safari Smart App Banner with real App ID from iTunes API -->
+    <meta name="apple-itunes-app" content="app-id=6757344393">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Balizas España - Real-Time V-16 Beacons, Traffic Hazards & Speed Cameras">
+    <meta name="twitter:description" content="View real-time V-16 beacons, road hazards, live traffic cameras, fuel stations, and 3D driving with Apple CarPlay.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/balizas/balizas.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balizas España - Live V-16 Beacons, Road Hazards & Traffic Cameras</title>
+    <meta name="description" content="Real-time map of V-16 beacons, road hazards, traffic cameras, fuel prices, and 3D driving mode with Apple CarPlay. Open public traffic data.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/balizas/en/">
+    <meta property="og:title" content="Balizas España - Live V-16 Beacons & Road Hazards">
+    <meta property="og:description" content="Track real-time V-16 beacons, road hazards, official cameras, and fuel stations across Spain with Apple CarPlay support.">
+    <meta property="og:image" content="https://www.mirloapps.es/balizas/balizas.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'balizas-primary': '#F97316',
+                        'balizas-dark': '#C2410C',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #f3f4f6;
+        }
+
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-plastic:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            border: 2px solid #F97316;
+            color: #F97316;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary {
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        // Dark Mode Logic
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Balizas España",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later, CarPlay",
+          "applicationCategory": "NavigationApplication",
+          "applicationSubCategory": "Travel & Local",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Free download with live V-16 beacons, road hazards, gas stations, and traffic cameras. Pro upgrades: €0.99/week or €9.99 lifetime for speed cameras and spoken voice alerts."
+          },
+          "url": "https://www.mirloapps.es/balizas/en/",
+          "downloadUrl": "https://apps.apple.com/es/app/balizas-espa%C3%B1a/id6757344393",
+          "datePublished": "2026-01-06",
+          "softwareVersion": "1.4",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "en",
+          "featureList": [
+            "Live visualization of V-16 emergency beacons",
+            "Road hazard maps (DGT, Servei Català de Trànsit, and Trafikoa)",
+            "3D driving assistant with integrated speedometer and on-route alerts",
+            "Spoken voice audio warnings (Pro)",
+            "Fixed and average speed camera overlay (Pro)",
+            "Fuel station directory with real-time fuel prices",
+            "Over 2,000 official highway cameras with favorites",
+            "Native iOS Home Screen widgets",
+            "Full Apple CarPlay integration"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does Balizas España display?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app displays open public traffic data from DGT, Servei Català de Trànsit, Trafikoa, and MITECO, including active V-16 beacons, road incidents, traffic cameras, fuel stations with official prices, and speed monitoring stations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this app replace a physical beacon?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Balizas España is an informational companion app to consult road incidents on a map. It is not a physical device and does not replace any physical device for your vehicle."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the app handle privacy and location?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The developer does not collect data (App Store privacy label: Data Not Collected). The app uses location on your device for map rendering and alerts; there is no proprietary server."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where does the data come from?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app displays open public traffic data provided by Spain's Directorate-General for Traffic (DGT), Catalonia's Servei Català de Trànsit, the Basque Government's Trafikoa, and the Ministry for the Ecological Transition (MITECO)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this an official DGT app?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Balizas España is an independent project by mirlo apps. It is not affiliated with, endorsed by, or sponsored by the DGT or any public administration."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the app prices?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app is free to download. Pro features (fixed speed cameras and spoken voice alerts) are available for €0.99/week or €9.99 lifetime."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a></li>
+                <li><a href="#what-is-it" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">About</a></li>
+                <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">How it works</a></li>
+                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Features</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a></li>
+                <li><a href="#cambios" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Changelog</a></li>
+                <li><a href="../soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Support</a></li>
+                <li><a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-mirlo-orange hover:text-mirlo-orange transition-colors">ES</a></li>
+
+                <!-- Dark Mode Switch -->
+                <li class="flex items-center pl-2">
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle dark mode">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                        </div>
+                    </label>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none p-2" aria-label="Open navigation menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                            <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                            Real-time open public traffic data
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6">
+                            Balizas España
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+                            Live map of V-16 beacons, road hazards, speed cameras, and traffic cameras.
+                        </p>
+
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl leading-relaxed">
+                            The first app on Spain's App Store with V16 beacons, launched on January 6, 2026. Anticipate stopped vehicles, road accidents, and congestions with 3D driving view, CarPlay, and native widgets.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://apps.apple.com/es/app/balizas-espa%C3%B1a/id6757344393" class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform w-full sm:w-auto justify-center">
+                                <i class="fab fa-apple text-2xl"></i>
+                                <div class="text-left leading-tight">
+                                    <div class="text-xs uppercase tracking-wider opacity-80">Download on</div>
+                                    <div class="text-lg font-bold">App Store</div>
+                                </div>
+                            </a>
+
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left">
+                                <div>iOS 17.0+ · CarPlay · Widgets</div>
+                                <div>Free download · Pro: €0.99/week or €9.99 lifetime</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-2 text-xs text-gray-600 dark:text-gray-400 text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-shield-alt text-green-500"></i>
+                                <span>The developer does not collect data (App Store privacy label: Data Not Collected).</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-location-arrow text-orange-500"></i>
+                                <span>The app uses location on your device for map rendering and alerts; there is no proprietary server.</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-2">
+                                <i class="fas fa-database text-blue-500"></i>
+                                <span>Displays open public traffic data (DGT, Servei Català de Trànsit, Trafikoa, MITECO).</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Icon / Visual Hero -->
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-amber-300 rounded-[48px] blur-2xl opacity-40 dark:opacity-20 animate-pulse"></div>
+                            <img src="../balizas.png" alt="Balizas España app icon" class="relative z-10 w-full h-full object-contain rounded-[48px] shadow-2xl border border-white/20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Gallery -->
+        <section class="py-16 bg-white dark:bg-black border-y border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Screenshots</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Designed for informed driving</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screen1.webp" alt="Live V-16 Beacons Map" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Live Beacons Map</div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screen2.webp" alt="3D Driving Mode with Speedometer" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">3D Driving Mode</div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screen3.webp" alt="Traffic Cameras and Hazards" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">Cameras & Hazards</div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screen4.webp" alt="Apple CarPlay and Widgets" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="p-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400">CarPlay & Widgets</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: About -->
+        <section id="what-is-it" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Overview</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">What is Balizas España?</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Balizas España is an independent companion application for iOS and Apple CarPlay designed to display real-time road hazard alerts published via open public traffic feeds.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+                                <i class="fas fa-check text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">What the app does</h4>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Displays open public traffic data from DGT, Servei Català de Trànsit, Trafikoa, and MITECO.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Shows active V-16 beacons, road accidents, road closures, congestions, live cameras, and fuel prices.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Offers a 3D driving mode with digital speedometer, on-screen hazard indicators, and audio alerts.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-500/10 flex items-center justify-center text-gray-500">
+                                <i class="fas fa-info text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Clarifications</h4>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>Not a physical device:</strong> The app does not replace any physical safety beacon or vehicle equipment.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>Does not transmit breakdowns:</strong> The app only reads public data; it cannot broadcast breakdowns to traffic agencies.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-circle-notch text-gray-400 mt-1 text-xs"></i>
+                                <span><strong>Independent project:</strong> Not affiliated with, endorsed by, or sponsored by the DGT or any government body.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: How it works -->
+        <section id="how-it-works" class="py-20 bg-white dark:bg-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Workflow</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">How Balizas España works</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        The app queries open public data sources and processes the information on your device.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            1
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Open Data</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            The app fetches official public open feeds with active road incidents.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            2
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">On Your Device</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Your iPhone processes coordinates, roadways, and kilometer marks locally. No proprietary servers.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            3
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">En-Route Alerts</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            During driving mode, the app analyzes your heading and calculates visual or spoken alerts before hazards.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60 relative">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">
+                            4
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">CarPlay & Widgets</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Displays alerts on your car dashboard with Apple CarPlay and on your Home Screen with widgets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Features -->
+        <section id="features" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Capabilities</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Application features</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Comprehensive road information tools to travel prepared.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Live V-16 Beacons</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Markers displaying road identifiers, kilometer marks (PK), municipality, active duration, and direct directions via Apple or Google Maps.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Road Incidents</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Reported alerts (DGT, Servei Català de Trànsit, and Trafikoa): accidents, road closures, congestions, adverse weather, and maintenance works.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Fixed & Average Speed Cameras <span class="text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">Pro</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Layer of speed monitoring stations across DGT and Catalan road networks with customizable geographic zone toggles.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Fuel Stations & Prices</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Official prices for Diesel A, Gasoline 95, and Gasoline 98 from the Ministry for the Ecological Transition, with search radii from 5 to 50 km.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Over 2,000 Traffic Cameras</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Live snapshots from DGT, Catalonia, and Basque Country cameras. Includes favorite camera management, custom titles, and full-screen preview.
+                        </p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">3D Driving Mode</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Tilted 3D perspective oriented with your heading, digital speedometer, proximity radar, and on-route alert summaries.
+                        </p>
+                    </div>
+
+                    <!-- Feature 7 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Spoken Voice Alerts (TTS) <span class="text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">Pro</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Hands-free voice prompts synthesized locally when approaching beacons or hazards, ducking background car audio.
+                        </p>
+                    </div>
+
+                    <!-- Feature 8 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-table-cells-large"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Home Screen Widgets</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Small and medium interactive widgets showing your favorite highway camera or a mini-map of nearby incidents.
+                        </p>
+                    </div>
+
+                    <!-- Feature 9 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-gray-500/10 text-gray-700 dark:text-gray-300 flex items-center justify-center text-xl mb-4">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Apple CarPlay</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            In-car dashboard integration featuring a Points of Interest map and nearby event list.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQ -->
+        <section id="faq" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Direct Answers</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Frequently Asked Questions</h3>
+                    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
+                        Clear information regarding functionality, data sources, and pricing.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What does Balizas España show?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            The app displays open public traffic data (DGT, Servei Català de Trànsit, Trafikoa, MITECO), allowing drivers to view active V-16 beacons, road accidents, road closures, congestions, traffic cameras, fuel stations, and speed cameras on an interactive map.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 2 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Does this app replace a physical beacon?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            <strong>No.</strong> Balizas España is an informational app for viewing roadside hazards on a map. It is not a physical device and does not replace any physical device for your vehicle.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>How does the app handle privacy and location?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            The developer does not collect data (App Store privacy label: Data Not Collected). The app uses location on your device for map rendering and alerts; there is no proprietary server.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Where does the traffic data come from?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            The app displays open public traffic data published by Spain's Directorate-General for Traffic (DGT), Catalonia's Servei Català de Trànsit, the Basque Government's Trafikoa, and the Ministry for the Ecological Transition (MITECO).
+                        </div>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Is this an official DGT app?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            No. Balizas España is an independent application developed by mirlo apps. It is not affiliated with, endorsed by, or sponsored by the DGT or any public administration.
+                        </div>
+                    </details>
+
+                    <!-- FAQ 6 -->
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What are the app prices?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Downloading the app is completely free and includes live V-16 beacons, road hazards, traffic cameras, fuel prices, CarPlay, and widgets. Pro features (fixed speed cameras and spoken voice alerts) are available for <strong>€0.99/week</strong> or <strong>€9.99 lifetime</strong>.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specs -->
+        <section class="py-16 bg-gray-50 dark:bg-zinc-950 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <h3 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest text-center mb-6">App Specifications</h3>
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-hidden text-sm">
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">App Name:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Balizas España</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Launch:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">The first app on Spain's App Store with V16 beacons, launched on January 6, 2026</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Current Version:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">1.4</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Developer:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Compatibility:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">iOS 17.0 or later, iPadOS 17.0+, Apple CarPlay</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Language:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Spanish (app interface)</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Pricing:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Free · Pro: €0.99/week or €9.99 lifetime</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Privacy:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Data Not Collected · No proprietary server</span>
+                    </div>
+                    <div class="flex justify-between py-3.5 px-6">
+                        <span class="text-gray-500">Primary Data:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">Open public traffic data (DGT, Servei Català de Trànsit, Trafikoa, MITECO)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog Section -->
+        <section id="cambios" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-grain">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Update History</h2>
+                    <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">Changelog</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Evolution and improvements of Balizas España.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Version 1.4 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.4</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 font-semibold">Current</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Native Apple CarPlay integration for seamless in-car driving.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>New widgets: Live mini-maps showing nearby road incidents and beacons.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Improved incident categorization and map clustering.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>En-route hazard scan: previews and announces incidents along your planned route.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Bug fixes and performance enhancements.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.3 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.3</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Unified layers menu for customizable map views.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Nearby gas stations with real-time fuel prices.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Traffic camera favorites with live Home Screen widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Optimized map data clustering and automatic refresh timers.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Fixed camera stream displays across Basque Country and Catalonia.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Battery and performance optimizations.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.2 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.2</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Detailed fixed and average speed camera layer.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Proximity speed camera audio alerts in driving mode.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Spoken voice announcements for road hazards, closures, and works.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Efficiency and stability improvements.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.1 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.1</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Enhanced 3D driving view with integrated digital speedometer.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Highway beacon proximity alerts.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Added regional traffic alerts from Catalonia and the Basque Country.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Real-time on-route alert evaluation.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>Customizable traffic incident category filters.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i> <span>General performance and stability fixes.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="#cambios" class="hover:text-mirlo-orange transition-colors">Changelog</a>
+                <a href="../../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Close menu">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="#what-is-it" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">About</a>
+        <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Features</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="#cambios" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Changelog</a>
+        <a href="../soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Support</a>
+        <a href="../index.html" class="text-2xl font-bold text-orange-500" onclick="toggleMenu()">Versión en español</a>
+
+        <!-- Mobile Dark Mode Switch -->
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>
