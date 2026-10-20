@@ -84,6 +84,17 @@
         .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
         .footer-links a { text-decoration: none; }
         .footer-links a:hover, .footer-links a:focus { color: var(--orange); }
+        .changelog { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper); }
+        .changelog-heading { max-width: 750px; margin: 0 auto 48px; text-align: center; }
+        .changelog-heading p { margin: 0; color: var(--muted); font-size: 1.25rem; }
+        .changelog-list { display: grid; gap: 48px; max-width: 760px; margin: 0 auto; }
+        .changelog-entry { position: relative; padding-left: 28px; border-left: 2px solid var(--line); }
+        .changelog-entry::before { content: ""; position: absolute; top: 0; left: -9px; width: 14px; height: 14px; border: 2px solid var(--paper); border-radius: 50%; background: #cbd5e1; box-shadow: 0 0 0 1px var(--line); }
+        .changelog-entry.current::before { background: #71b7e8; }
+        .changelog-entry h3 { margin-bottom: 16px; }
+        .changelog-entry ul { display: grid; gap: 12px; margin: 0; padding: 0; color: var(--muted); list-style: none; }
+        .changelog-entry li { position: relative; padding-left: 24px; }
+        .changelog-entry li::before { content: "✓"; position: absolute; left: 0; color: #2a7daf; font-weight: 900; }
         @media (max-width: 840px) { .hero-grid, .split { grid-template-columns: 1fr; gap: 42px; } .grid { grid-template-columns: repeat(2, 1fr); } .hero { padding-top: 62px; } }
         @media (max-width: 560px) { .nav-links a:not(.language) { display: none; } .nav, .wrap { width: min(100% - 28px, 1120px); } .grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .screens figure { flex-basis: 160px; } }
     </style>
@@ -228,6 +239,45 @@
                 </div>
                 <!-- UNVERIFIED: Prototype radar/map files reference OpenWeatherMap and RainViewer, but the radar view is not connected to the main navigation and its OpenWeatherMap API key is empty. It is not advertised as an available feature. -->
                 <!-- UNVERIFIED: The App Store description contains privacy and advertising claims. This page does not repeat them because the project review cannot independently confirm every SDK, network call and production entitlement. -->
+            </div>
+        </section>
+
+        <section class="section changelog" id="changelog">
+            <div class="wrap">
+                <div class="changelog-heading">
+                    <h2>Changelog</h2>
+                    <p>Evolution for humans.</p>
+                </div>
+                <div class="changelog-list">
+                    <article class="changelog-entry current">
+                        <h3>Version 1.2</h3>
+                        <ul>
+                            <li>New card: MOON: Phases, states, and detailed lunar information.</li>
+                            <li>New widgets: Wind and Cloud Cover.</li>
+                            <li>Added Quick Shortcuts support.</li>
+                            <li>Customizable dashboard: reorder cards to your liking and hide unwanted cards.</li>
+                            <li>New human-centered cloud cover logic that closer reflects reality.</li>
+                            <li>New tropical night alerts for warm evenings.</li>
+                            <li>Native Spotlight integration.</li>
+                            <li>New alert cards anticipating Equinoxes and Solstices.</li>
+                            <li>Bug fixes and general performance improvements.</li>
+                        </ul>
+                    </article>
+                    <article class="changelog-entry">
+                        <h3>Version 1.1</h3>
+                        <ul>
+                            <li>New card with the forecast for the next 6 hours.</li>
+                            <li>Widgets now display alert notifications and the next day's forecast.</li>
+                            <li>2 new widgets with the forecast for the next few hours.</li>
+                            <li>More accurate calculation of historical temperature deviation.</li>
+                            <li>Integration with Siri and Shortcuts.</li>
+                            <li>Nighttime frost alerts.</li>
+                            <li>New and more comprehensive historical forecast mode.</li>
+                            <li>Three new optional icons to change the app's appearance.</li>
+                            <li>Bug fixes and general performance improvements.</li>
+                        </ul>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
