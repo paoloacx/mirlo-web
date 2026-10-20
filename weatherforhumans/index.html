@@ -104,13 +104,10 @@
         .changelog-entry { position: relative; padding-left: 28px; border-left: 2px solid var(--line); }
         .changelog-entry::before { content: ""; position: absolute; top: 0; left: -9px; width: 14px; height: 14px; border: 2px solid var(--paper); border-radius: 50%; background: #cbd5e1; box-shadow: 0 0 0 1px var(--line); }
         .changelog-entry.current::before { background: #71b7e8; }
-        .changelog-entry.upcoming::before { background: #ff9e00; }
         .changelog-entry h3 { margin-bottom: 16px; }
         .changelog-entry ul { display: grid; gap: 12px; margin: 0; padding: 0; color: var(--muted); list-style: none; }
         .changelog-entry li { position: relative; padding-left: 24px; }
         .changelog-entry li::before { content: "✓"; position: absolute; left: 0; color: #2a7daf; font-weight: 900; }
-        .release-status { display: inline-block; margin-left: 8px; padding: 4px 9px; border-radius: 999px; background: #fff3d6; color: #9a5b00; font-size: .72rem; font-weight: 800; letter-spacing: .04em; vertical-align: middle; }
-        html.dark .release-status { background: #4b3510; color: #ffd27d; }
         .mobile-menu { display: none; position: fixed; inset: 0; z-index: 49; flex-direction: column; align-items: center; justify-content: center; gap: 28px; background: rgb(255 255 255 / .95); backdrop-filter: blur(20px); }
         html.dark .mobile-menu { background: rgb(0 0 0 / .95); }
         .mobile-menu.is-open { display: flex; }
@@ -235,22 +232,6 @@
             </div>
         </section>
 
-        <section class="section alt" id="new-in-1-3">
-            <div class="wrap">
-                <div class="section-heading">
-                    <div class="eyebrow">Coming in version 1.3</div>
-                    <h2>More weather, more control.</h2>
-                    <p>The next release brings a deeper forecast view, a more personal home screen, and smarter weather updates.</p>
-                </div>
-                <div class="grid">
-                    <article class="card"><div class="icon">◷</div><h3>Forecasts with more depth</h3><p>A new 10-day forecast view and a detailed, hour-by-hour explorer for the next 24 hours.</p></article>
-                    <article class="card"><div class="icon">⌘</div><h3>A home screen that fits you</h3><p>Hide any cards you choose and switch between saved locations directly from the Home screen.</p></article>
-                    <article class="card"><div class="icon">!</div><h3>Smarter alerts</h3><p>Notifications and alerts are more adaptive and precise, with general improvements to weather data retrieval.</p></article>
-                    <article class="card"><div class="icon">▣</div><h3>Designed for more screens</h3><p>An improved Welcome screen, support for iPhone Duo and styled layouts for iPads, with refined seasonal sky colors.</p></article>
-                </div>
-            </div>
-        </section>
-
         <section class="section" id="what-it-is">
             <div class="wrap split">
                 <div class="section-heading">
@@ -328,8 +309,8 @@
                     <p>Evolution for humans.</p>
                 </div>
                 <div class="changelog-list">
-                    <article class="changelog-entry upcoming">
-                        <h3>Version 1.3 <span class="release-status">Coming soon</span></h3>
+                    <article class="changelog-entry current">
+                        <h3>Version 1.3</h3>
                         <ul>
                             <li>Improved design for the Welcome screen.</li>
                             <li>Adapted for iPhone Duo.</li>
@@ -344,7 +325,7 @@
                             <li>General improvements to data retrieval, bug fixes, increased speed, and better internal performance.</li>
                         </ul>
                     </article>
-                    <article class="changelog-entry current">
+                    <article class="changelog-entry">
                         <h3>Version 1.2</h3>
                         <ul>
                             <li>New card: MOON: Phases, states, and detailed lunar information.</li>
