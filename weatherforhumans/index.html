@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
     <link rel="canonical" href="https://www.mirloapps.es/weatherforhumans/">
-    <meta property="og:url" content="https://www.mirloapps.es/weatherforhumans/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Weather for humans - mirlo apps">
-    <meta name="twitter:description" content="Weather for humans - Made to understand weather. Stop guessing what the temperature feels like.">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/weatherforhumans/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/weatherforhumans/es/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/weatherforhumans/">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather for humans - mirlo apps</title>
-    <meta name="description"
-        content="Weather for humans - Made to understand weather. Stop guessing what the temperature feels like.">
+    <!-- Safari Smart App Banner: App Store ID confirmed through the iTunes Lookup API. -->
+    <meta name="apple-itunes-app" content="app-id=6758056677">
+
+    <meta name="description" content="Weather for humans turns current conditions, forecasts, daylight, moon data, historical context and weather alerts into a readable iPhone weather view.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/weatherforhumans/">
+    <meta property="og:title" content="Weather for humans — weather made readable">
+    <meta property="og:description" content="A weather app for current conditions, forecasts, daylight, moon data, historical context, widgets and alerts.">
+    <meta property="og:image" content="https://www.mirloapps.es/weatherforhumans/screen1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weather for humans — weather made readable">
+    <meta name="twitter:description" content="Current weather, forecasts, daylight, moon data, historical context, widgets and alerts for iPhone.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/weatherforhumans/screen1.webp">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -21,434 +30,220 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="shortcut icon" href="../favicon.ico">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mirlo-orange': '#FF9E00',
-                        'weather-blue': '#7fbdec',
-                        'weather-yellow': '#f9cf58',
-                    },
-                    fontFamily: {
-                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
-                    }
-                }
-            },
-            darkMode: 'class',
-        }
-    </script>
+    <title>Weather for humans — weather made readable | mirlo apps</title>
 
     <style>
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            transition: all 0.3s ease;
-        }
-
-        .bg-grain {
-            position: relative;
-            background-color: #f3f4f6;
-        }
-
-        .dark .bg-grain {
-            background-color: #0a0a0a;
-        }
-
-        .dark .bg-grain::before {
-            display: none;
-        }
-
-        .bg-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .bg-grain>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-plastic {
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-        }
-
-        .btn-plastic:hover {
-            transform: translateY(-1px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn-plastic:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #7fbdec;
-            color: #7fbdec;
-        }
-
-        .tech-card {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .tech-card {
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            pointer-events: none;
-        }
-
-        .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
+        :root { color-scheme: light; --ink: #101827; --muted: #5f6b7a; --line: #dfe5ec; --paper: #f6f8fb; --card: #fff; --blue: #71b7e8; --orange: #ff9e00; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+        a { color: inherit; }
+        .site-header { position: sticky; top: 0; z-index: 5; background: rgb(255 255 255 / .88); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+        .nav, .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+        .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .brand { text-decoration: none; font-weight: 800; font-size: 1.25rem; letter-spacing: -.04em; }
+        .brand span { color: var(--orange); }
+        .nav-links { display: flex; align-items: center; gap: 22px; font-size: .92rem; font-weight: 650; }
+        .nav-links a { text-decoration: none; color: var(--muted); }
+        .nav-links a:hover, .nav-links a:focus { color: var(--orange); }
+        .language { padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; }
+        .hero { padding: 92px 0 78px; background: radial-gradient(circle at 80% 15%, #d9efff 0, transparent 35%), linear-gradient(135deg, #fff, #edf4fb); }
+        .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; }
+        .eyebrow { display: inline-block; margin-bottom: 18px; padding: 6px 11px; border: 1px solid #cce4f4; border-radius: 999px; background: #fff; color: #3277a8; font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+        h1, h2, h3 { line-height: 1.08; letter-spacing: -.045em; }
+        h1 { max-width: 670px; margin: 0; font-size: clamp(3.4rem, 8vw, 7.3rem); }
+        .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.45rem); }
+        .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+        .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 13px; font-weight: 750; text-decoration: none; }
+        .button.primary { background: #0b1020; color: #fff; box-shadow: 0 10px 22px rgb(11 16 32 / .2); }
+        .button.secondary { border: 1px solid var(--line); background: #fff; }
+        .button:hover, .button:focus { transform: translateY(-1px); }
+        .hero-note { margin-top: 15px; color: var(--muted); font-size: .9rem; }
+        .screens { display: flex; gap: 14px; overflow-x: auto; padding: 8px 0 18px; scrollbar-width: thin; }
+        .screens figure { flex: 0 0 180px; margin: 0; overflow: hidden; border: 5px solid #fff; border-radius: 28px; box-shadow: 0 20px 45px rgb(22 47 70 / .2); background: #fff; }
+        .screens img { display: block; width: 100%; height: auto; }
+        .section { padding: 88px 0; }
+        .section.alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .section-heading { max-width: 750px; margin-bottom: 38px; }
+        h2 { margin: 0 0 14px; font-size: clamp(2.2rem, 5vw, 4rem); }
+        h3 { margin: 0 0 10px; font-size: 1.3rem; }
+        .section-heading p, .card p, .faq dd { color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .card { padding: 26px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: 0 12px 30px rgb(21 38 55 / .06); }
+        .card .icon { display: grid; width: 42px; height: 42px; place-items: center; margin-bottom: 19px; border-radius: 13px; background: #e8f5ff; font-size: 1.3rem; }
+        .split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; }
+        .plain-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
+        .plain-list li { display: flex; gap: 10px; align-items: flex-start; }
+        .plain-list li::before { content: "✓"; color: #2a7daf; font-weight: 900; }
+        .faq { display: grid; gap: 12px; }
+        .faq details { padding: 19px 21px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+        .faq summary { cursor: pointer; font-weight: 750; }
+        .faq dd { margin: 12px 0 0; }
+        .footer { padding: 32px 0; border-top: 1px solid var(--line); background: #fff; }
+        .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; color: var(--muted); font-size: .9rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+        .footer-links a { text-decoration: none; }
+        .footer-links a:hover, .footer-links a:focus { color: var(--orange); }
+        @media (max-width: 840px) { .hero-grid, .split { grid-template-columns: 1fr; gap: 42px; } .grid { grid-template-columns: repeat(2, 1fr); } .hero { padding-top: 62px; } }
+        @media (max-width: 560px) { .nav-links a:not(.language) { display: none; } .nav, .wrap { width: min(100% - 28px, 1120px); } .grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .screens figure { flex-basis: 160px; } }
     </style>
-    <script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
 
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-    </script>
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Weather for humans",
-  "operatingSystem": "iOS",
-  "applicationCategory": "WeatherApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "url": "https://www.mirloapps.es/weatherforhumans/",
-  "downloadUrl": "https://apps.apple.com/us/app/weather-for-humans/id6758056677"
-}
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Weather for humans",
+          "operatingSystem": "iOS 18 or later",
+          "applicationCategory": "WeatherApplication",
+          "offers": [
+            { "@type": "Offer", "name": "Weekly Premium", "price": "0.99", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Yearly Premium", "price": "19.99", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Lifetime Premium", "price": "39.99", "priceCurrency": "EUR" }
+          ],
+          "url": "https://www.mirloapps.es/weatherforhumans/",
+          "downloadUrl": "https://apps.apple.com/us/app/weather-for-humans/id6758056677",
+          "datePublished": "2026-01-28",
+          "softwareVersion": "1.2",
+          "publisher": { "@type": "Organization", "name": "mirlo apps", "url": "https://www.mirloapps.es/" },
+          "inLanguage": "en",
+          "featureList": ["Current conditions", "Hourly forecasts", "Daylight and moon information", "Historical weather context", "WeatherKit weather alerts", "Home Screen widgets", "Siri and Shortcuts actions", "Spotlight integration"]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "What does Weather for humans show?", "acceptedAnswer": { "@type": "Answer", "text": "It shows current conditions, feels-like temperature, high and low temperatures, humidity, wind, cloud cover, precipitation, daylight, moon information, hourly forecasts, multi-day forecasts and historical context." } },
+            { "@type": "Question", "name": "What weather services does it use?", "acceptedAnswer": { "@type": "Answer", "text": "The app requests current, hourly, daily, alert and historical weather data from Apple WeatherKit. The code also contains an Open-Meteo Archive API fallback for historical daily data and climate calculations." } },
+            { "@type": "Question", "name": "Does the app use my location?", "acceptedAnswer": { "@type": "Answer", "text": "You can search for a place and save its coordinates. The app also has an optional current-location flow that requests When In Use location permission, reverse-geocodes the result and uses the coordinates to request weather." } },
+            { "@type": "Question", "name": "Does it send weather notifications?", "acceptedAnswer": { "@type": "Answer", "text": "The code supports local notifications for daily summaries, tomorrow outlooks, rain, snow, frost, tropical nights, wind, temperature changes and severe weather settings." } },
+            { "@type": "Question", "name": "Which languages are available?", "acceptedAnswer": { "@type": "Answer", "text": "The project contains English and Spanish localizations. The App Store lookup also reports EN and ES language codes." } },
+            { "@type": "Question", "name": "Is there a premium mode?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The code includes StoreKit products and premium-gated features such as extra saved locations, automatic GPS in the settings flow, more forecasts, climate views, widgets and dashboard customization." } }
+          ]
+        }
+      ]
+    }
     </script>
 </head>
 
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
-
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../index.html"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
-                mirlo apps<span class="text-mirlo-orange">.</span>
-            </a>
-
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/index.html"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
-                </li>
-                <li><a href="../index.html#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">About</a>
-                </li>
-                <li><a href="../index.html#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
-                </li>
-
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
-                    </label>
-                </li>
-            </ul>
-
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="../index.html">mirlo apps<span>.</span></a>
+            <div class="nav-links">
+                <a href="../apps/index.html">Apps</a>
+                <a href="../index.html#nosotros">About</a>
+                <a href="../index.html#contacto">Contact</a>
+                <a class="language" href="es/index.html" lang="es">ES</a>
+            </div>
         </nav>
     </header>
 
-    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-weather-blue uppercase tracking-wider shadow-sm">
-                        Available Now
+    <main>
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <div class="eyebrow">Available on the App Store</div>
+                    <h1>Weather for humans</h1>
+                    <p class="lede">A readable weather view for what is happening now, what is coming next, and how today compares with the past.</p>
+                    <div class="actions">
+                        <a class="button primary" href="https://apps.apple.com/us/app/weather-for-humans/id6758056677">Download on the App Store</a>
+                        <a class="button secondary" href="#features">See what is inside</a>
                     </div>
-
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                        Weather for humans
-                    </h1>
-                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Made to
-                        understand weather</p>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Stop guessing what the temperature feels like. Get smart clothing tips, track daylight hours,
-                        and compare today's climate with history. Weather, finally humanized.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="https://apps.apple.com/us/app/weather-for-humans/id6758056677"
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                            <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                                <div class="font-bold">App Store</div>
-                            </div>
-                        </a>
-                    </div>
+                    <p class="hero-note">App Store ID: 6758056677 · iOS 18 or later · English and Spanish localization</p>
                 </div>
-
-                <div class="relative w-full max-w-sm mx-auto md:max-w-full">
-                    <style>
-                        .no-scrollbar::-webkit-scrollbar {
-                            display: none;
-                        }
-
-                        .no-scrollbar {
-                            -ms-overflow-style: none;
-                            scrollbar-width: none;
-                        }
-                    </style>
-                    <div class="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x snap-mandatory">
-                        <!-- Screen 1 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen1.webp" width="600" height="1299" class="w-full h-auto" alt="Screenshot 1">
-                            </div>
-                        </div>
-                        <!-- Screen 2 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen2.webp" loading="lazy" width="600" height="1299" class="w-full h-auto" alt="Screenshot 2">
-                            </div>
-                        </div>
-                        <!-- Screen 3 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen3.webp" loading="lazy" width="600" height="1299" class="w-full h-auto" alt="Screenshot 3">
-                            </div>
-                        </div>
-                        <!-- Screen 4 -->
-                        <div class="flex-none snap-center first:pl-4 last:pr-4">
-                            <div
-                                class="w-[280px] rounded-[3rem] overflow-hidden border-4 border-gray-100 dark:border-gray-800 shadow-2xl">
-                                <img src="screen4.webp" loading="lazy" width="600" height="1299" class="w-full h-auto" alt="Screenshot 4">
-                            </div>
-                        </div>
-                    </div>
+                <div class="screens" aria-label="Weather for humans screenshots">
+                    <figure><img src="screen1.webp" width="600" height="1299" alt="Weather for humans current weather screen"></figure>
+                    <figure><img src="screen2.webp" width="600" height="1299" loading="lazy" alt="Weather for humans weather detail screen"></figure>
+                    <figure><img src="screen3.webp" width="600" height="1299" loading="lazy" alt="Weather for humans forecast screen"></figure>
+                    <figure><img src="screen4.webp" width="600" height="1299" loading="lazy" alt="Weather for humans settings screen"></figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Grid -->
-    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Weather humanized</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Stop analyzing data, start understanding the day.
-                </p>
+        <section class="section" id="what-it-is">
+            <div class="wrap split">
+                <div class="section-heading">
+                    <h2>Weather, with context.</h2>
+                    <p>Weather for humans combines live weather data with local calculations for daylight, moon phases, historical comparisons, clothing suggestions and weather-aware notices.</p>
+                </div>
+                <ul class="plain-list">
+                    <li>Read current temperature, feels-like temperature, high and low temperatures, humidity, wind, cloud cover and precipitation.</li>
+                    <li>See the next hours, tomorrow and up to ten forecast days in the app’s forecast views.</li>
+                    <li>Compare today with historical daily data and inspect monthly climate summaries.</li>
+                    <li>Open detailed views for temperature, wind, sky conditions, daylight, moon and tomorrow.</li>
+                </ul>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-shirt text-2xl text-weather-blue"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3">Clothing Tips</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Dynamic suggestions that adapt to temperature, wind,
-                            and humidity.</p>
-                    </div>
+        <section class="section alt" id="features">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2>What the code currently provides</h2>
+                    <p>These are features represented in the project, not promises about features outside it.</p>
                 </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-clock-rotate-left text-2xl text-weather-yellow"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3">Historical Context</h3>
-                        <p class="text-gray-600 dark:text-gray-400">See at a glance if today is warmer, colder, or
-                            rainier than the average for this date.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-th-large text-2xl text-indigo-500"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3">Glanceable Widgets</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Customize your Home Screen with stunning, smart
-                            widgets that respect your aesthetic.</p>
-                    </div>
+                <div class="grid">
+                    <article class="card"><div class="icon">☀</div><h3>Current conditions</h3><p>Temperature, feels-like temperature, humidity, UV index, wind, gusts, cloud cover, precipitation and condition descriptions.</p></article>
+                    <article class="card"><div class="icon">◷</div><h3>Hourly and daily forecasts</h3><p>Next-hour context, hourly charts, tomorrow details, and forecast summaries for up to five or ten days depending on the view.</p></article>
+                    <article class="card"><div class="icon">☼</div><h3>Daylight and moon</h3><p>Sunrise, sunset, daylight duration, sunshine estimates, moon phase, illumination, moonrise, moonset and visible duration.</p></article>
+                    <article class="card"><div class="icon">↺</div><h3>Historical context</h3><p>Daily comparisons use historical data for the same date. Climate views calculate monthly high, low, rainfall, sun and cloud summaries.</p></article>
+                    <article class="card"><div class="icon">♧</div><h3>Human-readable guidance</h3><p>Clothing suggestions, adaptive wellness tips, cloud and wind context, temperature trends and rain severity text are generated in the app.</p></article>
+                    <article class="card"><div class="icon">!</div><h3>Notices and alerts</h3><p>Local notifications and in-app banners cover severe weather data, rain, snow, frost risk, tropical nights and seasonal transitions.</p></article>
+                    <article class="card"><div class="icon">▦</div><h3>Home Screen widgets</h3><p>Current weather, today’s weather, hourly forecast, health tips, wind and clouds/sun widgets share cached weather data through the App Group.</p></article>
+                    <article class="card"><div class="icon">⌁</div><h3>Shortcuts and Spotlight</h3><p>App Intents expose current weather, clothing advice, sky status and section opening. Quick actions and Spotlight indexing are also implemented.</p></article>
+                    <article class="card"><div class="icon">⌘</div><h3>Personal settings</h3><p>Choose a theme, units, typography, app icon, notification preferences and, in the premium path, home-card order and visibility.</p></article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CHANGELOG SECTION -->
-    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Evolution for humans.</p>
-            </div>
-
-            <div class="space-y-12">
-                <!-- Version 1.2 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-weather-blue ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New card: MOON: Phases, states, and detailed lunar information.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New widgets: Wind and Cloud Cover.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Added Quick Shortcuts support.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Customizable dashboard: reorder cards to your liking and hide unwanted cards.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New human-centered cloud cover logic that closer reflects reality.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New tropical night alerts for warm evenings.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Native Spotlight integration.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New alert cards anticipating Equinoxes and Solstices.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes and general performance improvements.</span></li>
-                    </ul>
+        <section class="section" id="how-it-works">
+            <div class="wrap split">
+                <div class="section-heading">
+                    <h2>How it works</h2>
+                    <p>The implementation stores a selected place locally, fetches weather for its coordinates, derives context on the device, and shares a snapshot with widgets.</p>
                 </div>
+                <ol class="plain-list">
+                    <li>Search a place with MapKit suggestions, or allow a one-time current-location request.</li>
+                    <li>Request weather data for the selected coordinates through WeatherKit.</li>
+                    <li>Use historical WeatherKit data, with an Open-Meteo Archive API fallback in historical calculations.</li>
+                    <li>Save weather summaries and widget data locally, then refresh the app and widgets when data changes.</li>
+                </ol>
+            </div>
+        </section>
 
-                <!-- Version 1.1 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New card with the forecast for the next 6 hours.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Widgets now display alert notifications and the next day's forecast.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>2 new widgets with the forecast for the next few hours.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>More accurate calculation of historical temperature deviation.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Integration with Siri and Shortcuts.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Nighttime frost alerts.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>New and more comprehensive historical forecast mode.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Three new optional icons to change the app's appearance.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check text-weather-blue mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes and general performance improvements.</span></li>
-                    </ul>
+        <section class="section alt" id="faq">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2>Frequently asked questions</h2>
+                    <p>Direct answers based on the current project and the App Store listing.</p>
                 </div>
+                <div class="faq">
+                    <details open><summary>What does Weather for humans show?</summary><dd>It shows current conditions, feels-like temperature, high and low temperatures, humidity, wind, cloud cover, precipitation, daylight, moon information, hourly forecasts, multi-day forecasts and historical context.</dd></details>
+                    <details><summary>What weather services does it use?</summary><dd>The app requests current, hourly, daily, alert and historical weather data from Apple WeatherKit. The code also contains an Open-Meteo Archive API fallback for historical daily data and climate calculations.</dd></details>
+                    <details><summary>Does the app use my location?</summary><dd>You can search for a place and save its coordinates. The app also has an optional current-location flow that requests When In Use location permission, reverse-geocodes the result and uses the coordinates to request weather.</dd></details>
+                    <details><summary>Does it send weather notifications?</summary><dd>The code supports local notifications for daily summaries, tomorrow outlooks, rain, snow, frost, tropical nights, wind, temperature changes and severe weather settings.</dd></details>
+                    <details><summary>Which languages are available?</summary><dd>The project contains English and Spanish localizations. The App Store lookup also reports EN and ES language codes.</dd></details>
+                    <details><summary>Is there a premium mode?</summary><dd>Yes. Premium features include extra saved locations, automatic GPS in the settings flow, more forecasts, climate views, widgets and dashboard customization.</dd></details>
+                    <details><summary>What does premium cost?</summary><dd>Premium costs €0.99 per week, €19.99 per year, or €39.99 one-time lifetime.</dd></details>
+                </div>
+                <!-- UNVERIFIED: Prototype radar/map files reference OpenWeatherMap and RainViewer, but the radar view is not connected to the main navigation and its OpenWeatherMap API key is empty. It is not advertised as an available feature. -->
+                <!-- UNVERIFIED: The App Store description contains privacy and advertising claims. This page does not repeat them because the project review cannot independently confirm every SDK, network call and production entitlement. -->
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
-                <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                    mirlo apps<span class="text-mirlo-orange">.</span>
-                </a>
-            </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
-                © 2026 mirlo apps. Made in Spain 🇪🇸
-            </div>
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
-                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
-                <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
-            </div>
+    <footer class="footer">
+        <div class="wrap footer-row">
+            <a class="brand" href="../index.html">mirlo apps<span>.</span></a>
+            <span>© 2026 mirlo apps. Made in Spain 🇪🇸</span>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../privacidad.html">Privacy &amp; Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;">Cookies</a>
+                <a href="soporte.html">Support</a>
+                <a href="https://x.com/PaoloAC" aria-label="mirlo apps on X">X</a>
+            </nav>
         </div>
     </footer>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        }
-    </script>
     <script src="/cookies.js" defer></script>
 </body>
 
