@@ -33,37 +33,50 @@
     <title>Weather for humans — weather made readable | mirlo apps</title>
 
     <style>
-        :root { color-scheme: light; --ink: #101827; --muted: #5f6b7a; --line: #dfe5ec; --paper: #f6f8fb; --card: #fff; --blue: #71b7e8; --orange: #ff9e00; }
+        :root { color-scheme: light; --ink: #101827; --muted: #5f6b7a; --line: #dfe5ec; --paper: #f6f8fb; --section: #fff; --card: #fff; --blue: #71b7e8; --orange: #ff9e00; }
+        html.dark { color-scheme: dark; --ink: #f3f4f6; --muted: #aeb8c5; --line: #273241; --paper: #0a0a0a; --section: #111827; --card: #111827; }
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; transition: background-color .3s ease, color .3s ease; }
         a { color: inherit; }
-        .site-header { position: sticky; top: 0; z-index: 5; background: rgb(255 255 255 / .88); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
-        .nav, .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-        .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-        .brand { text-decoration: none; font-weight: 800; font-size: 1.25rem; letter-spacing: -.04em; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 50; background: rgb(255 255 255 / .8); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); transition: background-color .3s ease, border-color .3s ease; }
+        html.dark .site-header { background: rgb(0 0 0 / .8); }
+        .nav, .wrap { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+        .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; }
+        .brand { text-decoration: none; font-weight: 800; font-size: 1.5rem; letter-spacing: -.04em; }
         .brand span { color: var(--orange); }
-        .nav-links { display: flex; align-items: center; gap: 22px; font-size: .92rem; font-weight: 650; }
+        .nav-links { display: flex; align-items: center; gap: 32px; font-size: .875rem; font-weight: 650; }
         .nav-links a { text-decoration: none; color: var(--muted); }
         .nav-links a:hover, .nav-links a:focus { color: var(--orange); }
-        .language { padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; }
+        .language { padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; }
+        .theme-switch { display: inline-flex; align-items: center; cursor: pointer; }
+        .theme-switch input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .theme-switch-track { position: relative; display: block; width: 44px; height: 24px; border-radius: 999px; background: #e5e7eb; transition: background-color .3s ease; }
+        html.dark .theme-switch-track { background: #374151; }
+        .theme-switch-track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border: 1px solid #d1d5db; border-radius: 50%; background: #fff; transition: transform .3s ease, border-color .3s ease; }
+        .theme-switch input:checked + .theme-switch-track { background: var(--orange); }
+        .theme-switch input:checked + .theme-switch-track::after { transform: translateX(20px); border-color: #fff; }
+        .mobile-controls { display: none; align-items: center; gap: 16px; }
+        .menu-button { border: 0; padding: 4px; background: transparent; color: var(--muted); font: inherit; font-size: 1.7rem; line-height: 1; cursor: pointer; }
+        main { padding-top: 68px; }
         .hero { padding: 92px 0 78px; background: radial-gradient(circle at 80% 15%, #d9efff 0, transparent 35%), linear-gradient(135deg, #fff, #edf4fb); }
+        html.dark .hero { background: radial-gradient(circle at 80% 15%, #18334a 0, transparent 35%), linear-gradient(135deg, #111827, #0a0a0a); }
         .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; }
-        .eyebrow { display: inline-block; margin-bottom: 18px; padding: 6px 11px; border: 1px solid #cce4f4; border-radius: 999px; background: #fff; color: #3277a8; font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+        .eyebrow { display: inline-block; margin-bottom: 18px; padding: 6px 11px; border: 1px solid #cce4f4; border-radius: 999px; background: var(--card); color: #3277a8; font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
         h1, h2, h3 { line-height: 1.08; letter-spacing: -.045em; }
         h1 { max-width: 670px; margin: 0; font-size: clamp(3.4rem, 8vw, 7.3rem); }
         .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.45rem); }
         .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
         .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 13px; font-weight: 750; text-decoration: none; }
         .button.primary { background: #0b1020; color: #fff; box-shadow: 0 10px 22px rgb(11 16 32 / .2); }
-        .button.secondary { border: 1px solid var(--line); background: #fff; }
+        .button.secondary { border: 1px solid var(--line); background: var(--card); }
         .button:hover, .button:focus { transform: translateY(-1px); }
         .hero-note { margin-top: 15px; color: var(--muted); font-size: .9rem; }
         .screens { display: flex; gap: 14px; overflow-x: auto; padding: 8px 0 18px; scrollbar-width: thin; }
-        .screens figure { flex: 0 0 180px; margin: 0; overflow: hidden; border: 5px solid #fff; border-radius: 28px; box-shadow: 0 20px 45px rgb(22 47 70 / .2); background: #fff; }
+        .screens figure { flex: 0 0 180px; margin: 0; overflow: hidden; border: 5px solid var(--card); border-radius: 28px; box-shadow: 0 20px 45px rgb(22 47 70 / .2); background: var(--card); }
         .screens img { display: block; width: 100%; height: auto; }
         .section { padding: 88px 0; }
-        .section.alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .section.alt { background: var(--section); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
         .section-heading { max-width: 750px; margin-bottom: 38px; }
         h2 { margin: 0 0 14px; font-size: clamp(2.2rem, 5vw, 4rem); }
         h3 { margin: 0 0 10px; font-size: 1.3rem; }
@@ -76,10 +89,10 @@
         .plain-list li { display: flex; gap: 10px; align-items: flex-start; }
         .plain-list li::before { content: "✓"; color: #2a7daf; font-weight: 900; }
         .faq { display: grid; gap: 12px; }
-        .faq details { padding: 19px 21px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+        .faq details { padding: 19px 21px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
         .faq summary { cursor: pointer; font-weight: 750; }
         .faq dd { margin: 12px 0 0; }
-        .footer { padding: 32px 0; border-top: 1px solid var(--line); background: #fff; }
+        .footer { padding: 32px 0; border-top: 1px solid var(--line); background: var(--section); }
         .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; color: var(--muted); font-size: .9rem; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
         .footer-links a { text-decoration: none; }
@@ -97,9 +110,45 @@
         .changelog-entry li { position: relative; padding-left: 24px; }
         .changelog-entry li::before { content: "✓"; position: absolute; left: 0; color: #2a7daf; font-weight: 900; }
         .release-status { display: inline-block; margin-left: 8px; padding: 4px 9px; border-radius: 999px; background: #fff3d6; color: #9a5b00; font-size: .72rem; font-weight: 800; letter-spacing: .04em; vertical-align: middle; }
+        html.dark .release-status { background: #4b3510; color: #ffd27d; }
+        .mobile-menu { display: none; position: fixed; inset: 0; z-index: 49; flex-direction: column; align-items: center; justify-content: center; gap: 28px; background: rgb(255 255 255 / .95); backdrop-filter: blur(20px); }
+        html.dark .mobile-menu { background: rgb(0 0 0 / .95); }
+        .mobile-menu.is-open { display: flex; }
+        .mobile-menu button { position: absolute; top: 24px; right: 24px; border: 0; padding: 8px; background: transparent; color: var(--muted); font-size: 2rem; line-height: 1; cursor: pointer; }
+        .mobile-menu a { color: var(--ink); font-size: 1.5rem; font-weight: 750; text-decoration: none; }
+        .mobile-menu a:first-of-type { font-size: 1.8rem; }
+        .mobile-menu a:hover, .mobile-menu a:focus { color: var(--orange); }
+        .mobile-menu .mobile-language { color: #3277a8; }
+        .mobile-theme { display: flex; align-items: center; gap: 16px; margin-top: 12px; color: var(--muted); font-weight: 650; }
         @media (max-width: 840px) { .hero-grid, .split { grid-template-columns: 1fr; gap: 42px; } .grid { grid-template-columns: repeat(2, 1fr); } .hero { padding-top: 62px; } }
-        @media (max-width: 560px) { .nav-links a:not(.language) { display: none; } .nav, .wrap { width: min(100% - 28px, 1120px); } .grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .screens figure { flex-basis: 160px; } }
+        @media (max-width: 840px) { .nav-links { display: none; } .mobile-controls { display: flex; } }
+        @media (max-width: 560px) { .nav, .wrap { width: min(100% - 28px, 1120px); } .grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .screens figure { flex-basis: 160px; } }
     </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+            document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const isOpen = menu.classList.toggle('is-open');
+            menu.setAttribute('aria-hidden', String(!isOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark);
+        });
+    </script>
 
     <script type="application/ld+json">
     {
@@ -147,7 +196,19 @@
                 <a href="../apps/index.html">Apps</a>
                 <a href="../index.html#nosotros">About</a>
                 <a href="../index.html#contacto">Contact</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="soporte.html">Support</a>
                 <a class="language" href="es/index.html" lang="es">ES</a>
+                <label class="theme-switch" aria-label="Toggle dark mode">
+                    <input type="checkbox" onclick="toggleDarkMode()">
+                    <span class="theme-switch-track"></span>
+                </label>
+            </div>
+            <div class="mobile-controls">
+                <a class="language" href="es/index.html" lang="es">ES</a>
+                <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
             </div>
         </nav>
     </header>
@@ -328,6 +389,25 @@
             </nav>
         </div>
     </footer>
+
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button type="button" onclick="toggleMenu()" aria-label="Close menu">×</button>
+        <a href="../apps/index.html" onclick="toggleMenu()">Apps</a>
+        <a href="../index.html#nosotros" onclick="toggleMenu()">About</a>
+        <a href="../index.html#contacto" onclick="toggleMenu()">Contact</a>
+        <a href="#how-it-works" onclick="toggleMenu()">How it works</a>
+        <a href="#features" onclick="toggleMenu()">Features</a>
+        <a href="#faq" onclick="toggleMenu()">FAQ</a>
+        <a href="soporte.html" onclick="toggleMenu()">Support</a>
+        <a class="mobile-language" href="es/index.html" lang="es" onclick="toggleMenu()">Versión en español</a>
+        <div class="mobile-theme">
+            <span>Dark Mode</span>
+            <label class="theme-switch" aria-label="Toggle dark mode">
+                <input type="checkbox" onclick="toggleDarkMode()">
+                <span class="theme-switch-track"></span>
+            </label>
+        </div>
+    </div>
     <script src="/cookies.js" defer></script>
 </body>
 
