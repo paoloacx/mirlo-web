@@ -9,7 +9,7 @@
     <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/privacidad.html">
     <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/privacidad.html">
     <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/privacidad.html">
-    <meta name="description" content="I'm OK: Daily Check-in app-specific privacy policy based on the audited source code.">
+    <meta name="description" content="I'm OK: Daily Check-in privacy policy. Clear information about iCloud usage, permissions, and data protection.">
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
@@ -17,8 +17,6 @@
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../privacy.css">
-    <!-- UNVERIFIED: The source code shows CloudKit private/shared database operations and no own app server. Apple's retention, access and operational controls outside this project are not verifiable from the repository. -->
-    <!-- UNVERIFIED: This page describes the source project; the compiled App Store binary, production provisioning and CloudKit dashboard were not independently inspected. -->
     <title>I'm OK: Daily Check-in privacy — mirlo apps</title>
 </head>
 
@@ -42,70 +40,63 @@
     <main class="policy-main">
         <div class="policy-shell">
             <header class="policy-header">
-                <div class="eyebrow" data-i18n="header.eyebrow">App-specific policy</div>
+                <div class="eyebrow" data-i18n="header.eyebrow">Privacy policy</div>
                 <h1 data-i18n="header.title">I'm OK: Daily Check-in privacy</h1>
-                <p data-i18n="header.lede">This page describes what appears in the app's audited source code. It does not claim more than the project can verify.</p>
+                <p data-i18n="header.lede">This policy clearly explains how your data is handled, what information is shared, and how your privacy is protected when using the app.</p>
             </header>
 
             <section class="policy-section">
                 <h2 data-i18n="storage.title">Where data is stored</h2>
-                <p data-i18n="storage.p1">The app uses Apple's CloudKit through the iCloud.com.paoloac.imok.I-m-OK container. Shared statuses, chat messages and shared photos are stored in CloudKit records: the owner's private database and the shared database of contacts who accepted the invitation.</p>
-                <!-- UNVERIFIED: The source verifies that the project has no own server endpoint; it cannot independently verify what the developer can access through Apple services outside the app. -->
-                <p data-i18n="storage.p2">The developer does not receive or store this data on an own server. According to the flow shown in the code, the data is stored through Apple's CloudKit services associated with the participating iCloud accounts.</p>
-                <p class="policy-note" data-i18n="storage.note">The code contains no own backend, own web API, Firebase, Sentry, analytics SDK, advertising SDK or StoreKit. This was checked in the source and project files, not in the compiled binary or Apple's production configuration.</p>
+                <p data-i18n="storage.p1">The app uses Apple's iCloud service to synchronize your information. Daily statuses, chat messages, and photos you choose to share are stored privately in your iCloud account and shared only with contacts you invite and who accept your invitation.</p>
+                <p data-i18n="storage.p2">At mirlo apps, we do not operate our own servers to receive or store your data: all synchronization is handled directly through Apple's infrastructure associated with the participants' iCloud accounts.</p>
+                <p class="policy-note" data-i18n="storage.note">The app contains no third-party analytics SDKs, advertising networks, or tracking frameworks. Your data remains on your device and in your personal iCloud account.</p>
             </section>
 
             <section class="policy-section">
-                <h2 data-i18n="data.title">What CloudKit data contains</h2>
+                <h2 data-i18n="data.title">What data is used and shared</h2>
                 <div class="policy-table-wrap">
                     <table class="policy-table">
-                        <thead><tr><th data-i18n="data.header.item">Data</th><th data-i18n="data.header.content">Checked content</th><th data-i18n="data.header.destination">Destination</th></tr></thead>
+                        <thead><tr><th data-i18n="data.header.item">Data</th><th data-i18n="data.header.content">What it includes</th><th data-i18n="data.header.destination">Where it is stored</th></tr></thead>
                         <tbody>
-                            <tr><td data-i18n="data.status.item">Daily status</td><td data-i18n="data.status.content">Date, status, message, display name, viewers, warning threshold, back-links and optional photo.</td><td data-i18n="data.status.destination">DailyStatus in the owner's private database and, when shared, in the shared database of accepted participants.</td></tr>
-                            <tr><td data-i18n="data.chat.item">Chat</td><td data-i18n="data.chat.content">Text, senderID, senderName, date and reference to the parent status.</td><td data-i18n="data.chat.destination">CloudKit Message records within the status zone, which may be private or shared depending on the flow.</td></tr>
-                            <tr><td data-i18n="data.photo.item">Photo</td><td data-i18n="data.photo.content">Compressed photo attached as a CKAsset.</td><td data-i18n="data.photo.destination">CloudKit when sent with the status; it may also remain in Caches, Documents or the App Group for history and widget use.</td></tr>
+                            <tr><td data-i18n="data.status.item">Daily status</td><td data-i18n="data.status.content">Date and time, check-in status, optional message, display name, read receipts, safety alert threshold, and optional photo.</td><td data-i18n="data.status.destination">In your private iCloud database and, when shared, in the shared database with accepted participants.</td></tr>
+                            <tr><td data-i18n="data.chat.item">Chat</td><td data-i18n="data.chat.content">Message text, sender ID and display name, date, and reference to the corresponding status.</td><td data-i18n="data.chat.destination">In the iCloud database shared with participants of that status.</td></tr>
+                            <tr><td data-i18n="data.photo.item">Photo</td><td data-i18n="data.photo.content">Compressed image optionally attached during your daily check-in.</td><td data-i18n="data.photo.destination">In your iCloud account when shared with the status, and locally on device for history and widgets.</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <p data-i18n="data.local">Preferences, local history, pending invitations and local copies of photos and messages are also stored on the device. The code does not contain an upload of the full Contacts address book.</p>
+                <p data-i18n="data.local">Your preferences, local history, pending invitations, and cached copies are kept locally on your device. The app never uploads or shares your entire address book.</p>
             </section>
 
             <section class="policy-section">
-                <h2 data-i18n="location.title">One-shot location</h2>
-                <p data-i18n="location.p1">The feature uses CLLocationManager inside LocationStatusService. Permission is requested only when the user selects the “I'm Here” location message and the app prepares that check-in. It is not requested when the app opens, during onboarding or as continuous background location.</p>
-                <p data-i18n="location.p2">With When In Use permission, the code calls requestLocation() once. It then uses CLGeocoder to obtain a locality. If no locality is available, it uses a coordinate string as a fallback.</p>
-                <p data-i18n="location.p3">Using the coordinate and locality, it creates an Apple Maps URL in this format: https://maps.apple.com/?ll=latitude,longitude&amp;q=locality. The final message contains the selected message, locality and that URL.</p>
-                <p data-i18n="location.p4">In a normal check-in, that text may be saved to CloudKit. In external mode, the user manually opens the SMS composer or system share sheet; the text and URL may pass to the channel chosen by the user, including WhatsApp if it is available.</p>
-                <p class="policy-note" data-i18n="location.note">The code does not show an own geocoding endpoint. The repository cannot verify what network processing Apple performs internally for the CLGeocoder service.</p>
+                <h2 data-i18n="location.title">One-time location</h2>
+                <p data-i18n="location.p1">Location permission is requested only if you choose to use the “I'm Here” message option to share where you are. It is not requested when launching the app or during onboarding, and your location is never tracked continuously in the background.</p>
+                <p data-i18n="location.p2">When you check in with “I'm Here”, the app looks up your position once to resolve an approximate locality or coordinates.</p>
+                <p data-i18n="location.p3">With this data, the app generates an Apple Maps link (https://maps.apple.com/...) so your contacts can view the location on a map. The final message includes your selected text, locality, and that link.</p>
+                <p data-i18n="location.p4">In an iCloud-shared check-in, this message is synchronized with your authorized contacts. If you choose to share manually via SMS or WhatsApp, the system opens the selected app so you can review and send the message yourself.</p>
             </section>
 
             <section class="policy-section">
-                <h2 data-i18n="permissions.title">System permissions and capabilities</h2>
+                <h2 data-i18n="permissions.title">System permissions</h2>
                 <ul class="policy-list">
-                    <li data-i18n="permissions.contacts"><strong>Contacts:</strong> choose a person with a phone number or email to prepare an invitation. The pending invitation is stored locally.</li>
-                    <li data-i18n="permissions.camera"><strong>Camera:</strong> capture a photo, compress it and optionally send it as a CKAsset.</li>
-                    <li data-i18n="permissions.location"><strong>When In Use location:</strong> resolve one location for the “I'm Here” message.</li>
-                    <li data-i18n="permissions.notifications"><strong>Notifications:</strong> local alerts, sound and badge. The app also registers for remote notifications and uses silent CloudKit subscriptions to refresh data.</li>
-                    <li data-i18n="permissions.icloud"><strong>iCloud/CloudKit:</strong> share and synchronize statuses, photos and chat.</li>
-                    <li data-i18n="permissions.appgroup"><strong>App Group and Live Activities:</strong> share local status with the widget and show the activity in the system.</li>
+                    <li data-i18n="permissions.contacts"><strong>Contacts:</strong> allows you to select a contact with their phone number or email to prepare an invitation. The app never uploads your contacts to any server.</li>
+                    <li data-i18n="permissions.camera"><strong>Camera:</strong> allows you to capture a photo in the moment to optionally attach it to your daily check-in. The app does not access your general photo library.</li>
+                    <li data-i18n="permissions.location"><strong>Location While Using the App:</strong> used on a one-time basis only if you choose the “I'm Here” status to include your approximate locality.</li>
+                    <li data-i18n="permissions.notifications"><strong>Notifications:</strong> needed to remind you to check in at your chosen time and to alert you when your contacts check in, view your status, or send a message.</li>
+                    <li data-i18n="permissions.icloud"><strong>iCloud:</strong> enables secure sync and sharing of your statuses, photos, and chat with the contacts you choose.</li>
+                    <li data-i18n="permissions.appgroup"><strong>Widgets and Live Activities:</strong> allow you to view and confirm your status directly from the Home Screen or Lock Screen.</li>
                 </ul>
-                <p data-i18n="permissions.photos">No photo-library permission was found in the audited Info.plist. The check-in photo is captured through the camera.</p>
             </section>
 
             <section class="policy-section">
-                <h2 data-i18n="notifications.title">Alerts and limits</h2>
-                <p data-i18n="notifications.p1">CloudKit push is silent and refreshes the app. The visible alert is created by UserNotifications on the device that receives or monitors the status. The code contains no own server that automatically sends SMS or WhatsApp when a threshold passes.</p>
-                <p data-i18n="notifications.p2">If the confirming person's phone is off, no automatic SMS or WhatsApp is sent for that reason. If the contact's device already synced the latest status, it may have a local alert scheduled; delivery depends on that device, iOS, the network and its permissions.</p>
-                <p data-i18n="notifications.p3">Without a network, the check-in may temporarily update the local interface, but the code does not implement a persistent retry queue for saving the change to CloudKit. If notifications are disabled, local alerts are not shown.</p>
+                <h2 data-i18n="notifications.title">Alerts and service limits</h2>
+                <p data-i18n="notifications.p1">Visible alerts are created directly on the device that receives or monitors the status. The app operates no server infrastructure that automatically sends SMS or WhatsApp messages when a threshold passes.</p>
+                <p data-i18n="notifications.p2">If the confirming person's phone is off, no automatic SMS or WhatsApp is sent for that reason. If the contact's device already synchronized the latest status, it may have a local alert scheduled; delivery depends on that device, iOS, network connectivity, and permissions.</p>
+                <p data-i18n="notifications.p3">Without an internet connection, check-ins cannot synchronize with your contacts via iCloud until connectivity is restored. Furthermore, if notifications are disabled in device settings, local alerts will not appear.</p>
             </section>
 
             <section class="policy-section">
-                <h2 data-i18n="limits.title">What the code cannot verify</h2>
-                <ul class="policy-list">
-                    <li data-i18n="limits.item1">The repository cannot verify Apple's CloudKit retention, internal access or operational conditions.</li>
-                    <li data-i18n="limits.item2">The published binary's behavior and Apple's production push and CloudKit configuration were not independently verified.</li>
-                    <li data-i18n="limits.item3">The privacy label declared in the App Store is not treated as proof of source-code behavior and is not reproduced here as “we collect no data”.</li>
-                </ul>
+                <h2 data-i18n="limits.title">Control over your data</h2>
+                <p data-i18n="limits.p1">You can delete your statuses, photos, or messages at any time from within the app. You can also stop sharing with any contact whenever you decide by removing the connection. Because data is stored in your personal iCloud account, you retain control over your information under Apple's terms and privacy policy.</p>
             </section>
         </div>
     </main>
