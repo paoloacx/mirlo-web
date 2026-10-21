@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-
     <link rel="canonical" href="https://www.mirloapps.es/poetrycompanion/soporte.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/soporte.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/soporte.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/poetrycompanion/soporte.html">
+
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Support - Poetry companion by Mirlo Apps">
-    <meta name="twitter:description" content="Support - Poetry companion by Mirlo Apps">
+    <meta name="twitter:title" content="Soporte - Poetry Companion por Mirlo Apps">
+    <meta name="twitter:description" content="Centro de ayuda y soporte técnico para Poetry Companion.">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - Poetry companion by Mirlo Apps</title>
+    <title>Soporte - Poetry Companion - mirlo apps</title>
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -19,12 +22,11 @@
     <link rel="shortcut icon" href="../favicon.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -37,7 +39,7 @@
                     },
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-                        'serif': ['Crimson Pro', 'serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
                     }
                 }
             },
@@ -46,9 +48,9 @@
     </script>
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark');
         }
 
         function toggleDarkMode() {
@@ -63,126 +65,108 @@
     </script>
     <style>
         .serif-text {
-            font-family: 'Crimson Pro', serif;
+            font-family: 'Crimson Pro', Georgia, serif;
         }
 
         .tech-card {
             background: white;
             border-radius: 24px;
-            border: 1px solid rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.12);
             transition: all 0.3s ease;
         }
 
         .dark .tech-card {
-            background: #1e293b;
+            background: #18181b;
             border: 1px solid rgba(139, 92, 246, 0.2);
         }
     </style>
 </head>
 
-<body
-    class="bg-[#FAF9F6] dark:bg-slate-900 text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+<body class="bg-[#FAF9F6] dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
 
-    <header
-        class="fixed top-0 w-full bg-[#FAF9F6]/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../index.html"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
                 mirlo apps<span class="text-mirlo-orange">.</span>
             </a>
 
             <div class="flex items-center space-x-6">
-                <a href="index.html"
-                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-poetry-violet dark:hover:text-poetry-violet">
-                    Back to App
+                <a href="index.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-poetry-violet">
+                    Volver a la app
                 </a>
 
-                <label class="inline-flex items-center cursor-pointer">
+                <a href="en/soporte.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-poetry-violet hover:text-poetry-violet transition-colors">
+                    EN
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar tema">
                     <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                    <div
-                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-poetry-violet">
-                    </div>
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-poetry-violet"></div>
                 </label>
             </div>
         </nav>
     </header>
 
-    <div class="max-w-6xl mx-auto px-6 py-16 pt-32">
+    <div class="max-w-4xl mx-auto px-6 py-16 pt-36">
         <!-- Header -->
         <div class="text-center mb-16">
-            <div class="w-24 h-24 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-poetry-violet/20">
-                <img src="icon.webp" width="1024" height="1024" alt="Poetry companion" class="w-full h-full object-cover">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-poetry-violet/20">
+                <img src="icon.webp" width="1024" height="1024" alt="Poetry Companion" class="w-full h-full object-cover">
             </div>
-            <h1 class="text-5xl font-bold mb-4 serif-text">Support Center</h1>
-            <p class="text-xl text-gray-600 dark:text-gray-400">We're here to help you with Poetry companion: Editor and
-                creator of poems</p>
+            <h1 class="text-4xl sm:text-5xl font-bold mb-4 serif-text">Centro de soporte</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400">Estamos aquí para ayudarte con Poetry Companion</p>
         </div>
 
-        <!-- Quick Contact -->
-        <div
-            class="bg-gradient-to-br from-poetry-violet/10 to-poetry-violet/5 rounded-2xl p-8 mb-16 text-center border border-poetry-violet/10">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-poetry-violet/20 rounded-full mb-4">
-                <i class="fas fa-envelope text-3xl text-poetry-violet"></i>
+        <!-- Contacto rápido -->
+        <div class="bg-gradient-to-br from-poetry-violet/10 to-poetry-violet/5 rounded-3xl p-8 mb-16 text-center border border-poetry-violet/15">
+            <div class="inline-flex items-center justify-center w-14 h-14 bg-poetry-violet/20 rounded-full mb-4">
+                <i class="fas fa-envelope text-2xl text-poetry-violet"></i>
             </div>
-            <h2 class="text-2xl font-bold mb-3 serif-text">Need help?</h2>
-            <p class="text-gray-700 dark:text-gray-300 mb-6 font-medium">Our team responds in less than 24 hours</p>
-            <a href="mailto:soporte@mirloapps.es"
-                class="inline-flex items-center space-x-2 bg-poetry-violet text-white px-8 py-4 rounded-xl font-semibold hover:bg-poetry-violet/90 hover:scale-105 shadow-lg transition-all">
+            <h2 class="text-2xl font-bold mb-2 serif-text">¿Necesitas ayuda o tienes una sugerencia?</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm">Respondemos habitualmente en menos de 24 horas</p>
+            <a href="mailto:soporte@mirloapps.es" class="inline-flex items-center space-x-2 bg-poetry-violet text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-poetry-deep hover:scale-105 shadow-lg transition-all">
                 <span>soporte@mirloapps.es</span>
-                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-arrow-right text-xs"></i>
             </a>
         </div>
 
-        <!-- Contact Methods -->
+        <!-- Canales de contacto -->
         <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-center serif-text">Contact Us</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-                <!-- Email -->
+            <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 <div class="text-center p-8 tech-card hover:border-poetry-violet/40">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-poetry-violet/10 rounded-2xl mb-4">
-                        <i class="fas fa-envelope text-3xl text-poetry-violet"></i>
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-poetry-violet/10 rounded-2xl mb-4">
+                        <i class="fas fa-envelope text-2xl text-poetry-violet"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 serif-text">Email</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">The fastest way to get help</p>
-                    <a href="mailto:soporte@mirloapps.es" class="text-poetry-violet hover:underline font-medium">
+                    <h3 class="text-xl font-bold mb-1 serif-text">Correo electrónico</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">La vía más rápida para asistencia</p>
+                    <a href="mailto:soporte@mirloapps.es" class="text-poetry-violet font-medium hover:underline text-sm">
                         soporte@mirloapps.es
                     </a>
                 </div>
 
-                <!-- X (Twitter) -->
                 <div class="text-center p-8 tech-card hover:border-poetry-violet/40">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-poetry-violet/10 rounded-2xl mb-4">
-                        <i class="fab fa-x-twitter text-3xl text-poetry-violet"></i>
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-poetry-violet/10 rounded-2xl mb-4">
+                        <i class="fab fa-x-twitter text-2xl text-poetry-violet"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 serif-text">Twitter</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-3">Follow us for updates</p>
-                    <a href="https://x.com/PaoloAC" class="text-poetry-violet hover:underline font-medium">
+                    <h3 class="text-xl font-bold mb-1 serif-text">Twitter / X</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">Novedades y contacto directo</p>
+                    <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-poetry-violet font-medium hover:underline text-sm">
                         @PaoloAC
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Back Link -->
-        <div class="mt-12 text-center">
-            <a href="../index.html" class="text-poetry-violet hover:underline text-lg font-medium">
-                <i class="fas fa-arrow-left mr-2"></i>
-                Back to Mirlo Apps
-            </a>
+        <!-- Enlaces adicionales -->
+        <div class="text-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
+            <a href="index.html" class="hover:text-poetry-violet transition-colors">Poetry Companion</a>
+            <span>·</span>
+            <a href="privacidad.html" class="hover:text-poetry-violet transition-colors">Privacidad</a>
+            <span>·</span>
+            <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-poetry-violet transition-colors">Cookies</a>
         </div>
     </div>
 
-        <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-            <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:underline">Cookies</a>
-        </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
-        });
-    </script>
     <script src="/cookies.js" defer></script>
 </body>
 

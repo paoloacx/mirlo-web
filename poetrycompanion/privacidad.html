@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/poetrycompanion/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/privacidad.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/poetrycompanion/privacidad.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - Poetry Companion - mirlo apps</title>
+    <meta name="description" content="Política de privacidad de Poetry Companion: almacenamiento privado, procesamiento de versos, permisos y protección de datos.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacidad - Poetry Companion">
+    <meta name="twitter:description" content="Conoce cómo Poetry Companion protege tus poemas, tu voz y tu privacidad.">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'poetry-violet': '#8B5CF6',
+                        'poetry-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        .serif-text {
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        .policy-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.12);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .policy-card {
+            background: #18181b;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-poetry-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-poetry-violet">
+                    Volver a Poetry Companion
+                </a>
+
+                <a href="en/privacidad.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-poetry-violet hover:text-poetry-violet transition-colors">
+                    EN
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar tema">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-poetry-violet"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-36 pb-24">
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-poetry-violet/10 text-poetry-violet text-xs font-bold uppercase tracking-wider mb-4">
+                <i class="fas fa-shield-halved"></i>
+                <span>Transparencia y Privacidad</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                Privacidad en Poetry Companion
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Tus creaciones literarias te pertenecen por completo. Te explicamos con claridad cómo tratamos los datos en la aplicación.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Sección 1 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Almacenamiento de tus poemas</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Tus poemas, libros, notas de corrección, borradores y versiones se guardan de forma predeterminada en la memoria local de tu dispositivo. Si tienes activada la sincronización de iCloud en tu cuenta de Apple, la información se sincroniza únicamente a través de tu propia base de datos privada en los servidores de Apple.
+                </p>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    Mirlo Apps no opera servidores propios de almacenamiento ni tiene acceso en ningún momento a los textos que escribes.
+                </p>
+            </div>
+
+            <!-- Sección 2 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Uso de servicios de IA: qué viaja, cuándo y cómo evitarlo</h2>
+                </div>
+                <div class="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>
+                        <strong>Qué texto sale:</strong> Únicamente el texto que tú introduces expresamente en el campo de tema, idea o estrofa en la pantalla de generación ("Theme, emotion, or concept..."), junto con los parámetros poéticos que elijas (tono, tipo de estrofa o métrica). Tu biblioteca de poemas guardados, tus libros y tus notas privadas jamás se envían ni se comparten.
+                    </p>
+                    <p>
+                        <strong>Cuándo sale:</strong> Solo en el momento en que pulsas voluntariamente el botón para generar versos o solicitar una corrección estilística. Mientras escribes a mano, editas, lees o consultas la métrica silábica de tus versos, no se envía ningún texto a ningún servicio de IA.
+                    </p>
+                    <p>
+                        <strong>Hacia qué servicio se envía:</strong> La generación en la nube se procesa mediante la API de Google Gemini para devolver la propuesta poética solicitada. El texto se procesa de forma transitoria y no se utiliza para entrenar modelos ni para publicidad.
+                    </p>
+                    <div class="p-4 rounded-xl bg-poetry-violet/5 border border-poetry-violet/15 text-xs sm:text-sm">
+                        <strong class="text-gray-900 dark:text-white block mb-1">¿Cómo evitar que salga texto hacia la nube?</strong>
+                        <ul class="list-disc list-inside space-y-1.5 text-gray-600 dark:text-gray-300">
+                            <li><strong>Uso puramente manual:</strong> Puedes usar Poetry Companion al 100% de forma local como cuaderno, editor sin distracciones, analizador de métrica silábica y gestor de poemarios sin pulsar nunca el generador de versos.</li>
+                            <li><strong>Generación en el dispositivo:</strong> En los ajustes de la app (en la opción Pro para dispositivos con soporte del sistema), puedes desactivar el interruptor de <em>Google Cloud AI</em> y activar <em>Apple Foundation Model</em> para que el modelo se ejecute íntegramente en la memoria de tu dispositivo, sin enviar nada a la nube.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Búsqueda de rimas y sinónimos</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Al buscar rimas o sinónimos de una palabra concreta, la aplicación envía de forma aislada ese término a fuentes lingüísticas de referencia (como Datamuse para inglés y diccionarios de referencia para español).
+                </p>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    En esta consulta jamás se envía el poema completo, ni datos de tu identidad ni tu ubicación.
+                </p>
+            </div>
+
+            <!-- Sección 4 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Micrófono y grabaciones de voz</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Si decides utilizar el dictado por voz para componer o grabar tu lectura de un poema para valorar su musicalidad, la aplicación te solicitará permiso para acceder al micrófono:
+                </p>
+                <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-2 text-xs"></i> <span><strong>Dictado:</strong> se procesa mediante el motor de reconocimiento de voz de Apple en tu dispositivo.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-2 text-xs"></i> <span><strong>Audio de recitado:</strong> el archivo de sonido grabado se guarda exclusivamente en tu dispositivo (y en tu iCloud personal si está activo). Mirlo Apps nunca escucha ni almacena tus grabaciones.</span></li>
+                </ul>
+            </div>
+
+            <!-- Sección 5 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Cámara y fototeca</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    La función de escanear notas permite fotografiar un poema escrito a mano o en un libro para convertirlo en texto. El reconocimiento óptico de caracteres (OCR) se ejecuta de forma local en tu iPhone o iPad. Ninguna fotografía tomada o seleccionada de tu fototeca se envía a servidores externos.
+                </p>
+            </div>
+
+            <!-- Sección 6 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Sin publicidad ni rastreadores</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Poetry Companion no incluye redes publicitarias, ni herramientas de seguimiento comercial entre aplicaciones, ni sistemas de análisis invasivos. No recopilamos perfiles de usuario ni vendemos información personal bajo ninguna circunstancia.
+                </p>
+            </div>
+
+            <!-- Sección 7 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet/10 text-poetry-violet flex items-center justify-center font-bold">
+                        <i class="fas fa-trash-can"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Control y eliminación de datos</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Puedes editar, archivar o borrar cualquier poema, versión o grabación de audio en cualquier momento directamente desde la interfaz de la app. Si eliminas la aplicación y borras los datos sincronizados en tu cuenta de iCloud, toda tu información se suprime de manera irreversible.
+                </p>
+            </div>
+
+            <!-- Contacto -->
+            <div class="policy-card p-8 bg-gradient-to-br from-poetry-violet/10 to-transparent border border-poetry-violet/20">
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-poetry-violet text-white flex items-center justify-center font-bold">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">¿Tienes alguna consulta?</h2>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    Si tienes dudas sobre el funcionamiento de la app o el tratamiento de tus datos, puedes escribirnos en cualquier momento a:
+                </p>
+                <a href="mailto:soporte@mirloapps.es" class="inline-flex items-center space-x-2 text-poetry-violet font-semibold hover:underline">
+                    <span>soporte@mirloapps.es</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="index.html" class="hover:text-poetry-violet transition-colors">Poetry Companion</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-poetry-violet transition-colors">Cookies</a>
+                <a href="soporte.html" class="hover:text-poetry-violet transition-colors">Soporte</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-poetry-violet text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>

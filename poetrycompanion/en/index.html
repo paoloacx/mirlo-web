@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/poetrycompanion/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/poetrycompanion/">
+
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6758765026">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Poetry Companion - Your Pocket Literary Workshop">
+    <meta name="twitter:description" content="Write, refine, and perfect your poetry. Real-time meter analysis, rhyme dictionary, synonyms, and version tree.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/poetrycompanion/icon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Companion - Poetry Workshop, Meter & Rhymes for iOS</title>
+    <meta name="description" content="Write, measure poetic meter in real time, explore rhymes and synonyms, and organize poetry books. Your personal workshop on iPhone and iPad.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/poetrycompanion/en/">
+    <meta property="og:title" content="Poetry Companion - Your Pocket Literary Workshop">
+    <meta property="og:description" content="Write, refine, and perfect your poems with live syllable counting, rhymes, synonyms, and draft history.">
+    <meta property="og:image" content="https://www.mirloapps.es/poetrycompanion/icon.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'poetry-violet': '#8B5CF6',
+                        'poetry-deep': '#7C3AED',
+                        'poetry-dark': '#6D28D9',
+                        'poetry-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .serif-text {
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #FAF9F6;
+        }
+
+        .dark .bg-grain {
+            background-color: #09090b;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .poetry-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.12);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .poetry-card {
+            background: #18181b;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #2d1b4e 0%, #170d2b 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data: SoftwareApplication + FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Poetry Companion",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later",
+          "applicationCategory": "ProductivityApplication",
+          "applicationSubCategory": "Books & Reference",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Free download with workshop tools, meter analysis, and notebooks. Optional upgrades available in-app."
+          },
+          "url": "https://www.mirloapps.es/poetrycompanion/en/",
+          "downloadUrl": "https://apps.apple.com/app/poetry-companion/id6758765026",
+          "softwareVersion": "1.1.1",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "en",
+          "featureList": [
+            "Real-time syllable counting and meter analysis",
+            "Built-in rhyme and synonym dictionary",
+            "Organize poems into themed books and collections",
+            "Version tree to save and compare every draft",
+            "Focus mode for distraction-free reading and writing",
+            "Audio recording for recited poems",
+            "Native Home Screen widgets for featured verses",
+            "Private synchronization with personal iCloud"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Poetry Companion free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app includes a free option to write, analyze meter, and organize poetry books. An optional Pro upgrade is available for creators who want expanded features."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where are my poems stored?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your poems are stored on your device and in your iCloud, and you can use the app completely locally without sharing your poems."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I write poems entirely by hand without suggestions?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The app acts as a complete literary notebook: clean editor, distraction-free focus mode, live syllable counting, and rhyme searches so you can compose at your own pace."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it work offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can write, read your books, edit verses, and browse past versions anytime without internet. Only external dictionary lookups or optional suggestion features require network access."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I hear how my poem sounds?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can record your own recitation to evaluate cadence, rhythm, and acoustic flow alongside the written text."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-poetry-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Apps</a></li>
+                <li><a href="#what-is-it" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">What is it</a></li>
+                <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">How it works</a></li>
+                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Features</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">FAQ</a></li>
+                <li><a href="#changes" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Changelog</a></li>
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Support</a></li>
+                <li><a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-poetry-violet hover:text-poetry-violet transition-colors">ES</a></li>
+
+                <!-- Dark Mode Toggle -->
+                <li>
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-poetry-violet"></div>
+                    </label>
+                </li>
+
+                <!-- Download button -->
+                <li>
+                    <a href="https://apps.apple.com/app/poetry-companion/id6758765026" class="btn-plastic text-white px-5 py-2.5 rounded-full text-xs font-semibold inline-flex items-center space-x-2 transition-all">
+                        <i class="fab fa-apple text-sm"></i>
+                        <span>Download</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">ES</a>
+                <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-9 h-5 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-poetry-violet"></div>
+                </label>
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 p-2" aria-label="Open menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="overflow-x-hidden">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-poetry-violet/10 text-poetry-violet text-xs font-bold uppercase tracking-wider">
+                        <i class="fas fa-feather-pointed"></i>
+                        <span>Your pocket literary workshop</span>
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight serif-text leading-tight text-gray-900 dark:text-white">
+                        Write, refine, and bring your verses to life.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        The writing companion for poets and readers. Analyze meter in real time, find rhymes and synonyms, organize poetry books, and preserve every draft.
+                    </p>
+
+                    <!-- Feature Pills -->
+                    <div class="flex flex-wrap gap-2 justify-center lg:justify-start text-xs font-medium text-gray-600 dark:text-gray-300 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-poetry-violet mr-1.5"></i>Live meter analysis</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-poetry-violet mr-1.5"></i>Rhymes & synonyms</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-poetry-violet mr-1.5"></i>Version tree</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-poetry-violet mr-1.5"></i>Stored on device & iCloud</span>
+                    </div>
+
+                    <!-- App Store Button -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <a href="https://apps.apple.com/app/poetry-companion/id6758765026" class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                            <i class="fab fa-apple text-3xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider opacity-80">Download on the</div>
+                                <div class="font-bold text-lg leading-tight">App Store</div>
+                            </div>
+                        </a>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">For iPhone & iPad</span>
+                    </div>
+                </div>
+
+                <!-- Real App Screenshot Mockup -->
+                <div class="flex-1 relative flex justify-center w-full max-w-sm lg:max-w-md">
+                    <div class="absolute -inset-4 bg-poetry-violet/20 blur-3xl rounded-full"></div>
+                    <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                        <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[290px] mx-auto">
+                            <img src="../screen1.webp" width="600" height="1299" alt="Poetry Companion - Library and featured verses" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is it / What you can do -->
+        <section id="what-is-it" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                        Everything you need to write poetry
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Crafted for anyone drawn to the rhythm of words: from capturing a fleeting spark to polishing an entire collection.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-music text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Real-Time Meter Analysis</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Watch poetic syllable counts update as you type, helping you tune rhythm and cadence with precision.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-book-bookmark text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Rhymes & Synonyms</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Instantly find perfect rhymes, slant rhymes, and nuanced synonyms to expand your poetic vocabulary.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-layer-group text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Version Tree</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Experiment fearlessly. Every revision is preserved in a version tree so you can compare and restore any draft.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-book text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Books & Collections</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Group your poems into themed collections, customize covers, and keep your poetic universe organized.
+                        </p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-microphone-lines text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Recitation Recording</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Record yourself reciting each poem to hear acoustic flow, pauses, and cadence alongside the written text.
+                        </p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="poetry-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
+                            <i class="fas fa-feather text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Focus Mode</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            A serene, distraction-free environment dedicated solely to reading or composing your verses in peace.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works in 3 steps -->
+        <section id="how-it-works" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">Simple & Intuitive</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        How it works in 3 steps
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        From your first intuition to a finished piece in your library.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-poetry-violet text-white font-bold text-xl flex items-center justify-center mb-6">
+                            1
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Start with an idea</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Type freely, dictate verses with your voice, scan paper notes, or explore classic poetic forms and themes.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-poetry-violet text-white font-bold text-xl flex items-center justify-center mb-6">
+                            2
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Tune meter & rhymes</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Check syllable counts in real time, explore rhymes or synonyms, and create alternative drafts without losing your original.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-poetry-violet text-white font-bold text-xl flex items-center justify-center mb-6">
+                            3
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Save, listen & share</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Organize your poems into books, record spoken recitations to feel the acoustic cadence, and pin verses to Home Screen widgets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Screenshots Showcase -->
+        <section class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">A refined experience</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Inside the app
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Every screen is thoughtfully designed for writing comfort and the beauty of verse.
+                    </p>
+                </div>
+
+                <!-- Horizontal scroll gallery of real screenshots -->
+                <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar">
+                    <!-- Screenshot 1 -->
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[280px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/1299]">
+                                <img src="../screen1.webp" loading="lazy" width="600" height="1299" alt="Poem library and featured verses" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Library & featured verses</p>
+                    </div>
+
+                    <!-- Screenshot 2 -->
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[280px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/1299]">
+                                <img src="../screen2.webp" loading="lazy" width="600" height="1299" alt="Poem creation with ideas, dictation, and scanning" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Inspiration, dictation & notes</p>
+                    </div>
+
+                    <!-- Screenshot 3 -->
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[280px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/1299]">
+                                <img src="../screen3.webp" loading="lazy" width="600" height="1299" alt="Real-time meter analysis line by line" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Live meter & syllable analysis</p>
+                    </div>
+
+                    <!-- Screenshot 4 -->
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[280px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/1299]">
+                                <img src="../screen4.webp" loading="lazy" width="600" height="1299" alt="Poem editor and version tree" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Editor & version tree</p>
+                    </div>
+
+                    <!-- Screenshot 5 -->
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[280px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/1299]">
+                                <img src="../screen5.webp" loading="lazy" width="600" height="1299" alt="Tone, style, and metric presets" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Tones, styles & poetic forms</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System & iOS Features -->
+        <section id="features" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                        Tailored for iOS
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Designed to make writing a natural, delightful part of your day.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
+                        <i class="fas fa-table-cells-large text-2xl text-poetry-violet mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Verse Widgets</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Display random lines from your own poems right on your Home Screen to keep inspiration near.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
+                        <i class="fas fa-cloud text-2xl text-poetry-violet mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">iCloud Sync</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Your poems sync directly between your iPhone and iPad via your personal iCloud account.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
+                        <i class="fas fa-shield-halved text-2xl text-poetry-violet mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Your Words Stay Yours</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Your poems are stored on your device and in your iCloud, and you can use the app completely locally.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
+                        <i class="fas fa-bell text-2xl text-poetry-violet mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Live Activities</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Track background progress right from the Dynamic Island or Lock Screen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">Got Questions?</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Clear, straightforward answers.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
+                            <span>Is Poetry Companion free?</span>
+                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            The app includes a free option to write, analyze meter, and organize poetry books. An optional Pro upgrade is available for creators who want expanded features.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
+                            <span>Where are my poems stored?</span>
+                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Your poems are stored on your device and in your iCloud, and you can use the app completely locally without sharing your poems.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
+                            <span>Can I write poems entirely by hand without suggestions?</span>
+                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Absolutely. The app serves as a full literary notebook: enjoy a clean editor, distraction-free focus mode, live syllable counts, and rhyme lookups to compose at your own pace.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
+                            <span>Does it work offline?</span>
+                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes. You can write, read your books, edit verses, and browse past drafts at any time without internet. Only external dictionary queries or optional suggestions require connectivity.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
+                            <span>Can I hear how my poem sounds?</span>
+                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes. You can record your own voice reciting each poem to check musicality, pauses, and cadence alongside the written text.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog Section -->
+        <section id="changes" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">Evolution</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Version History
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Continuous refinements to enhance your writing experience.
+                    </p>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Version 1.1.1 -->
+                    <div class="relative pl-8 border-l-2 border-poetry-violet">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-poetry-violet ring-4 ring-[#FAF9F6] dark:ring-[#09090b]"></div>
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <h3 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Version 1.1.1</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-poetry-violet/10 text-poetry-violet font-semibold">Latest</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-3 text-xs"></i> <span>Integrated search to locate any poem or verse instantly.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-3 text-xs"></i> <span>Streamlined settings layout and clearer organization.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-3 text-xs"></i> <span>Higher fidelity audio recording for recitations.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-3 text-xs"></i> <span>Refined inspiration and style recommendations.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-poetry-violet mt-1 mr-3 text-xs"></i> <span>Overall stability, performance, and smoothness enhancements.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Version 1.1 -->
+                    <div class="relative pl-8 border-l-2 border-gray-300 dark:border-gray-700">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-[#FAF9F6] dark:ring-[#09090b]"></div>
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <h3 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Version 1.1</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Focus mode for reading, editing, and composing without distractions.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Idea and inspiration history used during poem creation.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Review instructions and guidelines used for shaping each poem.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Live visual updates on Dynamic Island while drafting in the background.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Voice recording alongside text to assess cadence and rhythm.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>New Home Screen widgets displaying random lines from your books.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Bug fixes and efficiency optimizations.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Download Banner -->
+        <section class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl overflow-hidden shadow-xl border-2 border-poetry-violet/20">
+                    <img src="../icon.webp" width="1024" height="1024" alt="Poetry Companion" class="w-full h-full object-cover">
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                    Begin your literary notebook today
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
+                    Available for free on iPhone and iPad. Measure, refine, and preserve your verses.
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://apps.apple.com/app/poetry-companion/id6758765026" class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                        <i class="fab fa-apple text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase tracking-wider opacity-80">Free download on</div>
+                            <div class="font-bold text-lg leading-tight">App Store</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="#changes" class="hover:text-poetry-violet transition-colors">Changelog</a>
+                <a href="privacidad.html" class="hover:text-poetry-violet transition-colors">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-poetry-violet transition-colors">Cookies</a>
+                <a href="soporte.html" class="hover:text-poetry-violet transition-colors">Support</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-poetry-violet text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Close menu">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Apps</a>
+        <a href="#what-is-it" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">What is it</a>
+        <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Features</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">FAQ</a>
+        <a href="#changes" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Changelog</a>
+        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Support</a>
+        <a href="privacidad.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Privacy</a>
+        <a href="../index.html" class="text-xl px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300" onclick="toggleMenu()">Español</a>
+    </div>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>
