@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.mirloapps.es/ImOK/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/" />
+  </url>
+  <url>
+    <loc>https://www.mirloapps.es/ImOK/en/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/" />
+  </url>
+  <url>
+    <loc>https://www.mirloapps.es/ImOK/soporte.html</loc>
+    <lastmod>2026-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mirloapps.es/ImOK/privacidad.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/privacidad.html" />
+  </url>
+  <url>
+    <loc>https://www.mirloapps.es/ImOK/en/privacidad.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/privacidad.html" />
+  </url>
+</urlset>

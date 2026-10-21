@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10b981">
+    <link rel="canonical" href="https://www.mirloapps.es/ImOK/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/privacidad.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/privacidad.html">
+    <meta name="description" content="Política específica de privacidad de Estoy bien: Aviso diario basada en el código auditado de la app.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="privacy.css">
+    <!-- UNVERIFIED: The source code shows CloudKit private/shared database operations and no own app server. Apple's retention, access and operational controls outside this project are not verifiable from the repository. -->
+    <!-- UNVERIFIED: This page describes the source project; the compiled App Store binary, production provisioning and CloudKit dashboard were not independently inspected. -->
+    <title>Privacidad de Estoy bien: Aviso diario — mirlo apps</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Navegación principal">
+            <a class="brand" href="index.html">mirlo apps<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav.app">Estoy bien</a>
+                <a href="soporte.html" data-i18n="nav.support">Soporte</a>
+                <a href="en/privacidad.html" lang="en" data-i18n="nav.english">EN</a>
+                <label class="theme-switch" aria-label="Cambiar tema"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label>
+            </div>
+            <div class="mobile-controls">
+                <a class="language" href="en/privacidad.html" lang="en" data-i18n="nav.english">EN</a>
+                <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="policy-main">
+        <div class="policy-shell">
+            <header class="policy-header">
+                <div class="eyebrow" data-i18n="header.eyebrow">Política específica de la app</div>
+                <h1 data-i18n="header.title">Privacidad de Estoy bien: Aviso diario</h1>
+                <p data-i18n="header.lede">Esta página describe lo que aparece en el código fuente auditado de la app. No afirma más de lo que puede comprobarse en el proyecto.</p>
+            </header>
+
+            <section class="policy-section">
+                <h2 data-i18n="storage.title">Dónde se guardan los datos</h2>
+                <p data-i18n="storage.p1">La app usa CloudKit de Apple mediante el contenedor iCloud.com.paoloac.imok.I-m-OK. Los estados, los mensajes del chat y las fotos compartidas se guardan en registros de CloudKit: la base privada del propietario y la base compartida de los contactos que han aceptado la invitación.</p>
+                <!-- UNVERIFIED: The source verifies that the project has no own server endpoint; it cannot independently verify what the developer can access through Apple services outside the app. -->
+                <p data-i18n="storage.p2">El desarrollador no recibe ni almacena estos datos en un servidor propio. Según el flujo que aparece en el código, los datos se guardan mediante los servicios CloudKit de Apple asociados a las cuentas de iCloud que participan.</p>
+                <p class="policy-note" data-i18n="storage.note">El código no contiene un backend propio, una API web propia, Firebase, Sentry, SDK de analítica, SDK de anuncios ni StoreKit. Esta comprobación se ha hecho sobre el código y los archivos del proyecto, no sobre el binario compilado ni sobre la configuración de producción de Apple.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2 data-i18n="data.title">Qué datos usa CloudKit</h2>
+                <div class="policy-table-wrap">
+                    <table class="policy-table">
+                        <thead><tr><th data-i18n="data.header.item">Dato</th><th data-i18n="data.header.content">Contenido comprobado</th><th data-i18n="data.header.destination">Destino</th></tr></thead>
+                        <tbody>
+                            <tr><td data-i18n="data.status.item">Estado diario</td><td data-i18n="data.status.content">Fecha, estado, mensaje, nombre visible, personas que lo han visto, umbral de aviso, enlaces de vuelta y foto opcional.</td><td data-i18n="data.status.destination">DailyStatus en la base privada del propietario y, al compartir, en la base compartida de los participantes aceptados.</td></tr>
+                            <tr><td data-i18n="data.chat.item">Chat</td><td data-i18n="data.chat.content">Texto, senderID, senderName, fecha y referencia al estado padre.</td><td data-i18n="data.chat.destination">Registros Message de CloudKit dentro de la zona del estado, que puede ser privada o compartida según el flujo.</td></tr>
+                            <tr><td data-i18n="data.photo.item">Foto</td><td data-i18n="data.photo.content">Foto comprimida y adjunta como CKAsset.</td><td data-i18n="data.photo.destination">CloudKit cuando se envía con el estado; también puede quedar en caché, Documents o App Group para historial y widget.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p data-i18n="data.local">Las preferencias, el historial local, las invitaciones pendientes y las copias locales de fotos y mensajes también se guardan en el dispositivo. El código no contiene una subida del libro completo de Contactos.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2 data-i18n="location.title">Ubicación puntual</h2>
+                <p data-i18n="location.p1">La función usa CLLocationManager dentro de LocationStatusService. El permiso se solicita solo cuando la persona selecciona el mensaje de ubicación “Estoy aquí” y la app va a preparar ese check-in. No se solicita al abrir la app, durante el onboarding ni como ubicación continua en segundo plano.</p>
+                <p data-i18n="location.p2">Con el permiso When In Use, el código llama una vez a requestLocation(). Después usa CLGeocoder para obtener una localidad. Si no consigue una localidad, usa una representación de las coordenadas como alternativa.</p>
+                <p data-i18n="location.p3">Con la coordenada y la localidad crea una URL de Apple Maps con este formato: https://maps.apple.com/?ll=latitud,longitud&amp;q=localidad. El texto final del mensaje contiene el mensaje elegido, la localidad y esa URL.</p>
+                <p data-i18n="location.p4">En un check-in normal, ese texto puede guardarse en CloudKit. En el modo externo, el usuario abre manualmente el composer de SMS o la hoja de compartir del sistema; el texto y la URL pueden pasar al canal que el usuario elija, incluido WhatsApp si aparece disponible.</p>
+                <p class="policy-note" data-i18n="location.note">El código no muestra un endpoint propio para la geocodificación. No puedo comprobar desde el repositorio qué tratamiento de red realiza internamente el servicio de Apple asociado a CLGeocoder.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2 data-i18n="permissions.title">Permisos y capacidades del sistema</h2>
+                <ul class="policy-list">
+                    <li data-i18n="permissions.contacts"><strong>Contactos:</strong> elegir una persona con teléfono o email para preparar una invitación. La invitación pendiente se guarda localmente.</li>
+                    <li data-i18n="permissions.camera"><strong>Cámara:</strong> capturar una foto, comprimirla y enviarla opcionalmente como CKAsset.</li>
+                    <li data-i18n="permissions.location"><strong>Ubicación When In Use:</strong> resolver una única ubicación para el mensaje “Estoy aquí”.</li>
+                    <li data-i18n="permissions.notifications"><strong>Notificaciones:</strong> alertas, sonido y badge locales. La app también se registra para remote notifications y usa suscripciones silenciosas de CloudKit para refrescar datos.</li>
+                    <li data-i18n="permissions.icloud"><strong>iCloud/CloudKit:</strong> compartir y sincronizar los estados, las fotos y el chat.</li>
+                    <li data-i18n="permissions.appgroup"><strong>App Group y Live Activities:</strong> compartir el estado local con el widget y mostrar la actividad en el sistema.</li>
+                </ul>
+                <p data-i18n="permissions.photos">No se ha encontrado un permiso de biblioteca de fotos en el Info.plist auditado. La foto del check-in se captura mediante la cámara.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2 data-i18n="notifications.title">Avisos y límites</h2>
+                <p data-i18n="notifications.p1">El push de CloudKit es silencioso y sirve para refrescar la app. La alerta visible la crea UserNotifications en el dispositivo que recibe o monitoriza el estado. El código no contiene un servidor propio que envíe automáticamente SMS o WhatsApp cuando vence un plazo.</p>
+                <p data-i18n="notifications.p2">Si el teléfono de quien confirma está apagado, no se envía por ese motivo un SMS o WhatsApp automático. Si el dispositivo del contacto ya sincronizó el último estado, puede tener programado un aviso local; su entrega depende de ese dispositivo, de iOS, de la red y de sus permisos.</p>
+                <p data-i18n="notifications.p3">Sin red, el check-in puede actualizar temporalmente la interfaz local, pero el código no implementa una cola persistente de reintento para guardar el cambio en CloudKit. Si se desactivan las notificaciones, los avisos locales no se muestran.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2 data-i18n="limits.title">Qué no se puede afirmar desde el código</h2>
+                <ul class="policy-list">
+                    <li data-i18n="limits.item1">No se puede verificar desde el repositorio la retención, el acceso interno o las condiciones operativas de Apple CloudKit.</li>
+                    <li data-i18n="limits.item2">No se puede verificar el comportamiento del binario publicado ni la configuración de producción de push y CloudKit.</li>
+                    <li data-i18n="limits.item3">La etiqueta de privacidad declarada en App Store no se considera una prueba del comportamiento del código y no se reproduce aquí como “no recopilamos datos”.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer policy-footer">
+        <div class="wrap footer-row">
+            <a class="brand" href="index.html">mirlo apps<span>.</span></a>
+            <span data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span>
+            <div class="footer-links">
+                <a href="index.html" data-i18n="footer.app">Estoy bien</a>
+                <a href="soporte.html" data-i18n="footer.support">Soporte</a>
+                <a href="en/privacidad.html" lang="en" data-i18n="footer.english">English</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a>
+                <a href="https://x.com/PaoloAC" aria-label="X">X</a>
+                <a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button type="button" onclick="toggleMenu()" aria-label="Cerrar menú">×</button>
+        <a href="index.html" onclick="toggleMenu()" data-i18n="nav.app">Estoy bien</a>
+        <a href="soporte.html" onclick="toggleMenu()" data-i18n="nav.support">Soporte</a>
+        <a href="en/privacidad.html" lang="en" onclick="toggleMenu()" data-i18n="nav.english.full">Versión en inglés</a>
+        <div class="mobile-theme"><span data-i18n="nav.dark">Modo oscuro</span><label class="theme-switch" aria-label="Cambiar tema"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div>
+    </div>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+        function toggleDarkMode() { const isDark = document.documentElement.classList.toggle('dark'); localStorage.theme = isDark ? 'dark' : 'light'; document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark); }
+        function toggleMenu() { const menu = document.getElementById('mobile-menu'); const isOpen = menu.classList.toggle('is-open'); menu.setAttribute('aria-hidden', String(!isOpen)); }
+        document.addEventListener('DOMContentLoaded', () => { const isDark = document.documentElement.classList.contains('dark'); document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark); });
+    </script>
+    <script src="/cookies.js" defer></script>
+</body>
+</html>
