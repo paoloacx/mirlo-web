@@ -2,19 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.mirloapps.es/ImOK/en/">
     <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/">
     <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/">
     <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/">
 
+    <!-- Safari Smart App Banner -->
     <meta name="apple-itunes-app" content="app-id=6757763851">
-    <meta name="description" content="I'm OK: Daily Check-in helps you confirm that you are well and share it with your family when you live alone, travel or go out on your own.">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="I'm OK: Daily Check-in">
-    <meta name="twitter:description" content="Confirm that you are well with one tap and share the update with the people you choose.">
+    <meta name="twitter:title" content="I'm OK: Daily Check-in - mirlo apps">
+    <meta name="twitter:description" content="Confirm that you are well with one tap and share the update with the people you choose. Designed for families, solo travelers, and outdoor activities.">
     <meta name="twitter:image" content="https://www.mirloapps.es/ImOK/imok.webp">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm OK: Daily Check-in — mirlo apps</title>
+    <meta name="description" content="I'm OK: Daily Check-in helps you confirm that you are well and share it with your family when you live alone, travel, or go out on your own.">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/ImOK/en/">
     <meta property="og:title" content="I'm OK: Daily Check-in">
@@ -26,8 +32,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="shortcut icon" href="../../favicon.ico">
-    <link rel="stylesheet" href="../styles.css">
 
+    <!-- Schema.org Structured Data: SoftwareApplication + FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,10 +41,18 @@
         {
           "@type": "SoftwareApplication",
           "name": "I'm OK: Daily Check-in",
-          "operatingSystem": "iOS 17 or later",
-          "softwareVersion": "1.2",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later",
+          "applicationCategory": "LifestyleApplication",
+          "applicationSubCategory": "Safety & Social",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Free download with daily check-ins and shared status updates."
+          },
           "url": "https://www.mirloapps.es/ImOK/en/",
           "downloadUrl": "https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851",
+          "softwareVersion": "1.2",
           "author": {
             "@type": "Person",
             "name": "Paolo Alvarez"
@@ -51,10 +65,11 @@
           "inLanguage": "en",
           "featureList": [
             "Daily check-in with one tap",
-            "Widget and reminders",
-            "Messages, photos and an I have arrived status",
-            "Check-in history",
-            "Chat with chosen contacts"
+            "Home Screen widgets and daily reminders",
+            "Custom messages, photos, and I have arrived status",
+            "Complete check-in history",
+            "Private chat with chosen contacts",
+            "Private iCloud sync with no app servers"
           ]
         },
         {
@@ -73,7 +88,7 @@
               "name": "Who receives the update?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It is shared with the contacts you choose and who accept the invitation."
+                "text": "It is shared exclusively with the contacts you choose and who accept the invitation."
               }
             },
             {
@@ -81,7 +96,7 @@
               "name": "Can I send a message or photo?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. You can add a message, a photo, or use statuses such as I'm here and I have arrived."
+                "text": "Yes. You can add a message, a photo, or use quick statuses such as I'm here and I have arrived."
               }
             },
             {
@@ -89,7 +104,15 @@
               "name": "What if the phone is off or has no network?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The app needs the phone to be on, connected to a network and allowed to show notifications. Otherwise, the update may not arrive or appear."
+                "text": "The app needs the phone to be on, connected to a network, and allowed to show notifications. If there is no network, the update will send once connectivity returns."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I notify via SMS or WhatsApp?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can open the update and share it manually via SMS or WhatsApp with people who don't use the app."
               }
             },
             {
@@ -97,7 +120,7 @@
               "name": "Is it an emergency service?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. It is a time-based check-in and does not guarantee delivery or replace emergency services."
+                "text": "No. It is a personal daily reassurance check-in; it does not guarantee delivery or replace public emergency services (911/112)."
               }
             }
           ]
@@ -106,282 +129,663 @@
     }
     </script>
 
-    <title>I'm OK: Daily Check-in — mirlo apps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'imok-primary': '#F59E0B',
+                        'imok-dark': '#D97706',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #f9fafb;
+        }
+
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-plastic:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            border: 2px solid #F59E0B;
+            color: #F59E0B;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <header class="site-header">
-        <nav class="nav" aria-label="Main navigation">
-            <a class="brand" href="../../index.html">mirlo apps<span>.</span></a>
-            <div class="nav-links">
-                <a href="../../apps/index.html" data-i18n="nav.apps">Apps</a>
-                <a href="../../index.html#nosotros" data-i18n="nav.about">About Mirlo</a>
-                <a href="../../index.html#contacto" data-i18n="nav.contact">Contact</a>
-                <a href="#what-is-it" data-i18n="nav.what">What is it?</a>
-                <a href="#how-it-works" data-i18n="nav.how">How it works</a>
-                <a href="#features" data-i18n="nav.features">Features</a>
-                <a href="#faq" data-i18n="nav.faq">FAQ</a>
-                <a href="#changes" data-i18n="nav.changelog">Changes</a>
-                <a href="../soporte.html" data-i18n="nav.support">Support</a>
-                <a class="language" href="../index.html" lang="es" data-i18n="nav.spanish">ES</a>
-                <label class="theme-switch" aria-label="Change theme">
-                    <input type="checkbox" onclick="toggleDarkMode()">
-                    <span class="theme-switch-track"></span>
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">Apps</a></li>
+                <li><a href="#what-is-it" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">What is it</a></li>
+                <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">How it works</a></li>
+                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">Features</a></li>
+                <li><a href="#clarity" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">Clarity</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">FAQ</a></li>
+                <li><a href="#changelog" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">Changelog</a></li>
+                <li><a href="../soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-imok-primary">Support</a></li>
+                <li><a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-imok-primary hover:text-imok-primary transition-colors">ES</a></li>
+
+                <!-- Dark Mode Switch -->
+                <li>
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-imok-primary"></div>
+                    </label>
+                </li>
+
+                <!-- App Store Button -->
+                <li>
+                    <a href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener"
+                        class="btn-plastic text-white px-5 py-2.5 rounded-full text-xs font-semibold inline-flex items-center space-x-2 transition-all">
+                        <i class="fab fa-apple text-sm"></i>
+                        <span>Download</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">ES</a>
+                <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-9 h-5 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-imok-primary"></div>
                 </label>
-            </div>
-            <div class="mobile-controls">
-                <a class="language" href="../index.html" lang="es" data-i18n="nav.spanish">ES</a>
-                <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 p-2" aria-label="Open menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="wrap hero-grid">
-                <div>
-                    <div class="eyebrow" data-i18n="hero.eyebrow">A simple way to stay connected</div>
-                    <h1 data-i18n="hero.title">I'm OK: Daily Check-in</h1>
-                    <p class="lede" data-i18n="hero.lede">Confirm that you are well with one tap and share the update with the people you choose.</p>
-                    <p class="hero-audience" data-i18n="hero.audience">For families with older parents who live alone, for travel updates and for going out on your own.</p>
-                    <div class="actions">
-                        <a class="app-store-button" href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener">
-                            <svg viewBox="0 0 24 24" role="img" aria-label="Apple logo"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"></path></svg>
-                            <span class="app-store-button-copy"><span class="app-store-button-kicker" data-i18n="hero.download">Download on the</span><span class="app-store-button-label">App Store</span></span>
+    <main class="overflow-x-hidden">
+        <!-- Hero Section (Centered with App Icon only) -->
+        <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 px-6 overflow-hidden bg-grain">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-col items-center text-center">
+
+                    <!-- App Icon only, no large phone mockup -->
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-amber-500/10 mb-8 shadow-2xl overflow-hidden p-1 border border-amber-500/30">
+                        <img src="../imok.webp" width="1024" height="1024" alt="I'm OK: Daily Check-in Icon" class="w-full h-full object-cover rounded-[1.3rem]">
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm font-semibold mb-6 border border-amber-500/20">
+                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        iOS 17.0+ · iPhone, iPad & Widgets
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6">
+                        I'm OK: Daily Check-in
+                    </h1>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-normal">
+                        Confirm that you are well with one tap and share the update with the people you choose. Thoughtful reassurance for families, solo travelers, and outdoor activities.
+                    </p>
+
+                    <!-- Action buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-14">
+                        <a href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener"
+                            class="btn-plastic text-white px-8 py-3.5 rounded-2xl font-bold flex items-center gap-3 transition-transform">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider opacity-80 leading-none">Download on the</div>
+                                <div class="text-lg leading-tight font-semibold">App Store</div>
+                            </div>
                         </a>
-                        <a class="button secondary" href="#how-it-works" data-i18n="hero.how">See how it works</a>
+                        <a href="#how-it-works" class="px-6 py-3.5 rounded-2xl font-semibold border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors">
+                            How it works
+                        </a>
+                    </div>
+
+                    <!-- Screenshots Carousel -->
+                    <div class="w-full max-w-5xl mt-4">
+                        <div class="flex gap-4 overflow-x-auto pb-8 pt-4 px-4 snap-x snap-mandatory scrollbar-none justify-start md:justify-center">
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center bg-gray-50 dark:bg-zinc-900">
+                                <img src="../screen2.webp" loading="lazy" width="1020" height="2208" alt="Shared status update" class="w-full h-auto">
+                                <p class="text-xs font-medium text-center text-gray-600 dark:text-gray-400 py-3">Shared status</p>
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center bg-gray-50 dark:bg-zinc-900">
+                                <img src="../screen3.webp" loading="lazy" width="1020" height="2208" alt="Quick message selector" class="w-full h-auto">
+                                <p class="text-xs font-medium text-center text-gray-600 dark:text-gray-400 py-3">Quick messages</p>
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center bg-gray-50 dark:bg-zinc-900">
+                                <img src="../screen4.webp" loading="lazy" width="1020" height="2208" alt="Check-in history log" class="w-full h-auto">
+                                <p class="text-xs font-medium text-center text-gray-600 dark:text-gray-400 py-3">Check-in history</p>
+                            </div>
+                            <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center bg-gray-50 dark:bg-zinc-900">
+                                <img src="../screen5.webp" loading="lazy" width="1020" height="2208" alt="Home Screen Widget" class="w-full h-auto">
+                                <p class="text-xs font-medium text-center text-gray-600 dark:text-gray-400 py-3">Home Screen widget</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- What is it -->
+        <section id="what-is-it" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-imok-primary">For Everyday Peace of Mind</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        An easy way to say “I'm OK”
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Share simple reassurance with your family or friends at a distance. You choose when, what message, and who sees it.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-imok-primary text-xl">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Care without friction</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Stay reassured that an older parent living alone has checked in without intrusive phone calls.
+                        </p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-imok-primary text-xl">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Trips & Getaways</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Send a quick "I'm OK" while traveling, checking into a hotel, or heading back home with a single tap.
+                        </p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-imok-primary text-xl">
+                            <i class="fas fa-person-running"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Outdoors & Solo Sports</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Share your status before or after a hike, bike ride, run, or solo adventure.
+                        </p>
                     </div>
                 </div>
-                <div class="hero-art">
-                    <figure class="hero-image">
-                        <img src="../imok.webp" width="1024" height="1024" alt="I'm OK: Daily Check-in app icon">
-                    </figure>
-                </div>
             </div>
         </section>
 
-        <section class="section screens-section alt" aria-labelledby="screens-title">
-            <div class="wrap">
-                <div class="section-heading screens-heading">
-                    <p class="section-kicker" data-i18n="screens.kicker">Screenshots</p>
-                    <h2 id="screens-title" data-i18n="screens.title">See the app in action</h2>
-                    <p data-i18n="screens.lede">A clear screen for checking in, sending a message and reviewing your history.</p>
+        <!-- How it works -->
+        <section id="how-it-works" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-imok-primary">Three Simple Steps</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        How it works
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Choose who you want to share with and confirm whenever you're ready.
+                    </p>
                 </div>
-                <div class="screens" aria-label="I'm OK app screenshots">
-                    <figure class="screen-card"><img src="../screen2.webp" loading="lazy" width="1020" height="2208" alt="Shared status with an arrival message"><figcaption data-i18n="screens.item2">Shared status</figcaption></figure>
-                    <figure class="screen-card"><img src="../screen3.webp" loading="lazy" width="1020" height="2208" alt="Ready-made message selector"><figcaption data-i18n="screens.item3">Ready-made messages</figcaption></figure>
-                    <figure class="screen-card"><img src="../screen4.webp" loading="lazy" width="1020" height="2208" alt="History of received updates"><figcaption data-i18n="screens.item4">History</figcaption></figure>
-                    <figure class="screen-card"><img src="../screen5.webp" loading="lazy" width="1020" height="2208" alt="I'm OK widget on the Home Screen"><figcaption data-i18n="screens.item5">Widget</figcaption></figure>
-                </div>
-            </div>
-        </section>
 
-        <section id="what-is-it" class="section">
-            <div class="wrap">
-                <div class="section-heading">
-                    <p class="section-kicker" data-i18n="what.kicker">For everyday life</p>
-                    <h2 data-i18n="what.title">An easy way to say “I'm OK”</h2>
-                    <p data-i18n="what.lede">Share a simple check-in with your family or the people who are keeping in touch from a distance. You choose when, what to say and who receives it.</p>
-                </div>
-                <div class="grid three-up">
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">✓</div>
-                        <h3 data-i18n="what.card1.title">Stay connected without fuss</h3>
-                        <p data-i18n="what.card1.body">Your family can know that an older parent who lives alone has checked in.</p>
-                    </article>
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">↗</div>
-                        <h3 data-i18n="what.card2.title">For trips and getaways</h3>
-                        <p data-i18n="what.card2.body">Send an “I'm OK” update while travelling, reaching a destination or heading home.</p>
-                    </article>
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">○</div>
-                        <h3 data-i18n="what.card3.title">For going out on your own</h3>
-                        <p data-i18n="what.card3.body">Share your status before or after a route, a walk or a workout.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="how-it-works" class="section alt">
-            <div class="wrap">
-                <div class="section-heading">
-                    <p class="section-kicker" data-i18n="how.kicker">Three steps</p>
-                    <h2 data-i18n="how.title">How it works</h2>
-                    <p data-i18n="how.lede">Choose who to share with, then confirm your status whenever you want.</p>
-                </div>
-                <div class="grid">
-                    <article class="card step-card">
-                        <div class="step-number">1</div>
-                        <h3 data-i18n="how.step1.title">Choose your contacts</h3>
-                        <p data-i18n="how.step1.body">Add the people you want to share your updates with.</p>
-                    </article>
-                    <article class="card step-card">
-                        <div class="step-number">2</div>
-                        <h3 data-i18n="how.step2.title">Confirm that you are well</h3>
-                        <p data-i18n="how.step2.body">Tap the button in the app or use the widget. Add a message, a photo or “I have arrived”.</p>
-                    </article>
-                    <article class="card step-card">
-                        <div class="step-number">3</div>
-                        <h3 data-i18n="how.step3.title">Your family can check it</h3>
-                        <p data-i18n="how.step3.body">The people you choose can see the status, mark it as seen and reply in the chat.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="section">
-            <div class="wrap">
-                <div class="section-heading">
-                    <p class="section-kicker" data-i18n="features.kicker">What you can do</p>
-                    <h2 data-i18n="features.title">The essentials, in just a few taps</h2>
-                    <p data-i18n="features.lede">Choose the way of checking in that fits you best.</p>
-                </div>
-                <div class="grid">
-                    <article class="card"><div class="icon" aria-hidden="true">✓</div><h3 data-i18n="feature.checkin.title">One-tap check-in</h3><p data-i18n="feature.checkin.body">Send your status quickly with messages such as “I'm OK”, “Good morning” or “Good night”.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">▣</div><h3 data-i18n="feature.widget.title">Widget</h3><p data-i18n="feature.widget.body">Check your status and open the check-in from your Home Screen.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◷</div><h3 data-i18n="feature.reminders.title">Reminders</h3><p data-i18n="feature.reminders.body">Set reminders to help you remember your daily check-in.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">✎</div><h3 data-i18n="feature.messages.title">Messages</h3><p data-i18n="feature.messages.body">Write your own message, add an emoji or choose a ready-made one.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◉</div><h3 data-i18n="feature.photo.title">Optional photo</h3><p data-i18n="feature.photo.body">Add a photo to your update when you want to share a little more of your moment.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">→</div><h3 data-i18n="feature.arrived.title">“I have arrived”</h3><p data-i18n="feature.arrived.body">Send a clear message when you get home, reach your destination or arrive at the meeting point.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">▤</div><h3 data-i18n="feature.history.title">History</h3><p data-i18n="feature.history.body">Review your sent and received updates in a list or calendar.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">☷</div><h3 data-i18n="feature.chat.title">Chat</h3><p data-i18n="feature.chat.body">Talk to your contacts from the shared status with short messages.</p></article>
-                </div>
-            </div>
-        </section>
-
-        <section id="limits" class="section alt">
-            <div class="wrap split">
-                <div>
-                    <p class="section-kicker" data-i18n="limits.kicker">Use it with clear expectations</p>
-                    <h2 data-i18n="limits.title">A time-based check-in, not an emergency service</h2>
-                    <p class="section-lede" data-i18n="limits.lede">The app is for sharing a check-in. It does not replace emergency services and does not guarantee delivery.</p>
-                </div>
-                <div class="callout warning">
-                    <ul class="plain-list">
-                        <li data-i18n="limits.item1">The phone must be switched on.</li>
-                        <li data-i18n="limits.item2">You need a network connection to send and update the check-in.</li>
-                        <li data-i18n="limits.item3">Notifications must be allowed for an alert to appear.</li>
-                        <li data-i18n="limits.item4">If any of these conditions is missing, the update may not arrive or appear.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="section privacy-link-section">
-            <div class="wrap">
-                <div class="privacy-link-card">
-                    <div>
-                        <p class="section-kicker" data-i18n="privacy.kicker">More information</p>
-                        <h2 data-i18n="privacy.title">Want to know the details?</h2>
-                        <p data-i18n="privacy.body">Read the I'm OK privacy policy to learn how data and permissions are handled.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-bold text-xl flex items-center justify-center mb-6">
+                            1
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Choose your contacts</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Add close family or friends via private invitation to share your reassurance updates.
+                        </p>
                     </div>
-                    <a class="button primary" href="privacidad.html" data-i18n="privacy.link">Read the privacy policy</a>
+
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-bold text-xl flex items-center justify-center mb-6">
+                            2
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Confirm you are well</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Tap the check-in button in the app or widget. You can add a note, a photo, or a quick “I have arrived”.
+                        </p>
+                    </div>
+
+                    <div class="relative p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-bold text-xl flex items-center justify-center mb-6">
+                            3
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Family stays informed</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Your contacts can see the update, mark it as seen, and reply in a lightweight private chat.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq" class="section alt">
-            <div class="wrap">
-                <div class="section-heading">
-                    <p class="section-kicker" data-i18n="faq.kicker">Straight answers</p>
-                    <h2 data-i18n="faq.title">Frequently asked questions</h2>
+        <!-- Features -->
+        <section id="features" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-imok-primary">What You Can Do</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        Everything that matters in a few taps
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Pick the check-in method that fits your routine best.
+                    </p>
                 </div>
-                <div class="faq">
-                    <details><summary data-i18n="faq.q1">How does it work?</summary><dd data-i18n="faq.a1">Choose your contacts, confirm that you are well from the app or widget, and they can check the status you share.</dd></details>
-                    <details><summary data-i18n="faq.q2">Who receives the update?</summary><dd data-i18n="faq.a2">It is shared with the contacts you choose and who accept the invitation.</dd></details>
-                    <details><summary data-i18n="faq.q3">Can I send a message or photo?</summary><dd data-i18n="faq.a3">Yes. You can add a message, a photo, or use statuses such as “I'm here” and “I have arrived”.</dd></details>
-                    <details><summary data-i18n="faq.q4">What if the phone is off or has no network?</summary><dd data-i18n="faq.a4">The app needs the phone to be on, connected to a network and allowed to show notifications. Otherwise, the update may not arrive or appear.</dd></details>
-                    <details><summary data-i18n="faq.q5">Can I send an SMS or WhatsApp message?</summary><dd data-i18n="faq.a5">Yes. You can open the message and choose SMS or WhatsApp manually. The app does not send it by itself.</dd></details>
-                    <details><summary data-i18n="faq.q6">Is it an emergency service?</summary><dd data-i18n="faq.a6">No. It is a time-based check-in, does not guarantee delivery and does not replace emergency services.</dd></details>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-check-circle text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">One-tap Check-in</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Send your status instantly with presets like “I'm OK”, “Good morning”, or “Good night”.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-table-cells text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Home Screen Widget</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Check on family and confirm your own status right from your iPhone Home Screen.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-bell text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Reminders</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Set convenient daily reminders so you never forget to check in.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-comment-dots text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Notes & Emojis</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Type a custom note, attach an emoji, or select a pre-written message.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-camera text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Optional Photo</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Add a photo to your update whenever you want to share a glimpse of your day.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-location-dot text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">“I have arrived”</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Notify loved ones cleanly when arriving at home, school, or your destination.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-calendar-days text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">History Log</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Browse sent and received updates in a clean list or calendar view.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <i class="fas fa-comments text-2xl text-imok-primary mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Private Chat</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Message directly with chosen contacts right from the shared status thread.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="changes" class="section changelog">
-            <div class="wrap">
-                <div class="section-heading">
-                    <p class="section-kicker" data-i18n="changelog.kicker">Updates</p>
-                    <h2 data-i18n="changelog.title">Version history</h2>
-                    <p data-i18n="changelog.lede">Published updates for the app.</p>
+        <!-- Clarity & Limits -->
+        <section id="clarity" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="p-8 md:p-12 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Clear Expectations</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        Everyday peace of mind, not an emergency system
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        I'm OK is a personal reassurance tool between trusted people. It functions when the phone is on, has network connectivity, and notifications are allowed.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4 pt-4 border-t border-gray-100 dark:border-zinc-800 text-xs text-gray-600 dark:text-gray-400">
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-wifi text-imok-primary mt-0.5"></i>
+                            <span>Requires internet connection to sync</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-bell text-imok-primary mt-0.5"></i>
+                            <span>Requires notifications enabled for alerts</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-shield-halved text-imok-primary mt-0.5"></i>
+                            <span>Does not replace 911 / emergency services</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="changelog-list">
-                    <article class="changelog-entry current">
-                        <h3 data-i18n="changelog.v12.title">Version 1.2</h3>
-                        <ul>
-                            <li data-i18n="changelog.v12.item1"><strong>SMS and WhatsApp updates</strong>: share an update with people who do not use the app.</li>
-                            <li data-i18n="changelog.v12.item2"><strong>Visual improvements</strong>: new colour effects and animations when sending statuses.</li>
-                            <li data-i18n="changelog.v12.item3"><strong>iPad photos</strong>: improvements when sending photos from iPad.</li>
-                            <li data-i18n="changelog.v12.item4"><strong>“I'm here”</strong>: the message can include a locality and an Apple Maps link.</li>
-                            <li data-i18n="changelog.v12.item5">Bug fixes and general improvements.</li>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-imok-primary">Questions Answered</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Direct answers to common questions.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>How does it work?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            You choose your contacts, confirm that you are well from the app or widget, and they can view the status you share.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Who receives the update?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            It is shared exclusively with the contacts you pick and who accept your invitation.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Can I send a message or photo?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes. You can add a custom message, a photo, or quick statuses like “I'm here” and “I have arrived”.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What happens if the phone is off or has no network?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            The app needs the phone to be powered on, have cellular/Wi-Fi coverage, and allow notifications. Updates will send as soon as coverage is restored.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Can I send updates via SMS or WhatsApp?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes. You can open the update and share it directly through SMS or WhatsApp with family members who don't have the app.
+                        </p>
+                    </details>
+
+                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Is it an emergency service?</span>
+                            <i class="fas fa-chevron-down text-sm text-imok-primary group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            No. It is a personal daily reassurance tool. It does not guarantee delivery and does not replace emergency dispatch (911/112).
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section id="changelog" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-imok-primary">Evolution</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+                        Version History
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        App updates and improvements released on the App Store.
+                    </p>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Version 1.2 -->
+                    <div class="relative pl-8 border-l-2 border-imok-primary">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-imok-primary ring-4 ring-[#f9fafb] dark:ring-[#0a0a0a]"></div>
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold">Latest</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1 mr-3 text-xs"></i> <span><strong>SMS & WhatsApp sharing:</strong> share an update with contacts who don't use the app.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1 mr-3 text-xs"></i> <span><strong>Visual polish:</strong> new animations and color effects when sending status updates.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1 mr-3 text-xs"></i> <span><strong>iPad photo handling:</strong> improved performance when attaching images on iPad.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1 mr-3 text-xs"></i> <span><strong>“I'm here”:</strong> optional locality tag and Apple Maps link.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-imok-primary mt-1 mr-3 text-xs"></i> <span>Bug fixes and stability improvements.</span></li>
                         </ul>
-                    </article>
-                    <article class="changelog-entry">
-                        <h3 data-i18n="changelog.v11.title">Version 1.1</h3>
-                        <ul>
-                            <li data-i18n="changelog.v11.item1"><strong>Missed check-in update</strong>: set a time limit for shared statuses.</li>
-                            <li data-i18n="changelog.v11.item2"><strong>Simple chat</strong>: send short messages to your contacts.</li>
-                            <li data-i18n="changelog.v11.item3"><strong>Reminders</strong>: skips the daily reminder when you have already sent an update.</li>
-                            <li data-i18n="changelog.v11.item4"><strong>More frequent updates</strong>: shorten the waiting time between statuses.</li>
-                            <li data-i18n="changelog.v11.item5">Bug fixes and general improvements.</li>
+                    </div>
+
+                    <!-- Version 1.1 -->
+                    <div class="relative pl-8 border-l-2 border-gray-300 dark:border-gray-700">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-[#f9fafb] dark:ring-[#0a0a0a]"></div>
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span><strong>Missed check-in alert:</strong> set a time window for expected updates.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span><strong>Simple chat:</strong> send short messages to your contacts.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span><strong>Smart reminders:</strong> automatically skips reminder when already checked in.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span><strong>Faster intervals:</strong> shorten wait times between status updates.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Bug fixes and performance enhancements.</span></li>
                         </ul>
-                    </article>
-                    <article class="changelog-entry">
-                        <h3 data-i18n="changelog.v10.title">Version 1.0 · January 22, 2026</h3>
-                        <ul><li data-i18n="changelog.v10.item1">Initial release.</li></ul>
-                    </article>
+                    </div>
+
+                    <!-- Version 1.0 -->
+                    <div class="relative pl-8 border-l-2 border-gray-300 dark:border-gray-700">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-[#f9fafb] dark:ring-[#0a0a0a]"></div>
+                        <div class="flex items-baseline gap-4 mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.0</h3>
+                            <span class="text-xs text-gray-500">January 22, 2026</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1 mr-3 text-xs"></i> <span>Initial release on the App Store.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Download Banner -->
+        <section class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl overflow-hidden shadow-xl border-2 border-amber-500/20 bg-amber-500/10 p-1">
+                    <img src="../imok.webp" width="1024" height="1024" alt="I'm OK: Daily Check-in" class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    The quiet reassurance of knowing they are OK
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
+                    Available for free on iPhone and iPad. Simple, private, and direct.
+                </p>
+                <div class="flex justify-center">
+                    <a href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener"
+                        class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                        <i class="fab fa-apple text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase tracking-wider opacity-80 leading-none">Download on the</div>
+                            <div class="font-bold text-lg leading-tight">App Store</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="wrap footer-row">
-            <a class="brand" href="../../index.html">mirlo apps<span>.</span></a>
-            <span data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span>
-            <div class="footer-links">
-                <a href="privacidad.html" data-i18n="footer.privacy">Privacy</a>
-                <a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a>
-                <a href="../soporte.html" data-i18n="footer.support">Support</a>
-                <a href="https://x.com/PaoloAC" aria-label="X">X</a>
-                <a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="#changelog" class="hover:text-imok-primary transition-colors">Changelog</a>
+                <a href="privacidad.html" class="hover:text-imok-primary transition-colors">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-imok-primary transition-colors">Cookies</a>
+                <a href="../soporte.html" class="hover:text-imok-primary transition-colors">Support</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.threads.com/@paoloac" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-threads"></i></a>
             </div>
         </div>
     </footer>
 
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-        <button type="button" onclick="toggleMenu()" aria-label="Close menu">×</button>
-        <a href="../../apps/index.html" onclick="toggleMenu()" data-i18n="nav.apps">Apps</a>
-        <a href="../../index.html#nosotros" onclick="toggleMenu()" data-i18n="nav.about">About Mirlo</a>
-        <a href="../../index.html#contacto" onclick="toggleMenu()" data-i18n="nav.contact">Contact</a>
-        <a href="#what-is-it" onclick="toggleMenu()" data-i18n="nav.what">What is it?</a>
-        <a href="#how-it-works" onclick="toggleMenu()" data-i18n="nav.how">How it works</a>
-        <a href="#features" onclick="toggleMenu()" data-i18n="nav.features">Features</a>
-        <a href="#faq" onclick="toggleMenu()" data-i18n="nav.faq">FAQ</a>
-        <a href="../soporte.html" onclick="toggleMenu()" data-i18n="nav.support">Support</a>
-        <a class="mobile-language" href="../index.html" lang="es" onclick="toggleMenu()" data-i18n="nav.spanish.full">Versión en español</a>
-        <div class="mobile-theme"><span data-i18n="nav.dark">Dark mode</span><label class="theme-switch"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Close menu">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Apps</a>
+        <a href="#what-is-it" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">What is it</a>
+        <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Features</a>
+        <a href="#clarity" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Clarity</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">FAQ</a>
+        <a href="#changelog" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Changelog</a>
+        <a href="../soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Support</a>
+        <a href="privacidad.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-imok-primary" onclick="toggleMenu()">Privacy</a>
+        <a href="../index.html" class="text-xl px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300" onclick="toggleMenu()">Español</a>
     </div>
 
-    <script>
-        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.documentElement.classList.add("dark");
-        }
-        function toggleDarkMode() {
-            const isDark = document.documentElement.classList.toggle("dark");
-            localStorage.theme = isDark ? "dark" : "light";
-            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
-        }
-        function toggleMenu() {
-            const menu = document.getElementById("mobile-menu");
-            const isOpen = menu.classList.toggle("is-open");
-            menu.setAttribute("aria-hidden", String(!isOpen));
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            const isDark = document.documentElement.classList.contains("dark");
-            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
-        });
-    </script>
     <script src="/cookies.js" defer></script>
 </body>
 
