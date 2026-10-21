@@ -1,28 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#10b981">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.mirloapps.es/ImOK/">
     <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/">
     <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/">
     <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/">
 
-    <!-- Safari Smart App Banner. App Store ID verified through the iTunes Lookup API. -->
     <meta name="apple-itunes-app" content="app-id=6757763851">
-
-    <meta name="description" content="Estoy bien: Aviso diario permite confirmar tu estado y compartirlo con contactos elegidos mediante CloudKit, widget y notificaciones locales.">
+    <meta name="description" content="Estoy bien: Aviso diario te ayuda a confirmar que estás bien y a compartirlo con tu familia cuando vives solo, viajas o sales a hacer deporte.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Estoy bien: Aviso diario — un check-in diario">
-    <meta name="twitter:description" content="Confirma tu estado y compártelo con los contactos que elijas desde la app, el widget o un atajo.">
-    <meta name="twitter:image" content="https://www.mirloapps.es/ImOK/IMOK.png">
+    <meta name="twitter:title" content="Estoy bien: Aviso diario">
+    <meta name="twitter:description" content="Confirma que estás bien con un toque y comparte el aviso con las personas que eliges.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/ImOK/imok.webp">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/ImOK/">
-    <meta property="og:title" content="Estoy bien: Aviso diario — un check-in diario">
-    <meta property="og:description" content="Confirma tu estado y compártelo con contactos elegidos desde la app, el widget o un atajo.">
-    <meta property="og:image" content="https://www.mirloapps.es/ImOK/IMOK.png">
+    <meta property="og:title" content="Estoy bien: Aviso diario">
+    <meta property="og:description" content="Confirma que estás bien con un toque y comparte el aviso con las personas que eliges.">
+    <meta property="og:image" content="https://www.mirloapps.es/ImOK/imok.webp">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -31,9 +28,6 @@
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- UNVERIFIED: The App Store listing states that the developer does not collect data. This page describes code paths and does not treat that statement as independently verified by Apple. -->
-    <!-- UNVERIFIED: The App Store listing states that an alert reaches contacts when the deadline is missed, including while the phone is off. The repository code implements recipient-device local alerts; it does not show an outbound server/SMS alert to a family member. -->
-    <!-- UNVERIFIED: The download price returned by iTunes/App Store is 0.99 EUR and is shown below as pending confirmation. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -41,12 +35,14 @@
         {
           "@type": "SoftwareApplication",
           "name": "Estoy bien: Aviso diario",
-          "operatingSystem": "iOS 17 or later",
-          "applicationCategory": "LifestyleApplication",
+          "operatingSystem": "iOS 17 o posterior",
+          "softwareVersion": "1.2",
           "url": "https://www.mirloapps.es/ImOK/",
           "downloadUrl": "https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851",
-          "datePublished": "2026-01-22",
-          "softwareVersion": "1.2",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
           "publisher": {
             "@type": "Organization",
             "name": "mirlo apps",
@@ -54,13 +50,11 @@
           },
           "inLanguage": "es",
           "featureList": [
-            "Daily status check-in",
-            "CloudKit sharing with selected contacts",
-            "Home Screen widget",
-            "Local reminders and deadline notifications",
-            "Status history and contact chat",
-            "Optional photo and one-shot location status",
-            "SMS or WhatsApp manual sharing"
+            "Confirmación diaria del estado con un toque",
+            "Widget y recordatorios",
+            "Mensajes, fotos y estado He llegado",
+            "Historial de avisos",
+            "Chat con contactos elegidos"
           ]
         },
         {
@@ -68,66 +62,42 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "¿Cómo llega el aviso a mi familia?",
+              "name": "¿Cómo funciona?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "El código guarda el estado en CloudKit y lo comparte mediante un CKShare. El dispositivo del contacto sincroniza el estado mediante CloudKit y puede recibir un push silencioso para actualizarse; la app crea la notificación visible localmente. El código no contiene un servidor propio que envíe un SMS o WhatsApp automático."
+                "text": "Eliges tus contactos, confirmas que estás bien desde la app o el widget y ellos pueden consultar el estado que compartes."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Qué datos salen del dispositivo?",
+              "name": "¿A quién llega el aviso?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "El código envía a CloudKit el estado, la fecha, el mensaje, el nombre mostrado, las personas que lo han visto, la configuración de aviso de ausencia y, si se usa, una foto como CKAsset. Los mensajes de chat se guardan como registros Message. Un estado de ubicación añade una localidad y una URL de Apple Maps al mensaje."
+                "text": "Se comparte con los contactos que eliges y que aceptan la invitación."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Funciona si el teléfono está apagado o sin red?",
+              "name": "¿Puedo enviar un mensaje o una foto?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "El código no garantiza la entrega. Sin red, el último check-in no puede terminar de guardarse en CloudKit y no hay una cola de reintento de envío visible en el repositorio. Si el teléfono del contacto ya sincronizó un estado y tiene programado un aviso local, ese aviso depende de su propio dispositivo, de iOS y de sus permisos de notificaciones."
+                "text": "Sí. Puedes añadir un mensaje, una foto o usar estados como Estoy aquí y He llegado."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Qué ocurre si desactivo las notificaciones?",
+              "name": "¿Qué ocurre si el teléfono está apagado o sin red?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "La app puede seguir sincronizando datos cuando se abre, pero el código no programa notificaciones visibles si iOS no las autoriza. El estado puede consultarse dentro de la app cuando los datos se hayan sincronizado."
+                "text": "La app necesita que el teléfono esté encendido, tenga red y permita las notificaciones. Si no, el aviso puede no llegar o no mostrarse."
               }
             },
             {
               "@type": "Question",
-              "name": "¿La app usa mi ubicación continuamente?",
+              "name": "¿Es un servicio de emergencias?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No hay un flujo de ubicación en segundo plano en el código. La ubicación se solicita una vez y con permiso When In Use solo al enviar el estado que incluye Estoy aquí; la app obtiene una localidad y una URL de Apple Maps."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Puedo avisar por SMS o WhatsApp?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí, el código ofrece un flujo manual mediante SMS y una hoja de compartir del sistema que puede incluir WhatsApp. La app valida que se completó la acción de compartir, pero indica que no puede confirmar la entrega o lectura del canal elegido."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué precio tiene?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La consulta de iTunes devuelve un precio de descarga de 0,99 EUR. Se muestra como dato pendiente de confirmación. El repositorio no contiene StoreKit ni compras integradas."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué idiomas y sistemas aparecen en la ficha?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El proyecto contiene localizaciones en español e inglés. La ficha de App Store indica iOS 17 o posterior y compatibilidad de iPhone, iPad, Mac con chip Apple y Apple Vision."
+                "text": "No. Es un aviso basado en el tiempo y no garantiza la entrega ni sustituye a los servicios de emergencia."
               }
             }
           ]
@@ -135,6 +105,7 @@
       ]
     }
     </script>
+
     <title>Estoy bien: Aviso diario — mirlo apps</title>
 </head>
 
@@ -146,9 +117,11 @@
                 <a href="../apps/index.html" data-i18n="nav.apps">Apps</a>
                 <a href="../index.html#nosotros" data-i18n="nav.about">Sobre Mirlo</a>
                 <a href="../index.html#contacto" data-i18n="nav.contact">Contacto</a>
-                <a href="#how-it-works" data-i18n="nav.how">Cómo funciona</a>
-                <a href="#features" data-i18n="nav.features">Funciones</a>
+                <a href="#que-es" data-i18n="nav.what">Qué es</a>
+                <a href="#como-funciona" data-i18n="nav.how">Cómo funciona</a>
+                <a href="#funciones" data-i18n="nav.features">Funciones</a>
                 <a href="#faq" data-i18n="nav.faq">FAQ</a>
+                <a href="#cambios" data-i18n="nav.changelog">Cambios</a>
                 <a href="soporte.html" data-i18n="nav.support">Soporte</a>
                 <a class="language" href="en/index.html" lang="en" data-i18n="nav.english">EN</a>
                 <label class="theme-switch" aria-label="Cambiar tema">
@@ -167,154 +140,143 @@
         <section class="hero">
             <div class="wrap hero-grid">
                 <div>
-                    <div class="eyebrow" data-i18n="hero.eyebrow">Disponible en la App Store</div>
+                    <div class="eyebrow" data-i18n="hero.eyebrow">Un aviso sencillo para estar cerca</div>
                     <h1 data-i18n="hero.title">Estoy bien: Aviso diario</h1>
-                    <p class="lede" data-i18n="hero.lede">Un check-in diario para compartir tu estado con las personas que tú eliges, desde la app, el widget o un atajo.</p>
+                    <p class="lede" data-i18n="hero.lede">Confirma que estás bien con un toque y comparte el aviso con las personas que eliges.</p>
+                    <p class="hero-audience" data-i18n="hero.audience">Para familias con padres mayores que viven solos, para avisar durante un viaje y para salir a hacer deporte por tu cuenta.</p>
                     <div class="actions">
-                        <a class="app-store-button" href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851">
+                        <a class="app-store-button" href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener">
                             <svg viewBox="0 0 24 24" role="img" aria-label="Logotipo de Apple"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"></path></svg>
                             <span class="app-store-button-copy"><span class="app-store-button-kicker" data-i18n="hero.download">Descargar en el</span><span class="app-store-button-label">App Store</span></span>
                         </a>
-                        <a class="button secondary" href="#features" data-i18n="hero.features">Ver funciones</a>
+                        <a class="button secondary" href="#como-funciona" data-i18n="hero.how">Ver cómo funciona</a>
                     </div>
-                    <!-- UNVERIFIED: iTunes/App Store returns 0.99 EUR; price remains pending confirmation. -->
-                    <p class="hero-note"><span data-i18n="hero.meta">ID de App Store: 6757763851 · iOS 17 o posterior · español e inglés</span><br><span class="unverified-note" data-i18n="hero.price">Precio de descarga indicado por iTunes: 0,99 € · pendiente de confirmación</span></p>
                 </div>
                 <div class="hero-art">
                     <figure class="hero-image">
-                        <img src="imok.webp" width="1024" height="1024" alt="Imagen de la aplicación Estoy bien: Aviso diario">
+                        <img src="imok.webp" width="1024" height="1024" alt="Icono de Estoy bien: Aviso diario">
                     </figure>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section screens-section alt" aria-labelledby="screens-title">
             <div class="wrap">
-                <div class="section-heading">
-                    <h2 data-i18n="audience.title">¿En qué situaciones puede encajar?</h2>
-                    <p data-i18n="audience.body">Si quieres saber si un padre o una madre mayor que vive solo ha hecho su check-in, avisar a tu familia durante un viaje o compartir un “estoy bien” al salir a hacer deporte solo, la app reúne un check-in manual, contactos elegidos, mensajes y avisos locales. También puedes usar un mensaje como “He llegado” al volver a casa. No es un servicio de emergencias y el código no garantiza la entrega.</p>
+                <div class="section-heading screens-heading">
+                    <p class="section-kicker" data-i18n="screens.kicker">Capturas de pantalla</p>
+                    <h2 id="screens-title" data-i18n="screens.title">Así se ve la app</h2>
+                    <p data-i18n="screens.lede">Una pantalla clara para confirmar tu estado, enviar un mensaje y consultar tu historial.</p>
+                </div>
+                <div class="screens" aria-label="Capturas de pantalla de Estoy bien">
+                    <figure class="screen-card"><img src="screen2.webp" loading="lazy" width="1020" height="2208" alt="Estado compartido con mensaje de llegada"><figcaption data-i18n="screens.item2">Estado compartido</figcaption></figure>
+                    <figure class="screen-card"><img src="screen3.webp" loading="lazy" width="1020" height="2208" alt="Selector de mensajes preparados"><figcaption data-i18n="screens.item3">Mensajes preparados</figcaption></figure>
+                    <figure class="screen-card"><img src="screen4.webp" loading="lazy" width="1020" height="2208" alt="Historial de avisos recibidos"><figcaption data-i18n="screens.item4">Historial</figcaption></figure>
+                    <figure class="screen-card"><img src="screen5.webp" loading="lazy" width="1020" height="2208" alt="Widget de Estoy bien en la pantalla de inicio"><figcaption data-i18n="screens.item5">Widget</figcaption></figure>
                 </div>
             </div>
         </section>
 
-        <section id="how-it-works" class="section alt">
+        <section id="que-es" class="section">
             <div class="wrap">
                 <div class="section-heading">
+                    <p class="section-kicker" data-i18n="what.kicker">Para tu día a día</p>
+                    <h2 data-i18n="what.title">Una forma fácil de decir “estoy bien”</h2>
+                    <p data-i18n="what.lede">Comparte una confirmación sencilla con tu familia o con las personas que te acompañan a distancia. Tú eliges el momento, el mensaje y los contactos.</p>
+                </div>
+                <div class="grid three-up">
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">✓</div>
+                        <h3 data-i18n="what.card1.title">Para estar pendiente sin agobios</h3>
+                        <p data-i18n="what.card1.body">Tu familia puede saber que un padre o una madre mayor que vive solo ha hecho su confirmación.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">↗</div>
+                        <h3 data-i18n="what.card2.title">Para viajes y escapadas</h3>
+                        <p data-i18n="what.card2.body">Envía un “estoy bien” mientras viajas, llegas a un destino o vuelves a casa.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">○</div>
+                        <h3 data-i18n="what.card3.title">Para salir por tu cuenta</h3>
+                        <p data-i18n="what.card3.body">Comparte tu estado antes o después de una ruta, un paseo o una sesión de deporte.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="section alt">
+            <div class="wrap">
+                <div class="section-heading">
+                    <p class="section-kicker" data-i18n="how.kicker">Tres pasos</p>
                     <h2 data-i18n="how.title">Cómo funciona</h2>
-                    <p data-i18n="how.lede">El flujo que aparece en el código combina una confirmación manual, un registro compartido en CloudKit y notificaciones locales.</p>
+                    <p data-i18n="how.lede">Solo tienes que elegir con quién compartirlo y confirmar tu estado cuando quieras.</p>
                 </div>
                 <div class="grid">
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">1</div>
-                        <h3 data-i18n="how.step1.title">Configura tu cuenta y tus contactos</h3>
-                        <p data-i18n="how.step1.body">La app pide un nombre visible, acceso a Contactos para elegir a una persona y una cuenta de iCloud para compartir el estado. La invitación se crea como enlace de CloudKit.</p>
+                    <article class="card step-card">
+                        <div class="step-number">1</div>
+                        <h3 data-i18n="how.step1.title">Elige tus contactos</h3>
+                        <p data-i18n="how.step1.body">Añade a las personas con las que quieres compartir tus avisos.</p>
                     </article>
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">2</div>
-                        <h3 data-i18n="how.step2.title">Confirma tu estado</h3>
-                        <p data-i18n="how.step2.body">Tocas el botón principal, el widget, el atajo de Siri/Shortcuts o el acceso rápido del sistema. Puedes añadir un mensaje, una foto o el estado de ubicación “Estoy aquí”.</p>
+                    <article class="card step-card">
+                        <div class="step-number">2</div>
+                        <h3 data-i18n="how.step2.title">Confirma que estás bien</h3>
+                        <p data-i18n="how.step2.body">Toca el botón en la app o usa el widget. Puedes añadir un mensaje, una foto o “He llegado”.</p>
                     </article>
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">3</div>
-                        <h3 data-i18n="how.step3.title">El contacto sincroniza y puede verlo</h3>
-                        <p data-i18n="how.step3.body">El estado se guarda como DailyStatus en CloudKit. El contacto que aceptó la invitación puede sincronizarlo, abrirlo, marcarlo como visto y conversar en el chat.</p>
+                    <article class="card step-card">
+                        <div class="step-number">3</div>
+                        <h3 data-i18n="how.step3.title">Tu familia puede consultarlo</h3>
+                        <p data-i18n="how.step3.body">Las personas que has elegido pueden ver el estado, marcarlo como visto y responderte en el chat.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="section">
+        <section id="funciones" class="section">
             <div class="wrap">
                 <div class="section-heading">
-                    <h2 data-i18n="features.title">Funciones que existen en el código</h2>
-                    <p data-i18n="features.lede">Esta lista se limita a pantallas, servicios y capacidades encontradas en el proyecto iOS.</p>
+                    <p class="section-kicker" data-i18n="features.kicker">Lo que puedes hacer</p>
+                    <h2 data-i18n="features.title">Todo lo importante, en pocos toques</h2>
+                    <p data-i18n="features.lede">Elige la forma de avisar que mejor encaja contigo.</p>
                 </div>
                 <div class="grid">
-                    <article class="card"><div class="icon" aria-hidden="true">✓</div><h3 data-i18n="feature.checkin.title">Check-in con mensajes</h3><p data-i18n="feature.checkin.body">Mensajes editables como “Estoy bien”, “Buenos días”, “Buenas noches”, “Te quiero”, “Estoy aquí” y “He llegado”, con emoji y tema de color.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◫</div><h3 data-i18n="feature.widget.title">Widget y acceso rápido</h3><p data-i18n="feature.widget.body">Widget pequeño o mediano con estados pendiente, enviado y visto; abre la app mediante imok://checkin. En iOS 18 hay también un control del sistema que abre ese flujo.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◷</div><h3 data-i18n="feature.reminders.title">Recordatorios locales</h3><p data-i18n="feature.reminders.body">Recordatorios personales configurables. El código crea por defecto uno a las 10:00 y permite editar, activar, desactivar o borrar recordatorios.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◉</div><h3 data-i18n="feature.alerts.title">Avisos y recibos de vista</h3><p data-i18n="feature.alerts.body">Aviso diario de deadline, aviso cuando llega un check-in, aviso cuando alguien ve tu estado y un monitor local de ausencia para estados compartidos.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">▤</div><h3 data-i18n="feature.history.title">Historial</h3><p data-i18n="feature.history.body">Historial local de envíos y recibidos, vista de lista o calendario, fotos asociadas y límite de 100 elementos.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">☷</div><h3 data-i18n="feature.contacts.title">Contactos y chat</h3><p data-i18n="feature.contacts.body">Contactos conectados, invitaciones pendientes, revocación de participantes, enlaces de invitación y chat sincronizado mediante registros Message de CloudKit.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">📷</div><h3 data-i18n="feature.photo.title">Foto opcional</h3><p data-i18n="feature.photo.body">Captura con la cámara frontal, compresión, envío como CKAsset, miniatura para contactos e historial y opción de mostrar la foto en el widget.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">⌖</div><h3 data-i18n="feature.location.title">Estado con ubicación puntual</h3><p data-i18n="feature.location.body">El mensaje “Estoy aquí” solicita ubicación When In Use una vez, obtiene una localidad y genera una URL de Apple Maps. No hay un flujo de ubicación continua en el código.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◌</div><h3 data-i18n="feature.activity.title">Live Activity y accesibilidad</h3><p data-i18n="feature.activity.body">Live Activity con estado enviado/sincronizado/visto, contador de personas que lo han visto, tema visual, vibración, sonido, voz, alto contraste, diferenciar sin color y reducción de movimiento.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">✓</div><h3 data-i18n="feature.checkin.title">Confirmación con un toque</h3><p data-i18n="feature.checkin.body">Envía tu estado rápidamente con mensajes como “Estoy bien”, “Buenos días” o “Buenas noches”.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">▣</div><h3 data-i18n="feature.widget.title">Widget</h3><p data-i18n="feature.widget.body">Consulta tu estado y abre la confirmación desde la pantalla de inicio.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">◷</div><h3 data-i18n="feature.reminders.title">Recordatorios</h3><p data-i18n="feature.reminders.body">Configura recordatorios para acordarte de enviar tu aviso diario.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">✎</div><h3 data-i18n="feature.messages.title">Mensajes</h3><p data-i18n="feature.messages.body">Escribe algo propio, añade un emoji o elige un mensaje preparado.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">◉</div><h3 data-i18n="feature.photo.title">Foto opcional</h3><p data-i18n="feature.photo.body">Añade una foto a tu aviso cuando quieras compartir un poco más de tu momento.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">→</div><h3 data-i18n="feature.arrived.title">“He llegado”</h3><p data-i18n="feature.arrived.body">Envía un mensaje claro al llegar a casa, al destino o al punto de encuentro.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">▤</div><h3 data-i18n="feature.history.title">Historial</h3><p data-i18n="feature.history.body">Revisa tus avisos enviados y recibidos en una lista o en un calendario.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">☷</div><h3 data-i18n="feature.chat.title">Chat</h3><p data-i18n="feature.chat.body">Habla con tus contactos desde el estado compartido con mensajes breves.</p></article>
                 </div>
             </div>
         </section>
 
-        <section class="section alt">
+        <section id="limites" class="section alt">
             <div class="wrap split">
                 <div>
-                    <h2 data-i18n="delivery.title">Cómo se comparte el aviso</h2>
-                    <p class="note" data-i18n="delivery.lede">La ruta depende del modo usado y de lo que esté habilitado en cada dispositivo.</p>
-                    <ul class="plain-list">
-                        <li data-i18n="delivery.item1">Apple/iCloud: CKShare con permiso read/write sobre un registro DailyStatus.</li>
-                        <li data-i18n="delivery.item2">Push: CloudKitSubscription con payload silencioso para refrescar la app en segundo plano.</li>
-                        <li data-i18n="delivery.item3">Aviso visible: lo crea UserNotifications localmente en el dispositivo del contacto.</li>
-                        <li data-i18n="delivery.item4">SMS/WhatsApp: hoja de compartir o composer de SMS iniciado manualmente por el usuario.</li>
-                    </ul>
+                    <p class="section-kicker" data-i18n="limits.kicker">Para usarla con claridad</p>
+                    <h2 data-i18n="limits.title">Un aviso por tiempo, no una emergencia</h2>
+                    <p class="section-lede" data-i18n="limits.lede">La app sirve para compartir una confirmación. No sustituye a los servicios de emergencia y no garantiza la entrega.</p>
                 </div>
                 <div class="callout warning">
-                    <h3 data-i18n="delivery.limit.title">Límite importante</h3>
-                    <p data-i18n="delivery.limit.body">No hay en el repositorio un backend propio, un SDK de WhatsApp ni un código que envíe por SMS una alerta automática al familiar cuando vence el plazo. El “Safety Auto-Warning” implementado es una notificación local programada en el dispositivo que ya tiene el estado compartido.</p>
-                    <p class="note" data-i18n="delivery.limit.note">Por eso la web no presenta el flujo como una garantía ni como sustituto de un servicio de emergencias.</p>
+                    <ul class="plain-list">
+                        <li data-i18n="limits.item1">El teléfono debe estar encendido.</li>
+                        <li data-i18n="limits.item2">Necesitas red para enviar y actualizar el aviso.</li>
+                        <li data-i18n="limits.item3">Las notificaciones deben estar permitidas para que se muestre un aviso.</li>
+                        <li data-i18n="limits.item4">Si falta alguna de estas condiciones, el aviso puede no llegar o no mostrarse.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section privacy-link-section">
             <div class="wrap">
-                <div class="section-heading">
-                    <h2 data-i18n="data.title">Datos y permisos comprobados</h2>
-                    <p data-i18n="data.lede">El código no incluye SDKs de analítica, anuncios o compras integradas; sí usa servicios de Apple y los permisos que se enumeran aquí.</p>
-                </div>
-                <div class="data-table-wrap">
-                    <table class="data-table">
-                        <thead><tr><th data-i18n="data.header.what">Elemento</th><th data-i18n="data.header.where">Dónde acaba</th><th data-i18n="data.header.when">Cuándo</th></tr></thead>
-                        <tbody>
-                            <tr><td data-i18n="data.row.status.what">DailyStatus: fecha, estado, mensaje, nombre, vistos, plazo, enlaces de vuelta y foto opcional</td><td data-i18n="data.row.status.where">CloudKit: base privada del propietario y base compartida de los contactos aceptados</td><td data-i18n="data.row.status.when">Al confirmar, compartir, sincronizar o marcar como visto</td></tr>
-                            <tr><td data-i18n="data.row.chat.what">Message: texto, senderID, senderName y timestamp</td><td data-i18n="data.row.chat.where">CloudKit, en la zona del estado y con referencia al registro padre</td><td data-i18n="data.row.chat.when">Al enviar o sincronizar el chat</td></tr>
-                            <tr><td data-i18n="data.row.contact.what">Nombre, identificador y fecha de una invitación pendiente</td><td data-i18n="data.row.contact.where">UserDefaults estándar del dispositivo</td><td data-i18n="data.row.contact.when">Al elegir un contacto y crear la invitación</td></tr>
-                            <tr><td data-i18n="data.row.photo.what">Foto comprimida y miniaturas</td><td data-i18n="data.row.photo.where">Temporal, Caches, Documents y App Group; la foto compartida se adjunta a CloudKit como CKAsset</td><td data-i18n="data.row.photo.when">Al tomar/enviar una foto, guardar historial o actualizar widget</td></tr>
-                            <tr><td data-i18n="data.row.location.what">Una ubicación y su localidad para “Estoy aquí”</td><td data-i18n="data.row.location.where">Se incorpora al mensaje y puede terminar en CloudKit o en el contenido manual de SMS/WhatsApp</td><td data-i18n="data.row.location.when">Solo al seleccionar y enviar ese mensaje</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="grid" style="margin-top: 18px;">
-                    <article class="card"><h3 data-i18n="permissions.contacts.title">Contactos</h3><p data-i18n="permissions.contacts.body">Permiso de Contactos para elegir personas con teléfono o email. El proyecto guarda localmente la invitación pendiente; no contiene una subida del libro completo de contactos.</p></article>
-                    <article class="card"><h3 data-i18n="permissions.camera.title">Cámara</h3><p data-i18n="permissions.camera.body">Permiso de cámara para hacer una foto con el flujo de check-in fotográfico.</p></article>
-                    <article class="card"><h3 data-i18n="permissions.location.title">Ubicación</h3><p data-i18n="permissions.location.body">Permiso When In Use, únicamente para resolver el mensaje “Estoy aquí”.</p></article>
-                    <article class="card"><h3 data-i18n="permissions.notifications.title">Notificaciones y push</h3><p data-i18n="permissions.notifications.body">Alertas, sonido y badge locales; registro de remote notifications y suscripciones CloudKit para actualizaciones silenciosas.</p></article>
-                    <article class="card"><h3 data-i18n="permissions.icloud.title">iCloud / CloudKit</h3><p data-i18n="permissions.icloud.body">Cuenta de iCloud necesaria para el flujo principal de compartir y sincronizar estados. Sin ella la app muestra una pantalla de iCloud no disponible.</p></article>
-                    <article class="card"><h3 data-i18n="permissions.local.title">Almacenamiento local</h3><p data-i18n="permissions.local.body">UserDefaults, App Group, Documents, Caches y temporal para preferencias, estado cacheado, historial, mensajes, fotos y datos del widget.</p></article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section alt">
-            <div class="wrap">
-                <div class="section-heading">
-                    <h2 data-i18n="limits.title">Qué puede impedir un aviso</h2>
-                    <p data-i18n="limits.lede">La app no controla la red, el estado del dispositivo ni los permisos del sistema.</p>
-                </div>
-                <div class="grid">
-                    <article class="card"><h3 data-i18n="limit.off.title">Teléfono apagado</h3><p data-i18n="limit.off.body">No hay código que envíe por su cuenta una alerta SMS/WhatsApp si el teléfono de quien confirma está apagado. Si el dispositivo del contacto ya sincronizó el estado, su temporizador local puede llegar a dispararse; depende de ese dispositivo, de iOS y de sus permisos.</p></article>
-                    <article class="card"><h3 data-i18n="limit.network.title">Sin red</h3><p data-i18n="limit.network.body">CloudKit necesita conectividad para guardar y sincronizar el último cambio. El código muestra una actualización optimista local, pero no implementa una cola persistente de reintento del envío.</p></article>
-                    <article class="card"><h3 data-i18n="limit.permission.title">Avisos desactivados</h3><p data-i18n="limit.permission.body">Si iOS no autoriza alertas, sonido o badge, los avisos locales no se muestran. El contenido puede seguir apareciendo al abrir y sincronizar la app.</p></article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="wrap">
-                <div class="section-heading">
-                    <h2 data-i18n="screens.title">Imágenes de la página actual</h2>
-                    <p data-i18n="screens.lede">Se conservan los dos recursos existentes de `ImOK/`.</p>
-                </div>
-                <div class="screens" aria-label="Imágenes existentes de Estoy bien">
-                    <figure><img src="imok.webp" width="1024" height="1024" alt="Recurso gráfico existente de Estoy bien: Aviso diario"></figure>
-                    <figure><img src="IMOK.png" width="1024" height="1024" alt="Recurso gráfico existente de Estoy bien: Aviso diario"></figure>
+                <div class="privacy-link-card">
+                    <div>
+                        <p class="section-kicker" data-i18n="privacy.kicker">Más información</p>
+                        <h2 data-i18n="privacy.title">¿Quieres conocer los detalles?</h2>
+                        <p data-i18n="privacy.body">Consulta la política de privacidad de Estoy bien para saber cómo se gestionan los datos y los permisos.</p>
+                    </div>
+                    <a class="button primary" href="privacidad.html" data-i18n="privacy.link">Ver la política de privacidad</a>
                 </div>
             </div>
         </section>
@@ -322,54 +284,51 @@
         <section id="faq" class="section alt">
             <div class="wrap">
                 <div class="section-heading">
+                    <p class="section-kicker" data-i18n="faq.kicker">Respuestas directas</p>
                     <h2 data-i18n="faq.title">Preguntas frecuentes</h2>
-                    <p data-i18n="faq.lede">Respuestas directas según el repositorio y la ficha de App Store consultados.</p>
                 </div>
                 <div class="faq">
-                    <details><summary data-i18n="faq.q1">¿Cómo llega el aviso a mi familia?</summary><dd data-i18n="faq.a1">El código guarda el estado en CloudKit y lo comparte mediante un CKShare. El dispositivo del contacto sincroniza el estado mediante CloudKit y puede recibir un push silencioso para actualizarse; la app crea la notificación visible localmente. No hay un servidor propio que envíe un SMS o WhatsApp automático.</dd></details>
-                    <details><summary data-i18n="faq.q2">¿Qué datos salen del dispositivo?</summary><dd data-i18n="faq.a2">DailyStatus y Message pueden salir hacia CloudKit, y una foto puede viajar como CKAsset. El nombre, el mensaje, la fecha, las personas que han visto el estado, el plazo configurado y, si se usa, la ubicación puntual quedan incluidos según el flujo usado.</dd></details>
-                    <details><summary data-i18n="faq.q3">¿Funciona sin iCloud?</summary><dd data-i18n="faq.a3">El código necesita una cuenta de iCloud disponible para el flujo principal de compartir. Cuando no está disponible, la app muestra una pantalla de iCloud requerido; puede conservar datos locales mientras sincroniza en segundo plano.</dd></details>
-                    <details><summary data-i18n="faq.q4">¿Qué hace el aviso de ausencia?</summary><dd data-i18n="faq.a4">Un estado compartido puede incluir un umbral de 24, 25, 30, 36 o 48 horas. El dispositivo que recibió ese estado programa un aviso local cuando pasa el umbral; el código también comprueba al sincronizar si el plazo ya pasó.</dd></details>
-                    <details><summary data-i18n="faq.q5">¿La app envía SMS o WhatsApp automáticamente?</summary><dd data-i18n="faq.a5">No aparece ese envío automático en el código. El usuario abre un composer de SMS o una hoja de compartir del sistema, elige el canal y confirma la acción. La app no puede confirmar la entrega o lectura del canal externo.</dd></details>
-                    <details><summary data-i18n="faq.q6">¿Usa GPS en tiempo real?</summary><dd data-i18n="faq.a6">No hay ubicación continua en el proyecto. Solo se solicita una ubicación cuando se envía el mensaje de ubicación puntual “Estoy aquí”, con permiso When In Use.</dd></details>
-                    <details><summary data-i18n="faq.q7">¿Qué incluye el widget?</summary><dd data-i18n="faq.a7">El widget pequeño y mediano muestra pendiente, enviado o visto, la hora, los nombres de quienes lo han visto y, si se activa, una foto comprimida. Al tocarlo abre la app.</dd></details>
-                    <details><summary data-i18n="faq.q8">¿Cuál es el precio?</summary><dd data-i18n="faq.a8">iTunes devuelve 0,99 € como precio de descarga. Se mantiene como dato pendiente de confirmación. No se encontró StoreKit ni compras integradas en el proyecto.</dd></details>
+                    <details><summary data-i18n="faq.q1">¿Cómo funciona?</summary><dd data-i18n="faq.a1">Eliges tus contactos, confirmas que estás bien desde la app o el widget y ellos pueden consultar el estado que compartes.</dd></details>
+                    <details><summary data-i18n="faq.q2">¿A quién llega el aviso?</summary><dd data-i18n="faq.a2">Se comparte con los contactos que eliges y que aceptan la invitación.</dd></details>
+                    <details><summary data-i18n="faq.q3">¿Puedo enviar un mensaje o una foto?</summary><dd data-i18n="faq.a3">Sí. Puedes añadir un mensaje, una foto o usar estados como “Estoy aquí” y “He llegado”.</dd></details>
+                    <details><summary data-i18n="faq.q4">¿Qué ocurre si el teléfono está apagado o sin red?</summary><dd data-i18n="faq.a4">La app necesita que el teléfono esté encendido, tenga red y permita las notificaciones. Si no, el aviso puede no llegar o no mostrarse.</dd></details>
+                    <details><summary data-i18n="faq.q5">¿Puedo avisar por SMS o WhatsApp?</summary><dd data-i18n="faq.a5">Sí. Puedes abrir el mensaje y elegir SMS o WhatsApp manualmente. La app no lo envía por su cuenta.</dd></details>
+                    <details><summary data-i18n="faq.q6">¿Es un servicio de emergencias?</summary><dd data-i18n="faq.a6">No. Es un aviso basado en el tiempo, no garantiza la entrega y no sustituye a los servicios de emergencia.</dd></details>
                 </div>
             </div>
         </section>
 
-        <section class="section changelog">
+        <section id="cambios" class="section changelog">
             <div class="wrap">
                 <div class="section-heading">
+                    <p class="section-kicker" data-i18n="changelog.kicker">Actualizaciones</p>
                     <h2 data-i18n="changelog.title">Historial de versiones</h2>
-                    <p data-i18n="changelog.lede">Se conserva el changelog de la página actual y se añade la versión 1.0 que aparece en App Store.</p>
+                    <p data-i18n="changelog.lede">Las novedades publicadas de la aplicación.</p>
                 </div>
                 <div class="changelog-list">
                     <article class="changelog-entry current">
                         <h3 data-i18n="changelog.v12.title">Versión 1.2</h3>
                         <ul>
-                            <!-- UNVERIFIED: The listing calls this an alert feature for non-Apple users; the code implements manual SMS/WhatsApp sharing and does not contain automatic delivery confirmation. -->
-                            <li data-i18n="changelog.v12.item1"><strong>Avisos por SMS y WhatsApp</strong>: función para compartir avisos con usuarios no Apple mediante SMS o WhatsApp.</li>
-                            <li data-i18n="changelog.v12.item2"><strong>Mejoras visuales y de diseño</strong>: nuevos efectos de color de fondo y animaciones al enviar estados.</li>
-                            <li data-i18n="changelog.v12.item3"><strong>Fotos en iPad</strong>: corrección del envío de fotos desde iPad.</li>
-                            <li data-i18n="changelog.v12.item4"><strong>Estado “Estoy aquí” + ubicación</strong>: el mensaje puede incluir una localidad y una URL de Apple Maps.</li>
-                            <li data-i18n="changelog.v12.item5">Correcciones de errores y mejoras generales de rendimiento.</li>
+                            <li data-i18n="changelog.v12.item1"><strong>Avisos por SMS y WhatsApp</strong>: comparte un aviso con personas que no usan la app.</li>
+                            <li data-i18n="changelog.v12.item2"><strong>Mejoras visuales</strong>: nuevos efectos de color y animaciones al enviar estados.</li>
+                            <li data-i18n="changelog.v12.item3"><strong>Fotos en iPad</strong>: mejoras al enviar fotos desde iPad.</li>
+                            <li data-i18n="changelog.v12.item4"><strong>“Estoy aquí”</strong>: el mensaje puede incluir una localidad y un enlace de Apple Maps.</li>
+                            <li data-i18n="changelog.v12.item5">Correcciones de errores y mejoras generales.</li>
                         </ul>
                     </article>
                     <article class="changelog-entry">
                         <h3 data-i18n="changelog.v11.title">Versión 1.1</h3>
                         <ul>
-                            <!-- UNVERIFIED: The App Store wording says contacts receive an alert even when the smartphone is off. The repository shows a recipient-device local safety monitor, not an outbound family alert. -->
-                            <li data-i18n="changelog.v11.item1"><strong>Nuevo aviso de seguridad</strong>: si no se envía un estado dentro del plazo, el código puede programar un aviso de seguridad local para el estado compartido.</li>
-                            <li data-i18n="changelog.v11.item2"><strong>Chat sencillo</strong>: abre un contacto y envía mensajes breves sincronizados mediante CloudKit.</li>
-                            <li data-i18n="changelog.v11.item3"><strong>Lógica de notificaciones</strong>: evita el recordatorio diario cuando ya existe un check-in.</li>
-                            <li data-i18n="changelog.v11.item4"><strong>Actualizaciones frecuentes</strong>: permite reducir el tiempo de espera entre estados a 1 minuto, frente a 5 horas por defecto.</li>
-                            <li data-i18n="changelog.v11.item5">Correcciones de errores y mejoras generales de rendimiento.</li>
+                            <li data-i18n="changelog.v11.item1"><strong>Aviso por falta de confirmación</strong>: configura un plazo para los estados compartidos.</li>
+                            <li data-i18n="changelog.v11.item2"><strong>Chat sencillo</strong>: envía mensajes breves a tus contactos.</li>
+                            <li data-i18n="changelog.v11.item3"><strong>Recordatorios</strong>: evita el recordatorio diario cuando ya has enviado un estado.</li>
+                            <li data-i18n="changelog.v11.item4"><strong>Más frecuencia</strong>: reduce el tiempo de espera entre estados.</li>
+                            <li data-i18n="changelog.v11.item5">Correcciones de errores y mejoras generales.</li>
                         </ul>
                     </article>
                     <article class="changelog-entry">
                         <h3 data-i18n="changelog.v10.title">Versión 1.0 · 22 de enero de 2026</h3>
-                        <ul><li data-i18n="changelog.v10.item1">Primera versión publicada que devuelve la API de iTunes para el bundle ID de la app.</li></ul>
+                        <ul><li data-i18n="changelog.v10.item1">Lanzamiento inicial.</li></ul>
                     </article>
                 </div>
             </div>
@@ -379,9 +338,9 @@
     <footer class="footer">
         <div class="wrap footer-row">
             <a class="brand" href="../index.html">mirlo apps<span>.</span></a>
-            <span data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span>
+            <span data-i18n="footer.copyright">© 2026 mirlo apps. Hecho en España 🇪🇸</span>
             <div class="footer-links">
-                <a href="privacidad.html" data-i18n="footer.privacy">Privacidad y términos</a>
+                <a href="privacidad.html" data-i18n="footer.privacy">Privacidad</a>
                 <a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a>
                 <a href="soporte.html" data-i18n="footer.support">Soporte</a>
                 <a href="https://x.com/PaoloAC" aria-label="X">X</a>
@@ -395,34 +354,32 @@
         <a href="../apps/index.html" onclick="toggleMenu()" data-i18n="nav.apps">Apps</a>
         <a href="../index.html#nosotros" onclick="toggleMenu()" data-i18n="nav.about">Sobre Mirlo</a>
         <a href="../index.html#contacto" onclick="toggleMenu()" data-i18n="nav.contact">Contacto</a>
-        <a href="#how-it-works" onclick="toggleMenu()" data-i18n="nav.how">Cómo funciona</a>
-        <a href="#features" onclick="toggleMenu()" data-i18n="nav.features">Funciones</a>
+        <a href="#que-es" onclick="toggleMenu()" data-i18n="nav.what">Qué es</a>
+        <a href="#como-funciona" onclick="toggleMenu()" data-i18n="nav.how">Cómo funciona</a>
+        <a href="#funciones" onclick="toggleMenu()" data-i18n="nav.features">Funciones</a>
         <a href="#faq" onclick="toggleMenu()" data-i18n="nav.faq">FAQ</a>
         <a href="soporte.html" onclick="toggleMenu()" data-i18n="nav.support">Soporte</a>
-        <a class="mobile-language" href="en/index.html" lang="en" onclick="toggleMenu()" data-i18n="nav.english.full">Versión en inglés</a>
-        <div class="mobile-theme"><span data-i18n="nav.dark">Modo oscuro</span><label class="theme-switch" aria-label="Cambiar tema"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div>
+        <a class="mobile-language" href="en/index.html" lang="en" onclick="toggleMenu()" data-i18n="nav.english.full">English version</a>
+        <div class="mobile-theme"><span data-i18n="nav.dark">Modo oscuro</span><label class="theme-switch"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div>
     </div>
 
     <script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
         }
-
         function toggleDarkMode() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.theme = isDark ? 'dark' : 'light';
-            document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark);
+            const isDark = document.documentElement.classList.toggle("dark");
+            localStorage.theme = isDark ? "dark" : "light";
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
         }
-
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const isOpen = menu.classList.toggle('is-open');
-            menu.setAttribute('aria-hidden', String(!isOpen));
+            const menu = document.getElementById("mobile-menu");
+            const isOpen = menu.classList.toggle("is-open");
+            menu.setAttribute("aria-hidden", String(!isOpen));
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark);
+        document.addEventListener("DOMContentLoaded", () => {
+            const isDark = document.documentElement.classList.contains("dark");
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
         });
     </script>
     <script src="/cookies.js" defer></script>

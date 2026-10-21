@@ -1,25 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#10b981">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.mirloapps.es/ImOK/en/">
     <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ImOK/">
     <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ImOK/en/">
     <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ImOK/">
+
     <meta name="apple-itunes-app" content="app-id=6757763851">
-    <meta name="description" content="I'm OK: Daily Check-in lets you confirm your status and share it with selected contacts through CloudKit, a widget and local notifications.">
+    <meta name="description" content="I'm OK: Daily Check-in helps you confirm that you are well and share it with your family when you live alone, travel or go out on your own.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="I'm OK: Daily Check-in — a daily check-in">
-    <meta name="twitter:description" content="Confirm your status and share it with selected contacts from the app, widget or shortcut.">
-    <meta name="twitter:image" content="https://www.mirloapps.es/ImOK/IMOK.png">
+    <meta name="twitter:title" content="I'm OK: Daily Check-in">
+    <meta name="twitter:description" content="Confirm that you are well with one tap and share the update with the people you choose.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/ImOK/imok.webp">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/ImOK/en/">
-    <meta property="og:title" content="I'm OK: Daily Check-in — a daily check-in">
-    <meta property="og:description" content="Confirm your status and share it with selected contacts from the app, widget or shortcut.">
-    <meta property="og:image" content="https://www.mirloapps.es/ImOK/IMOK.png">
+    <meta property="og:title" content="I'm OK: Daily Check-in">
+    <meta property="og:description" content="Confirm that you are well with one tap and share the update with the people you choose.">
+    <meta property="og:image" content="https://www.mirloapps.es/ImOK/imok.webp">
+
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
@@ -27,9 +28,6 @@
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../styles.css">
 
-    <!-- UNVERIFIED: The App Store listing states that the developer does not collect data. This page describes code paths and does not treat that statement as independently verified by Apple. -->
-    <!-- UNVERIFIED: The App Store listing states that an alert reaches contacts when the deadline is missed, including while the phone is off. The repository code implements recipient-device local alerts; it does not show an outbound server/SMS alert to a family member. -->
-    <!-- UNVERIFIED: The download price returned by iTunes/App Store is 0.99 EUR and is shown below as pending confirmation. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,31 +36,76 @@
           "@type": "SoftwareApplication",
           "name": "I'm OK: Daily Check-in",
           "operatingSystem": "iOS 17 or later",
-          "applicationCategory": "LifestyleApplication",
+          "softwareVersion": "1.2",
           "url": "https://www.mirloapps.es/ImOK/en/",
           "downloadUrl": "https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851",
-          "datePublished": "2026-01-22",
-          "softwareVersion": "1.2",
-          "publisher": {"@type": "Organization", "name": "mirlo apps", "url": "https://www.mirloapps.es/"},
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
           "inLanguage": "en",
-          "featureList": ["Daily status check-in", "CloudKit sharing with selected contacts", "Home Screen widget", "Local reminders and deadline notifications", "Status history and contact chat", "Optional photo and one-shot location status", "Manual SMS or WhatsApp sharing"]
+          "featureList": [
+            "Daily check-in with one tap",
+            "Widget and reminders",
+            "Messages, photos and an I have arrived status",
+            "Check-in history",
+            "Chat with chosen contacts"
+          ]
         },
         {
           "@type": "FAQPage",
           "mainEntity": [
-            {"@type": "Question", "name": "How does the alert reach my family?", "acceptedAnswer": {"@type": "Answer", "text": "The code stores the status in CloudKit and shares it through a CKShare. The contact's device syncs the status through CloudKit and may receive a silent push to refresh the app; the app creates the visible notification locally. The code contains no own server that sends an automatic SMS or WhatsApp message."}},
-            {"@type": "Question", "name": "What data leaves the device?", "acceptedAnswer": {"@type": "Answer", "text": "DailyStatus and Message records can go to CloudKit, and an optional photo can be sent as a CKAsset. The name, message, date, viewers, warning threshold and, when used, a one-shot location are included according to the flow used."}},
-            {"@type": "Question", "name": "Does it work when the phone is off or offline?", "acceptedAnswer": {"@type": "Answer", "text": "The code does not guarantee delivery. Without a network, the latest check-in cannot finish saving to CloudKit and no persistent send-retry queue is visible in the repository. A local notification already scheduled on the contact's device depends on that device, iOS and its notification permissions."}},
-            {"@type": "Question", "name": "What happens if notifications are disabled?", "acceptedAnswer": {"@type": "Answer", "text": "The app may still sync data when opened, but the code cannot show visible notifications when iOS has not authorized alerts, sound or badges. The status can be viewed in the app after data has synced."}},
-            {"@type": "Question", "name": "Does the app continuously use my location?", "acceptedAnswer": {"@type": "Answer", "text": "There is no background location flow in the code. Location is requested once, with When In Use permission, only when sending the I'm Here status; the app obtains a locality and an Apple Maps URL."}},
-            {"@type": "Question", "name": "Can I notify someone by SMS or WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The code offers a manual SMS flow and a system share sheet that may include WhatsApp. The app cannot confirm delivery or reading in the chosen external channel."}},
-            {"@type": "Question", "name": "What is the price?", "acceptedAnswer": {"@type": "Answer", "text": "The iTunes query returns a 0.99 EUR download price. It is shown as pending confirmation. The repository contains no StoreKit or in-app purchase code."}},
-            {"@type": "Question", "name": "Which languages and systems are listed?", "acceptedAnswer": {"@type": "Answer", "text": "The project contains Spanish and English localizations. The App Store listing indicates iOS 17 or later and compatibility with iPhone, iPad, Apple silicon Mac and Apple Vision."}}
+            {
+              "@type": "Question",
+              "name": "How does it work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Choose your contacts, confirm that you are well from the app or widget, and they can check the status you share."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who receives the update?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is shared with the contacts you choose and who accept the invitation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I send a message or photo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can add a message, a photo, or use statuses such as I'm here and I have arrived."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if the phone is off or has no network?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app needs the phone to be on, connected to a network and allowed to show notifications. Otherwise, the update may not arrive or appear."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is it an emergency service?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. It is a time-based check-in and does not guarantee delivery or replace emergency services."
+              }
+            }
           ]
         }
       ]
     }
     </script>
+
     <title>I'm OK: Daily Check-in — mirlo apps</title>
 </head>
 
@@ -74,12 +117,17 @@
                 <a href="../../apps/index.html" data-i18n="nav.apps">Apps</a>
                 <a href="../../index.html#nosotros" data-i18n="nav.about">About Mirlo</a>
                 <a href="../../index.html#contacto" data-i18n="nav.contact">Contact</a>
+                <a href="#what-is-it" data-i18n="nav.what">What is it?</a>
                 <a href="#how-it-works" data-i18n="nav.how">How it works</a>
                 <a href="#features" data-i18n="nav.features">Features</a>
                 <a href="#faq" data-i18n="nav.faq">FAQ</a>
+                <a href="#changes" data-i18n="nav.changelog">Changes</a>
                 <a href="../soporte.html" data-i18n="nav.support">Support</a>
                 <a class="language" href="../index.html" lang="es" data-i18n="nav.spanish">ES</a>
-                <label class="theme-switch" aria-label="Toggle theme"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label>
+                <label class="theme-switch" aria-label="Change theme">
+                    <input type="checkbox" onclick="toggleDarkMode()">
+                    <span class="theme-switch-track"></span>
+                </label>
             </div>
             <div class="mobile-controls">
                 <a class="language" href="../index.html" lang="es" data-i18n="nav.spanish">ES</a>
@@ -92,80 +140,249 @@
         <section class="hero">
             <div class="wrap hero-grid">
                 <div>
-                    <div class="eyebrow" data-i18n="hero.eyebrow">Available on the App Store</div>
+                    <div class="eyebrow" data-i18n="hero.eyebrow">A simple way to stay connected</div>
                     <h1 data-i18n="hero.title">I'm OK: Daily Check-in</h1>
-                    <p class="lede" data-i18n="hero.lede">A daily check-in to share your status with the people you choose, from the app, widget or shortcut.</p>
+                    <p class="lede" data-i18n="hero.lede">Confirm that you are well with one tap and share the update with the people you choose.</p>
+                    <p class="hero-audience" data-i18n="hero.audience">For families with older parents who live alone, for travel updates and for going out on your own.</p>
                     <div class="actions">
-                        <a class="app-store-button" href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851">
+                        <a class="app-store-button" href="https://apps.apple.com/es/app/estoy-bien-aviso-diario/id6757763851" target="_blank" rel="noopener">
                             <svg viewBox="0 0 24 24" role="img" aria-label="Apple logo"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"></path></svg>
                             <span class="app-store-button-copy"><span class="app-store-button-kicker" data-i18n="hero.download">Download on the</span><span class="app-store-button-label">App Store</span></span>
                         </a>
-                        <a class="button secondary" href="#features" data-i18n="hero.features">See features</a>
+                        <a class="button secondary" href="#how-it-works" data-i18n="hero.how">See how it works</a>
                     </div>
-                    <p class="hero-note"><span data-i18n="hero.meta">App Store ID: 6757763851 · iOS 17 or later · Spanish and English</span><br><span class="unverified-note" data-i18n="hero.price">Download price returned by iTunes: €0.99 · pending confirmation</span></p>
                 </div>
-                <div class="hero-art"><figure class="hero-image"><img src="../imok.webp" width="1024" height="1024" alt="I'm OK: Daily Check-in app artwork"></figure></div>
+                <div class="hero-art">
+                    <figure class="hero-image">
+                        <img src="../imok.webp" width="1024" height="1024" alt="I'm OK: Daily Check-in app icon">
+                    </figure>
+                </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section screens-section alt" aria-labelledby="screens-title">
+            <div class="wrap">
+                <div class="section-heading screens-heading">
+                    <p class="section-kicker" data-i18n="screens.kicker">Screenshots</p>
+                    <h2 id="screens-title" data-i18n="screens.title">See the app in action</h2>
+                    <p data-i18n="screens.lede">A clear screen for checking in, sending a message and reviewing your history.</p>
+                </div>
+                <div class="screens" aria-label="I'm OK app screenshots">
+                    <figure class="screen-card"><img src="../screen2.webp" loading="lazy" width="1020" height="2208" alt="Shared status with an arrival message"><figcaption data-i18n="screens.item2">Shared status</figcaption></figure>
+                    <figure class="screen-card"><img src="../screen3.webp" loading="lazy" width="1020" height="2208" alt="Ready-made message selector"><figcaption data-i18n="screens.item3">Ready-made messages</figcaption></figure>
+                    <figure class="screen-card"><img src="../screen4.webp" loading="lazy" width="1020" height="2208" alt="History of received updates"><figcaption data-i18n="screens.item4">History</figcaption></figure>
+                    <figure class="screen-card"><img src="../screen5.webp" loading="lazy" width="1020" height="2208" alt="I'm OK widget on the Home Screen"><figcaption data-i18n="screens.item5">Widget</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-is-it" class="section">
             <div class="wrap">
                 <div class="section-heading">
-                    <h2 data-i18n="audience.title">Situations where it may fit</h2>
-                    <p data-i18n="audience.body">If you want to know whether an older parent who lives alone has checked in, let your family know during a trip, or share an “I'm OK” message when going out for a solo workout, the app combines a manual check-in, selected contacts, messages and local notifications. You can also use a message such as “I've arrived” when you get home. It is not an emergency service, and the code does not guarantee delivery.</p>
+                    <p class="section-kicker" data-i18n="what.kicker">For everyday life</p>
+                    <h2 data-i18n="what.title">An easy way to say “I'm OK”</h2>
+                    <p data-i18n="what.lede">Share a simple check-in with your family or the people who are keeping in touch from a distance. You choose when, what to say and who receives it.</p>
+                </div>
+                <div class="grid three-up">
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">✓</div>
+                        <h3 data-i18n="what.card1.title">Stay connected without fuss</h3>
+                        <p data-i18n="what.card1.body">Your family can know that an older parent who lives alone has checked in.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">↗</div>
+                        <h3 data-i18n="what.card2.title">For trips and getaways</h3>
+                        <p data-i18n="what.card2.body">Send an “I'm OK” update while travelling, reaching a destination or heading home.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">○</div>
+                        <h3 data-i18n="what.card3.title">For going out on your own</h3>
+                        <p data-i18n="what.card3.body">Share your status before or after a route, a walk or a workout.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section id="how-it-works" class="section alt">
             <div class="wrap">
-                <div class="section-heading"><h2 data-i18n="how.title">How it works</h2><p data-i18n="how.lede">The flow found in the code combines a manual confirmation, a shared CloudKit record and local notifications.</p></div>
+                <div class="section-heading">
+                    <p class="section-kicker" data-i18n="how.kicker">Three steps</p>
+                    <h2 data-i18n="how.title">How it works</h2>
+                    <p data-i18n="how.lede">Choose who to share with, then confirm your status whenever you want.</p>
+                </div>
                 <div class="grid">
-                    <article class="card"><div class="icon" aria-hidden="true">1</div><h3 data-i18n="how.step1.title">Set up your account and contacts</h3><p data-i18n="how.step1.body">The app asks for a display name, Contacts access to choose a person and an iCloud account to share the status. The invitation is a CloudKit link.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">2</div><h3 data-i18n="how.step2.title">Confirm your status</h3><p data-i18n="how.step2.body">Tap the main button, widget, Siri/Shortcuts intent or system quick action. You can add a message, photo or the one-shot “I'm Here” location status.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">3</div><h3 data-i18n="how.step3.title">The contact syncs and can view it</h3><p data-i18n="how.step3.body">The status is stored as DailyStatus in CloudKit. An invited contact can sync it, open it, mark it as viewed and chat.</p></article>
+                    <article class="card step-card">
+                        <div class="step-number">1</div>
+                        <h3 data-i18n="how.step1.title">Choose your contacts</h3>
+                        <p data-i18n="how.step1.body">Add the people you want to share your updates with.</p>
+                    </article>
+                    <article class="card step-card">
+                        <div class="step-number">2</div>
+                        <h3 data-i18n="how.step2.title">Confirm that you are well</h3>
+                        <p data-i18n="how.step2.body">Tap the button in the app or use the widget. Add a message, a photo or “I have arrived”.</p>
+                    </article>
+                    <article class="card step-card">
+                        <div class="step-number">3</div>
+                        <h3 data-i18n="how.step3.title">Your family can check it</h3>
+                        <p data-i18n="how.step3.body">The people you choose can see the status, mark it as seen and reply in the chat.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section id="features" class="section">
             <div class="wrap">
-                <div class="section-heading"><h2 data-i18n="features.title">Features found in the code</h2><p data-i18n="features.lede">This list is limited to screens, services and capabilities found in the iOS project.</p></div>
+                <div class="section-heading">
+                    <p class="section-kicker" data-i18n="features.kicker">What you can do</p>
+                    <h2 data-i18n="features.title">The essentials, in just a few taps</h2>
+                    <p data-i18n="features.lede">Choose the way of checking in that fits you best.</p>
+                </div>
                 <div class="grid">
-                    <article class="card"><div class="icon" aria-hidden="true">✓</div><h3 data-i18n="feature.checkin.title">Check-in messages</h3><p data-i18n="feature.checkin.body">Editable messages such as “I'm OK”, “Good morning”, “Good night”, “I love you”, “I'm Here” and “I've arrived”, with emoji and color theme.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◫</div><h3 data-i18n="feature.widget.title">Widget and quick action</h3><p data-i18n="feature.widget.body">Small or medium widget with pending, sent and viewed states; it opens the app through imok://checkin. On iOS 18 there is also a system control that opens the same flow.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◷</div><h3 data-i18n="feature.reminders.title">Local reminders</h3><p data-i18n="feature.reminders.body">Configurable personal reminders. The code creates one at 10:00 by default and allows reminders to be edited, enabled, disabled or deleted.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◉</div><h3 data-i18n="feature.alerts.title">Alerts and view receipts</h3><p data-i18n="feature.alerts.body">Daily deadline alert, incoming check-in alert, viewed-status alert and a local absence monitor for shared statuses.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">▤</div><h3 data-i18n="feature.history.title">History</h3><p data-i18n="feature.history.body">Local sent and received history, list or calendar view, attached photos and a 100-item limit.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">☷</div><h3 data-i18n="feature.contacts.title">Contacts and chat</h3><p data-i18n="feature.contacts.body">Connected contacts, pending invitations, participant revocation, invitation links and chat synchronized through CloudKit Message records.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">📷</div><h3 data-i18n="feature.photo.title">Optional photo</h3><p data-i18n="feature.photo.body">Front-camera capture, compression, CKAsset upload, contact and history thumbnails, and an option to show the photo in the widget.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">⌖</div><h3 data-i18n="feature.location.title">One-shot location status</h3><p data-i18n="feature.location.body">The “I'm Here” message requests When In Use location once, obtains a locality and creates an Apple Maps URL. There is no continuous location flow in the code.</p></article>
-                    <article class="card"><div class="icon" aria-hidden="true">◌</div><h3 data-i18n="feature.activity.title">Live Activity and accessibility</h3><p data-i18n="feature.activity.body">Live Activity with sent/synced/viewed state, viewer count, visual theme, haptics, sound, voice, high contrast, differentiate without color and reduced motion.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">✓</div><h3 data-i18n="feature.checkin.title">One-tap check-in</h3><p data-i18n="feature.checkin.body">Send your status quickly with messages such as “I'm OK”, “Good morning” or “Good night”.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">▣</div><h3 data-i18n="feature.widget.title">Widget</h3><p data-i18n="feature.widget.body">Check your status and open the check-in from your Home Screen.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">◷</div><h3 data-i18n="feature.reminders.title">Reminders</h3><p data-i18n="feature.reminders.body">Set reminders to help you remember your daily check-in.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">✎</div><h3 data-i18n="feature.messages.title">Messages</h3><p data-i18n="feature.messages.body">Write your own message, add an emoji or choose a ready-made one.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">◉</div><h3 data-i18n="feature.photo.title">Optional photo</h3><p data-i18n="feature.photo.body">Add a photo to your update when you want to share a little more of your moment.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">→</div><h3 data-i18n="feature.arrived.title">“I have arrived”</h3><p data-i18n="feature.arrived.body">Send a clear message when you get home, reach your destination or arrive at the meeting point.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">▤</div><h3 data-i18n="feature.history.title">History</h3><p data-i18n="feature.history.body">Review your sent and received updates in a list or calendar.</p></article>
+                    <article class="card"><div class="icon" aria-hidden="true">☷</div><h3 data-i18n="feature.chat.title">Chat</h3><p data-i18n="feature.chat.body">Talk to your contacts from the shared status with short messages.</p></article>
                 </div>
             </div>
         </section>
 
-        <section class="section alt"><div class="wrap split"><div><h2 data-i18n="delivery.title">How the alert is shared</h2><p class="note" data-i18n="delivery.lede">The route depends on the mode used and what is enabled on each device.</p><ul class="plain-list"><li data-i18n="delivery.item1">Apple/iCloud: CKShare with read/write permission on a DailyStatus record.</li><li data-i18n="delivery.item2">Push: CloudKitSubscription with a silent payload to refresh the app in the background.</li><li data-i18n="delivery.item3">Visible alert: created locally by UserNotifications on the contact's device.</li><li data-i18n="delivery.item4">SMS/WhatsApp: system share sheet or SMS composer started manually by the user.</li></ul></div><div class="callout warning"><h3 data-i18n="delivery.limit.title">Important limit</h3><p data-i18n="delivery.limit.body">The repository contains no own backend, WhatsApp SDK or code that automatically sends an SMS alert to a family member when the deadline passes. The implemented “Safety Auto-Warning” is a local notification scheduled on the device that already has the shared status.</p><p class="note" data-i18n="delivery.limit.note">The website therefore does not describe the flow as a guarantee or as a replacement for emergency services.</p></div></div></section>
+        <section id="limits" class="section alt">
+            <div class="wrap split">
+                <div>
+                    <p class="section-kicker" data-i18n="limits.kicker">Use it with clear expectations</p>
+                    <h2 data-i18n="limits.title">A time-based check-in, not an emergency service</h2>
+                    <p class="section-lede" data-i18n="limits.lede">The app is for sharing a check-in. It does not replace emergency services and does not guarantee delivery.</p>
+                </div>
+                <div class="callout warning">
+                    <ul class="plain-list">
+                        <li data-i18n="limits.item1">The phone must be switched on.</li>
+                        <li data-i18n="limits.item2">You need a network connection to send and update the check-in.</li>
+                        <li data-i18n="limits.item3">Notifications must be allowed for an alert to appear.</li>
+                        <li data-i18n="limits.item4">If any of these conditions is missing, the update may not arrive or appear.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section class="section"><div class="wrap"><div class="section-heading"><h2 data-i18n="data.title">Checked data and permissions</h2><p data-i18n="data.lede">The code includes no analytics, advertising or in-app-purchase SDKs; it does use Apple services and the permissions listed here.</p></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th data-i18n="data.header.what">Item</th><th data-i18n="data.header.where">Where it ends up</th><th data-i18n="data.header.when">When</th></tr></thead><tbody><tr><td data-i18n="data.row.status.what">DailyStatus: date, status, message, name, viewers, threshold, back-links and optional photo</td><td data-i18n="data.row.status.where">CloudKit: owner's private database and the accepted contacts' shared database</td><td data-i18n="data.row.status.when">On check-in, sharing, sync or view</td></tr><tr><td data-i18n="data.row.chat.what">Message: text, senderID, senderName and timestamp</td><td data-i18n="data.row.chat.where">CloudKit, in the status zone and linked to the parent record</td><td data-i18n="data.row.chat.when">When chat is sent or synced</td></tr><tr><td data-i18n="data.row.contact.what">Name, identifier and date of a pending invitation</td><td data-i18n="data.row.contact.where">Standard UserDefaults on the device</td><td data-i18n="data.row.contact.when">When a contact is selected and the invitation is created</td></tr><tr><td data-i18n="data.row.photo.what">Compressed photo and thumbnails</td><td data-i18n="data.row.photo.where">Temporary storage, Caches, Documents and App Group; the shared photo is attached to CloudKit as a CKAsset</td><td data-i18n="data.row.photo.when">When taking/sending a photo, saving history or updating the widget</td></tr><tr><td data-i18n="data.row.location.what">One location and locality for “I'm Here”</td><td data-i18n="data.row.location.where">Added to the message and may end up in CloudKit or manual SMS/WhatsApp content</td><td data-i18n="data.row.location.when">Only when that message is selected and sent</td></tr></tbody></table></div><div class="grid" style="margin-top: 18px;"><article class="card"><h3 data-i18n="permissions.contacts.title">Contacts</h3><p data-i18n="permissions.contacts.body">Contacts permission to choose people with a phone number or email. The project stores the pending invitation locally; it does not contain an upload of the full address book.</p></article><article class="card"><h3 data-i18n="permissions.camera.title">Camera</h3><p data-i18n="permissions.camera.body">Camera permission for the photo check-in flow.</p></article><article class="card"><h3 data-i18n="permissions.location.title">Location</h3><p data-i18n="permissions.location.body">When In Use permission, only to resolve the “I'm Here” message.</p></article><article class="card"><h3 data-i18n="permissions.notifications.title">Notifications and push</h3><p data-i18n="permissions.notifications.body">Local alerts, sound and badge; remote notification registration and CloudKit subscriptions for silent updates.</p></article><article class="card"><h3 data-i18n="permissions.icloud.title">iCloud / CloudKit</h3><p data-i18n="permissions.icloud.body">An iCloud account is needed for the main sharing and status-sync flow. Without it the app shows an iCloud-unavailable screen.</p></article><article class="card"><h3 data-i18n="permissions.local.title">Local storage</h3><p data-i18n="permissions.local.body">UserDefaults, App Group, Documents, Caches and temporary storage for preferences, cached status, history, messages, photos and widget data.</p></article></div></div></section>
+        <section class="section privacy-link-section">
+            <div class="wrap">
+                <div class="privacy-link-card">
+                    <div>
+                        <p class="section-kicker" data-i18n="privacy.kicker">More information</p>
+                        <h2 data-i18n="privacy.title">Want to know the details?</h2>
+                        <p data-i18n="privacy.body">Read the I'm OK privacy policy to learn how data and permissions are handled.</p>
+                    </div>
+                    <a class="button primary" href="privacidad.html" data-i18n="privacy.link">Read the privacy policy</a>
+                </div>
+            </div>
+        </section>
 
-        <section class="section alt"><div class="wrap"><div class="section-heading"><h2 data-i18n="limits.title">What can prevent an alert</h2><p data-i18n="limits.lede">The app does not control the network, device state or system permissions.</p></div><div class="grid"><article class="card"><h3 data-i18n="limit.off.title">Phone is off</h3><p data-i18n="limit.off.body">There is no code that independently sends an SMS/WhatsApp alert when the confirming person's phone is off. If the contact's device already synced the status, its local timer may still fire; that depends on the receiving device, iOS and its permissions.</p></article><article class="card"><h3 data-i18n="limit.network.title">No network</h3><p data-i18n="limit.network.body">CloudKit needs connectivity to save and sync the latest change. The code shows an optimistic local update, but does not implement a persistent send-retry queue.</p></article><article class="card"><h3 data-i18n="limit.permission.title">Notifications disabled</h3><p data-i18n="limit.permission.body">If iOS has not authorized alerts, sound or badges, local notifications are not shown. Content may still appear when the app opens and syncs.</p></article></div></div></section>
+        <section id="faq" class="section alt">
+            <div class="wrap">
+                <div class="section-heading">
+                    <p class="section-kicker" data-i18n="faq.kicker">Straight answers</p>
+                    <h2 data-i18n="faq.title">Frequently asked questions</h2>
+                </div>
+                <div class="faq">
+                    <details><summary data-i18n="faq.q1">How does it work?</summary><dd data-i18n="faq.a1">Choose your contacts, confirm that you are well from the app or widget, and they can check the status you share.</dd></details>
+                    <details><summary data-i18n="faq.q2">Who receives the update?</summary><dd data-i18n="faq.a2">It is shared with the contacts you choose and who accept the invitation.</dd></details>
+                    <details><summary data-i18n="faq.q3">Can I send a message or photo?</summary><dd data-i18n="faq.a3">Yes. You can add a message, a photo, or use statuses such as “I'm here” and “I have arrived”.</dd></details>
+                    <details><summary data-i18n="faq.q4">What if the phone is off or has no network?</summary><dd data-i18n="faq.a4">The app needs the phone to be on, connected to a network and allowed to show notifications. Otherwise, the update may not arrive or appear.</dd></details>
+                    <details><summary data-i18n="faq.q5">Can I send an SMS or WhatsApp message?</summary><dd data-i18n="faq.a5">Yes. You can open the message and choose SMS or WhatsApp manually. The app does not send it by itself.</dd></details>
+                    <details><summary data-i18n="faq.q6">Is it an emergency service?</summary><dd data-i18n="faq.a6">No. It is a time-based check-in, does not guarantee delivery and does not replace emergency services.</dd></details>
+                </div>
+            </div>
+        </section>
 
-        <section class="section"><div class="wrap"><div class="section-heading"><h2 data-i18n="screens.title">Images from the current page</h2><p data-i18n="screens.lede">The two existing resources in `ImOK/` are preserved.</p></div><div class="screens" aria-label="Existing I'm OK images"><figure><img src="../imok.webp" width="1024" height="1024" alt="Existing I'm OK: Daily Check-in artwork"></figure><figure><img src="../IMOK.png" width="1024" height="1024" alt="Existing I'm OK: Daily Check-in artwork"></figure></div></div></section>
-
-        <section id="faq" class="section alt"><div class="wrap"><div class="section-heading"><h2 data-i18n="faq.title">Frequently asked questions</h2><p data-i18n="faq.lede">Direct answers based on the repository and App Store listing consulted.</p></div><div class="faq"><details><summary data-i18n="faq.q1">How does the alert reach my family?</summary><dd data-i18n="faq.a1">The code stores the status in CloudKit and shares it through a CKShare. The contact's device syncs the status through CloudKit and may receive a silent push to refresh the app; the app creates the visible notification locally. There is no own server sending an automatic SMS or WhatsApp message.</dd></details><details><summary data-i18n="faq.q2">What data leaves the device?</summary><dd data-i18n="faq.a2">DailyStatus and Message records can go to CloudKit, and an optional photo can be sent as a CKAsset. The name, message, date, viewers, warning threshold and, when used, a one-shot location are included according to the flow used.</dd></details><details><summary data-i18n="faq.q3">Does it work without iCloud?</summary><dd data-i18n="faq.a3">The code needs an available iCloud account for the main sharing flow. When it is unavailable, the app shows an iCloud-required screen; local data may remain while synchronization is pending.</dd></details><details><summary data-i18n="faq.q4">What does the absence warning do?</summary><dd data-i18n="faq.a4">A shared status can include a 24, 25, 30, 36 or 48-hour threshold. The device that received the status schedules a local notification when the threshold passes; the code also checks when syncing whether the threshold has passed.</dd></details><details><summary data-i18n="faq.q5">Does the app automatically send SMS or WhatsApp?</summary><dd data-i18n="faq.a5">That automatic send does not appear in the code. The user opens an SMS composer or system share sheet, chooses a channel and confirms the action. The app cannot confirm delivery or reading in the external channel.</dd></details><details><summary data-i18n="faq.q6">Does it use GPS in real time?</summary><dd data-i18n="faq.a6">There is no continuous location in the project. Location is requested only when sending the one-shot “I'm Here” message, with When In Use permission.</dd></details><details><summary data-i18n="faq.q7">What does the widget show?</summary><dd data-i18n="faq.a7">The small and medium widget shows pending, sent or viewed, the time, viewer names and, if enabled, a compressed photo. Tapping it opens the app.</dd></details><details><summary data-i18n="faq.q8">What is the price?</summary><dd data-i18n="faq.a8">iTunes returns €0.99 as the download price. It remains marked as pending confirmation. No StoreKit or in-app-purchase code was found in the project.</dd></details></div></div></section>
-
-        <section class="section changelog"><div class="wrap"><div class="section-heading"><h2 data-i18n="changelog.title">Version history</h2><p data-i18n="changelog.lede">The current page's changelog is preserved and version 1.0 from the App Store is added.</p></div><div class="changelog-list"><article class="changelog-entry current"><h3 data-i18n="changelog.v12.title">Version 1.2</h3><ul><!-- UNVERIFIED: The listing calls this an alert feature for non-Apple users; the code implements manual SMS/WhatsApp sharing and does not contain automatic delivery confirmation. --><li data-i18n="changelog.v12.item1"><strong>SMS and WhatsApp alerts</strong>: share alerts with non-Apple users through SMS or WhatsApp.</li><li data-i18n="changelog.v12.item2"><strong>Visual and design improvements</strong>: new background color effects and animations when sending statuses.</li><li data-i18n="changelog.v12.item3"><strong>iPad photos</strong>: fix for sending photos from iPad.</li><li data-i18n="changelog.v12.item4"><strong>“I'm Here” status + location</strong>: the message can include a locality and an Apple Maps URL.</li><li data-i18n="changelog.v12.item5">Bug fixes and general performance improvements.</li></ul></article><article class="changelog-entry"><h3 data-i18n="changelog.v11.title">Version 1.1</h3><ul><!-- UNVERIFIED: The App Store wording says contacts receive an alert even when the smartphone is off. The repository shows a recipient-device local safety monitor, not an outbound family alert. --><li data-i18n="changelog.v11.item1"><strong>New safety warning</strong>: if no status is sent within the threshold, the code can schedule a local safety notification for the shared status.</li><li data-i18n="changelog.v11.item2"><strong>Simple chat</strong>: open a contact and send short messages synchronized through CloudKit.</li><li data-i18n="changelog.v11.item3"><strong>Notification logic</strong>: skips the daily reminder when a check-in already exists.</li><li data-i18n="changelog.v11.item4"><strong>Frequent updates</strong>: reduces the wait between statuses to 1 minute instead of 5 hours by default.</li><li data-i18n="changelog.v11.item5">Bug fixes and general performance improvements.</li></ul></article><article class="changelog-entry"><h3 data-i18n="changelog.v10.title">Version 1.0 · January 22, 2026</h3><ul><li data-i18n="changelog.v10.item1">First published version returned by the iTunes API for the app's bundle ID.</li></ul></article></div></div></section>
+        <section id="changes" class="section changelog">
+            <div class="wrap">
+                <div class="section-heading">
+                    <p class="section-kicker" data-i18n="changelog.kicker">Updates</p>
+                    <h2 data-i18n="changelog.title">Version history</h2>
+                    <p data-i18n="changelog.lede">Published updates for the app.</p>
+                </div>
+                <div class="changelog-list">
+                    <article class="changelog-entry current">
+                        <h3 data-i18n="changelog.v12.title">Version 1.2</h3>
+                        <ul>
+                            <li data-i18n="changelog.v12.item1"><strong>SMS and WhatsApp updates</strong>: share an update with people who do not use the app.</li>
+                            <li data-i18n="changelog.v12.item2"><strong>Visual improvements</strong>: new colour effects and animations when sending statuses.</li>
+                            <li data-i18n="changelog.v12.item3"><strong>iPad photos</strong>: improvements when sending photos from iPad.</li>
+                            <li data-i18n="changelog.v12.item4"><strong>“I'm here”</strong>: the message can include a locality and an Apple Maps link.</li>
+                            <li data-i18n="changelog.v12.item5">Bug fixes and general improvements.</li>
+                        </ul>
+                    </article>
+                    <article class="changelog-entry">
+                        <h3 data-i18n="changelog.v11.title">Version 1.1</h3>
+                        <ul>
+                            <li data-i18n="changelog.v11.item1"><strong>Missed check-in update</strong>: set a time limit for shared statuses.</li>
+                            <li data-i18n="changelog.v11.item2"><strong>Simple chat</strong>: send short messages to your contacts.</li>
+                            <li data-i18n="changelog.v11.item3"><strong>Reminders</strong>: skips the daily reminder when you have already sent an update.</li>
+                            <li data-i18n="changelog.v11.item4"><strong>More frequent updates</strong>: shorten the waiting time between statuses.</li>
+                            <li data-i18n="changelog.v11.item5">Bug fixes and general improvements.</li>
+                        </ul>
+                    </article>
+                    <article class="changelog-entry">
+                        <h3 data-i18n="changelog.v10.title">Version 1.0 · January 22, 2026</h3>
+                        <ul><li data-i18n="changelog.v10.item1">Initial release.</li></ul>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer"><div class="wrap footer-row"><a class="brand" href="../../index.html">mirlo apps<span>.</span></a><span data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span><div class="footer-links"><a href="privacidad.html" data-i18n="footer.privacy">Privacy and terms</a><a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a><a href="../soporte.html" data-i18n="footer.support">Support</a><a href="https://x.com/PaoloAC" aria-label="X">X</a><a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a></div></div></footer>
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true"><button type="button" onclick="toggleMenu()" aria-label="Close menu">×</button><a href="../../apps/index.html" onclick="toggleMenu()" data-i18n="nav.apps">Apps</a><a href="../../index.html#nosotros" onclick="toggleMenu()" data-i18n="nav.about">About Mirlo</a><a href="../../index.html#contacto" onclick="toggleMenu()" data-i18n="nav.contact">Contact</a><a href="#how-it-works" onclick="toggleMenu()" data-i18n="nav.how">How it works</a><a href="#features" onclick="toggleMenu()" data-i18n="nav.features">Features</a><a href="#faq" onclick="toggleMenu()" data-i18n="nav.faq">FAQ</a><a href="../soporte.html" onclick="toggleMenu()" data-i18n="nav.support">Support</a><a class="mobile-language" href="../index.html" lang="es" onclick="toggleMenu()" data-i18n="nav.spanish.full">Spanish version</a><div class="mobile-theme"><span data-i18n="nav.dark">Dark mode</span><label class="theme-switch" aria-label="Toggle theme"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div></div>
+    <footer class="footer">
+        <div class="wrap footer-row">
+            <a class="brand" href="../../index.html">mirlo apps<span>.</span></a>
+            <span data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span>
+            <div class="footer-links">
+                <a href="privacidad.html" data-i18n="footer.privacy">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a>
+                <a href="../soporte.html" data-i18n="footer.support">Support</a>
+                <a href="https://x.com/PaoloAC" aria-label="X">X</a>
+                <a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button type="button" onclick="toggleMenu()" aria-label="Close menu">×</button>
+        <a href="../../apps/index.html" onclick="toggleMenu()" data-i18n="nav.apps">Apps</a>
+        <a href="../../index.html#nosotros" onclick="toggleMenu()" data-i18n="nav.about">About Mirlo</a>
+        <a href="../../index.html#contacto" onclick="toggleMenu()" data-i18n="nav.contact">Contact</a>
+        <a href="#what-is-it" onclick="toggleMenu()" data-i18n="nav.what">What is it?</a>
+        <a href="#how-it-works" onclick="toggleMenu()" data-i18n="nav.how">How it works</a>
+        <a href="#features" onclick="toggleMenu()" data-i18n="nav.features">Features</a>
+        <a href="#faq" onclick="toggleMenu()" data-i18n="nav.faq">FAQ</a>
+        <a href="../soporte.html" onclick="toggleMenu()" data-i18n="nav.support">Support</a>
+        <a class="mobile-language" href="../index.html" lang="es" onclick="toggleMenu()" data-i18n="nav.spanish.full">Versión en español</a>
+        <div class="mobile-theme"><span data-i18n="nav.dark">Dark mode</span><label class="theme-switch"><input type="checkbox" onclick="toggleDarkMode()"><span class="theme-switch-track"></span></label></div>
+    </div>
+
     <script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
-        function toggleDarkMode() { const isDark = document.documentElement.classList.toggle('dark'); localStorage.theme = isDark ? 'dark' : 'light'; document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark); }
-        function toggleMenu() { const menu = document.getElementById('mobile-menu'); const isOpen = menu.classList.toggle('is-open'); menu.setAttribute('aria-hidden', String(!isOpen)); }
-        document.addEventListener('DOMContentLoaded', () => { const isDark = document.documentElement.classList.contains('dark'); document.querySelectorAll('.theme-switch input').forEach(input => input.checked = isDark); });
+        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+        }
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle("dark");
+            localStorage.theme = isDark ? "dark" : "light";
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
+        }
+        function toggleMenu() {
+            const menu = document.getElementById("mobile-menu");
+            const isOpen = menu.classList.toggle("is-open");
+            menu.setAttribute("aria-hidden", String(!isOpen));
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const isDark = document.documentElement.classList.contains("dark");
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = isDark);
+        });
     </script>
     <script src="/cookies.js" defer></script>
 </body>
+
 </html>
