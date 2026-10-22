@@ -29,6 +29,40 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "mirlo apps",
+          "url": "https://www.mirloapps.es/",
+          "logo": "https://www.mirloapps.es/favicon.svg",
+          "sameAs": [
+            "https://x.com/PaoloAC",
+            "https://www.threads.com/@paoloac"
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": "mirlo apps iOS Catalog",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Poetry companion", "url": "https://www.mirloapps.es/poetrycompanion/" },
+            { "@type": "ListItem", "position": 2, "name": "Weather for humans", "url": "https://www.mirloapps.es/weatherforhumans/" },
+            { "@type": "ListItem", "position": 3, "name": "yeah!", "url": "https://www.mirloapps.es/yeahapp/" },
+            { "@type": "ListItem", "position": 4, "name": "Ephemerides", "url": "https://www.mirloapps.es/ephemerides/" },
+            { "@type": "ListItem", "position": 5, "name": "A Sun in Your Pocket", "url": "https://www.mirloapps.es/asuninyourpocket/" },
+            { "@type": "ListItem", "position": 6, "name": "24h Routines", "url": "https://www.mirloapps.es/24hroutines/" },
+            { "@type": "ListItem", "position": 7, "name": "Wishlist Genie", "url": "https://www.mirloapps.es/wishlistgenie/" },
+            { "@type": "ListItem", "position": 8, "name": "I'm OK", "url": "https://www.mirloapps.es/ImOK/" },
+            { "@type": "ListItem", "position": 9, "name": "Balizas España", "url": "https://www.mirloapps.es/balizas/" },
+            { "@type": "ListItem", "position": 10, "name": "Embalses España", "url": "https://www.mirloapps.es/embalses/" }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -58,27 +92,19 @@
             scroll-behavior: smooth;
         }
 
-        /* Transiciones generales */
-        * {
-            transition: all 0.3s ease;
-        }
-
         /* --- 1. EFECTO GRANO (NOISE TEXTURE) --- */
         .bg-grain {
             position: relative;
-            background-color: #f3f4f6;
-            /* un gris suave base */
+            background-color: #f8fafc;
         }
 
         .dark .bg-grain {
-            background-color: #0a0a0a;
+            background-color: #09090b;
         }
 
         .dark .bg-grain::before {
             display: none;
         }
-
-
 
         .bg-grain::before {
             content: "";
@@ -89,8 +115,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.06;
-            /* Opacidad del ruido */
+            opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
@@ -102,7 +127,6 @@
         /* --- 2. BOTONES PLÁSTICO (GLOSSY NEGRO) --- */
         .btn-plastic {
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            /* Brillo superior (inset) + Sombra caída */
             box-shadow:
                 inset 0 1px 0 rgba(255, 255, 255, 0.3),
                 inset 0 0 2px rgba(255, 255, 255, 0.1),
@@ -121,10 +145,8 @@
         .btn-plastic:active {
             transform: translateY(1px);
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            /* CAMBIO AQUÍ: Borde verde lima sutil */
             border: 2px solid #A3E635;
             color: #A3E635;
-            /* Texto verde lima también? O blanco? Pruébalo. */
         }
 
         /* --- 3. BOTÓN PLÁSTICO NARANJA --- */
@@ -149,12 +171,11 @@
         .tech-card {
             position: relative;
             background-color: #ffffff;
-            /* Default Light Mode */
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid #e5e7eb;
             box-shadow:
-                0 20px 40px -10px rgba(0, 0, 0, 0.1),
+                0 20px 40px -10px rgba(0, 0, 0, 0.08),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
@@ -166,7 +187,6 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* Luz superior */
         .tech-card::before {
             content: "";
             position: absolute;
@@ -178,7 +198,6 @@
             pointer-events: none;
         }
 
-        /* Grano Overlay */
         .tech-card::after {
             content: "";
             position: absolute;
@@ -190,6 +209,41 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             mix-blend-mode: overlay;
             pointer-events: none;
+        }
+
+        /* --- 5. SOPHISTICATED SHOWCASE CARDS --- */
+        .showcase-card {
+            position: relative;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow:
+                0 10px 30px -10px rgba(15, 23, 42, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease;
+        }
+
+        .dark .showcase-card {
+            background: linear-gradient(165deg, rgba(24, 24, 27, 0.95) 0%, rgba(12, 12, 14, 0.98) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                0 20px 40px -15px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 24px 48px -12px rgba(15, 23, 42, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        .dark .showcase-card:hover {
+            box-shadow:
+                0 24px 48px -12px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
     </style>
     <script>
@@ -224,11 +278,11 @@
 
             <ul class="hidden md:flex space-x-8 text-sm font-medium">
                 <li><a href="apps/"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors">Apps</a>
                 </li>
 
                 <li><a href="#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors">Contact</a>
                 </li>
 
                 <!-- Dark Mode Switch -->
@@ -248,309 +302,394 @@
         </nav>
     </header>
 
-    <section id="apps" class="pt-36 pb-24 px-6 bg-grain min-h-screen">
+    <section id="apps" class="pt-32 pb-24 px-4 sm:px-6 bg-grain min-h-screen relative overflow-hidden">
+        <!-- Ambient subtle studio light -->
+        <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[650px] h-[260px] bg-gradient-to-tr from-mirlo-orange/10 via-purple-500/5 to-sky-500/10 blur-3xl pointer-events-none rounded-full"></div>
+
         <div class="max-w-7xl mx-auto">
 
-            <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">Mirlo
-                    apps<span class="text-mirlo-orange">.</span>
+            <!-- Refined Studio Hero Header -->
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm text-xs font-semibold text-gray-700 dark:text-gray-300 mb-6 backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-mirlo-orange animate-pulse"></span>
+                    <span>Independent iOS Studio</span>
+                    <span class="text-gray-300 dark:text-zinc-700">&bull;</span>
+                    <span class="text-gray-500 dark:text-gray-400">10 Native Apps</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-bold mb-5 tracking-tight text-gray-900 dark:text-white leading-[1.08]">
+                    Mirlo apps<span class="text-mirlo-orange">.</span>
                 </h1>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Handcrafted software with
-                    personality and character. <br class="hidden md:inline">Designed to be useful, private, and
-                    efficient.
+                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Handcrafted software with personality and character. <br class="hidden sm:inline">Designed to be useful, private, and efficient.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <!-- Bento Showcase Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 sm:gap-6">
 
-                <!-- 00. Poetry Companion Card -->
+                <!-- 1. FEATURED BENTO (3 cols on lg): Poetry Companion -->
                 <a href="poetrycompanion/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-purple-100 to-violet-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
+                    class="showcase-card group lg:col-span-3 p-6 sm:p-8 flex flex-col justify-between overflow-hidden hover:border-violet-500/40 dark:hover:border-violet-500/40">
+                    <div class="absolute -top-24 -right-24 w-72 h-72 bg-gradient-to-br from-violet-500/15 via-purple-500/10 to-transparent rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="poetrycompanion/icon.webp" width="1024" height="1024" alt="Poetry Companion Icon" class="w-full h-full object-cover">
+                    <div class="relative z-10">
+                        <div class="flex items-start justify-between gap-4 mb-6">
+                            <div class="relative">
+                                <div class="absolute -inset-1 bg-violet-500/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <img src="poetrycompanion/icon.webp" width="1024" height="1024" alt="Poetry Companion Icon"
+                                    class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[1.25rem] object-cover shadow-lg ring-1 ring-black/5 dark:ring-white/10">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-600 dark:text-violet-300 border border-violet-500/20">
+                                    Writing &amp; Literature
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-zinc-800/90 group-hover:bg-violet-500 group-hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300">
+                                    <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                                </div>
+                            </div>
                         </div>
 
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 transition-colors">
-                            Poetry companion</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Editor and creator of
-                            poems</p>
-
-                        <div class="mt-8 inline-flex items-center text-violet-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 transition-colors tracking-tight">
+                            Poetry companion
+                        </h2>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 font-medium mb-2">
+                            Editor and creator of poems
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg">
+                            Write with live syllable counting, rhyme &amp; lexicon search, voice recitation, and distraction-free focus mode.
+                        </p>
                     </div>
 
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-violet-500/10 rounded-full blur-3xl group-hover:bg-violet-500/20 transition-colors">
+                    <div class="relative z-10 mt-6 pt-5 border-t border-gray-100 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">Syllable Meter</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">Rhyme Finder</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">iCloud Sync</span>
+                        </div>
+                        <span class="text-xs font-bold text-violet-600 dark:text-violet-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
-                <!-- 0. Weather for Humans Card -->
+                <!-- 2. FEATURED BENTO (3 cols on lg): Weather for Humans -->
                 <a href="weatherforhumans/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
+                    class="showcase-card group lg:col-span-3 p-6 sm:p-8 flex flex-col justify-between overflow-hidden hover:border-sky-500/40 dark:hover:border-sky-500/40">
+                    <div class="absolute -top-24 -right-24 w-72 h-72 bg-gradient-to-br from-sky-500/15 via-blue-500/10 to-transparent rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="weather-for-humans-icon.webp" loading="lazy" width="1024" height="1024" alt="Weather for Humans Icon" class="w-full h-full object-cover">
+                    <div class="relative z-10">
+                        <div class="flex items-start justify-between gap-4 mb-6">
+                            <div class="relative">
+                                <div class="absolute -inset-1 bg-sky-500/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <img src="weather-for-humans-icon.webp" width="1024" height="1024" alt="Weather for Humans Icon"
+                                    class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[1.25rem] object-cover shadow-lg ring-1 ring-black/5 dark:ring-white/10">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/20">
+                                    Weather &amp; Climate
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-zinc-800/90 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300">
+                                    <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                                </div>
+                            </div>
                         </div>
 
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-sky-500 transition-colors">
-                            Weather for humans</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Made to understand
-                            weather
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-sky-500 transition-colors tracking-tight">
+                            Weather for humans
+                        </h2>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 font-medium mb-2">
+                            Made to understand weather
                         </p>
-
-                        <div class="mt-8 inline-flex items-center text-sky-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl group-hover:bg-sky-500/20 transition-colors">
-                    </div>
-                </a>
-
-                <!-- 1. Yeah! Card -->
-                <a href="yeahapp/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
-
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="yeah-icon.webp" loading="lazy" width="1024" height="1024" alt="Yeah Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-mirlo-orange transition-colors">
-                            yeah!</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Check-in & Log Places
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg">
+                            Clear forecasts in plain language with historical climate comparisons, clothing advice, daylight tracking, and widgets.
                         </p>
-
-                        <div class="mt-8 inline-flex items-center text-mirlo-orange font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
                     </div>
 
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-mirlo-orange/10 rounded-full blur-3xl group-hover:bg-mirlo-orange/20 transition-colors">
+                    <div class="relative z-10 mt-6 pt-5 border-t border-gray-100 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">Plain Language</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">Climate Context</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-zinc-800/80 text-gray-600 dark:text-gray-300">Home Widgets</span>
+                        </div>
+                        <span class="text-xs font-bold text-sky-600 dark:text-sky-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
-                <!-- 2. Ephemerides Card -->
-                <a href="ephemerides/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-purple-100 to-indigo-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
-
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="ephemerides-icon.webp" loading="lazy" width="1024" height="1024" alt="Ephemerides Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-500 transition-colors">
-                            Ephemerides</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Calendar, diary and
-                            memories</p>
-
-                        <div class="mt-8 inline-flex items-center text-purple-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors">
-                    </div>
-                </a>
-
-                <!-- 3. A Sun in Your Pocket Card -->
-                <a href="asuninyourpocket/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-yellow-100 to-orange-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
-
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="sun.webp" loading="lazy" width="1024" height="1024" alt="Sun Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-yellow-500 transition-colors">
-                            A Sun in Your Pocket</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Sun & Moon Tracker</p>
-
-                        <div class="mt-8 inline-flex items-center text-yellow-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-colors">
-                    </div>
-                </a>
-
-                <!-- 4. 24h Routines Card -->
+                <!-- 3. 24h Routines (2 cols on lg) -->
                 <a href="24hroutines/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-teal-100 to-emerald-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-teal-500/40 dark:hover:border-teal-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl group-hover:bg-teal-500/20 transition-colors pointer-events-none"></div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="icon-24h.webp" loading="lazy" width="1024" height="1024" alt="24h Routines Icon" class="w-full h-full object-cover">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="icon-24h.webp" loading="lazy" width="1024" height="1024" alt="24h Routines Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-300 border border-teal-500/20">
+                                Habits &amp; Time
+                            </span>
                         </div>
 
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-500 transition-colors">
-                            24h Routines</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Minimalist routines
-                            planner</p>
-
-                        <div class="mt-8 inline-flex items-center text-teal-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-teal-500 transition-colors tracking-tight">
+                            24h Routines
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Minimalist routines planner
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Plan realistic days on a visual 24-hour wheel with Apple Calendar &amp; Health sync.
+                        </p>
                     </div>
 
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl group-hover:bg-teal-500/20 transition-colors">
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">iPhone &bull; iPad &bull; Watch</span>
+                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
-                <!-- 5. Wishlist Genie Card -->
-                <a href="wishlistgenie/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-indigo-100 to-pink-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
-
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="wishlistgenie/icon.webp" loading="lazy" width="400" height="400" alt="Wishlist Genie Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-500 transition-colors">
-                            Wishlist Genie</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Smart Shopping & Gift
-                            Wishlist</p>
-
-                        <div class="mt-8 inline-flex items-center text-indigo-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors">
-                    </div>
-                </a>
-
-                <!-- 6. I'm OK Card -->
+                <!-- 4. I'm OK (2 cols on lg) -->
                 <a href="ImOK/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
-                    </div>
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-green-500/40 dark:hover:border-green-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-colors pointer-events-none"></div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="ImOK/imok.webp" loading="lazy" width="1024" height="1024" alt="I'm OK Icon" class="w-full h-full object-cover">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="ImOK/imok.webp" loading="lazy" width="1024" height="1024" alt="I'm OK Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-500/10 text-green-600 dark:text-green-300 border border-green-500/20">
+                                Family &amp; Safety
+                            </span>
                         </div>
 
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-500 transition-colors">
-                            I'm OK</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Peace of mind for
-                            families</p>
-
-                        <div class="mt-8 inline-flex items-center text-green-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-green-500 transition-colors tracking-tight">
+                            I'm OK
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Peace of mind for families
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            One-tap daily check-ins shared privately via iCloud with the people you choose.
+                        </p>
                     </div>
 
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-colors">
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">Zero Servers &bull; iCloud</span>
+                        <span class="text-xs font-bold text-green-600 dark:text-green-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
-                <!-- 7. Balizas España Card -->
+                <!-- 5. Wishlist Genie (2 cols on lg) -->
+                <a href="wishlistgenie/"
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-indigo-500/40 dark:hover:border-indigo-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="wishlistgenie/icon.webp" loading="lazy" width="400" height="400" alt="Wishlist Genie Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20">
+                                Shopping &amp; Gifts
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-indigo-500 transition-colors tracking-tight">
+                            Wishlist Genie
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Smart Shopping &amp; Gift Wishlist
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Save ideas from any store, organize gift lists, and share them effortlessly.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">Share Extension &bull; Sync</span>
+                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 6. Yeah! (2 cols on lg) -->
+                <a href="yeahapp/"
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-mirlo-orange/40 dark:hover:border-mirlo-orange/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-mirlo-orange/10 rounded-full blur-2xl group-hover:bg-mirlo-orange/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="yeah-icon.webp" loading="lazy" width="1024" height="1024" alt="Yeah Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-600 dark:text-mirlo-orange border border-amber-500/20">
+                                Places &amp; Maps
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-mirlo-orange transition-colors tracking-tight">
+                            yeah!
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Check-in &amp; Log Places
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Build your personal map of favorite spots, restaurants, and travel memories.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">Private Map &bull; Check-ins</span>
+                        <span class="text-xs font-bold text-amber-600 dark:text-mirlo-orange inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 7. Ephemerides (2 cols on lg) -->
+                <a href="ephemerides/"
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-purple-500/40 dark:hover:border-purple-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="ephemerides-icon.webp" loading="lazy" width="1024" height="1024" alt="Ephemerides Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-300 border border-purple-500/20">
+                                Journal &amp; History
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-purple-500 transition-colors tracking-tight">
+                            Ephemerides
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Calendar, diary and memories
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Connect your personal diary and daily milestones with historical events.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">On This Day &bull; Diary</span>
+                        <span class="text-xs font-bold text-purple-600 dark:text-purple-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 8. A Sun in Your Pocket (2 cols on lg) -->
+                <a href="asuninyourpocket/"
+                    class="showcase-card group lg:col-span-2 p-6 flex flex-col justify-between overflow-hidden hover:border-yellow-500/40 dark:hover:border-yellow-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-yellow-500/10 rounded-full blur-2xl group-hover:bg-yellow-500/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <img src="sun.webp" loading="lazy" width="1024" height="1024" alt="Sun Icon"
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-yellow-500/10 text-yellow-600 dark:text-yellow-300 border border-yellow-500/20">
+                                Astronomy &amp; Sky
+                            </span>
+                        </div>
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-yellow-500 transition-colors tracking-tight">
+                            A Sun in Your Pocket
+                        </h2>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                            Sun &amp; Moon Tracker
+                        </p>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Golden hour, solar paths, moon phases, and sky events calculated on device.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 mt-5 pt-4 border-t border-gray-100 dark:border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-gray-400 dark:text-gray-500">Solar Path &bull; Moon</span>
+                        <span class="text-xs font-bold text-yellow-600 dark:text-yellow-400 inline-flex items-center">
+                            Discover <i class="fas fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 9. Balizas España (3 cols on lg - Horizontal Public Data Card) -->
                 <a href="balizas/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    class="showcase-card group lg:col-span-3 p-6 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 overflow-hidden hover:border-red-500/40 dark:hover:border-red-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-56 h-56 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10 flex items-start sm:items-center gap-4 sm:gap-5 min-w-0">
+                        <img src="balizas/balizas.webp" loading="lazy" width="1024" height="1024" alt="Balizas España Icon"
+                            class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10 flex-shrink-0">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-500/10 text-red-600 dark:text-red-300 border border-red-500/20">
+                                    Roads &amp; CarPlay 🇪🇸
+                                </span>
+                            </div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-red-500 transition-colors tracking-tight">
+                                Balizas España
+                            </h2>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Mapa V-16 en vivo
+                            </p>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
+                                Live V-16 emergency beacons, road incidents, DGT cameras, fuel prices, and 3D driving with Apple CarPlay.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="balizas/balizas.webp" loading="lazy" width="1024" height="1024" alt="Balizas España Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-500 transition-colors">
-                            Balizas España</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Mapa V-16 en vivo</p>
-
-                        <div class="mt-8 inline-flex items-center text-red-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-red-500/10 rounded-full blur-3xl group-hover:bg-red-500/20 transition-colors">
+                    <div class="relative z-10 sm:self-center flex-shrink-0">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-red-500 group-hover:text-white text-gray-400 transition-all">
+                            <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
-                <!-- 8. Embalses España Card -->
+                <!-- 10. Embalses España (3 cols on lg - Horizontal Public Data Card) -->
                 <a href="embalses/"
-                    class="group relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-800">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-sky-100 to-blue-50 dark:from-gray-900 dark:to-gray-900 opacity-50">
+                    class="showcase-card group lg:col-span-3 p-6 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 overflow-hidden hover:border-sky-500/40 dark:hover:border-sky-500/40">
+                    <div class="absolute -bottom-16 -right-16 w-56 h-56 bg-sky-500/10 rounded-full blur-2xl group-hover:bg-sky-500/20 transition-colors pointer-events-none"></div>
+
+                    <div class="relative z-10 flex items-start sm:items-center gap-4 sm:gap-5 min-w-0">
+                        <img src="embalses/embalses.webp" loading="lazy" width="1024" height="1024" alt="Embalses España Icon"
+                            class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover shadow-md ring-1 ring-black/5 dark:ring-white/10 flex-shrink-0">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-300 border border-sky-500/20">
+                                    Hydrology &amp; Open Data 🇪🇸
+                                </span>
+                            </div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-sky-500 transition-colors tracking-tight">
+                                Embalses España
+                            </h2>
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Información embalses, pantanos
+                            </p>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
+                                Official water reservoir levels across Spain, interactive basin maps, 10-year historical averages, and widgets.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="relative p-10 flex flex-col h-full items-start">
-                        <div class="w-16 h-16 rounded-2xl bg-black mb-6 shadow-lg overflow-hidden">
-                            <img src="embalses/embalses.webp" loading="lazy" width="1024" height="1024" alt="Embalses España Icon" class="w-full h-full object-cover">
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-sky-500 transition-colors">
-                            Embalses España</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400 font-medium mb-auto">Información embalses, pantanos</p>
-
-                        <div class="mt-8 inline-flex items-center text-sky-500 font-bold">
-                            Discover <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl group-hover:bg-sky-500/20 transition-colors">
+                    <div class="relative z-10 sm:self-center flex-shrink-0">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-sky-500 group-hover:text-white text-gray-400 transition-all">
+                            <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                        </span>
                     </div>
                 </a>
 
+            </div>
+
+            <!-- Bottom Catalog Link -->
+            <div class="mt-10 text-center">
+                <a href="apps/" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors">
+                    <span>View full catalog &amp; archive</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -603,6 +742,7 @@
                 </div>
 
             </div>
+        </div>
     </section>
 
     <section id="nosotros"
