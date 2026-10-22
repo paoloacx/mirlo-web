@@ -4,21 +4,55 @@
 <head>
 
     <link rel="canonical" href="https://www.mirloapps.es/apps/">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/apps/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:title" content="Apps - mirlo apps">
+    <meta property="og:description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
+    <meta property="og:image" content="https://www.mirloapps.es/mirlo-banner.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Apps - mirlo apps">
-    <meta name="twitter:description" content="Discover the mirlo apps. Soulful design and functionality.">
+    <meta name="twitter:description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/mirlo-banner.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps - mirlo apps</title>
-    <meta name="description" content="Discover the mirlo apps. Soulful design and functionality.">
+    <meta name="description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="shortcut icon" href="../favicon.ico">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Apps - mirlo apps",
+      "description": "Catalog of handcrafted iOS applications by mirlo apps.",
+      "url": "https://www.mirloapps.es/apps/",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Poetry companion", "url": "https://www.mirloapps.es/poetrycompanion/" },
+          { "@type": "ListItem", "position": 2, "name": "Weather for humans", "url": "https://www.mirloapps.es/weatherforhumans/" },
+          { "@type": "ListItem", "position": 3, "name": "yeah!", "url": "https://www.mirloapps.es/yeahapp/" },
+          { "@type": "ListItem", "position": 4, "name": "Ephemerides", "url": "https://www.mirloapps.es/ephemerides/" },
+          { "@type": "ListItem", "position": 5, "name": "A Sun in Your Pocket", "url": "https://www.mirloapps.es/asuninyourpocket/" },
+          { "@type": "ListItem", "position": 6, "name": "24h Routines", "url": "https://www.mirloapps.es/24hroutines/" },
+          { "@type": "ListItem", "position": 7, "name": "Wishlist Genie", "url": "https://www.mirloapps.es/wishlistgenie/" },
+          { "@type": "ListItem", "position": 8, "name": "I'm OK", "url": "https://www.mirloapps.es/ImOK/" },
+          { "@type": "ListItem", "position": 9, "name": "Balizas España", "url": "https://www.mirloapps.es/balizas/" },
+          { "@type": "ListItem", "position": 10, "name": "Embalses España", "url": "https://www.mirloapps.es/embalses/" },
+          { "@type": "ListItem", "position": 11, "name": "Brainrot Stories", "url": "https://www.mirloapps.es/Brainrotstories/" },
+          { "@type": "ListItem", "position": 12, "name": "Who am I?", "url": "https://www.mirloapps.es/Whoami/" }
+        ]
+      }
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -47,17 +81,13 @@
             scroll-behavior: smooth;
         }
 
-        * {
-            transition: all 0.3s ease;
-        }
-
         .bg-grain {
             position: relative;
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
         }
 
         .dark .bg-grain {
-            background-color: #0a0a0a;
+            background-color: #09090b;
         }
 
         .dark .bg-grain::before {
@@ -73,36 +103,13 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.06;
+            opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        .bg-grain>* {
+        .bg-grain > * {
             position: relative;
             z-index: 1;
-        }
-
-        /* Card Style */
-        .app-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dark .app-card {
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .app-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark .app-card:hover {
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
         }
     </style>
 
@@ -131,17 +138,15 @@
 
     <header
         class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <nav class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
             <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
                 mirlo apps<span class="text-mirlo-orange">.</span>
             </a>
 
             <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="#" class="text-mirlo-orange">Apps</a></li>
-
-
+                <li><a href="./" class="text-mirlo-orange">Apps</a></li>
                 <li><a href="../#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors">Contact</a>
                 </li>
 
                 <!-- Dark Mode Switch -->
@@ -161,251 +166,284 @@
         </nav>
     </header>
 
-    <main class="flex-grow pt-36 pb-24 px-6 bg-grain">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center">Our Apps</h1>
+    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 bg-grain">
+        <div class="max-w-6xl mx-auto">
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Poetry Companion App Card -->
-                <a href="../poetrycompanion/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-purple-100 to-violet-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../poetrycompanion/icon.webp" width="1024" height="1024" alt="Poetry Companion Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+            <!-- Compact Header -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mirlo-orange/10 border border-mirlo-orange/20 text-mirlo-orange text-xs font-semibold tracking-wide uppercase mb-3">
+                        <i class="fab fa-apple"></i> iOS App Catalog
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-violet-500 transition-colors">Poetry
-                            companion
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Editor and creator of poems</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-violet-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Our Apps<span class="text-mirlo-orange">.</span>
+                    </h1>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-md">
+                    Handcrafted software with personality and character. Built to be useful, private, and fast.
+                </p>
+            </div>
+
+            <!-- Active Apps Grid (Compact Bento Cards) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+
+                <!-- 1. Poetry Companion -->
+                <a href="../poetrycompanion/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-violet-500/40 dark:hover:border-violet-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-violet-500/10 dark:bg-violet-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../poetrycompanion/icon.webp" width="1024" height="1024" alt="Poetry Companion Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">Writing &bull; Literature</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-violet-500 transition-colors">
+                            Poetry companion
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Editor and creator of poems
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-violet-500/10 flex items-center justify-center text-gray-400 group-hover:text-violet-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
 
-                <!-- Weather for Humans App Card -->
-                <a href="../weatherforhumans/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../weather-for-humans-icon.webp" loading="lazy" width="1024" height="1024" alt="Weather for Humans Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+                <!-- 2. Weather for Humans -->
+                <a href="../weatherforhumans/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-sky-500/40 dark:hover:border-sky-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../weather-for-humans-icon.webp" loading="lazy" width="1024" height="1024" alt="Weather for Humans Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Weather</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-sky-500 transition-colors">
+                            Weather for humans
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Made to understand weather
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-sky-500 transition-colors">Weather for
-                            humans
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Made to understand weather</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-sky-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Yeah! App Card -->
-                <a href="../yeahapp/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../yeah-icon.webp" loading="lazy" width="1024" height="1024" alt="Yeah! Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-mirlo-orange transition-colors">yeah!</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Track your life on a map</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-mirlo-orange">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-sky-500/10 flex items-center justify-center text-gray-400 group-hover:text-sky-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
 
-                <!-- Ephemerides App Card -->
-                <a href="../ephemerides/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../ephemerides-icon.webp" loading="lazy" width="1024" height="1024" alt="Ephemerides Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+                <!-- 3. Yeah! -->
+                <a href="../yeahapp/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-mirlo-orange/40 dark:hover:border-mirlo-orange/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-mirlo-orange/10 dark:bg-mirlo-orange/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../yeah-icon.webp" loading="lazy" width="1024" height="1024" alt="Yeah! Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-mirlo-orange">Places &bull; Maps</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-mirlo-orange transition-colors">
+                            yeah!
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Track your life on a map
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-mirlo-orange transition-colors">Ephemerides
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Calendar, diary and memories</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-mirlo-orange">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- A Sun in Your Pocket App Card -->
-                <a href="../asuninyourpocket/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-yellow-100 to-orange-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../sun.webp" loading="lazy" width="1024" height="1024" alt="A Sun in Your Pocket Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-yellow-500 transition-colors">A Sun in Your
-                            Pocket
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm font-medium text-yellow-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-mirlo-orange/10 flex items-center justify-center text-gray-400 group-hover:text-mirlo-orange transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
 
-                <!-- 24h Routines App Card -->
-                <a href="../24hroutines/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-teal-100 to-teal-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../icon-24h.webp" loading="lazy" width="1024" height="1024" alt="24h Routines Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+                <!-- 4. Ephemerides -->
+                <a href="../ephemerides/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-purple-500/40 dark:hover:border-purple-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../ephemerides-icon.webp" loading="lazy" width="1024" height="1024" alt="Ephemerides Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">Journal &bull; Calendar</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-purple-500 transition-colors">
+                            Ephemerides
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Calendar, diary and memories
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-teal-500 transition-colors">24h Routines
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm font-medium text-teal-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Wishlist Genie App Card -->
-                <a href="../wishlistgenie/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-indigo-100 to-pink-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../wishlistgenie/icon.webp" loading="lazy" width="400" height="400" alt="Wishlist Genie Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-amber-500 transition-colors">Wishlist Genie
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm font-medium text-amber-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-purple-500/10 flex items-center justify-center text-gray-400 group-hover:text-purple-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
 
-                <!-- I'm OK App Card -->
-                <a href="../ImOK/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../ImOK/imok.webp" loading="lazy" width="1024" height="1024" alt="I'm OK Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+                <!-- 5. A Sun in Your Pocket -->
+                <a href="../asuninyourpocket/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-yellow-500/40 dark:hover:border-yellow-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-yellow-500/10 dark:bg-yellow-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../sun.webp" loading="lazy" width="1024" height="1024" alt="A Sun in Your Pocket Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">Astronomy &bull; Sky</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-yellow-500 transition-colors">
+                            A Sun in Your Pocket
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Sun &amp; Moon tracker
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-green-500 transition-colors">I'm OK
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm font-medium text-green-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Balizas España App Card -->
-                <a href="../balizas/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../balizas/balizas.webp" loading="lazy" width="1024" height="1024" alt="Balizas España Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-red-500 transition-colors">Balizas España
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Live V-16 beacon map</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-red-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-yellow-500/10 flex items-center justify-center text-gray-400 group-hover:text-yellow-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
 
-                <!-- Embalses España App Card -->
-                <a href="../embalses/" class="app-card group block">
-                    <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-sky-100 to-blue-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                            <img src="../embalses/embalses.webp" loading="lazy" width="1024" height="1024" alt="Embalses España Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
-                        </div>
+                <!-- 6. 24h Routines -->
+                <a href="../24hroutines/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-teal-500/40 dark:hover:border-teal-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../icon-24h.webp" loading="lazy" width="1024" height="1024" alt="24h Routines Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-400">Habits &bull; Productivity</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-teal-500 transition-colors">
+                            24h Routines
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Minimalist routines planner
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-sky-500 transition-colors">Embalses España
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Spain's water reservoirs, live</p>
-                        <div class="mt-4 flex items-center text-sm font-medium text-sky-500">
-                            View details <i
-                                class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-teal-500/10 flex items-center justify-center text-gray-400 group-hover:text-teal-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
+
+                <!-- 7. Wishlist Genie -->
+                <a href="../wishlistgenie/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../wishlistgenie/icon.webp" loading="lazy" width="400" height="400" alt="Wishlist Genie Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Shopping &bull; Gifts</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-indigo-500 transition-colors">
+                            Wishlist Genie
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Smart shopping &amp; gift wishlist
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-indigo-500/10 flex items-center justify-center text-gray-400 group-hover:text-indigo-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 8. I'm OK -->
+                <a href="../ImOK/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-green-500/40 dark:hover:border-green-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-green-500/10 dark:bg-green-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../ImOK/imok.webp" loading="lazy" width="1024" height="1024" alt="I'm OK Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">Family &bull; Safety</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-green-500 transition-colors">
+                            I'm OK
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Peace of mind for families
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-green-500/10 flex items-center justify-center text-gray-400 group-hover:text-green-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 9. Balizas España -->
+                <a href="../balizas/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-red-500/40 dark:hover:border-red-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-red-500/10 dark:bg-red-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../balizas/balizas.webp" loading="lazy" width="1024" height="1024" alt="Balizas España Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">Roads &bull; Spain</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-red-500 transition-colors">
+                            Balizas España
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Live V-16 beacon map
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-red-500/10 flex items-center justify-center text-gray-400 group-hover:text-red-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 10. Embalses España -->
+                <a href="../embalses/"
+                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-sky-500/40 dark:hover:border-sky-500/40 transition-all duration-300 flex items-center gap-4">
+                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                    <img src="../embalses/embalses.webp" loading="lazy" width="1024" height="1024" alt="Embalses España Icon"
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Water &bull; Spain</span>
+                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-sky-500 transition-colors">
+                            Embalses España
+                        </h2>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+                            Spain's water reservoirs, live
+                        </p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-sky-500/10 flex items-center justify-center text-gray-400 group-hover:text-sky-500 transition-all flex-shrink-0">
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
             </div>
 
             <!-- Retired Apps Section -->
-            <div class="mt-24 pt-16 border-t border-gray-200 dark:border-gray-800">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-3 tracking-tight">Retired apps</h2>
-                    <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-                        These apps are no longer available on the App Store, but they are part of our story.
+            <div class="mt-16 pt-12 border-t border-gray-200/80 dark:border-zinc-800/80">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Retired apps</h2>
+                        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-200/80 dark:bg-zinc-800 text-gray-600 dark:text-gray-400">
+                            Archive
+                        </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                        No longer on the App Store, but still part of our story.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Brainrot Stories App Card -->
-                    <a href="../Brainrotstories/" class="app-card group block opacity-85 hover:opacity-100 transition-opacity">
-                        <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                                <img src="../Brainrotstories/brainrot-stories.webp" loading="lazy" width="1024" height="1024" alt="Brainrot Stories Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+                    <!-- Brainrot Stories -->
+                    <a href="../Brainrotstories/"
+                        class="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-zinc-900/50 p-4 sm:p-5 border border-gray-200/60 dark:border-zinc-800/70 hover:bg-white dark:hover:bg-zinc-900 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 opacity-80 hover:opacity-100">
+                        <img src="../Brainrotstories/brainrot-stories.webp" loading="lazy" width="1024" height="1024" alt="Brainrot Stories Icon"
+                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow flex-shrink-0 grayscale-[30%] group-hover:grayscale-0 transition-all">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-base font-bold text-gray-900 dark:text-white truncate group-hover:text-purple-500 transition-colors">
+                                    Brainrot Stories
+                                </h3>
+                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
+                                    Retired
+                                </span>
                             </div>
-                            <span class="absolute top-4 right-4 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 text-gray-700 dark:text-gray-300 backdrop-blur-md">
-                                Retired
-                            </span>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+                                AI story generator &amp; writer
+                            </p>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-500 transition-colors">Brainrot
-                                Stories
-                            </h3>
-                            <div class="mt-4 flex items-center text-sm font-medium text-gray-500 dark:text-gray-400">
-                                View details <i
-                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-400 group-hover:text-purple-500 group-hover:translate-x-0.5 transition-all flex-shrink-0"></i>
                     </a>
 
-                    <!-- Who am I? App Card -->
-                    <a href="../Whoami/" class="app-card group block opacity-85 hover:opacity-100 transition-opacity">
-                        <div class="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                                <img src="../whoai.webp" loading="lazy" width="512" height="512" alt="Who am I? Icon" class="w-32 h-32 object-contain shadow-lg rounded-2xl">
+                    <!-- Who am I? -->
+                    <a href="../Whoami/"
+                        class="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-zinc-900/50 p-4 sm:p-5 border border-gray-200/60 dark:border-zinc-800/70 hover:bg-white dark:hover:bg-zinc-900 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 opacity-80 hover:opacity-100">
+                        <img src="../whoai.webp" loading="lazy" width="512" height="512" alt="Who am I? Icon"
+                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow flex-shrink-0 grayscale-[30%] group-hover:grayscale-0 transition-all">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-base font-bold text-gray-900 dark:text-white truncate group-hover:text-blue-500 transition-colors">
+                                    Who am I?
+                                </h3>
+                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
+                                    Retired
+                                </span>
                             </div>
-                            <span class="absolute top-4 right-4 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 text-gray-700 dark:text-gray-300 backdrop-blur-md">
-                                Retired
-                            </span>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+                                Compare your stats with the world
+                            </p>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Who am I?
-                            </h3>
-                            <div class="mt-4 flex items-center text-sm font-medium text-gray-500 dark:text-gray-400">
-                                View details <i
-                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </div>
+                        <i class="fas fa-arrow-right text-xs text-gray-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all flex-shrink-0"></i>
                     </a>
                 </div>
             </div>
@@ -413,8 +451,8 @@
     </main>
 
     <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-10 px-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex-1 min-w-0 flex justify-center md:justify-start">
                 <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
                     mirlo apps<span class="text-mirlo-orange">.</span>
@@ -445,7 +483,7 @@
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <a href="#" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
+        <a href="./" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
             onclick="toggleMenu()">Apps</a>
         <a href="../#nosotros"
             class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
