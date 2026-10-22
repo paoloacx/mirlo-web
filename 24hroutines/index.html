@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-
     <link rel="canonical" href="https://www.mirloapps.es/24hroutines/">
-    <meta property="og:url" content="https://www.mirloapps.es/24hroutines/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="24h Routines - mirlo apps">
-    <meta name="twitter:description" content="24h Routines - Minimalist routines planner. Focus on what matters, one day at a time.">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/24hroutines/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/24hroutines/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/24hroutines/">
+
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6757104992">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24h Routines - mirlo apps</title>
-    <meta name="description"
-        content="24h Routines - Minimalist routines planner. Focus on what matters, one day at a time.">
+    <title>24h Routines - Tu día entero en un reloj | mirlo apps</title>
+    <meta name="description" content="Planifica tus rutinas sobre un reloj de 24 horas. Temporizador de enfoque, rachas y widgets. App para iPhone y iPad.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/24hroutines/">
+    <meta property="og:title" content="24h Routines - Tu día entero en un reloj">
+    <meta property="og:description" content="Dibuja tus rutinas sobre un reloj de 24 horas y ve qué toca ahora. Para iPhone y iPad.">
+    <meta property="og:image" content="https://www.mirloapps.es/24hroutines/24R1.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="24h Routines - Tu día entero en un reloj">
+    <meta name="twitter:description" content="Dibuja tus rutinas sobre un reloj de 24 horas y ve qué toca ahora. Para iPhone y iPad.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/24hroutines/24R1.png">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -22,7 +33,6 @@
     <link rel="shortcut icon" href="../favicon.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
@@ -31,9 +41,6 @@
                 extend: {
                     colors: {
                         'mirlo-orange': '#FF9E00',
-                        'yeah-pin': '#FF4500',
-                        'yeah-lime': '#A3E635',
-                        'yeah-cyan': '#00C4B4',
                     },
                     fontFamily: {
                         'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
@@ -45,121 +52,46 @@
     </script>
 
     <style>
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
+        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        html { scroll-behavior: smooth; }
+        * { transition: all 0.3s ease; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            transition: all 0.3s ease;
-        }
-
-        /* --- EFECTO GRANO --- */
-        .bg-grain {
-            position: relative;
-            background-color: #f3f4f6;
-        }
-
-        .dark .bg-grain {
-            background-color: #0a0a0a;
-        }
-
-        .dark .bg-grain::before {
-            display: none;
-        }
-
+        .bg-grain { position: relative; background-color: #f3f4f6; }
+        .dark .bg-grain { background-color: #0a0a0a; }
+        .dark .bg-grain::before { display: none; }
         .bg-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.06;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
+        .bg-grain > * { position: relative; z-index: 1; }
 
-        .bg-grain>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* --- BOTONES PLÁSTICO --- */
         .btn-plastic {
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 0, 0, 0.8);
         }
-
         .btn-plastic:hover {
             transform: translateY(-1px);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
             filter: brightness(1.1);
         }
-
         .btn-plastic:active {
             transform: translateY(1px);
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #00C4B4;
-            color: #00C4B4;
+            border: 2px solid #F97316;
+            color: #F97316;
         }
 
-        /* --- TARJETAS PRO --- */
-        .tech-card {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .tech-card {
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            pointer-events: none;
-        }
-
-        .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
     </style>
-    <script>
-        // Dark Mode Logic
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
 
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
         function toggleDarkMode() {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -170,379 +102,548 @@
             }
         }
     </script>
+
+    <!-- Schema.org -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "24h Routines",
-  "operatingSystem": "iOS",
-  "applicationCategory": "ProductivityApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "url": "https://www.mirloapps.es/24hroutines/",
-  "downloadUrl": "https://apps.apple.com/us/app/24h-routines/id6757104992"
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "24h Routines",
+      "operatingSystem": "iOS, iPadOS",
+      "applicationCategory": "ProductivityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "url": "https://www.mirloapps.es/24hroutines/",
+      "downloadUrl": "https://apps.apple.com/us/app/24h-routines/id6757104992",
+      "softwareVersion": "1.3",
+      "description": "Planifica tus rutinas sobre un reloj de 24 horas. Temporizador de enfoque, rachas y widgets. App para iPhone y iPad.",
+      "author": {
+        "@type": "Person",
+        "name": "Paolo Alvarez"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mirlo apps",
+        "url": "https://www.mirloapps.es/"
+      },
+      "inLanguage": "es",
+      "image": "https://www.mirloapps.es/24hroutines/screenshot-3.webp",
+      "featureList": [
+        "Reloj de 12 o 24 horas",
+        "Recordatorios",
+        "Modo enfoque",
+        "Rachas y estadísticas",
+        "Widgets",
+        "Siri y Atajos",
+        "Sueño y entrenos",
+        "Calendario",
+        "Amanecer y atardecer"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Es gratis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se descarga gratis y Premium amplía las funciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa con mis datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tus rutinas se quedan en tu dispositivo y en tu iCloud. No hay cuentas ni anuncios. Tienes todo el detalle en la página de privacidad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito Salud o el calendario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Son opcionales y solo se activan si tú lo permites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona en iPad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, funciona en iPhone y en iPad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué idiomas está?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En español, inglés, alemán, francés e italiano."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo pido ayuda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escríbenos desde la página de soporte."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
 </head>
 
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
 
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../index.html"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
                 mirlo apps<span class="text-mirlo-orange">.</span>
             </a>
 
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/index.html"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
-                </li>
-                <li><a href="../index.html#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">About</a>
-                </li>
-                <li><a href="../index.html#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
-                </li>
-
-                <!-- Dark Mode Switch -->
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a></li>
+                <li><a href="#que-hace" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Qué hace</a></li>
+                <li><a href="#como-funciona" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cómo funciona</a></li>
+                <li><a href="#funciones" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Funciones</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a></li>
+                <li><a href="#cambios" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cambios</a></li>
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Soporte</a></li>
+                <li><a href="en/index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-mirlo-orange hover:text-mirlo-orange transition-colors">EN</a></li>
+                <li class="flex items-center pl-2">
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar modo oscuro">
                         <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
                     </label>
                 </li>
             </ul>
 
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none p-2" aria-label="Abrir menú de navegación">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </nav>
     </header>
 
-    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
-
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-teal-500 uppercase tracking-wider shadow-sm">
-                        New Release
-                    </div>
-
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                        24h Routines
-                    </h1>
-                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Minimalist
-                        routines planner.</p>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Simple, intuitive, and effective. Organize your day, build healthy habits, and stay focused on
-                        what matters most.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://apps.apple.com/us/app/24h-routines/id6757104992"
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                            <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                                <div class="font-bold">App Store</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex justify-center relative">
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-400/20 rounded-full blur-[100px]">
-                    </div>
-
-                    <div
-                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
-                        <div
-                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-                            <img src="screenshot-1.webp" width="1284" height="2778" alt="24h Routines Screenshot" class="absolute inset-0 w-full h-full object-cover">
+    <main>
+        <!-- Hero -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                            Planificador de rutinas
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CAROUSEL SECTION -->
-    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Your Day, Your Way</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Master your time with ease.</p>
-            </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6">
+                            24h Routines
+                        </h1>
 
-            <!-- Carousel Container -->
-            <div class="relative group">
-                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar"
-                    style="-ms-overflow-style: none; scrollbar-width: none;">
+                        <p class="text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+                            Tu día entero, en un solo reloj.
+                        </p>
 
-                    <!-- Slide 1 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-1.webp" loading="lazy" width="1284" height="2778" alt="Focus" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Focus</span>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Dibuja tus rutinas sobre un reloj de 24 horas. Ve de un vistazo qué toca ahora y cuánto tiempo libre te queda.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://apps.apple.com/us/app/24h-routines/id6757104992" class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform w-full sm:w-auto justify-center">
+                                <i class="fab fa-apple text-2xl"></i>
+                                <div class="text-left leading-tight">
+                                    <div class="text-xs uppercase tracking-wider opacity-80">Descargar en</div>
+                                    <div class="text-lg font-bold">App Store</div>
+                                </div>
+                            </a>
+
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left">
+                                <div>iPhone y iPad</div>
+                                <div>Descarga gratuita</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-400">
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-clock text-orange-500 w-5 text-center"></i>
+                                <span>Un reloj de 12 o 24 horas con todas tus rutinas</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-stopwatch text-orange-500 w-5 text-center"></i>
+                                <span>Temporizador de enfoque con descansos</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-table-cells-large text-orange-500 w-5 text-center"></i>
+                                <span>Widgets en tu pantalla de inicio y de bloqueo</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-shield-alt text-green-500 w-5 text-center"></i>
+                                <span>Tus rutinas son tuyas. Sin cuentas ni anuncios. <a href="privacidad.html" class="text-orange-600 dark:text-orange-400 underline">Ver privacidad</a></span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Slide 2 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-2.webp" loading="lazy" width="1284" height="2778" alt="Plan" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Plan</span>
-                            </div>
+                    <!-- Captura principal -->
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative w-64 sm:w-72">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-amber-300 rounded-[2.5rem] blur-2xl opacity-30 dark:opacity-20"></div>
+                            <img src="screenshot-3.webp" width="1284" height="2778" alt="El reloj de 24h Routines con las rutinas del día" class="relative z-10 w-full h-auto rounded-[2rem] shadow-2xl border border-gray-200 dark:border-gray-700">
                         </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-3.webp" loading="lazy" width="1284" height="2778" alt="Track" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Track</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-4.webp" loading="lazy" width="1284" height="2778" alt="Habits" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Habits</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-5.webp" loading="lazy" width="1284" height="2778" alt="Stats" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Stats</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6 -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-6.webp" loading="lazy" width="1284" height="2778" alt="Settings" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-teal-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Settings</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Designed for Focus</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Less clutter, more productivity.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-check-circle text-2xl text-teal-500"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Simple Tracking</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Track your daily routines with a
-                            single tap.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-chart-bar text-2xl text-teal-500"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Insightful Stats</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Visualize your progress and optimize
-                            your day.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-moon text-2xl text-teal-500"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Dark Mode</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Easy on the eyes, perfect for night
-                            owls.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CHANGELOG SECTION -->
-    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Better every day.</p>
+        <!-- Capturas -->
+        <section class="py-16 bg-white dark:bg-black border-y border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Capturas</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Así se ve</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screenshot-4.webp" width="1284" height="2778" alt="Lista de rutinas con horarios" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Tus rutinas</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screenshot-5.webp" width="1284" height="2778" alt="Resumen del día con huecos libres" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Tu día en cifras</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screenshot-6.webp" width="1284" height="2778" alt="Racha y horas dedicadas a una rutina" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Tus rachas</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screenshot-7.webp" width="1284" height="2778" alt="Temporizador de enfoque" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Modo enfoque</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="screenshot-8.webp" width="1284" height="2778" alt="Widgets de 24h Routines en la pantalla de inicio" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Widgets</figcaption>
+                    </figure>
+                </div>
             </div>
+        </section>
 
-            <div class="space-y-12">
-
-                <!-- Version 1.3 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-teal-500 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.3</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Design improvements: New simplified Timeline view with customizable settings to organize your entire day.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Performance and logic enhancements for smoother daily operation.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New option to skip all routines for the day or pause them for a set number of hours.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New centralized notifications hub for granular control and scheduling.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Minor bug fixes and performance improvements.</span>
-                        </li>
-                    </ul>
+        <!-- Qué hace -->
+        <section id="que-hace" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Qué hace</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Un reloj para organizar tu día</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Cada rutina es un trozo del reloj. Tu día completo, siempre a la vista.</p>
                 </div>
 
-                <!-- Version 1.2 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Todo el día a la vista</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Tus rutinas aparecen como sectores en un reloj de 12 o 24 horas.</p>
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tus huecos libres</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Mira cuánto tiempo te queda entre una rutina y otra.</p>
                     </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Quick Actions.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Siri Integration.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Focus Timer now with a much better and more robust design using Apple's
-                                AlarmKit.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New view with graphs and data from your routines.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Better and faster integration of workouts from Apple Health.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Fix for the bug that caused a desynchronization between the app and widgets.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New, more dynamic and agile way to create recurring or one-off routines.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Design improvements for a more efficient workflow.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes and general performance improvements.</span>
-                        </li>
-                    </ul>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Constancia sin presión</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Marca cada rutina como hecha y sigue tus rachas.</p>
+                    </div>
                 </div>
-
-                <!-- Version 1.1 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New daily, weekly, monthly, and annual progress bar.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Fundamental improvement in the logic of periodic and one-time routines.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New icons available.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Sync and private backup in iCloud.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>New progress and streaks widgets.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>5 exclusive widgets for the Lock Screen.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Native Spotlight integration.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Added 7 Siri Shortcuts.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Easily add extra time to a routine. Improved routine creation and editing.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>3 new languages: German, French, and Italian.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-xs"></i>
-                            <span>Design adjustments, fundamental improvements in many sections, and minor bug
-                                fixes.</span>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <!-- Cómo funciona -->
+        <section id="como-funciona" class="py-20 bg-white dark:bg-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Cómo funciona</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Tres pasos y listo</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Empezar lleva un minuto.</p>
+                </div>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">1</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Crea tus rutinas</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Elige nombre, icono, color y horario. Pueden repetirse o ser de un solo día.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">2</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Míralas en el reloj</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Cada rutina ocupa su hueco. Tócala para completarla, saltarla o editarla.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">3</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Sigue tu progreso</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Consulta tus rachas, tus horas y tu día completo en la línea de tiempo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funciones -->
+        <section id="funciones" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Funciones</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Todo lo que puedes hacer</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Pensado para que organizar el día sea sencillo.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Reloj de 12 o 24 horas</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Cambia de vista con un toque.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Recordatorios</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Un aviso antes de cada rutina, si quieres.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Modo enfoque</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Sesiones de concentración con descansos, también desde la pantalla de bloqueo.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-chart-simple"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Rachas y estadísticas</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Tu mejor racha, tus horas dedicadas y tu constancia.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-table-cells-large"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Widgets</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">El reloj y tu progreso en la pantalla de inicio y en la de bloqueo.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Siri y Atajos</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Pregunta qué rutina toca ahora o empieza un enfoque con la voz.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Sueño y entrenos</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Si lo permites, tu sueño y tus entrenos de Salud aparecen en el reloj.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-calendar-days"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Calendario</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Importa eventos como rutinas o exporta tus rutinas al calendario.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Amanecer y atardecer</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Marca la salida y la puesta de sol en el reloj según tu ciudad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Respuestas directas</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Preguntas frecuentes</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Es gratis?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Se descarga gratis y Premium amplía las funciones.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Qué pasa con mis datos?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Tus rutinas se quedan en tu dispositivo y en tu iCloud. No hay cuentas ni anuncios. Tienes todo el detalle en la <a href="privacidad.html" class="text-orange-600 dark:text-orange-400 underline">página de privacidad</a>.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Necesito Salud o el calendario?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            No. Son opcionales y solo se activan si tú lo permites.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Funciona en iPad?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Sí, funciona en iPhone y en iPad.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿En qué idiomas está?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            En español, inglés, alemán, francés e italiano.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>¿Cómo pido ayuda?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Escríbenos desde la <a href="soporte.html" class="text-orange-600 dark:text-orange-400 underline">página de soporte</a>.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos de la app -->
+        <section class="py-16 bg-gray-50 dark:bg-zinc-950 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <h3 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest text-center mb-6">La app en breve</h3>
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-hidden text-sm">
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Nombre</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">24h Routines</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Versión</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">1.3</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Desarrollador</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Dispositivos</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">iPhone y iPad</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Idiomas</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Español, inglés, alemán, francés e italiano</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Descarga</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Gratuita</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section id="cambios" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-grain">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Novedades</h2>
+                    <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">Registro de cambios</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Mejor cada día.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.3</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 font-semibold">Actual</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>1 - Design improvements: New simplified Timeline view with settings to sort the entire day</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>2 - Performance and functionality improvements</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>3 - New button to skip all routines for the day or for X hours</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>4 - New section centralizing notifications for better granular management</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>5 - Minor bug fixes</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.2</span>
+                            
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New Quick Actions.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Siri Integration.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Focus Timer now with a much better and more robust design using Apple&#x27;s AlarmKit.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New view with graphs and data from your routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Better and faster integration of workouts from Apple Health.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Fix for the bug that caused a desynchronization between the app and widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New, more dynamic and agile way to create recurring or one-off routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Design improvements for a more efficient workflow.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Bug fixes and general performance improvements.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Versión 1.1</span>
+                            
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New daily, weekly, monthly, and annual progress bar.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Fundamental improvement in the logic of periodic and one-time routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New icons available.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Sync and private backup in iCloud.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New progress and streaks widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>5 exclusive widgets for the Lock Screen.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Native Spotlight integration.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Added 7 Siri Shortcuts.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Easily add extra time to a routine. Improved routine creation and editing.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>3 new languages: German, French, and Italian.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Design adjustments, fundamental improvements in many sections, and minor bug fixes.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex-1 min-w-0 flex justify-center md:justify-start">
                 <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -554,43 +655,36 @@
                 © 2026 mirlo apps. Made in Spain 🇪🇸
             </div>
 
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
+            <div class="flex items-center flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 min-w-0">
+                <a href="#cambios" class="hover:text-mirlo-orange transition-colors">Cambios</a>
+                <a href="privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacidad</a>
                 <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
-                <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.threads.com/@paoloac"
-                    class="text-gray-400 hover:text-purple-400 text-xl transition-colors"><i
-                        class="fab fa-threads"></i></a>
+                <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 text-xl transition-colors" aria-label="X"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.threads.com/@paoloac" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 text-xl transition-colors" aria-label="Threads"><i class="fab fa-threads"></i></a>
             </div>
         </div>
     </footer>
 
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Cerrar menú">
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <a href="../apps/index.html" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../index.html#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">About</a>
-        <a href="../index.html#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contact</a>
+        <a href="../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="#que-hace" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Qué hace</a>
+        <a href="#como-funciona" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cómo funciona</a>
+        <a href="#funciones" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Funciones</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="#cambios" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cambios</a>
+        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Soporte</a>
+        <a href="en/index.html" class="text-2xl font-bold text-orange-500" onclick="toggleMenu()">English version</a>
 
-        <!-- Mobile Dark Mode Switch -->
         <div class="flex items-center gap-4 mt-8">
-            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Modo oscuro</span>
             <label class="inline-flex items-center cursor-pointer">
                 <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                </div>
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
             </label>
         </div>
     </div>
@@ -606,12 +700,9 @@
                 menu.classList.remove('flex');
             }
         }
-
-        // Initialize switch state
         document.addEventListener('DOMContentLoaded', () => {
             const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = isDark);
         });
     </script>
 

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/24hroutines/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/24hroutines/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/24hroutines/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/24hroutines/">
+
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6757104992">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24h Routines - Your whole day on one clock | mirlo apps</title>
+    <meta name="description" content="Plan your routines on a 24-hour clock. Focus timer, streaks and widgets. An app for iPhone and iPad.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/24hroutines/en/">
+    <meta property="og:title" content="24h Routines - Your whole day on one clock">
+    <meta property="og:description" content="Draw your routines on a 24-hour clock and see what&#x27;s next. For iPhone and iPad.">
+    <meta property="og:image" content="https://www.mirloapps.es/24hroutines/24R1.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="24h Routines - Your whole day on one clock">
+    <meta name="twitter:description" content="Draw your routines on a 24-hour clock and see what&#x27;s next. For iPhone and iPad.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/24hroutines/24R1.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        html { scroll-behavior: smooth; }
+        * { transition: all 0.3s ease; }
+
+        .bg-grain { position: relative; background-color: #f3f4f6; }
+        .dark .bg-grain { background-color: #0a0a0a; }
+        .dark .bg-grain::before { display: none; }
+        .bg-grain::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .bg-grain > * { position: relative; z-index: 1; }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-plastic:active {
+            transform: translateY(1px);
+            border: 2px solid #F97316;
+            color: #F97316;
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "24h Routines",
+      "operatingSystem": "iOS, iPadOS",
+      "applicationCategory": "ProductivityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "url": "https://www.mirloapps.es/24hroutines/en/",
+      "downloadUrl": "https://apps.apple.com/us/app/24h-routines/id6757104992",
+      "softwareVersion": "1.3",
+      "description": "Plan your routines on a 24-hour clock. Focus timer, streaks and widgets. An app for iPhone and iPad.",
+      "author": {
+        "@type": "Person",
+        "name": "Paolo Alvarez"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mirlo apps",
+        "url": "https://www.mirloapps.es/"
+      },
+      "inLanguage": "en",
+      "image": "https://www.mirloapps.es/24hroutines/screenshot-3.webp",
+      "featureList": [
+        "12 or 24-hour clock",
+        "Reminders",
+        "Focus mode",
+        "Streaks and stats",
+        "Widgets",
+        "Siri and Shortcuts",
+        "Sleep and workouts",
+        "Calendar",
+        "Sunrise and sunset"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's free to download and Premium expands the features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your routines stay on your device and in your iCloud. There are no accounts and no ads. Full details are on the privacy page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need Health or the calendar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They're optional and only turn on if you allow them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on iPad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it works on iPhone and iPad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which languages does it speak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "English, Spanish, German, French and Italian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get help?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Write to us from the support page."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a></li>
+                <li><a href="#what" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">What it does</a></li>
+                <li><a href="#how" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">How it works</a></li>
+                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Features</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a></li>
+                <li><a href="#changelog" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Changelog</a></li>
+                <li><a href="../soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Support</a></li>
+                <li><a href="../index.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-mirlo-orange hover:text-mirlo-orange transition-colors">ES</a></li>
+                <li class="flex items-center pl-2">
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle dark mode">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                    </label>
+                </li>
+            </ul>
+
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none p-2" aria-label="Open navigation menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                            Routine planner
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6">
+                            24h Routines
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+                            Your whole day, on one clock.
+                        </p>
+
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Draw your routines on a 24-hour clock. See what&#x27;s next at a glance and how much free time you have left.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://apps.apple.com/us/app/24h-routines/id6757104992" class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform w-full sm:w-auto justify-center">
+                                <i class="fab fa-apple text-2xl"></i>
+                                <div class="text-left leading-tight">
+                                    <div class="text-xs uppercase tracking-wider opacity-80">Download on the</div>
+                                    <div class="text-lg font-bold">App Store</div>
+                                </div>
+                            </a>
+
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left">
+                                <div>iPhone and iPad</div>
+                                <div>Free to download</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-400">
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-clock text-orange-500 w-5 text-center"></i>
+                                <span>A 12 or 24-hour clock with all your routines</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-stopwatch text-orange-500 w-5 text-center"></i>
+                                <span>Focus timer with breaks</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-table-cells-large text-orange-500 w-5 text-center"></i>
+                                <span>Widgets on your Home and Lock Screen</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-3">
+                                <i class="fas fa-shield-alt text-green-500 w-5 text-center"></i>
+                                <span>Your routines are yours. No accounts, no ads. <a href="privacidad.html" class="text-orange-600 dark:text-orange-400 underline">See privacy</a></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Captura principal -->
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative w-64 sm:w-72">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-amber-300 rounded-[2.5rem] blur-2xl opacity-30 dark:opacity-20"></div>
+                            <img src="../screenshot-3.webp" width="1284" height="2778" alt="The 24h Routines clock with the routines of the day" class="relative z-10 w-full h-auto rounded-[2rem] shadow-2xl border border-gray-200 dark:border-gray-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capturas -->
+        <section class="py-16 bg-white dark:bg-black border-y border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Screenshots</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">See it in action</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screenshot-4.webp" width="1284" height="2778" alt="Routine list with schedules" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Your routines</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screenshot-5.webp" width="1284" height="2778" alt="Daily overview with free gaps" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Your day in numbers</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screenshot-6.webp" width="1284" height="2778" alt="Streak and hours invested in a routine" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Your streaks</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screenshot-7.webp" width="1284" height="2778" alt="Focus timer" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Focus mode</figcaption>
+                    </figure>
+                    <figure class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                        <img src="../screenshot-8.webp" width="1284" height="2778" alt="24h Routines widgets on the Home Screen" class="w-full h-auto" loading="lazy">
+                        <figcaption class="p-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400">Widgets</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Qué hace -->
+        <section id="what" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">What it does</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">A clock to organize your day</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Every routine is a slice of the clock. Your whole day, always in sight.</p>
+                </div>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Your whole day in view</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Your routines show up as slices on a 12 or 24-hour clock.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Your free gaps</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">See how much time you have between routines.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Consistency, no pressure</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Check off each routine and follow your streaks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo funciona -->
+        <section id="how" class="py-20 bg-white dark:bg-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">How it works</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Three steps and you&#x27;re set</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Getting started takes a minute.</p>
+                </div>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">1</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Create your routines</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Pick a name, icon, color and time. They can repeat or happen just once.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">2</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">See them on the clock</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Each routine gets its own slot. Tap one to complete, skip or edit it.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/60">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-extrabold text-xl mb-4">3</div>
+                        <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Follow your progress</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Check your streaks, your hours and your full day in the timeline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funciones -->
+        <section id="features" class="py-20 bg-gray-50 dark:bg-zinc-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Features</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Everything you can do</h3>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Built to make planning your day simple.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">12 or 24-hour clock</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Switch views with one tap.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Reminders</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">A heads-up before each routine, if you want one.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Focus mode</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Focus sessions with breaks, also from your Lock Screen.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-chart-simple"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Streaks and stats</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Your best streak, hours invested and consistency.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-table-cells-large"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Widgets</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">The clock and your progress on your Home and Lock Screen.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Siri and Shortcuts</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Ask what&#x27;s next or start a focus session with your voice.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Sleep and workouts</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">If you allow it, your sleep and workouts from Health show on the clock.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-calendar-days"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Calendar</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Import events as routines or export your routines to the calendar.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Sunrise and sunset</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">See sunrise and sunset on the clock for your city.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">Straight answers</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Frequently asked questions</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Is it free?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            It's free to download and Premium expands the features.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What happens to my data?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Your routines stay on your device and in your iCloud. There are no accounts and no ads. Full details are on the <a href="privacidad.html" class="text-orange-600 dark:text-orange-400 underline">privacy page</a>.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Do I need Health or the calendar?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            No. They're optional and only turn on if you allow them.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Does it work on iPad?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Yes, it works on iPhone and iPad.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Which languages does it speak?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            English, Spanish, German, French and Italian.
+                        </div>
+                    </details>
+                    <details class="group border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50/50 dark:bg-zinc-900/50 transition-colors">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-lg text-gray-900 dark:text-white">
+                            <span>How do I get help?</span>
+                            <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="mt-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-800 pt-4">
+                            Write to us from the <a href="../soporte.html" class="text-orange-600 dark:text-orange-400 underline">support page</a>.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos de la app -->
+        <section class="py-16 bg-gray-50 dark:bg-zinc-950 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <h3 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest text-center mb-6">The app at a glance</h3>
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-hidden text-sm">
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Name</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">24h Routines</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Version</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">1.3</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Developer</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Devices</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">iPhone and iPad</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Languages</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">English, Spanish, German, French and Italian</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6">
+                        <span class="text-gray-500">Download</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section id="changelog" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-grain">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest mb-2">What&#x27;s new</h2>
+                    <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">Changelog</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Better every day.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.3</span>
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 font-semibold">Current</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>1 - Design improvements: New simplified Timeline view with settings to sort the entire day</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>2 - Performance and functionality improvements</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>3 - New button to skip all routines for the day or for X hours</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>4 - New section centralizing notifications for better granular management</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>5 - Minor bug fixes</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.2</span>
+                            
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New Quick Actions.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Siri Integration.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Focus Timer now with a much better and more robust design using Apple&#x27;s AlarmKit.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New view with graphs and data from your routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Better and faster integration of workouts from Apple Health.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Fix for the bug that caused a desynchronization between the app and widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New, more dynamic and agile way to create recurring or one-off routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Design improvements for a more efficient workflow.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Bug fixes and general performance improvements.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">Version 1.1</span>
+                            
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New daily, weekly, monthly, and annual progress bar.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Fundamental improvement in the logic of periodic and one-time routines.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New icons available.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Sync and private backup in iCloud.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>New progress and streaks widgets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>5 exclusive widgets for the Lock Screen.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Native Spotlight integration.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Added 7 Siri Shortcuts.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Easily add extra time to a routine. Improved routine creation and editing.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>3 new languages: German, French, and Italian.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3 text-xs"></i><span>Design adjustments, fundamental improvements in many sections, and minor bug fixes.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 min-w-0">
+                <a href="#changelog" class="hover:text-mirlo-orange transition-colors">Changelog</a>
+                <a href="privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 text-xl transition-colors" aria-label="X"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.threads.com/@paoloac" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 text-xl transition-colors" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Close menu">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="#what" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">What it does</a>
+        <a href="#how" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Features</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="#changelog" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Changelog</a>
+        <a href="../soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Support</a>
+        <a href="../index.html" class="text-2xl font-bold text-orange-500" onclick="toggleMenu()">Versión en español</a>
+
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>

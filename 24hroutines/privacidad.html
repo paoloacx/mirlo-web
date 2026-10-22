@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/24hroutines/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/24hroutines/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/24hroutines/en/privacidad.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/24hroutines/privacidad.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - 24h Routines | mirlo apps</title>
+    <meta name="description" content="Qué guarda 24h Routines, qué comparte con terceros y qué permisos pide. Sin cuentas, sin anuncios y sin seguimiento.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacidad - 24h Routines | mirlo apps">
+    <meta name="twitter:description" content="Qué guarda 24h Routines, qué comparte con terceros y qué permisos pide. Sin cuentas, sin anuncios y sin seguimiento.">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        html { scroll-behavior: smooth; }
+        * { transition: all 0.3s ease; }
+
+        .bg-grain { position: relative; background-color: #f3f4f6; }
+        .dark .bg-grain { background-color: #0a0a0a; }
+        .dark .bg-grain::before { display: none; }
+        .bg-grain::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .bg-grain > * { position: relative; z-index: 1; }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-plastic:active {
+            transform: translateY(1px);
+            border: 2px solid #F97316;
+            color: #F97316;
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../apps/index.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a></li>
+
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Soporte</a></li>
+                <li><a href="en/privacidad.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-mirlo-orange hover:text-mirlo-orange transition-colors">EN</a></li>
+                <li class="flex items-center pl-2">
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar modo oscuro">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                    </label>
+                </li>
+            </ul>
+
+            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none p-2" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 px-6 bg-grain min-h-screen">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <i class="fas fa-shield-alt"></i> Privacidad
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">Privacidad en 24h Routines</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Tus rutinas son tuyas. Aquí te explicamos, sin rodeos, qué hace la app con tus datos.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-500 mt-4">Última actualización: 22 de octubre de 2026</p>
+            </div>
+
+            <div class="space-y-6">
+            <div class="p-8 rounded-2xl border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">En resumen</h2>
+                <ul class="space-y-2 text-base text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i><span>La app no usa servidores propios ni cuentas de usuario.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i><span>La app no recopila tus datos.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i><span>La app no tiene anuncios, ni analítica, ni seguimiento.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i><span>Los permisos son opcionales y puedes retirarlos cuando quieras.</span></li>
+                </ul>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center"><i class="fas fa-database"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Qué se guarda y dónde</h2>
+                </div>
+                <div class="space-y-3 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>Tus rutinas, tu historial de rutinas completadas y tus ajustes (aspecto del reloj, horas de sueño manuales, lugar elegido para el amanecer y el atardecer, avisos) se guardan en tu dispositivo.</p>
+                    <p>Los widgets leen esos mismos datos en tu dispositivo.</p>
+                    <p>Si tienes iCloud activado, tus rutinas se copian también en tu iCloud privado para mantenerlas al día en tus dispositivos. Esa copia es de Apple y está ligada a tu cuenta. mirlo apps no puede verla.</p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center"><i class="fas fa-share-nodes"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Qué viaja a terceros</h2>
+                </div>
+                <div class="space-y-3 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>Solo viaja información a Apple, y únicamente en estos casos:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>iCloud: la copia de tus rutinas, si tienes iCloud activado.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Búsqueda de lugares: cuando eliges una ciudad para el amanecer y el atardecer, el texto que escribes se envía a Apple Maps para sugerirte resultados. El lugar que eliges se guarda solo en tu dispositivo.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Compras: las gestiona el App Store. La app no recibe ni guarda tus datos de pago.</span></li>
+                    </ul>
+                    <p class="font-medium text-gray-800 dark:text-gray-200">No hay publicidad, ni herramientas de análisis, ni librerías de terceros que recojan datos. La app no te rastrea.</p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center"><i class="fas fa-key"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Permisos que puede pedir</h2>
+                </div>
+                <div class="space-y-3 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>Ninguno es obligatorio. Si no los concedes, el resto de la app funciona igual.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Notificaciones: para avisarte antes de una rutina o al terminar un enfoque. Los avisos se programan en tu dispositivo.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Alarmas: el temporizador de enfoque puede sonar como una alarma del sistema.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Salud (solo lectura): la app lee tu sueño y tus entrenos para dibujarlos en el reloj. No escribe nada en Salud y esos datos no salen de tu dispositivo.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Calendario (acceso completo): para importar eventos como rutinas y exportar tus rutinas como eventos. Solo actúa cuando tú lo pides.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-circle text-orange-400 mt-2 text-[6px]"></i><span>Ubicación: la app no usa el GPS de tu dispositivo. El lugar para el amanecer y el atardecer lo eliges tú a mano.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center"><i class="fas fa-magnifying-glass"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Siri, Atajos y Spotlight</h2>
+                </div>
+                <div class="space-y-3 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>Siri y Atajos ejecutan acciones de la app en tu dispositivo, como consultar qué rutina toca o empezar un enfoque.</p>
+                    <p>Los nombres de tus rutinas pueden aparecer en la búsqueda de Spotlight. Ese índice se queda en tu iPhone o iPad.</p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center"><i class="fas fa-trash-can"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Tu control</h2>
+                </div>
+                <div class="space-y-3 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>Puedes editar o borrar tus rutinas cuando quieras desde la app, y también borrarlas todas desde los ajustes.</p>
+                    <p>Los permisos se cambian en Ajustes del sistema &gt; 24h Routines.</p>
+                    <p>Para borrar la copia de iCloud, ve a Ajustes &gt; tu nombre &gt; iCloud &gt; Gestionar almacenamiento.</p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-2xl border border-orange-200 dark:border-orange-900 bg-orange-50 dark:bg-orange-950/20">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">¿Tienes alguna pregunta?</h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 mb-4">Escríbenos y te respondemos.</p>
+                <a href="mailto:soporte@mirloapps.es" class="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold hover:underline">
+                    soporte@mirloapps.es <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="index.html" class="text-orange-600 dark:text-orange-400 font-medium hover:underline"><i class="fas fa-arrow-left text-xs mr-1"></i> Volver a 24h Routines</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../index.html" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="index.html" class="hover:text-mirlo-orange transition-colors">24h Routines</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
+                <a href="soporte.html" class="hover:text-mirlo-orange transition-colors">Soporte</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 text-xl transition-colors" aria-label="X"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Cerrar menú">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../apps/index.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+
+        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Soporte</a>
+        <a href="en/privacidad.html" class="text-2xl font-bold text-orange-500" onclick="toggleMenu()">English version</a>
+
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Modo oscuro</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>

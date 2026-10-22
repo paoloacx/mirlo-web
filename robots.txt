@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.mirloapps.es/sitemap.xml
+Sitemap: https://www.mirloapps.es/24hroutines/sitemap.xml
 Sitemap: https://www.mirloapps.es/balizas/sitemap.xml
 Sitemap: https://www.mirloapps.es/embalses/sitemap.xml
 Sitemap: https://www.mirloapps.es/weatherforhumans/sitemap.xml
