@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/myhealthkeeper/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/myhealthkeeper/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/myhealthkeeper/en/privacidad.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/myhealthkeeper/privacidad.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - My Health Keeper - mirlo apps</title>
+    <meta name="description" content="Política de privacidad de My Health Keeper: datos en tu dispositivo, procesamiento de IA con selector de proveedor, permisos de salud y protección absoluta.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacidad - My Health Keeper">
+    <meta name="twitter:description" content="Conoce cómo My Health Keeper protege tus datos clínicos, tus informes y tu privacidad.">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'health-emerald': '#10B981',
+                        'health-dark': '#059669',
+                        'health-deep': '#065F46',
+                        'health-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        .policy-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.14);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .policy-card {
+            background: #18181b;
+            border: 1px solid rgba(16, 185, 129, 0.22);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-health-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="./" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-health-dark dark:hover:text-health-emerald transition-colors">
+                    Volver a My Health Keeper
+                </a>
+
+                <a href="en/privacidad.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-health-emerald hover:text-health-emerald transition-colors">
+                    EN
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar tema">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-health-emerald"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-36 pb-24">
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+                <i class="fas fa-shield-heart"></i>
+                <span>Transparencia y Privacidad Médica</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+                Privacidad en My Health Keeper
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Tus datos de salud son exclusivamente tuyos. No los recopilamos, no los monetizamos ni operamos servidores propios para almacenarlos.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Sección 1: Almacenamiento local -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Almacenamiento de tus datos de salud</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Tus informes médicos, diagnósticos, registro de medicación, citas, síntomas diarios y notas personales se guardan de forma local en la memoria de tu dispositivo mediante el motor SwiftData de Apple. La app no tiene backend propio ni servidores de almacenamiento.
+                </p>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    Nosotros (Mirlo Apps) no recopilamos tus datos y no tenemos acceso en ningún momento a los registros, archivos o valores que introduzcas en la aplicación.
+                </p>
+            </div>
+
+            <!-- Sección 2: Proveedores de IA -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Uso de Inteligencia Artificial y selector de proveedor</h2>
+                </div>
+                <div class="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>
+                        My Health Keeper te permite elegir qué proveedor de inteligencia artificial procesa tus consultas en el chat y el análisis de documentos:
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i>
+                            <span><strong>Apple Intelligence (En el dispositivo):</strong> En dispositivos compatibles con iOS 26+, el modelo se ejecuta de forma completamente local usando el marco FoundationModels de Apple. Tus mensajes y contexto nunca salen de tu dispositivo.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i>
+                            <span><strong>Google Gemini 3.8 Flash (a través de Firebase):</strong> Si seleccionas Gemini, lo que envías al chat o al análisis de informes médicos sale del dispositivo hacia Google a través de Firebase. Los datos enviados incluyen el mensaje o texto del documento junto al contexto de salud generado por la app (síntomas de las últimas 24h, medicación pautada, puntuaciones de carga ambiental e interna, constantes de salud y antecedentes registrados en tu perfil).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i>
+                            <span><strong>Groq:</strong> Si seleccionas Groq, lo que envías al chat o al análisis de informes sale del dispositivo directamente hacia la API de Groq, incluyendo el texto de tu consulta o informe y el contexto de salud de la app.</span>
+                        </li>
+                    </ul>
+                    <div class="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/15 text-xs sm:text-sm">
+                        <strong class="text-gray-900 dark:text-white block mb-1">Sin servidores intermedios de Mirlo Apps</strong>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Nosotros no recopilamos ni almacenamos tus conversaciones con la IA ni los informes que analizas. Si prefieres que ningún dato salga hacia proveedores externos en la nube, puedes utilizar Apple Intelligence o usar la app manualmente como gestor local.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3: Extracción fiel de informes y OCR -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Importación de informes y extracción fiel</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Al importar documentos médicos en formato PDF o fotografía (a través de la app o mediante la extensión para compartir del sistema), el texto se procesa con reconocimiento óptico de caracteres (OCR) ejecutado en tu propio dispositivo.
+                </p>
+                <p class="mt-3 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    El resumen generado se limita de forma estricta a extraer con fidelidad los diagnósticos (manteniendo si figuran como confirmados o sospechados), los valores analíticos y el plan pautado por tu médico. El sistema tiene instrucciones expresas de no suponer ni inventar información clínica ausente en el documento original.
+                </p>
+            </div>
+
+            <!-- Sección 4: Medicación y notificaciones -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Seguimiento de medicación y recordatorios</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Tus horarios de tomas, pautas posológicas y registros de cumplimiento se gestionan de forma local. Las alertas de recordatorio se programan como notificaciones locales del sistema operativo iOS. Ningún tercero ni Mirlo Apps recibe avisos sobre qué medicamentos tomas ni cuándo lo haces.
+                </p>
+            </div>
+
+            <!-- Sección 5: Integración con Apple Salud (HealthKit) -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Apple Salud y permisos de HealthKit</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    My Health Keeper solicita acceso a Apple Salud únicamente con tu permiso explícito para consultar métricas como la frecuencia cardíaca, variabilidad del pulso (VFC), frecuencia respiratoria y energía activa con objeto de calcular tu indicador de carga fisiológica. Si registras peso o constantes, la app puede actualizarlas en Apple Salud si así lo decides.
+                </p>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    Los datos de HealthKit nunca se comparten con terceros, no se utilizan para publicidad ni se transfieren fuera del entorno de Apple Salud en tu teléfono.
+                </p>
+            </div>
+
+            <!-- Sección 6: Clima y ubicación -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Ubicación y factores ambientales (WeatherKit y OpenWeather)</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Para calcular la puntuación de carga ambiental, la app consulta las condiciones meteorológicas mediante <strong>Apple WeatherKit</strong> y los datos de contaminación del aire a través de <strong>OpenWeather</strong>. Para ello se utilizan las coordenadas de latitud y longitud de tu ubicación geográfica únicamente mientras la aplicación está en uso. La app no envía datos de salud ni identificadores personales a estos servicios, no tiene backend propio y Mirlo Apps no recopila ni almacena tu ubicación.
+                </p>
+            </div>
+
+            <!-- Sección 7: Cero publicidad y cero rastreo -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Sin publicidad ni rastreadores</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Tal como certifica la etiqueta de privacidad de Apple (PrivacyInfo.xcprivacy), My Health Keeper no incluye redes publicitarias, ni SDKs de rastreo comercial entre aplicaciones, ni sistemas de analítica invasivos.
+                </p>
+            </div>
+
+            <!-- Sección 8: Control y eliminación -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-trash-can"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Control y eliminación completa de tus datos</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Tienes el control absoluto: puedes editar o suprimir cualquier documento, historial de tomas o registro clínico en cualquier momento desde la app. Si decides desinstalar My Health Keeper, todos los registros almacenados en el dispositivo se eliminan de forma instantánea.
+                </p>
+            </div>
+
+            <!-- Contacto -->
+            <div class="policy-card p-8 bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20">
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Contacto y soporte</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    Si tienes cualquier pregunta sobre el funcionamiento de la app o el tratamiento de tus datos, puedes escribirnos directamente:
+                </p>
+                <a href="mailto:soporte@mirloapps.es?subject=Privacidad%20My%20Health%20Keeper" class="inline-flex items-center space-x-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                    <span>soporte@mirloapps.es</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="./#cambios" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cambios</a>
+                <a href="privacidad.html" class="text-emerald-600 dark:text-emerald-400 font-semibold transition-colors">Privacidad</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cookies</a>
+                <a href="soporte.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Soporte</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>

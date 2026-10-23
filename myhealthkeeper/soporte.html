@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/myhealthkeeper/soporte.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/myhealthkeeper/soporte.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/myhealthkeeper/en/soporte.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/myhealthkeeper/soporte.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Soporte - My Health Keeper por Mirlo Apps">
+    <meta name="twitter:description" content="Centro de ayuda y soporte técnico para My Health Keeper.">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - My Health Keeper - mirlo apps</title>
+    <meta name="description" content="Centro de ayuda y contacto para My Health Keeper: dudas sobre medicación, informes médicos, IA privada y sincronización.">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'health-emerald': '#10B981',
+                        'health-dark': '#059669',
+                        'health-deep': '#065F46',
+                        'health-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-health-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="./" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-health-dark dark:hover:text-health-emerald transition-colors">
+                    Volver a My Health Keeper
+                </a>
+
+                <a href="en/soporte.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-health-emerald hover:text-health-emerald transition-colors">
+                    EN
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar tema">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-health-emerald"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-36 pb-24">
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+                <i class="fas fa-headset"></i>
+                <span>Centro de Ayuda</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+                Soporte de My Health Keeper
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Estamos aquí para ayudarte. Escríbenos directamente si tienes cualquier consulta, sugerencia de mejora o incidencia técnica.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Tarjeta de contacto principal -->
+            <div class="bg-white dark:bg-[#18181b] p-8 rounded-3xl border border-emerald-500/15 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Contacto por correo electrónico</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                    Puedes contactar con el desarrollador directamente. Respondemos con prontitud para resolver dudas sobre el funcionamiento de la app, importación de documentos o configuración de proveedores de IA.
+                </p>
+                <a href="mailto:soporte@mirloapps.es?subject=Soporte%20My%20Health%20Keeper" class="inline-flex items-center space-x-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3.5 rounded-2xl transition-colors shadow-md">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>soporte@mirloapps.es</span>
+                </a>
+            </div>
+
+            <!-- Preguntas frecuentes de soporte -->
+            <div class="bg-white dark:bg-[#18181b] p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm space-y-6">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i class="fas fa-circle-question"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Preguntas frecuentes de asistencia</h2>
+                </div>
+
+                <div class="border-t border-gray-100 dark:border-gray-800 pt-4">
+                    <h3 class="font-bold text-base text-gray-900 dark:text-white mb-1.5">
+                        ¿Cómo importar informes médicos desde otras apps?
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Puedes abrir cualquier archivo PDF o fotografía de informe médico en iOS, pulsar el botón oficial de <em>Compartir</em> y seleccionar <strong>My Health Keeper</strong> (mediante la extensión ImportHealthDocument). El documento se copiará a tu almacén local seguro y quedará listo para su lectura con OCR.
+                    </p>
+                </div>
+
+                <div class="border-t border-gray-100 dark:border-gray-800 pt-4">
+                    <h3 class="font-bold text-base text-gray-900 dark:text-white mb-1.5">
+                        ¿Cómo cambiar el proveedor de Inteligencia Artificial?
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        En la pestaña de chat de IA, pulsa sobre el selector de proveedor superior para alternar al instante entre <strong>Apple Intelligence</strong> (procesamiento 100% en dispositivo en iOS 26+), <strong>Google Gemini 3.8 Flash</strong> y <strong>Groq</strong>.
+                    </p>
+                </div>
+
+                <div class="border-t border-gray-100 dark:border-gray-800 pt-4">
+                    <h3 class="font-bold text-base text-gray-900 dark:text-white mb-1.5">
+                        ¿Por qué la app necesita acceso a Apple Salud (HealthKit)?
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Para calcular tu indicador de carga interna (fisiológica) combinando variabilidad de la frecuencia cardíaca (VFC), pulso en reposo y energía activa. El acceso es voluntario y puedes concederlo o revocarlo en los Ajustes de privacidad de iOS en cualquier momento.
+                    </p>
+                </div>
+
+                <div class="border-t border-gray-100 dark:border-gray-800 pt-4">
+                    <h3 class="font-bold text-base text-gray-900 dark:text-white mb-1.5">
+                        ¿Cómo funcionan las alertas de medicación?
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Las alertas se programan directamente como notificaciones locales de iOS según las frecuencias configuradas (tomas diarias, días alternos, semanales o personalizadas). Asegúrate de tener concedidos los permisos de notificaciones para recibir los avisos a la hora prevista.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Estado de disponibilidad -->
+            <div class="p-6 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-200 flex items-start space-x-4">
+                <i class="fas fa-clock-rotate-left text-2xl text-amber-600 dark:text-amber-400 mt-1"></i>
+                <div class="text-sm leading-relaxed">
+                    <strong class="font-bold block mb-1">Estado de publicación</strong>
+                    <span>My Health Keeper está actualmente en fase de revisión por parte de Apple. Tan pronto como concluya la revisión, estará disponible de forma pública en la App Store para iPhone y iPad.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="./#cambios" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cambios</a>
+                <a href="privacidad.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Privacidad</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cookies</a>
+                <a href="soporte.html" class="text-emerald-600 dark:text-emerald-400 font-semibold transition-colors">Soporte</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>

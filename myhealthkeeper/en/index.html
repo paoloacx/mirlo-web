@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/myhealthkeeper/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/myhealthkeeper/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/myhealthkeeper/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/myhealthkeeper/">
+
+    <!-- App Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Health Keeper - Your Private AI Health Ledger">
+    <meta name="twitter:description" content="AI health chat with selectable provider, faithful medical report extraction, medication schedules, and environmental wellness tracking on iPhone and iPad.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/myhealthkeeper/icon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Health Keeper - AI Health Assistant, Medical Reports & Medication for iOS</title>
+    <meta name="description" content="Take control of your health: selectable AI engine (Apple Intelligence, Gemini, Groq), faithful clinical report extraction, medication reminders, and 100% on-device privacy.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/myhealthkeeper/en/">
+    <meta property="og:title" content="My Health Keeper - Your Private AI Health Ledger">
+    <meta property="og:description" content="AI health chat with selectable providers, faithful medical document extraction, medication tracking, and on-device privacy.">
+    <meta property="og:image" content="https://www.mirloapps.es/myhealthkeeper/icon.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'health-emerald': '#10B981',
+                        'health-dark': '#059669',
+                        'health-deep': '#065F46',
+                        'health-sand': '#FAF9F6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #FAF9F6;
+        }
+
+        .dark .bg-grain {
+            background-color: #09090b;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .health-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(16, 185, 129, 0.14);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .health-card {
+            background: #18181b;
+            border: 1px solid rgba(16, 185, 129, 0.22);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #193826 0%, #0d2217 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "My Health Keeper",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later",
+          "applicationCategory": "HealthApplication",
+          "applicationSubCategory": "Medical",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Personal health ledger with selectable AI engine, medical report extraction, and medication tracking."
+          },
+          "url": "https://www.mirloapps.es/myhealthkeeper/en/",
+          "softwareVersion": "1.0",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "en",
+          "featureList": [
+            "AI health chat with selectable provider (Apple Intelligence, Gemini 3.8 Flash, Groq)",
+            "Medical report PDF and image import with on-device OCR",
+            "Faithful extraction of confirmed/suspected diagnoses and prescribed plans",
+            "Medication tracker with daily, alternate-day, weekly, and PRN schedules",
+            "Environmental (weather, air quality) and internal (HealthKit) load scoring",
+            "Private on-device storage via SwiftData",
+            "iOS Share Extension to import medical files instantly",
+            "Structured Markdown summaries for physician appointments"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Which AI providers can I use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can choose between Apple Intelligence (running 100% locally on your device on compatible iOS 26+ devices), Google Gemini 3.8 Flash, or Groq. You can switch providers dynamically at any time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the app analyze medical reports?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app extracts text from your PDFs or photos using on-device Apple Vision OCR and performs a strictly faithful extraction of diagnoses and care plans, following explicit guidelines never to infer or hallucinate missing clinical data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is my health data stored?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All your records, reports, and medication data are stored locally on your device via SwiftData. Mirlo Apps operates no storage servers and has zero access to your data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this app replace medical advice?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. My Health Keeper is an objective record-keeping, organization, and educational assistant. It never provides clinical diagnoses or alters medication dosages. Always consult a healthcare professional for clinical decisions."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-health-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF9F6]/85 dark:bg-[#09090b]/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Apps</a></li>
+                <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a></li>
+                <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">How it works</a></li>
+                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Features</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+                <li><a href="#changelog" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Changelog</a></li>
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Support</a></li>
+                <li><a href="../" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">ES</a></li>
+
+                <!-- Theme Toggle -->
+                <li>
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
+                    </label>
+                </li>
+
+                <!-- App Store Placeholder -->
+                <!-- ENLACE APP STORE PENDIENTE DE PUBLICACIÓN: replace button when published on App Store -->
+                <li>
+                    <span class="btn-plastic text-white px-4 py-2 rounded-full text-xs font-semibold inline-flex items-center space-x-2 opacity-90 cursor-default">
+                        <i class="fab fa-apple text-sm"></i>
+                        <span>Under App Store Review</span>
+                    </span>
+                </li>
+            </ul>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <a href="../" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">ES</a>
+                <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-9 h-5 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
+                </label>
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 p-2" aria-label="Open menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="overflow-x-hidden">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/20">
+                        <i class="fas fa-heart-pulse"></i>
+                        <span>Personal Health Ledger with AI</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
+                        Your health organized with rigor and total privacy.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Medical assistant with selectable AI providers (Apple Intelligence, Gemini, or Groq), faithful clinical report extraction, meticulous medication tracking, and environmental wellness correlation.
+                    </p>
+
+                    <!-- Feature pills -->
+                    <div class="flex flex-wrap gap-2 justify-center lg:justify-start text-xs font-medium text-gray-600 dark:text-gray-300 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-emerald-500 mr-1.5"></i>Selectable AI (Apple, Gemini, Groq)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-emerald-500 mr-1.5"></i>Faithful Report Extraction</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-emerald-500 mr-1.5"></i>Medication &amp; Schedules</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-emerald-500 mr-1.5"></i>Private On-Device Data</span>
+                    </div>
+
+                    <!-- App Store Slot (Pending review, no invented link) -->
+                    <!-- ENLACE APP STORE PENDIENTE DE PUBLICACIÓN: replace button when published on App Store -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <div class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl cursor-default opacity-95">
+                            <i class="fab fa-apple text-3xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider opacity-80">Coming soon to</div>
+                                <div class="font-bold text-lg leading-tight">App Store</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">Currently in review for iPhone &amp; iPad</span>
+                    </div>
+                </div>
+
+                <!-- Hero Frame with screen1 -->
+                <div class="flex-1 relative flex justify-center w-full max-w-sm lg:max-w-md">
+                    <div class="absolute -inset-4 bg-emerald-500/20 blur-3xl rounded-full"></div>
+                    <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                        <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[290px] mx-auto">
+                            <img src="../screen1.webp" width="600" height="1299" alt="My Health Keeper - Main Health Dashboard" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Core verified features -->
+        <section id="about" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+                        Everything you need to track your health with rigor
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Engineered as a calm, objective medical instrument: understand your physical state, follow your treatment plans, and keep your clinical data completely under your control.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-robot text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Selectable AI Provider</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Choose your preferred intelligence engine: <strong>Apple Intelligence</strong> (100% on-device on iOS 26+), <strong>Google Gemini 3.8 Flash</strong>, or <strong>Groq</strong>. Tailored to your active symptoms and recovery state.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-file-medical-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Medical Report Import</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Import PDFs or take photos from your camera or library. Use the system <strong>iOS Share Extension</strong> to send lab results directly into the app with built-in Apple Vision OCR.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-clipboard-check text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Faithful Diagnosis Extraction</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Extracts clinical findings, confirmed vs. suspected diagnoses, numerical lab values, and doctor recommendations with strict instructions never to hallucinate or invent clinical advice.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-pills text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Medication &amp; Schedules</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Manage medication intervals: once or multiple times daily, alternate days, weekly, custom schedules, or as-needed (PRN) doses with adherence logging and local reminders.
+                        </p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-gauge-high text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Environmental &amp; Body Load</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Quantify how weather (temperature, pressure, UV, air quality) correlates with your physiological load from Apple Health (heart rate, HRV, and respiratory rate).
+                        </p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="health-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
+                            <i class="fas fa-user-shield text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">On-Device Privacy &amp; Export</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            SwiftData storage encrypted locally. Export clean Markdown reports summarizing check-ins, medication adherence, and medical documents to share directly with your doctor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section id="how-it-works" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+                        How My Health Keeper works
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Three steps toward a clear, structured, and completely private record of your daily health.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="health-card p-8 relative">
+                        <span class="text-5xl font-black text-emerald-500/20 absolute top-6 right-6">01</span>
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6 font-bold">
+                            <i class="fas fa-notes-medical text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Set profile &amp; treatments</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Add clinical conditions, allergies, active medications, dosages, and optional Apple Health permissions in a clean, straightforward workflow.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="health-card p-8 relative">
+                        <span class="text-5xl font-black text-emerald-500/20 absolute top-6 right-6">02</span>
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6 font-bold">
+                            <i class="fas fa-file-import text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Import documents</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Share any PDF or document photo via iOS Share sheet. Vision OCR extracts diagnoses, vitals, and physician treatment plans faithfully.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="health-card p-8 relative">
+                        <span class="text-5xl font-black text-emerald-500/20 absolute top-6 right-6">03</span>
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6 font-bold">
+                            <i class="fas fa-comment-medical text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Consult &amp; correlate</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Query your AI assistant using your selected provider, correlate weather shifts with wellbeing, and generate concise export summaries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase sections with alternating screens -->
+        <section class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 space-y-24">
+
+                <!-- Showcase 1: AI Chat (screen2) -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fas fa-brain"></i>
+                            <span>Adaptive Intelligence</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            AI health chat with provider choice
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Switch seamlessly between <strong>Apple Intelligence</strong>, <strong>Google Gemini 3.8 Flash</strong>, and <strong>Groq</strong>. Your assistant receives your latest 24h health context (symptoms, medication adherence, and loads) to deliver empathetic, factual responses without inventing fake diagnoses.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> On-device execution with FoundationModels in iOS 26+</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Automatic response in your device's preferred language</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Built-in emergency safeguards for critical symptoms</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 flex justify-center w-full max-w-sm">
+                        <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                            <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[280px] mx-auto">
+                                <img src="../screen2.webp" width="600" height="1299" alt="My Health Keeper - AI Health Assistant" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase 2: Reports (screen3) -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+                    <div class="flex-1 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fas fa-file-shield"></i>
+                            <span>Clinical Accuracy</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            Faithful clinical report extraction
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Keep all your medical reports organized and queryable. The engine extracts dates, attending physician, confirmed versus suspected diagnoses, quantitative lab values, and the prescribed treatment plan. Missing items are left blank—never hallucinated.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Instant import using iOS Share Extension from Mail or Files</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Local Apple Vision OCR for scanned paper documents and photos</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Original files stored encrypted locally on your device</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 flex justify-center w-full max-w-sm">
+                        <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                            <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[280px] mx-auto">
+                                <img src="../screen3.webp" width="600" height="1299" alt="My Health Keeper - Document extraction" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase 3: Medication (screen4) -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fas fa-clock"></i>
+                            <span>Adherence Tracking</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            Medication, schedules &amp; intake logs
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Track every prescription with the exact frequency required: once or multiple daily doses, alternate days (day on / day off), weekly regimens, custom intervals, or as-needed (PRN) intake. Visual weekly strip and timestamped logs keep you consistent.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Native support for alternate-day and PRN medications</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Private local notifications without remote notification servers</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Detailed historical intake timeline for medical review</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 flex justify-center w-full max-w-sm">
+                        <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                            <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[280px] mx-auto">
+                                <img src="../screen4.webp" width="600" height="1299" alt="My Health Keeper - Medication and schedules" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase 4: Environment & Metrics (screen5) -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+                    <div class="flex-1 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fas fa-temperature-arrow-up"></i>
+                            <span>Environmental Correlation</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            Health in harmony with your environment
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Understand how weather fronts, barometric drops, high humidity, UV peaks, and air pollution coincide with flare-ups or fatigue. Correlate your subjective check-ins with Apple Health vitals to spot personal triggers.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Apple Health integration: HRV, resting heart rate, active energy</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> WeatherKit forecasts and real-time air quality index (AQI)</li>
+                            <li class="flex items-center justify-center lg:justify-start"><i class="fas fa-check text-emerald-500 mr-2"></i> Environmental load scoring to plan demanding activities</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 flex justify-center w-full max-w-sm">
+                        <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                            <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/1299] max-w-[280px] mx-auto">
+                                <img src="../screen5.webp" width="600" height="1299" alt="My Health Keeper - Environmental factors and metrics" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Native iOS Features -->
+        <section id="features" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+                        Native technology designed for your privacy
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Harnessing modern Apple frameworks to provide a responsive, robust, and confidential health experience.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Local SwiftData</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Encrypted database stored on your device for high-speed offline access and privacy.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Apple HealthKit</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Granular, consent-based read and write permissions for vitals and body metrics.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-share-nodes"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Share Extension</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Import clinical PDFs or scans directly from any iOS app into your vault.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Apple Vision OCR</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Accurate optical character recognition run entirely on device without cloud uploads.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">WeatherKit</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Official Apple weather data to correlate environmental changes with bodily symptoms.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Local Reminders</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Medication alerts scheduled on device that trigger reliably even without connectivity.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Dark Mode</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Thoughtful, eye-friendly design system with balanced contrast and calm medical aesthetics.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-gray-200/80 dark:border-zinc-800 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">Zero Tracking</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            No advertising networks, no monetization of personal data, and no cross-app trackers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+                        Frequently asked questions
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Answers regarding features, data privacy, and availability.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What is My Health Keeper?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            It is a private personal health companion for iOS designed to organize clinical records, analyze reports, manage medication schedules, and correlate your wellbeing with environmental and physiological metrics.
+                        </p>
+                    </details>
+
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Which AI models can I choose from?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            You can switch between <strong>Apple Intelligence</strong> (100% on-device on compatible iOS 26+ devices), <strong>Google Gemini 3.8 Flash</strong>, and <strong>Groq</strong>. You stay in control of whether computations run offline or via secure APIs.
+                        </p>
+                    </details>
+
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>What makes the report extraction «faithful»?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            The analysis prompt is strictly instructed never to extrapolate or hallucinate unwritten clinical data. It separates confirmed from suspected diagnoses and reflects only the care plan explicitly stated by the attending physician.
+                        </p>
+                    </details>
+
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Where is my data stored?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            All information is stored locally on your device via SwiftData. Mirlo Apps operates no storage servers and has zero access to your data.
+                        </p>
+                    </details>
+
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>Does this app replace medical advice?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            No. My Health Keeper is an objective record-keeping and educational tool. It does not diagnose medical conditions or change prescriptions. Always consult a licensed medical provider for clinical decisions.
+                        </p>
+                    </details>
+
+                    <details class="health-card p-6 rounded-2xl group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white">
+                            <span>When will it be available for download?</span>
+                            <i class="fas fa-chevron-down text-emerald-500 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-4">
+                            The app is currently in App Store review with Apple. As soon as review completes, it will be published on the App Store for iPhone and iPad.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section id="changelog" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">
+                        Release Changelog
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Evolution and version history of My Health Keeper.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="health-card p-8">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                            <div>
+                                <span class="text-xl font-bold text-gray-900 dark:text-white">Version 1.0</span>
+                                <span class="ml-2 text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold border border-amber-500/20">In Review</span>
+                            </div>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">October 2026</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>AI Health chat with dynamic provider switching: Apple Intelligence, Gemini 3.8 Flash, and Groq.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>Medical document import (PDF and photos) with OCR and iOS Share Extension support.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>Faithful extraction of confirmed vs. suspected diagnoses and prescribed plans.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>Medication tracking supporting daily, alternate-day, weekly, custom, and PRN frequencies.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>Environmental load (Apple WeatherKit + air quality) and internal load (HealthKit) calculations.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"></i> <span>Private and secure SwiftData local storage on your device.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl overflow-hidden shadow-xl border-2 border-emerald-500/20">
+                    <img src="../icon.webp" width="1024" height="1024" alt="My Health Keeper Icon" class="w-full h-full object-cover">
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    Your health history, clear and private
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
+                    Coming soon to the App Store for iPhone and iPad. No subscriptions required, no advertisements, and zero tracking.
+                </p>
+                <!-- ENLACE APP STORE PENDIENTE DE PUBLICACIÓN: replace button when published on App Store -->
+                <div class="flex justify-center">
+                    <div class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl cursor-default opacity-95">
+                        <i class="fab fa-apple text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase tracking-wider opacity-80">Coming soon to</div>
+                            <div class="font-bold text-lg leading-tight">App Store</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="#changelog" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Changelog</a>
+                <a href="privacidad.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Privacy</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cookies</a>
+                <a href="soporte.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Support</a>
+                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" aria-label="Close menu">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../../apps/" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">Apps</a>
+        <a href="#about" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">About</a>
+        <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">How it works</a>
+        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">Features</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">FAQ</a>
+        <a href="#changelog" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">Changelog</a>
+        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">Support</a>
+        <a href="privacidad.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-emerald-600" onclick="toggleMenu()">Privacy</a>
+        <a href="../" class="text-xl px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300" onclick="toggleMenu()">Español</a>
+    </div>
+
+    <script src="/cookies.js" defer></script>
+</body>
+
+</html>
