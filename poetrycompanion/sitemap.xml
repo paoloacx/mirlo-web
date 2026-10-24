@@ -19,40 +19,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mirloapps.es/poetrycompanion/guides/count-poetic-syllables.html</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/guides/count-poetic-syllables.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/guides/count-poetic-syllables.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/poetrycompanion/guides/count-poetic-syllables.html" />
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mirloapps.es/poetrycompanion/en/guides/count-poetic-syllables.html</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/guides/count-poetic-syllables.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/guides/count-poetic-syllables.html" />
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.mirloapps.es/poetrycompanion/guides/rhyme-consonant-assonant.html</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/guides/rhyme-consonant-assonant.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/guides/rhyme-consonant-assonant.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/poetrycompanion/guides/rhyme-consonant-assonant.html" />
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mirloapps.es/poetrycompanion/en/guides/rhyme-consonant-assonant.html</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/guides/rhyme-consonant-assonant.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/guides/rhyme-consonant-assonant.html" />
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.mirloapps.es/poetrycompanion/privacidad.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.mirloapps.es/poetrycompanion/privacidad.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.mirloapps.es/poetrycompanion/en/privacidad.html" />
