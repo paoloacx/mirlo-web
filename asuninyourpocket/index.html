@@ -257,8 +257,7 @@
             "Home screen and lock screen widgets for sunlight and astronomical events",
             "Photo travel discovery for locations currently experiencing sunrise or sunset",
             "Zen planetarium visualization with day and night cycles",
-            "Local solar and lunar calculations; location stays on device and core tracking works offline",
-            "Monthly, annual, and lifetime Premium in-app purchases"
+            "Local solar and lunar calculations; location stays on device and core tracking works offline"
           ]
         },
         {
@@ -286,14 +285,6 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Your location stays on your device. Solar and lunar calculations run locally, so core tracking works offline. Weather forecasts require an internet connection."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What does Premium include, and how much does it cost?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Premium adds detailed solar paths, moon trajectories, advanced twilight phases, weather integration, an option to hide the daytime moon, and an ad-free experience. Monthly, annual, and lifetime purchases are available; current prices are shown in the App Store for your region."
               }
             },
             {
@@ -540,93 +531,66 @@
     <!-- MAIN FEATURES SECTION -->
     <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Perfect For Everyone</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Whether you're a photographer, astronomer, or nature
-                    lover.</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">Explore the sky</p>
+                <h2 class="text-4xl font-bold mb-4 tracking-tight text-gray-900 dark:text-white">A sun and moon tracker for everyday plans and nights outside</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Know when the light changes, follow the moon through its phases and explore the sky from wherever you are.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-yellow-400/20">
-                            <i class="fas fa-camera text-2xl text-sun-yellow"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">For Photographers</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Plan golden hour shoots with
-                            precision, then discover places around the world currently experiencing sunrise or sunset.</p>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-sun" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Track the sun and moon in real time</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">See their positions and paths across the sky, then check local sunrise, sunset, moonrise and moonset times for your location.</p>
+                </article>
 
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-blue-400/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-blue-400/20">
-                            <i class="fas fa-star text-2xl text-blue-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">For Astronomers</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Track celestial events, moon
-                            phases, and twilight times with scientific precision. All calculated locally.</p>
-                    </div>
-                </div>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-camera" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Plan photos around the light</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Find golden hour, blue hour, twilight and solar noon times to plan a landscape shoot, a walk or any moment you want to catch in the right light.</p>
+                </article>
 
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-green-400/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-green-400/20">
-                            <i class="fas fa-shield-halved text-2xl text-green-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Privacy First</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Your location stays on your device. Solar and lunar calculations run locally, so core tracking works offline.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-moon" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Follow moon phases and celestial events</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Explore the lunar cycle alongside eclipses, meteor showers, solstices, equinoxes and other events in the astronomical timeline.</p>
+                </article>
 
-    <!-- PREMIUM SECTION -->
-    <section
-        class="py-24 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-4xl mx-auto text-center">
-            <div
-                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-lg mb-6">
-                <i class="fas fa-crown text-2xl text-white"></i>
-            </div>
-            <h2 class="text-4xl font-bold mb-4 tracking-tight">Go Premium</h2>
-            <p class="text-xl text-gray-500 dark:text-gray-400 mb-12">Unlock the full potential of your personal
-                planetarium.</p>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Find celestial paths with compass and AR</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Use your surroundings to understand where the sun and moon will appear, and explore stars, planets and constellations with educational information.</p>
+                </article>
 
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div
-                    class="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
-                    <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">Monthly</div>
-                    <div class="text-gray-500 dark:text-gray-400">subscription</div>
-                </div>
-                <div
-                    class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-lg transform scale-105">
-                    <div class="text-3xl font-bold text-white mb-1">Annual</div>
-                    <div class="text-white/80">subscription</div>
-                </div>
-                <div
-                    class="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
-                    <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">Lifetime</div>
-                    <div class="text-gray-500 dark:text-gray-400">one-time purchase</div>
-                </div>
-            </div>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-cloud-sun" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Check the weather before heading out</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">See forecast conditions when planning outdoor photography or a sky-watching trip. Weather forecasts require an internet connection.</p>
+                </article>
 
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">Premium is available as a monthly subscription, annual subscription or lifetime purchase. Prices vary by region; check the App Store for current local pricing.</p>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-earth-europe" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Discover sunrise and sunset around the world</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Photo Travel helps you find places currently experiencing sunrise or sunset, so you can explore the changing light beyond your own location.</p>
+                </article>
 
-            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Solar path
-                    visualization</span>
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Moon trajectory</span>
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Advanced twilight phases</span>
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Option to hide the daytime moon</span>
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Weather
-                    integration</span>
-                <span class="flex items-center"><i class="fas fa-check text-sun-yellow mr-2"></i>Ad-free
-                    experience</span>
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-table-cells-large" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Keep key times close with widgets</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Add home screen and lock screen widgets for sunrise, sunset, golden hour, blue hour and upcoming astronomical events.</p>
+                </article>
+
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Explore privately, even offline</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Your location stays on your device and solar and lunar calculations run locally, so core tracking works without an internet connection.</p>
+                </article>
+
+                <article class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-xl bg-slate-500/10 text-slate-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Slow down with Zen mode</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Turn the planetarium into a calm view of Earth, day and night cycles, and stars positioned for your location.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -746,7 +710,6 @@
                 <div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">What does A Sun in Your Pocket track?</h3><p class="text-gray-600 dark:text-gray-300">It is a sun and moon tracker for iPhone and iPad. Follow their positions and paths, check rise and set times, explore moon phases, and plan around golden hour and astronomical events.</p></div>
                 <div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Can I check sunrise, sunset, moon phases, and golden hour?</h3><p class="text-gray-600 dark:text-gray-300">Yes. The app includes sunrise, sunset, moonrise, moonset, twilight phases, golden hour, blue hour, moon phases, eclipses, meteor showers, solstices, and equinoxes.</p></div>
                 <div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Does the app work offline, and is my location private?</h3><p class="text-gray-600 dark:text-gray-300">Your location stays on your device. Solar and lunar calculations run locally, so core tracking works offline. Weather forecasts require an internet connection.</p></div>
-                <div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">What does Premium include, and how much does it cost?</h3><p class="text-gray-600 dark:text-gray-300">Premium adds detailed solar paths, moon trajectories, advanced twilight phases, weather integration, an option to hide the daytime moon, and an ad-free experience. Monthly, annual, and lifetime purchases are available; current prices are shown in the App Store for your region.</p></div>
                 <div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Which languages does the app support?</h3><p class="text-gray-600 dark:text-gray-300">The app is available in English, Spanish, French, German, Italian, Japanese, Korean, Portuguese, and Simplified Chinese.</p></div>
             </div>
         </div>
