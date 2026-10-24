@@ -209,6 +209,8 @@
           "featureList": [
             "Conteo silábico y análisis de métrica en tiempo real",
             "Generación opcional de poemas con IA y controles de tono, estilo y métrica",
+            "Tonos elegibles: romántico y melancólico; estilos: soneto y verso libre; métrica: ninguna o endecasílabo",
+            "Presets con candado: tonos satírico, íntimo, radiante, místico, minimalista y bucólico; haiku, villanelle, poema en prosa y oda; octosílabo, alejandrino, verso heroico y pentámetro yámbico",
             "Instrucciones persistentes para correcciones de IA y palabras excluidas",
             "Diccionario integrado de rimas y sinónimos",
             "Organización de poemas en libros y poemarios temáticos",
@@ -251,7 +253,7 @@
               "name": "¿Puedo controlar el estilo y las correcciones de la IA?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sí. Puedes escoger el tono, el estilo y la métrica, añadir instrucciones persistentes para orientar las correcciones y prohibir palabras concretas en las sugerencias de la IA."
+                "text": "Sí. En el selector aparecen los tonos romántico y melancólico, los estilos soneto y verso libre, y la opción de no fijar métrica o usar endecasílabos. También se muestran presets con candado, como haiku, oda, octosílabo y alejandrino. Puedes añadir instrucciones persistentes para orientar las correcciones y excluir palabras de las sugerencias."
               }
             },
             {
@@ -480,6 +482,18 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="mt-12 rounded-3xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800/60 p-8">
+                    <h3 class="text-2xl font-bold serif-text text-gray-900 dark:text-white mb-3">Tonos, estilos y métricas para tus poemas</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        En el selector mostrado puedes elegir entre los tonos romántico y melancólico, los estilos soneto y verso libre, y una métrica libre o endecasílaba. También aparecen más presets identificados con un candado.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-6 text-sm text-gray-600 dark:text-gray-300">
+                        <p><strong class="text-gray-900 dark:text-white">Tonos con candado:</strong> satírico, íntimo, radiante, místico, minimalista y bucólico.</p>
+                        <p><strong class="text-gray-900 dark:text-white">Estilos con candado:</strong> haiku, villanelle, poema en prosa y oda.</p>
+                        <p><strong class="text-gray-900 dark:text-white">Métricas con candado:</strong> octosílabo, alejandrino, verso heroico y pentámetro yámbico.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -699,7 +713,7 @@
                             <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                            Sí. Puedes escoger el tono, el estilo y la métrica, añadir instrucciones persistentes para orientar las correcciones y prohibir palabras concretas en las sugerencias de la IA.
+                            Sí. En el selector aparecen los tonos romántico y melancólico, los estilos soneto y verso libre, y la opción de no fijar métrica o usar endecasílabos. También se muestran presets con candado, como haiku, oda, octosílabo y alejandrino. Puedes añadir instrucciones persistentes para orientar las correcciones y excluir palabras de las sugerencias.
                         </p>
                     </details>
 
