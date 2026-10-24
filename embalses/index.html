@@ -3,28 +3,24 @@
 
 <head>
     <link rel="canonical" href="https://www.mirloapps.es/embalses/">
-    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/embalses/">
-    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/embalses/en/">
-    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/embalses/">
-
     <!-- Safari Smart App Banner -->
     <meta name="apple-itunes-app" content="app-id=6758863322">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Embalses España - Información embalses, pantanos">
-    <meta name="twitter:description" content="Consulta el estado de todos los embalses, pantanos, cuencas y reservas hídricas de España con mapas interactivos, gráficas y datos actualizados de fuentes oficiales.">
+    <meta name="twitter:title" content="App de embalses y pantanos | Embalses España">
+    <meta name="twitter:description" content="App para consultar niveles de embalses y pantanos en España. Datos oficiales de MITECO y SAIH, reservas de agua, mapas y evolución histórica para iPhone.">
     <meta name="twitter:image" content="https://www.mirloapps.es/embalses/embalses.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embalses España - mirlo apps</title>
-    <meta name="description" content="Consulta el estado oficial de los embalses y pantanos de España. Datos del MITECO y confederaciones hidrográficas, mapas interactivos, comparativa a 10 años y widgets para iOS.">
+    <title>App de embalses y pantanos | Embalses España</title>
+    <meta name="description" content="App para consultar niveles de embalses y pantanos en España. Datos oficiales de MITECO y SAIH, reservas de agua, mapas y evolución histórica para iPhone.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.mirloapps.es/embalses/">
-    <meta property="og:title" content="Embalses España - Información embalses, pantanos">
-    <meta property="og:description" content="Consulta el estado de todos los embalses, pantanos, cuencas y reservas hídricas de España con mapas interactivos, gráficas y datos actualizados de fuentes oficiales.">
+    <meta property="og:title" content="App de embalses y pantanos | Embalses España">
+    <meta property="og:description" content="App para consultar niveles de embalses y pantanos en España. Datos oficiales de MITECO y SAIH, reservas de agua, mapas y evolución histórica para iPhone.">
     <meta property="og:image" content="https://www.mirloapps.es/embalses/embalses.png">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -41,6 +37,7 @@
         {
           "@type": "SoftwareApplication",
           "name": "Embalses España",
+          "description": "App para consultar el nivel, el porcentaje de agua embalsada y la evolución de los embalses de España con datos de fuentes oficiales.",
           "operatingSystem": "iOS 17.0 o superior, iPadOS 17.0 o superior, macOS 14.0 o superior (Apple Silicon), visionOS 1.0 o superior",
           "applicationCategory": "ReferenceApplication",
           "applicationSubCategory": "Weather & Environment",
@@ -81,10 +78,18 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "¿De dónde proceden los datos de la aplicación?",
+              "name": "¿De dónde proceden los datos de los embalses?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Los datos proceden de fuentes públicas oficiales: el Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO) y los Sistemas Automáticos de Información Hidrológica (SAIH) de las 16 confederaciones y demarcaciones hidrográficas de España."
+                "text": "Los datos proceden del MITECO y de los Sistemas Automáticos de Información Hidrológica (SAIH) de las confederaciones hidrográficas. El Boletín Hidrológico semanal del MITECO reúne información sobre las reservas de agua."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué información puedo consultar sobre cada embalse?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La ficha muestra el volumen de agua embalsada en hm³, la capacidad total, el porcentaje ocupado y la variación semanal. La opción Pro añade gráficas históricas para comparar los datos con el año anterior y con la media de los últimos 10 años."
               }
             },
             {
@@ -92,7 +97,7 @@
               "name": "¿Con qué frecuencia se actualizan los niveles de agua?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Los boletines hidrológicos oficiales se publican semanalmente los martes. La aplicación actualiza sus cifras automáticamente al recibir los datos oficiales y permite el refresco manual en cualquier momento."
+                "text": "El MITECO publica el Boletín Hidrológico semanalmente. La app actualiza sus cifras cuando recibe nuevas mediciones oficiales y permite solicitar una actualización manual. No son datos en tiempo real: la frecuencia depende de la publicación de cada organismo."
               }
             },
             {
@@ -100,15 +105,15 @@
               "name": "¿La aplicación funciona sin conexión a internet?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sí. Embalses España almacena localmente los datos en caché y dispone de una base de datos local empaquetada para consultar la última información registrada sin cobertura de red."
+                "text": "Sí. Sin conexión puedes consultar los datos que la app ya había descargado y los datos de referencia incluidos. Para recibir mediciones nuevas necesitas internet."
               }
             },
             {
               "@type": "Question",
-              "name": "¿Qué incluye la versión gratuita y qué añade la versión Pro?",
+              "name": "¿Qué incluye la versión gratuita y qué desbloquea la versión Pro?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "La versión gratuita permite consultar el mapa completo, la lista de embalses, las fichas individuales, el buscador y las estadísticas generales. La opción Pro (1,99 € de por vida, pago único) desbloquea los widgets para la pantalla de inicio, las alertas y notificaciones programadas y las gráficas históricas por embalse."
+                "text": "La descarga es gratuita e incluye el mapa interactivo, el catálogo de embalses, el buscador, las fichas con datos actuales y las estadísticas generales. La compra integrada Pro (1,99 € de por vida, pago único) desbloquea los widgets para la pantalla de inicio, las notificaciones programadas y las gráficas históricas por embalse."
               }
             },
             {
@@ -116,12 +121,12 @@
               "name": "¿Qué datos recopila la aplicación?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados)."
+                "text": "No recopilo datos a través de Embalses España."
               }
             },
             {
               "@type": "Question",
-              "name": "¿En qué dispositivos está disponible?",
+              "name": "¿En qué dispositivos de Apple se puede utilizar Embalses España?",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Está disponible en iPhone e iPad con iOS 17.0 o superior, ordenadores Mac con chip Apple Silicon (M1 o posterior) y Apple Vision Pro."
@@ -280,11 +285,11 @@
                     </div>
 
                     <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6">
-                        El estado de los embalses y reservas de agua en España
+                        Estado de los embalses de España: niveles y reservas
                     </h1>
 
                     <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-normal">
-                        Centraliza y visualiza los datos oficiales de todas las confederaciones hidrográficas y del Ministerio para la Transición Ecológica (MITECO). Mapas interactivos, comparativa histórica y widgets.
+                        Con la app Embalses España puedes consultar el nivel, el volumen y el porcentaje de agua embalsada en embalses y pantanos. Reúne datos oficiales de MITECO y los SAIH, con mapas por cuenca y provincia, variación semanal y comparativas históricas.
                     </p>
 
                     <!-- App Store Button -->
@@ -303,19 +308,19 @@
                     <div class="w-full max-w-5xl mt-6">
                         <div class="flex gap-4 overflow-x-auto pb-8 pt-4 px-4 snap-x snap-mandatory scrollbar-none justify-start md:justify-center">
                             <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
-                                <img src="screen1.webp" loading="lazy" width="400" height="866" alt="Mapa interactivo de embalses" class="w-full h-auto">
+                                <img src="screen1.webp" loading="lazy" width="400" height="866" alt="Mapa de España con el porcentaje de agua embalsada por comunidad autónoma" class="w-full h-auto">
                             </div>
                             <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
-                                <img src="screen2.webp" loading="lazy" width="400" height="866" alt="Ficha detallada del embalse" class="w-full h-auto">
+                                <img src="screen2.webp" loading="lazy" width="400" height="866" alt="Mapa de embalses con selector de comunidad autónoma" class="w-full h-auto">
                             </div>
                             <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
-                                <img src="screen3.webp" loading="lazy" width="400" height="866" alt="Gráfica histórica a 53 semanas" class="w-full h-auto">
+                                <img src="screen3.webp" loading="lazy" width="400" height="866" alt="Gráfica semanal de reservas de agua con comparación anual e histórica" class="w-full h-auto">
                             </div>
                             <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
-                                <img src="screen4.webp" loading="lazy" width="400" height="866" alt="Lista agrupada por cuenca y provincia" class="w-full h-auto">
+                                <img src="screen4.webp" loading="lazy" width="400" height="866" alt="Ficha del embalse de El Atazar con nivel de agua y capacidad" class="w-full h-auto">
                             </div>
                             <div class="flex-shrink-0 w-56 md:w-64 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
-                                <img src="screen5.webp" loading="lazy" width="400" height="866" alt="Widgets para la pantalla de inicio" class="w-full h-auto">
+                                <img src="screen5.webp" loading="lazy" width="400" height="866" alt="Lista de embalses de Castilla y León con su nivel de agua" class="w-full h-auto">
                             </div>
                         </div>
                     </div>
@@ -455,7 +460,7 @@
                                 <span>Lanzamiento inicial en el App Store.</span>
                             </li>
                             <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                                <span>Monitorización en tiempo real de embalses, pantanos y cuencas hidrográficas de España.</span>
+                                <span>Consulta de los niveles de embalses, pantanos y cuencas hidrográficas de España a partir de datos oficiales semanales.</span>
                             </li>
                             <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
                                 <span>Mapa interactivo coroplético y comparativa con la media histórica de 10 años.</span>
@@ -480,17 +485,22 @@
                 <div class="space-y-6">
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿De dónde proceden los datos de los embalses?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Proceden de fuentes públicas oficiales: el Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO) y los Sistemas Automáticos de Información Hidrológica (SAIH) de las confederaciones hidrográficas (Ebro, Duero, Tajo, Guadiana, Guadalquivir, Segura, Júcar, Miño-Sil, Cantábrico y demarcaciones autonómicas).</p>
+                        <p class="text-gray-600 dark:text-gray-300">Los datos proceden del MITECO y de los Sistemas Automáticos de Información Hidrológica (SAIH) de las confederaciones hidrográficas. El <a href="https://www.miteco.gob.es/es/agua/temas/evaluacion-de-los-recursos-hidricos/boletin-hidrologico.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-sky-500">Boletín Hidrológico semanal del MITECO</a> reúne información sobre las reservas de agua.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué información puedo consultar sobre cada embalse?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">La ficha muestra el volumen de agua embalsada en hm³, la capacidad total, el porcentaje ocupado y la variación semanal. La opción Pro añade gráficas históricas para comparar los datos con el año anterior y con la media de los últimos 10 años.</p>
                     </div>
 
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Con qué frecuencia se actualizan los niveles de agua?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Los boletines hidrológicos oficiales se emiten semanalmente los martes. La aplicación procesa los datos cuando los organismos públicos publican las mediciones y permite refrescar la información manualmente en cualquier momento.</p>
+                        <p class="text-gray-600 dark:text-gray-300">El MITECO publica el Boletín Hidrológico semanalmente. La app actualiza sus cifras cuando recibe nuevas mediciones oficiales y permite solicitar una actualización manual. No son datos en tiempo real: la frecuencia depende de la publicación de cada organismo.</p>
                     </div>
 
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿La aplicación funciona sin conexión a internet?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Sí. Toda consulta descargada se almacena en la caché local del dispositivo y la app incluye datos de referencia sin conexión para permitir la consulta cuando no hay cobertura móvil.</p>
+                        <p class="text-gray-600 dark:text-gray-300">Sí. Sin conexión puedes consultar los datos que la app ya había descargado y los datos de referencia incluidos. Para recibir mediciones nuevas necesitas internet.</p>
                     </div>
 
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
@@ -500,12 +510,12 @@
 
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué datos recopila la aplicación?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados).</p>
+                        <p class="text-gray-600 dark:text-gray-300">No recopilo datos a través de Embalses España.</p>
                     </div>
 
                     <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
-                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿En qué dispositivos de Apple se puede utilizar?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Es compatible con iPhone e iPad (requiere iOS/iPadOS 17.0 o superior), ordenadores Mac con chip Apple Silicon (macOS 14.0+) y Apple Vision Pro (visionOS 1.0+).</p>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿En qué dispositivos de Apple se puede utilizar Embalses España?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Está disponible en iPhone e iPad con iOS 17.0 o superior, ordenadores Mac con chip Apple Silicon (M1 o posterior) y Apple Vision Pro.</p>
                     </div>
                 </div>
             </div>
@@ -534,7 +544,7 @@
                     </div>
                     <div class="flex justify-between py-3.5 px-6 text-sm">
                         <span class="text-gray-500">Privacidad:</span>
-                        <span class="font-semibold text-gray-900 dark:text-white">El desarrollador no recopila datos (ficha de privacidad de la App Store: sin datos recopilados)</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">No recopilo datos a través de Embalses España</span>
                     </div>
                     <div class="flex justify-between py-3.5 px-6 text-sm">
                         <span class="text-gray-500">ID en App Store:</span>
@@ -542,7 +552,7 @@
                     </div>
                     <div class="flex justify-between py-3.5 px-6 text-sm">
                         <span class="text-gray-500">Fuentes primarias:</span>
-                        <span class="font-semibold text-gray-900 dark:text-white">SAIH (Confederaciones Hidrográficas) y MITECO</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">SAIH (Confederaciones Hidrográficas) y <a href="https://www.miteco.gob.es/es/agua/temas/evaluacion-de-los-recursos-hidricos/boletin-hidrologico.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-sky-500">MITECO: Boletín Hidrológico semanal</a></span>
                     </div>
                 </div>
             </div>
