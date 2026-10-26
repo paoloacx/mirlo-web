@@ -27,3 +27,4 @@ Sitemap: https://www.mirloapps.es/weatherforhumans/sitemap.xml
 Sitemap: https://www.mirloapps.es/ImOK/sitemap.xml
 Sitemap: https://www.mirloapps.es/poetrycompanion/sitemap.xml
 Sitemap: https://www.mirloapps.es/yeahapp/sitemap.xml
+Sitemap: https://www.mirloapps.es/wishlistgenie/sitemap.xml
