@@ -2,711 +2,452 @@
 <html lang="en">
 
 <head>
-
-    <link rel="canonical" href="https://www.mirloapps.es/yeahapp/">
-    <meta property="og:url" content="https://www.mirloapps.es/yeahapp/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="yeah! - mirlo apps">
-    <meta property="og:description" content="The beautiful, private way to log and keep a history of your favorite places, travels, and daily spots without social feeds, ads, or tracking.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="yeah! - mirlo apps">
-    <meta name="twitter:description" content="The beautiful, private way to log and keep a history of your favorite places, travels, and daily spots without social feeds, ads, or tracking.">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yeah! - mirlo apps</title>
-    <meta name="description" content="The beautiful, private way to log and keep a history of your favorite places, travels, and daily spots without social feeds, ads, or tracking.">
+    <link rel="canonical" href="https://www.mirloapps.es/yeahapp/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/yeahapp/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/yeahapp/es/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/yeahapp/">
+
+    <meta name="apple-itunes-app" content="app-id=6755683790">
+    <meta name="description" content="Log the places you visit with yeah! Check in on the map, save custom places, record journeys and explore your check-in history, stats and territory coverage.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#171717">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/yeahapp/">
+    <meta property="og:title" content="yeah! — Check in, save places and explore your history">
+    <meta property="og:description" content="Keep a personal map of the places you visit. Save check-ins, custom places, journeys and memories with yeah!">
+    <meta property="og:image" content="https://www.mirloapps.es/yeahapp/yeah-icon.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="yeah! — Check in, save places and explore your history">
+    <meta name="twitter:description" content="Keep a personal map of the places you visit with check-ins, custom places, journeys and stats.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/yeahapp/yeah-icon.webp">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="styles.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mirlo-orange': '#FF9E00',
-                        'yeah-pin': '#FF4500',
-                        'yeah-lime': '#A3E635',
-                        'yeah-cyan': '#00C4B4',
-                    },
-                    fontFamily: {
-                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
-                    }
-                }
-            },
-            darkMode: 'class',
-        }
-    </script>
-
-    <style>
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            transition: all 0.3s ease;
-        }
-
-        /* --- EFECTO GRANO --- */
-        .bg-grain {
-            position: relative;
-            background-color: #f3f4f6;
-        }
-
-        .dark .bg-grain {
-            background-color: #0a0a0a;
-        }
-
-        .dark .bg-grain::before {
-            display: none;
-        }
-
-        .bg-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .bg-grain>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* --- BOTONES PLÁSTICO --- */
-        .btn-plastic {
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-        }
-
-        .btn-plastic:hover {
-            transform: translateY(-1px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn-plastic:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #A3E635;
-            color: #A3E635;
-        }
-
-        .btn-plastic-orange {
-            background: linear-gradient(to bottom, #ffb347 0%, #ff9e00 100%);
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 6px -1px rgba(255, 158, 0, 0.3);
-            border: 1px solid #d18200;
-        }
-
-        .btn-plastic-orange:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 12px -1px rgba(255, 158, 0, 0.4);
-        }
-
-        /* --- TARJETAS PRO --- */
-        .tech-card {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .tech-card {
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            pointer-events: none;
-        }
-
-        .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
-    </style>
-    <script>
-        // Dark Mode Logic
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-    </script>
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "yeah!",
-  "operatingSystem": "iOS",
-  "applicationCategory": "TravelApplication",
-  "description": "The beautiful, private way to log and keep a history of your favorite places, travels, and daily spots without social feeds, ads, or tracking.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "url": "https://www.mirloapps.es/yeahapp/",
-  "downloadUrl": "https://apps.apple.com/app/yeah-check-in-log-places/id6755683790"
-}
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "yeah! Check-in & Log Places",
+          "operatingSystem": "iOS, iPadOS",
+          "applicationCategory": "TravelApplication",
+          "url": "https://www.mirloapps.es/yeahapp/",
+          "downloadUrl": "https://apps.apple.com/app/yeah-check-in-log-places/id6755683790",
+          "image": "https://www.mirloapps.es/yeahapp/yeah-icon.webp",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "en",
+          "featureList": [
+            "One-tap place check-ins",
+            "Custom saved places",
+            "Automatic check-ins for selected zones with Premium",
+            "Journey and route recording",
+            "Check-in history, maps and statistics",
+            "Country, region and municipality coverage",
+            "Widgets, Apple Watch and calendar features"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is yeah!?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "yeah! is a place check-in and travel diary for saving visits, places and journeys on a personal map and reviewing them later."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I save a place that is not on the map?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Add a custom place and keep it in your saved places for future check-ins."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do automatic check-ins work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "With Premium, you can set a zone and let yeah! use low-power location monitoring to create a check-in when you enter it. You need to enable the feature and allow the required location access."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Territory Conquests?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It shows the countries, regions and municipalities represented in your check-in history. Territory Conquests is a Premium feature."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does Premium include?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Premium adds features including automatic check-ins, Territory Conquests, iCloud sync, widgets and advanced statistics. The free plan has a limited number of check-ins."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use yeah! on iPad?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "yeah! supports iPad and includes layouts adapted for iPad, as well as a layout adapted for iPhone Duo."
+              }
+            }
+          ]
+        }
+      ]
+    }
     </script>
+
+    <title>yeah! Check-in & Log Places — Places, Trips and Travel Diary</title>
 </head>
 
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
-
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
-                mirlo apps<span class="text-mirlo-orange">.</span>
-            </a>
-
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
-                </li>
-                <li><a href="../#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">About</a>
-                </li>
-                <li><a href="../#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
-                </li>
-
-                <!-- Dark Mode Switch -->
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
-                    </label>
-                </li>
-            </ul>
-
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="../index.html">mirlo apps<span>.</span></a>
+            <div class="nav-links">
+                <a href="../apps/" data-i18n="nav.apps">Apps</a>
+                <a href="#what-is-yeah" data-i18n="nav.what">What is yeah!?</a>
+                <a href="#how-it-works" data-i18n="nav.how">How it works</a>
+                <a href="#features" data-i18n="nav.features">Features</a>
+                <a href="#faq" data-i18n="nav.faq">FAQ</a>
+                <a href="#changelog" data-i18n="nav.changelog">Changelog</a>
+                <a href="soporte.html" data-i18n="nav.support">Support</a>
+                <a class="language-link" href="es/" lang="es" data-i18n="nav.spanish">ES</a>
+                <label class="theme-switch" aria-label="Toggle dark mode">
+                    <input type="checkbox" onchange="toggleTheme()">
+                    <span class="theme-switch-track"></span>
+                </label>
+            </div>
+            <div class="mobile-controls">
+                <a class="language-link" href="es/" lang="es" data-i18n="nav.spanish">ES</a>
+                <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+            </div>
         </nav>
     </header>
 
-    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
-
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
-                        Avaible NOW
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow" data-i18n="hero.eyebrow">Your places, your history</p>
+                    <h1 data-i18n="hero.title">Make a map of the places that matter to you.</h1>
+                    <p class="hero-lede" data-i18n="hero.lede">Check in with one tap, save places you love and look back on the routes and moments that make up your life.</p>
+                    <div class="hero-tags" aria-label="Key features">
+                        <span data-i18n="hero.tag1">Quick check-ins</span>
+                        <span data-i18n="hero.tag2">Custom places</span>
+                        <span data-i18n="hero.tag3">Journeys and stats</span>
                     </div>
-
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                        yeah¡
-                    </h1>
-                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Check-in &
-                        Log Places
-                    </p>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        yeah¡ is the beautiful, private way to keep a history of your favorite places, travels, and
-                        daily spots. No social feed, no ads, no tracking—just you and your memories.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://apps.apple.com/app/yeah-check-in-log-places/id6755683790"
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                            <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                                <div class="font-bold">App Store</div>
-                            </div>
+                    <div class="hero-actions">
+                        <a class="app-store-button" href="https://apps.apple.com/app/yeah-check-in-log-places/id6755683790" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"></path></svg>
+                            <span class="app-store-copy"><span data-i18n="hero.download">Download on the</span><strong>App Store</strong></span>
                         </a>
+                        <a class="text-link" href="#how-it-works" data-i18n="hero.see-how">See how it works <span aria-hidden="true">↓</span></a>
                     </div>
+                    <p class="hero-meta" data-i18n="hero.meta">For iPhone and iPad · English, Spanish and more</p>
                 </div>
-
-                <div class="flex justify-center relative">
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mirlo-orange/20 rounded-full blur-[100px]">
-                    </div>
-
-                    <div
-                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
-                        <div
-                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-                            <img src="/yeahapp/yeah-dark.webp" width="1260" height="2736" alt="Yeah App Dark Mode" class="absolute inset-0 w-full h-full object-contain">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[5deg] hover:rotate-0 transition-transform duration-500 -ml-24 mt-24 z-0 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
-                        <div
-                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-                            <img src="/yeahapp/yeah-light.webp" loading="lazy" width="1260" height="2736" alt="Yeah App Light Mode" class="absolute inset-0 w-full h-full object-contain">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-visual" aria-label="yeah! app screens">
+                    <div class="hero-glow"></div>
+                    <figure class="device device-dark">
+                        <img src="yeah-dark.webp" width="1260" height="2736" fetchpriority="high" alt="yeah! check-in map in dark mode">
+                    </figure>
+                    <figure class="device device-light">
+                        <img src="yeah-light.webp" width="1260" height="2736" alt="yeah! check-in map in light mode">
+                    </figure>
+                    <span class="sticker sticker-pin" aria-hidden="true">Y2K<br>places!</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CAROUSEL SECTION -->
-    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Why you'll love yeah!</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Discover the features that make it special.</p>
+        <section class="intro section" id="what-is-yeah">
+            <div class="container intro-layout">
+                <div>
+                    <p class="section-label" data-i18n="intro.label">A personal place diary</p>
+                    <h2 data-i18n="intro.title">Remember where you went and what you found there.</h2>
+                </div>
+                <p class="intro-copy" data-i18n="intro.body">yeah! brings your check-ins, favorite places and journeys together on a map. Add a note or photo, keep a history, and explore the patterns behind the places you visit.</p>
             </div>
+        </section>
 
-            <!-- Carousel Container -->
-            <div class="relative group">
-                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar"
-                    style="-ms-overflow-style: none; scrollbar-width: none;">
-
-                    <!-- Slide 1: Check-ins -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="carousel-checkin.webp" loading="lazy" width="1284" height="2778" alt="One-Click Check-ins" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-mirlo-orange text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Fast</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">One-Click Check-ins</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Save any location
-                                instantly. Use the interactive Home Screen Widget or Siri Shortcuts to log your visits
-                                without even opening the app.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2: Retro Vibes -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="carousel-retro.webp" loading="lazy" width="1284" height="2778" alt="Retro Vibes" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-pin text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Style</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Retro Vibes</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Tired of boring apps?
-                                Yeah! feels alive with crunchy buttons, haptic feedback, satisfying sounds, and a
-                                pixel-perfect Y2K aesthetic.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Statistics -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="carousel-stats.webp" loading="lazy" width="1284" height="2778" alt="Powerful Statistics" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-cyan text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Insights</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Powerful Statistics</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Discover insights about
-                                your life. Heatmaps, streaks, top places, and monthly reports to visualize your journey.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Privacy -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="carousel-privacy.webp" loading="lazy" width="1284" height="2778" alt="100% Private" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-lime text-black text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Secure</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">100% Private</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Your data belongs to
-                                you. Stored locally on your device. No tracking, no selling data. Works perfectly
-                                offline.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5: Calendar -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="carousel-calendar.webp" loading="lazy" width="1284" height="2778" alt="Calendar Sync" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Sync</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Calendar Sync</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Automatically add visits
-                                to your personal calendar to contextualize your diary and remember every moment.</p>
-                        </div>
-                    </div>
-
+        <section class="how-section section" id="how-it-works">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="section-label" data-i18n="how.label">Simple by design</p>
+                    <h2 data-i18n="how.title">A check-in takes just a moment.</h2>
+                </div>
+                <div class="step-grid">
+                    <article class="step-card">
+                        <span class="step-number">01</span>
+                        <h3 data-i18n="how.step1.title">Pick a place</h3>
+                        <p data-i18n="how.step1.body">Choose somewhere nearby, find it on the map or add a custom place of your own.</p>
+                    </article>
+                    <article class="step-card">
+                        <span class="step-number">02</span>
+                        <h3 data-i18n="how.step2.title">Save your yeah!</h3>
+                        <p data-i18n="how.step2.body">Add a note or photo if you like, then save the check-in to your history.</p>
+                    </article>
+                    <article class="step-card">
+                        <span class="step-number">03</span>
+                        <h3 data-i18n="how.step3.title">Explore your map</h3>
+                        <p data-i18n="how.step3.body">Return to your history, follow a journey or see your check-ins in statistics.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Main Features</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Simply efficient and alive.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-fingerprint text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Tactile</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Big buttons, haptic feedback, and
-                            mechanical sounds.
-                            A physical experience on a digital screen.</p>
-                    </div>
+        <section class="screens-section section" aria-labelledby="screens-title">
+            <div class="container">
+                <div class="section-heading centered">
+                    <p class="section-label" data-i18n="screens.label">A little peek inside</p>
+                    <h2 id="screens-title" data-i18n="screens.title">Made for the stories behind your places.</h2>
                 </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-bolt text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Instant</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">No loading screens. Open the app
-                            and start using it.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Private</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Your data is yours. Local storage
-                            and
-                            optional iCloud sync. Zero trackers.</p>
-                    </div>
+                <div class="screen-grid">
+                    <figure class="screen-card">
+                        <img src="carousel-retro.webp" width="1284" height="2778" loading="lazy" alt="yeah! map and place check-in screen">
+                        <figcaption data-i18n="screens.item1">Find a place and save a check-in</figcaption>
+                    </figure>
+                    <figure class="screen-card">
+                        <img src="carousel-calendar.webp" width="1284" height="2778" loading="lazy" alt="yeah! check-in history screen">
+                        <figcaption data-i18n="screens.item2">Look back through your history</figcaption>
+                    </figure>
+                    <figure class="screen-card">
+                        <img src="carousel-stats.webp" width="1284" height="2778" loading="lazy" alt="yeah! check-in statistics and heat map">
+                        <figcaption data-i18n="screens.item3">See your activity in statistics</figcaption>
+                    </figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CHANGELOG SECTION -->
-    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Constant evolution.</p>
+        <section class="features-section section" id="features">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="section-label" data-i18n="features.label">Find your own way around</p>
+                    <h2 data-i18n="features.title">More than dots on a map.</h2>
+                    <p data-i18n="features.lede">Tools to save places, follow your routes and make sense of the places you return to.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card feature-card-lime">
+                        <span class="feature-icon" aria-hidden="true">↗</span>
+                        <h3 data-i18n="features.quick.title">One-tap check-ins</h3>
+                        <p data-i18n="features.quick.body">Save a visit from the app, a widget or a Shortcut.</p>
+                    </article>
+                    <article class="feature-card feature-card-cyan">
+                        <span class="feature-icon" aria-hidden="true">⌖</span>
+                        <h3 data-i18n="features.places.title">Your own places</h3>
+                        <p data-i18n="features.places.body">Add and keep custom places that are missing from the map.</p>
+                    </article>
+                    <article class="feature-card feature-card-orange">
+                        <span class="feature-icon" aria-hidden="true">◉</span>
+                        <h3 data-i18n="features.auto.title">Automatic check-ins</h3>
+                        <p data-i18n="features.auto.body">Premium can check you in when you enter a zone you choose, using low-power location monitoring.</p>
+                        <span class="premium-tag" data-i18n="features.premium">Premium</span>
+                    </article>
+                    <article class="feature-card feature-card-pink">
+                        <span class="feature-icon" aria-hidden="true">✦</span>
+                        <h3 data-i18n="features.journeys.title">Journeys and routes</h3>
+                        <p data-i18n="features.journeys.body">Record trips and routes, see their path on the map and revisit them later.</p>
+                    </article>
+                    <article class="feature-card feature-card-violet">
+                        <span class="feature-icon" aria-hidden="true">▤</span>
+                        <h3 data-i18n="features.stats.title">History and statistics</h3>
+                        <p data-i18n="features.stats.body">Browse your check-ins and explore heat maps, streaks and activity summaries.</p>
+                    </article>
+                    <article class="feature-card feature-card-yellow">
+                        <span class="feature-icon" aria-hidden="true">◎</span>
+                        <h3 data-i18n="features.territory.title">Territory Conquests</h3>
+                        <p data-i18n="features.territory.body">Explore the countries, regions and municipalities represented in your check-ins.</p>
+                        <span class="premium-tag" data-i18n="features.premium">Premium</span>
+                    </article>
+                    <article class="feature-card feature-card-neutral">
+                        <span class="feature-icon" aria-hidden="true">▣</span>
+                        <h3 data-i18n="features.devices.title">iPhone, iPhone Duo and iPad</h3>
+                        <p data-i18n="features.devices.body">Layouts adapted for iPhone Duo and optimised for iPad.</p>
+                    </article>
+                    <article class="feature-card feature-card-neutral">
+                        <span class="feature-icon" aria-hidden="true">⌚</span>
+                        <h3 data-i18n="features.watch.title">Widgets and Apple Watch</h3>
+                        <p data-i18n="features.watch.body">Check in, see recent places and use Yeah! features from supported Apple devices.</p>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="space-y-12">
-
-                <!-- Version 1.4 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-mirlo-orange ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.4</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Native Apple Watch app: quick check-ins, favorites, popular nearby spots, and instant logging of your last check-in.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Apple Watch: View statistics and history, start journeys from your wrist, and use complications for all features.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Design enhancements for a faster, smoother, and more intuitive check-in experience.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New small widget featuring a minimap of Top Places and your latest check-ins.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New statistic: Check-in Coverage — calculates the active radius and geographic reach of your check-ins.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New month-by-month navigation in your history view.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes and general performance improvements.</span>
-                        </li>
-                    </ul>
+        <section class="faq-section section" id="faq">
+            <div class="container faq-layout">
+                <div class="section-heading">
+                    <p class="section-label" data-i18n="faq.label">Good to know</p>
+                    <h2 data-i18n="faq.title">Frequently asked questions</h2>
                 </div>
-
-                <!-- Version 1.3 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.3</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Private notification system between friends or family on journeys.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New cards to review all photos, notes, places, and check-ins at a glance.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Find nearby places easily or filtered by type. It's now even easier to check
-                                in.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>You can now export your favorite places and your entire history to Google Maps or
-                                Google Earth.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New Control Center buttons for quick check-in or starting a journey.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Journeys can now have multiple stops.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes and improvements.</span>
-                        </li>
-                    </ul>
+                <div class="faq-list">
+                    <details>
+                        <summary data-i18n="faq.q1">What is yeah!?</summary>
+                        <p data-i18n="faq.a1">yeah! is a place check-in and travel diary for saving visits, places and journeys on a personal map and reviewing them later.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq.q2">Can I save a place that is not on the map?</summary>
+                        <p data-i18n="faq.a2">Yes. Add a custom place and keep it in your saved places for future check-ins.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq.q3">How do automatic check-ins work?</summary>
+                        <p data-i18n="faq.a3">With Premium, set a zone and enable low-power location monitoring. yeah! can create a check-in when you enter that zone. Location access must be allowed.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq.q4">What is Territory Conquests?</summary>
+                        <p data-i18n="faq.a4">It shows the countries, regions and municipalities represented in your check-in history. Territory Conquests is a Premium feature.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq.q5">What does Premium include?</summary>
+                        <p data-i18n="faq.a5">Premium adds features including automatic check-ins, Territory Conquests, iCloud sync, widgets and advanced statistics. The free plan has a limited number of check-ins.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq.q6">Can I use yeah! on iPad?</summary>
+                        <p data-i18n="faq.a6">Yes. yeah! supports iPad, with layouts adapted for iPad and iPhone Duo.</p>
+                    </details>
                 </div>
-
-                <!-- Version 1.2 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Share a journey with other users and see their trip in real-time. Totally secure and
-                                private.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Full integration as a mini app in iMessages.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Compatible with native Spotlight. Easily find your check-ins and invoke actions with
-                                Siri.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Journeys show up in synced calendar with exact duration, check-ins with fixed 15 min
-                                duration.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Improved and fixed journey integration in statistics.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Improved widgets: Quick check-in for last 3 places and Top 3 most visited places
-                                map.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New: Switch between dark and light icons easily.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Download your yeah! check-ins in iCal and JSON format.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Route path is now visible when sharing or viewing a finished journey.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Design and performance improvements, and minor bug fixes.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Version 1.1 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Automatic syncing with iCal and a new calendar picker.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>4 new Quick Actions added.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Top Places sync to iCloud.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Journey button to record completed routes and travel time on the map.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Live Activities.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Quick Route widget.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Advanced route statistics.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Create your own account! Private and secure, not shared with anyone.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Streaks grid map.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Design and performance improvements, and minor bug fixes.</span>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
-                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                    mirlo apps<span class="text-mirlo-orange">.</span>
+        <section class="changelog-section section" id="changelog">
+            <div class="container changelog-container">
+                <div class="section-heading centered">
+                    <p class="section-label" data-i18n="changelog.label">New things, same yeah!</p>
+                    <h2 data-i18n="changelog.title">Changelog</h2>
+                    <p data-i18n="changelog.lede">Updates to the way you save and explore your places.</p>
+                </div>
+                <div class="timeline">
+                    <article class="timeline-entry latest">
+                        <div class="version-heading"><h3 data-i18n="changelog.v15.title">Version 1.5</h3><span class="version-badge" data-i18n="changelog.latest">Latest</span></div>
+                        <ul>
+                            <li data-i18n="changelog.v15.item1">Adapted for iPhone Duo and optimised for iPad.</li>
+                            <li data-i18n="changelog.v15.item2">Add custom places that stay saved, even when they are not on the map.</li>
+                            <li data-i18n="changelog.v15.item3">New smart, low-power automatic check-ins for zones you choose. Premium only.</li>
+                            <li data-i18n="changelog.v15.item4">Explore your check-in coverage by country or municipality in the new Territory Conquests section. Premium only.</li>
+                            <li data-i18n="changelog.v15.item5">A more consistent vintage Y2K design.</li>
+                            <li data-i18n="changelog.v15.item6">New alternative app icons.</li>
+                            <li data-i18n="changelog.v15.item7">Bug fixes, performance and efficiency improvements.</li>
+                        </ul>
+                    </article>
+                    <article class="timeline-entry">
+                        <div class="version-heading"><h3 data-i18n="changelog.v14.title">Version 1.4</h3></div>
+                        <ul>
+                            <li data-i18n="changelog.v14.item1">Native Apple Watch app for quick check-ins, favorites, nearby places, history, statistics, journeys and complications.</li>
+                            <li data-i18n="changelog.v14.item2">A small widget with a mini map of Top Places and recent check-ins.</li>
+                            <li data-i18n="changelog.v14.item3">Check-in Coverage statistic and month-by-month history navigation.</li>
+                            <li data-i18n="changelog.v14.item4">Design, performance and reliability improvements.</li>
+                        </ul>
+                    </article>
+                    <article class="timeline-entry">
+                        <div class="version-heading"><h3 data-i18n="changelog.v13.title">Version 1.3</h3></div>
+                        <ul>
+                            <li data-i18n="changelog.v13.item1">Private notifications between friends or family during shared journeys.</li>
+                            <li data-i18n="changelog.v13.item2">New cards for photos, notes, places and check-ins.</li>
+                            <li data-i18n="changelog.v13.item3">Nearby places, place filters, multi-stop journeys and new Control Center actions.</li>
+                            <li data-i18n="changelog.v13.item4">Export favorite places and check-in history to Google Maps or Google Earth.</li>
+                        </ul>
+                    </article>
+                    <article class="timeline-entry">
+                        <div class="version-heading"><h3 data-i18n="changelog.v12.title">Version 1.2</h3></div>
+                        <ul>
+                            <li data-i18n="changelog.v12.item1">Share journeys with other users and view their trip.</li>
+                            <li data-i18n="changelog.v12.item2">iMessage mini app, Spotlight and Siri actions.</li>
+                            <li data-i18n="changelog.v12.item3">Calendar integration, improved widgets, journey statistics and route display.</li>
+                            <li data-i18n="changelog.v12.item4">Export check-ins as iCal or JSON and switch between light and dark app icons.</li>
+                        </ul>
+                    </article>
+                    <article class="timeline-entry">
+                        <div class="version-heading"><h3 data-i18n="changelog.v11.title">Version 1.1</h3></div>
+                        <ul>
+                            <li data-i18n="changelog.v11.item1">Calendar sync and a calendar picker.</li>
+                            <li data-i18n="changelog.v11.item2">Quick Actions, Live Activities and route widgets.</li>
+                            <li data-i18n="changelog.v11.item3">Top Places sync, journey recording and route statistics.</li>
+                            <li data-i18n="changelog.v11.item4">Streaks grid and design improvements.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-cta">
+            <div class="container closing-cta-inner">
+                <div>
+                    <p class="section-label" data-i18n="cta.label">Start your place diary</p>
+                    <h2 data-i18n="cta.title">Where will your next yeah! take you?</h2>
+                </div>
+                <a class="app-store-button" href="https://apps.apple.com/app/yeah-check-in-log-places/id6755683790" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"></path></svg>
+                    <span class="app-store-copy"><span data-i18n="hero.download">Download on the</span><strong>App Store</strong></span>
                 </a>
             </div>
+        </section>
+    </main>
 
-            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
-                © 2026 mirlo apps. Made in Spain 🇪🇸
-            </div>
-
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
-                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
-                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.threads.com/@paoloac"
-                    class="text-gray-400 hover:text-purple-400 text-xl transition-colors"><i
-                        class="fab fa-threads"></i></a>
-            </div>
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <a class="brand" href="../index.html">mirlo apps<span>.</span></a>
+            <span class="copyright" data-i18n="footer.copyright">© 2026 mirlo apps. Made in Spain 🇪🇸</span>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="../privacidad.html" data-i18n="footer.privacy">Privacy &amp; Terms</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a>
+                <a href="soporte.html" data-i18n="footer.support">Support</a>
+                <a href="https://x.com/PaoloAC">X</a>
+                <a href="https://www.threads.com/@paoloac">Threads</a>
+            </nav>
         </div>
     </footer>
 
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
-            <i class="fas fa-times text-3xl"></i>
-        </button>
-
-        <a href="../apps/" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">About</a>
-        <a href="../#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contact</a>
-
-        <!-- Mobile Dark Mode Switch -->
-        <div class="flex items-center gap-4 mt-8">
-            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
-            <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                </div>
-            </label>
-        </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <button class="menu-close" type="button" onclick="toggleMenu()" aria-label="Close menu">×</button>
+        <a href="../apps/" data-i18n="nav.apps">Apps</a>
+        <a href="#what-is-yeah" data-i18n="nav.what">What is yeah!?</a>
+        <a href="#how-it-works" data-i18n="nav.how">How it works</a>
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#changelog" data-i18n="nav.changelog">Changelog</a>
+        <a href="soporte.html" data-i18n="nav.support">Support</a>
+        <a href="es/" lang="es" data-i18n="nav.spanish.full">Versión en español</a>
     </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            }
+        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
         }
-
-        // Initialize switch state
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
+        function toggleTheme() {
+            const dark = document.documentElement.classList.toggle("dark");
+            localStorage.theme = dark ? "dark" : "light";
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = dark);
+        }
+        function toggleMenu() {
+            const menu = document.getElementById("mobile-menu");
+            const open = menu.classList.toggle("is-open");
+            menu.setAttribute("aria-hidden", String(!open));
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const dark = document.documentElement.classList.contains("dark");
+            document.querySelectorAll(".theme-switch input").forEach(input => input.checked = dark);
         });
     </script>
-
     <script src="/cookies.js" defer></script>
 </body>
 
