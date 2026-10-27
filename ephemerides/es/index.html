@@ -3,25 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ephemerides: calendario de recuerdos y diario personal para iPhone</title>
-  <meta name="description" content="Guarda recuerdos en un calendario que vuelve cada año. Anota momentos, fotos, música y lugares, descubre qué pasó tal día como hoy y vuelve a tu historia.">
+  <title>Ephemerides: diario personal y calendario de recuerdos</title>
+  <meta name="description" content="Guarda notas, fotos, música y lugares en tu diario personal con calendario de recuerdos. Revive cada fecha y descubre qué ocurrió tal día como hoy.">
   <link rel="canonical" href="https://www.mirloapps.es/ephemerides/es/">
   <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ephemerides/">
   <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ephemerides/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ephemerides/">
+  <meta name="theme-color" content="#f7f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15131d" media="(prefers-color-scheme: dark)">
   <meta name="apple-itunes-app" content="app-id=6755878830">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="mirlo apps">
   <meta property="og:url" content="https://www.mirloapps.es/ephemerides/es/">
-  <meta property="og:title" content="Ephemerides: calendario de recuerdos y diario personal">
-  <meta property="og:description" content="Un diario personal dentro de un calendario que vuelve cada año. Guarda momentos y revive qué ocurrió ese día en tu vida y en la historia.">
+  <meta property="og:title" content="Ephemerides: diario y calendario de recuerdos">
+  <meta property="og:description" content="Guarda tu historia por fechas y vuelve a descubrir tus recuerdos, fotos, música y lugares cada año.">
   <meta property="og:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
+  <meta property="og:image:alt" content="Un recuerdo guardado en Ephemerides con notas, un mapa y música">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ephemerides: calendario de recuerdos y diario personal">
-  <meta name="twitter:description" content="Guarda tus recuerdos por fecha y vuelve a encontrarlos cuando el calendario regrese a ese día.">
+  <meta name="twitter:title" content="Ephemerides: diario y calendario de recuerdos">
+  <meta name="twitter:description" content="Guarda tu historia por fechas y vuelve a descubrir tus recuerdos, fotos, música y lugares cada año.">
   <meta name="twitter:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../ephemerides.css">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (_) {}
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,10 +45,12 @@
         "alternateName": "Ephemerides recuerdos",
         "operatingSystem": "iOS, iPadOS",
         "applicationCategory": "LifestyleApplication",
+        "image": "https://www.mirloapps.es/ephemerides/appstore/day-details.webp",
+        "publisher": {"@type": "Organization", "name": "mirlo apps", "url": "https://www.mirloapps.es/"},
         "description": "Diario personal y calendario de recuerdos para guardar momentos por fecha, volver a ellos en años posteriores y descubrir acontecimientos históricos.",
         "url": "https://www.mirloapps.es/ephemerides/es/",
         "downloadUrl": "https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830",
-        "inLanguage": ["es", "en"]
+        "inLanguage": "es"
       },
       {
         "@type": "FAQPage",
@@ -54,10 +69,27 @@
 </head>
 <body>
   <header class="topbar">
-    <nav class="nav container" aria-label="Navegación principal">
-      <a class="brand" href="../../" aria-label="Inicio de mirlo apps"><img src="../ephemerides-icon-small.webp" width="256" height="256" alt=""><span>Ephemerides</span></a>
-      <div class="nav-links"><a href="#features" data-i18n="nav.features">Funciones</a><a href="#screens" data-i18n="nav.screens">Imágenes</a><a href="#history-title" data-i18n="nav.release">Novedades</a><a href="#faq" data-i18n="nav.faq">Preguntas</a></div>
-      <a class="language" href="../" lang="en" hreflang="en" data-i18n="nav.language">English</a>
+    <nav class="nav container" aria-label="Menú de navegación">
+      <a class="brand" href="../../" aria-label="Inicio de mirlo apps">mirlo apps<span>.</span></a>
+      <div class="nav-links">
+        <a href="../../apps/">Apps</a>
+        <a href="../../#nosotros">Acerca de</a>
+        <a href="../../#contacto">Contacto</a>
+        <a href="#features">Funciones</a>
+        <a href="#screens">Capturas</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#history-title">Novedades</a>
+        <a href="../soporte.html">Soporte</a>
+        <a class="language" href="../" lang="en">EN</a>
+        <label class="theme-switch" aria-label="Cambiar tema claro u oscuro">
+          <input type="checkbox" onchange="toggleDarkMode()" aria-label="Cambiar tema claro u oscuro">
+          <span class="theme-switch-track" aria-hidden="true"></span>
+        </label>
+      </div>
+      <div class="mobile-controls">
+        <a class="language" href="../" lang="en">EN</a>
+        <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+      </div>
     </nav>
   </header>
 
@@ -65,7 +97,7 @@
     <section class="hero">
       <div class="hero-grid container">
         <div>
-          <h1 data-i18n="hero.title">Un calendario de recuerdos al que siempre vuelves</h1>
+          <h1 data-i18n="hero.title">Ephemerides: un calendario para tus recuerdos</h1>
           <p class="hero-copy" data-i18n="hero.copy">Ephemerides es un diario personal para tu vida: guarda un momento en su fecha y vuelve a encontrarlo cuando ese día regrese.</p>
 
           <div class="actions"><a class="app-store-button" href="https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830" target="_blank" rel="noopener" aria-label="Descargar Ephemerides en el App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"/></svg><span class="store-copy"><span data-i18n="hero.download">Descargar en</span><strong>App Store</strong></span></a></div>
@@ -136,7 +168,43 @@
   </main>
 
   <footer class="footer"><div class="container footer-inner"><a class="brand" href="../../"><img src="../ephemerides-icon-small.webp" width="256" height="256" alt=""><span>mirlo apps</span></a><span data-i18n="footer.copyright">© 2026 mirlo apps · Hecho en España</span><nav class="footer-links" aria-label="Pie de página"><a href="../../privacidad.html" data-i18n="footer.privacy">Privacidad y condiciones</a><a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a><a href="../../soporte.html" data-i18n="footer.support">Soporte</a><a href="https://x.com/PaoloAC" aria-label="X">X</a><a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a></nav></div></footer>
-  <script>document.querySelectorAll(".carousel").forEach(carousel => { const track = carousel.querySelector(".carousel-track"); const step = () => track.querySelector(".gallery-card").getBoundingClientRect().width + 18; carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" })); carousel.querySelector("[data-carousel-next]").addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" })); });</script>
+  <script>
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (_) {}
+      document.querySelectorAll('.theme-switch input').forEach(input => { input.checked = isDark; });
+    }
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const button = document.querySelector('.menu-button');
+      const isOpen = menu.classList.toggle('is-open');
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      menu.toggleAttribute('inert', !isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.theme-switch input').forEach(input => { input.checked = isDark; });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.getElementById('mobile-menu').classList.contains('is-open')) toggleMenu();
+    });
+  </script>
+  <script>document.querySelectorAll(".carousel").forEach(carousel => { const track = carousel.querySelector(".carousel-track"); const step = () => { const card = track.querySelector(".gallery-card"); const gap = parseFloat(getComputedStyle(track).gap) || 0; return card.getBoundingClientRect().width + gap; }; carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" })); carousel.querySelector("[data-carousel-next]").addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" })); });</script>
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert>
+    <button type="button" onclick="toggleMenu()" aria-label="Cerrar menú">×</button>
+    <a href="../../apps/" onclick="toggleMenu()">Apps</a>
+    <a href="../../#nosotros" onclick="toggleMenu()">Acerca de</a>
+    <a href="../../#contacto" onclick="toggleMenu()">Contacto</a>
+    <a href="#features" onclick="toggleMenu()">Funciones</a>
+    <a href="#screens" onclick="toggleMenu()">Capturas</a>
+    <a href="#faq" onclick="toggleMenu()">Preguntas</a>
+    <a href="#history-title" onclick="toggleMenu()">Novedades</a>
+    <a href="../soporte.html" onclick="toggleMenu()">Soporte</a>
+    <a class="mobile-language" href="../" lang="en">English</a>
+    <div class="mobile-theme"><span>Tema oscuro</span><label class="theme-switch" aria-label="Cambiar tema claro u oscuro"><input type="checkbox" onchange="toggleDarkMode()" aria-label="Cambiar tema claro u oscuro"><span class="theme-switch-track" aria-hidden="true"></span></label></div>
+  </div>
   <script src="/cookies.js" defer></script>
 </body>
 </html>

@@ -3,25 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ephemerides: Memory Calendar & Personal Journal for iPhone</title>
-  <meta name="description" content="Keep a personal memory journal in a calendar that returns every year. Save moments, photos, music and places, explore history, and revisit this day across time.">
+  <title>Ephemerides: Personal Journal & Memory Calendar</title>
+  <meta name="description" content="Save notes, photos, music and places in a personal journal and memory calendar. Revisit this day in your life and discover what happened in history.">
   <link rel="canonical" href="https://www.mirloapps.es/ephemerides/">
   <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ephemerides/">
   <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ephemerides/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ephemerides/">
+  <meta name="theme-color" content="#f7f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15131d" media="(prefers-color-scheme: dark)">
   <meta name="apple-itunes-app" content="app-id=6755878830">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
   <meta property="og:site_name" content="mirlo apps">
   <meta property="og:url" content="https://www.mirloapps.es/ephemerides/">
-  <meta property="og:title" content="Ephemerides: Memory Calendar & Personal Journal">
-  <meta property="og:description" content="A personal journal in a calendar that comes around again. Save moments and revisit what happened on this day in your life and in history.">
+  <meta property="og:title" content="Ephemerides: Personal Journal & Memory Calendar">
+  <meta property="og:description" content="Save your story by date and revisit memories, photos, music and places as each day comes around again.">
   <meta property="og:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
+  <meta property="og:image:alt" content="A saved memory in the Ephemerides app, with notes, a map and music">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ephemerides: Memory Calendar & Personal Journal">
-  <meta name="twitter:description" content="Save your memories by date and rediscover them as the calendar comes around again.">
+  <meta name="twitter:title" content="Ephemerides: Personal Journal & Memory Calendar">
+  <meta name="twitter:description" content="Save your story by date and revisit memories, photos, music and places as each day comes around again.">
   <meta name="twitter:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="ephemerides.css">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (_) {}
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,10 +45,12 @@
         "alternateName": "Ephemerides recuerdos",
         "operatingSystem": "iOS, iPadOS",
         "applicationCategory": "LifestyleApplication",
+        "image": "https://www.mirloapps.es/ephemerides/appstore/day-details.webp",
+        "publisher": {"@type": "Organization", "name": "mirlo apps", "url": "https://www.mirloapps.es/"},
         "description": "A personal memory journal and calendar for saving moments by date, revisiting memories from previous years and discovering historical events.",
         "url": "https://www.mirloapps.es/ephemerides/",
         "downloadUrl": "https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830",
-        "inLanguage": ["en", "es"]
+        "inLanguage": "en"
       },
       {
         "@type": "FAQPage",
@@ -55,14 +70,26 @@
 <body>
   <header class="topbar">
     <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="../" aria-label="mirlo apps home"><img src="ephemerides-icon-small.webp" width="256" height="256" alt=""><span>Ephemerides</span></a>
+      <a class="brand" href="../" aria-label="mirlo apps home">mirlo apps<span>.</span></a>
       <div class="nav-links">
-        <a href="#features" data-i18n="nav.features">Features</a>
-        <a href="#screens" data-i18n="nav.screens">Screenshots</a>
-        <a href="#history-title" data-i18n="nav.release">Updates</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="../apps/">Apps</a>
+        <a href="../#nosotros">About</a>
+        <a href="../#contacto">Contact</a>
+        <a href="#features">Features</a>
+        <a href="#screens">Screenshots</a>
+        <a href="#faq">FAQ</a>
+        <a href="#history-title">Updates</a>
+        <a href="soporte.html">Support</a>
+        <a class="language" href="es/" lang="es">ES</a>
+        <label class="theme-switch" aria-label="Toggle dark or light theme">
+          <input type="checkbox" onchange="toggleDarkMode()" aria-label="Toggle dark or light theme">
+          <span class="theme-switch-track" aria-hidden="true"></span>
+        </label>
       </div>
-      <a class="language" href="es/" lang="es" hreflang="es" data-i18n="nav.language">Español</a>
+      <div class="mobile-controls">
+        <a class="language" href="es/" lang="es">ES</a>
+        <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+      </div>
     </nav>
   </header>
 
@@ -70,7 +97,7 @@
     <section class="hero">
       <div class="hero-grid container">
         <div>
-          <h1 data-i18n="hero.title">A memory calendar that comes around again</h1>
+          <h1 data-i18n="hero.title">Ephemerides: a calendar for your memories</h1>
           <p class="hero-copy" data-i18n="hero.copy">Ephemerides is a personal journal for your life: save a moment to its date, then meet it again when that day returns.</p>
 
           <div class="actions">
@@ -160,7 +187,43 @@
     <span data-i18n="footer.copyright">© 2026 mirlo apps · Made in Spain</span>
     <nav class="footer-links" aria-label="Footer"><a href="../privacidad.html" data-i18n="footer.privacy">Privacy &amp; Terms</a><a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a><a href="../soporte.html" data-i18n="footer.support">Support</a><a href="https://x.com/PaoloAC" aria-label="X">X</a><a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a></nav>
   </div></footer>
-  <script>document.querySelectorAll(".carousel").forEach(carousel => { const track = carousel.querySelector(".carousel-track"); const step = () => track.querySelector(".gallery-card").getBoundingClientRect().width + 18; carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" })); carousel.querySelector("[data-carousel-next]").addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" })); });</script>
+  <script>
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (_) {}
+      document.querySelectorAll('.theme-switch input').forEach(input => { input.checked = isDark; });
+    }
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const button = document.querySelector('.menu-button');
+      const isOpen = menu.classList.toggle('is-open');
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      menu.toggleAttribute('inert', !isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.theme-switch input').forEach(input => { input.checked = isDark; });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.getElementById('mobile-menu').classList.contains('is-open')) toggleMenu();
+    });
+  </script>
+  <script>document.querySelectorAll(".carousel").forEach(carousel => { const track = carousel.querySelector(".carousel-track"); const step = () => { const card = track.querySelector(".gallery-card"); const gap = parseFloat(getComputedStyle(track).gap) || 0; return card.getBoundingClientRect().width + gap; }; carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" })); carousel.querySelector("[data-carousel-next]").addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" })); });</script>
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert>
+    <button type="button" onclick="toggleMenu()" aria-label="Close menu">×</button>
+    <a href="../apps/" onclick="toggleMenu()">Apps</a>
+    <a href="../#nosotros" onclick="toggleMenu()">About</a>
+    <a href="../#contacto" onclick="toggleMenu()">Contact</a>
+    <a href="#features" onclick="toggleMenu()">Features</a>
+    <a href="#screens" onclick="toggleMenu()">Screenshots</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#history-title" onclick="toggleMenu()">Updates</a>
+    <a href="soporte.html" onclick="toggleMenu()">Support</a>
+    <a class="mobile-language" href="es/" lang="es">Español</a>
+    <div class="mobile-theme"><span>Dark mode</span><label class="theme-switch" aria-label="Toggle dark or light theme"><input type="checkbox" onchange="toggleDarkMode()" aria-label="Toggle dark or light theme"><span class="theme-switch-track" aria-hidden="true"></span></label></div>
+  </div>
   <script src="/cookies.js" defer></script>
 </body>
 </html>
