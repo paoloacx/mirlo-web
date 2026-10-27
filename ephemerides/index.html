@@ -1,706 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-
-    <link rel="canonical" href="https://www.mirloapps.es/ephemerides/">
-    <meta property="og:url" content="https://www.mirloapps.es/ephemerides/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Ephemerides — Calendar, diary and memories | mirlo apps">
-    <meta property="og:description" content="Ephemerides: calendar, diary and memories for iPhone. Discover what happened today in history and save your personal story in a circular journal.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ephemerides — Calendar, diary and memories | mirlo apps">
-    <meta name="twitter:description" content="Ephemerides: calendar, diary and memories for iPhone. Discover what happened today in history and save your personal story in a circular journal.">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ephemerides — Calendar, diary and memories | mirlo apps</title>
-    <meta name="description" content="Ephemerides: calendar, diary and memories for iPhone. Discover what happened today in history and save your personal story in a circular journal.">
-
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="shortcut icon" href="../favicon.ico">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mirlo-orange': '#FF9E00',
-                        'yeah-pin': '#FF4500',
-                        'yeah-lime': '#A3E635',
-                        'yeah-cyan': '#00C4B4',
-                    },
-                    fontFamily: {
-                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
-                    }
-                }
-            },
-            darkMode: 'class',
-        }
-    </script>
-
-    <style>
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            transition: all 0.3s ease;
-        }
-
-        /* --- EFECTO GRANO --- */
-        .bg-grain {
-            position: relative;
-            background-color: #f3f4f6;
-        }
-
-        .dark .bg-grain {
-            background-color: #0a0a0a;
-        }
-
-        .dark .bg-grain::before {
-            display: none;
-        }
-
-        .bg-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .bg-grain>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* --- BOTONES PLÁSTICO --- */
-        .btn-plastic {
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-        }
-
-        .btn-plastic:hover {
-            transform: translateY(-1px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn-plastic:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #A3E635;
-            color: #A3E635;
-        }
-
-        .btn-plastic-orange {
-            background: linear-gradient(to bottom, #ffb347 0%, #ff9e00 100%);
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 6px -1px rgba(255, 158, 0, 0.3);
-            border: 1px solid #d18200;
-        }
-
-        .btn-plastic-orange:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 12px -1px rgba(255, 158, 0, 0.4);
-        }
-
-        /* --- TARJETAS PRO --- */
-        .tech-card {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .tech-card {
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            pointer-events: none;
-        }
-
-        .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
-    </style>
-    <script>
-        // Dark Mode Logic
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-    </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Ephemerides",
-  "operatingSystem": "iOS",
-  "applicationCategory": "LifestyleApplication",
-  "description": "Ephemerides: calendar, diary and memories for iPhone. Discover what happened today in history and save your personal story in a circular journal.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "url": "https://www.mirloapps.es/ephemerides/",
-  "downloadUrl": "https://apps.apple.com/app/ephemerides-memories/id6755878830"
-}
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ephemerides: Memory Calendar & Personal Journal for iPhone</title>
+  <meta name="description" content="Keep a personal memory journal in a calendar that returns every year. Save moments, photos, music and places, explore history, and revisit this day across time.">
+  <link rel="canonical" href="https://www.mirloapps.es/ephemerides/">
+  <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/ephemerides/">
+  <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/ephemerides/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/ephemerides/">
+  <meta name="apple-itunes-app" content="app-id=6755878830">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="mirlo apps">
+  <meta property="og:url" content="https://www.mirloapps.es/ephemerides/">
+  <meta property="og:title" content="Ephemerides: Memory Calendar & Personal Journal">
+  <meta property="og:description" content="A personal journal in a calendar that comes around again. Save moments and revisit what happened on this day in your life and in history.">
+  <meta property="og:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ephemerides: Memory Calendar & Personal Journal">
+  <meta name="twitter:description" content="Save your memories by date and rediscover them as the calendar comes around again.">
+  <meta name="twitter:image" content="https://www.mirloapps.es/ephemerides/appstore/day-details.webp">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="ephemerides.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Ephemerides",
+        "alternateName": "Ephemerides recuerdos",
+        "operatingSystem": "iOS, iPadOS",
+        "applicationCategory": "LifestyleApplication",
+        "description": "A personal memory journal and calendar for saving moments by date, revisiting memories from previous years and discovering historical events.",
+        "url": "https://www.mirloapps.es/ephemerides/",
+        "downloadUrl": "https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830",
+        "inLanguage": ["en", "es"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"What is Ephemerides?","acceptedAnswer":{"@type":"Answer","text":"Ephemerides is a personal memory journal and calendar. Save moments by date and return to them as the calendar comes around again."}},
+          {"@type":"Question","name":"What can I save in Ephemerides?","acceptedAnswer":{"@type":"Answer","text":"You can keep written memories and add photos, music, places and other personal moments to their dates."}},
+          {"@type":"Question","name":"What is Crumbie?","acceptedAnswer":{"@type":"Answer","text":"Crumbie is Ephemerides’ assistant. It offers writing prompts and helps you explore your memories."}},
+          {"@type":"Question","name":"Can I create memory types?","acceptedAnswer":{"@type":"Answer","text":"Yes. Create custom types to organize your memories."}},
+          {"@type":"Question","name":"What can I discover on a date?","acceptedAnswer":{"@type":"Answer","text":"See your memories from that date and related historical events."}},
+          {"@type":"Question","name":"Does Ephemerides have widgets?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can see your memories in timeline widgets and on the memory map."}}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
+<body>
+  <header class="topbar">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="mirlo apps home"><img src="ephemerides-icon-small.webp" width="256" height="256" alt=""><span>Ephemerides</span></a>
+      <div class="nav-links">
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#screens" data-i18n="nav.screens">Screenshots</a>
+        <a href="#history-title" data-i18n="nav.release">Updates</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </div>
+      <a class="language" href="es/" lang="es" hreflang="es" data-i18n="nav.language">Español</a>
+    </nav>
+  </header>
 
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
+  <main>
+    <section class="hero">
+      <div class="hero-grid container">
+        <div>
+          <h1 data-i18n="hero.title">A memory calendar that comes around again</h1>
+          <p class="hero-copy" data-i18n="hero.copy">Ephemerides is a personal journal for your life: save a moment to its date, then meet it again when that day returns.</p>
 
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../"
-                class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
-                mirlo apps<span class="text-mirlo-orange">.</span>
-            </a>
-
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="../apps/"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Apps</a>
-                </li>
-                <li><a href="../#nosotros"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">About</a>
-                </li>
-                <li><a href="../#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange">Contact</a>
-                </li>
-
-                <!-- Dark Mode Switch -->
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
-                    </label>
-                </li>
-            </ul>
-
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </nav>
-    </header>
-
-    <section class="pt-36 pb-24 px-6 bg-grain min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
-
-                    <div
-                        class="inline-block px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-bold text-mirlo-orange uppercase tracking-wider shadow-sm">
-                        New Release
-                    </div>
-
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                        Ephemerides
-                    </h1>
-                    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 font-medium">Calendar,
-                        diary and memories</p>
-
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                        Discover what happened today in history and save what happened to you. A circular journal
-                        designed to connect your personal story with the world's History.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://apps.apple.com/app/ephemerides-memories/id6755878830"
-                            class="inline-flex items-center space-x-3 btn-plastic text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform">
-                            <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left leading-tight">
-                                <div class="text-[10px] uppercase opacity-80">Download on the</div>
-                                <div class="font-bold">App Store</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex justify-center relative">
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mirlo-orange/20 rounded-full blur-[100px]">
-                    </div>
-
-                    <div
-                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 z-10 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
-                        <div
-                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-                            <img src="/ephemerides/ephemerides-screen.webp" width="1206" height="2622" alt="Ephemerides Screenshot" class="absolute inset-0 w-full h-full object-contain">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="relative bg-white dark:bg-gray-800 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-100 dark:border-gray-700 rotate-[5deg] hover:rotate-0 transition-transform duration-500 -ml-24 mt-24 z-0 w-[260px] h-[530px] sm:w-[304px] sm:h-[616px]">
-                        <div
-                            class="bg-black rounded-[2.5rem] w-[244px] h-[514px] sm:w-72 sm:h-[600px] flex items-center justify-center overflow-hidden border border-gray-800 relative group">
-                            <img src="screenshot2.webp" loading="lazy" width="1206" height="2622" alt="Ephemerides Screenshot 2" class="w-full h-full object-contain">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-10">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="actions">
+            <a class="app-store-button" href="https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830" target="_blank" rel="noopener" aria-label="Download Ephemerides on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"/></svg><span class="store-copy"><span data-i18n="hero.download">Download on the</span><strong>App Store</strong></span></a>
+          </div>
         </div>
+        <figure class="hero-art"><img src="appstore/day-details.webp" width="1284" height="2778" alt="A saved Ephemerides memory with its notes and details" fetchpriority="high"></figure>
+      </div>
     </section>
 
-    <!-- CAROUSEL SECTION -->
-    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Your Personal Legacy</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Build your story. Feed your memories.</p>
-            </div>
-
-            <!-- Carousel Container -->
-            <div class="relative group">
-                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar"
-                    style="-ms-overflow-style: none; scrollbar-width: none;">
-
-                    <!-- Slide 1: Personal Legacy -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-1.webp" loading="lazy" width="1284" height="2778" alt="Personal Legacy" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-mirlo-orange text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Memories</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Save Everything</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Save photos, music
-                                (Apple Music integration), locations, and special moments. Your life, curated.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2: Perpetual Calendar -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-2.webp" loading="lazy" width="1284" height="2778" alt="Perpetual Calendar" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-pin text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Cycles</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Perpetual Calendar</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Visualize your life
-                                cycle on a perpetual calendar. See patterns and remember dates.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Nostalgic Widgets -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-3.webp" loading="lazy" width="1284" height="2778" alt="Nostalgic Widgets" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-cyan text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Home</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Nostalgic Widgets</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Beautiful widgets for
-                                your Home Screen that bring back memories from this day in history.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Shuffle Mode -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-4.webp" loading="lazy" width="1284" height="2778" alt="Shuffle Mode" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-yeah-lime text-black text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Rediscover</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Shuffle Mode</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Rediscover what you were
-                                doing on this day years ago. A surprise from your past self.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5: Customizable Categories -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-5.webp" loading="lazy" width="1284" height="2778" alt="Customizable Categories" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Curate</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Your Interests</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Customizable categories:
-                                History, Science, Art, and more. Filter history by what matters to you.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6: History Events -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-6.webp" loading="lazy" width="1284" height="2778" alt="History Events" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">History</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">World History</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Discover what happened
-                                today in history. Connect your personal story with the world's timeline.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 7: Premium Features -->
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[320px] tech-card p-0 flex flex-col">
-                        <div class="aspect-[9/16] bg-gray-800 relative overflow-hidden">
-                            <img src="screenshot-7.webp" loading="lazy" width="1284" height="2778" alt="Premium Features" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Premium</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col relative z-10">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Go Premium</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Unlock unlimited
-                                memories,
-                                advanced widgets, and exclusive features to build your personal legacy.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="features.eyebrow">A journal with a different rhythm</p>
+          <h2 data-i18n="features.title">Your memories belong to their dates</h2>
+          <p data-i18n="features.intro">Write down a moment once. Find it again on the same day next year, or years from now.</p>
         </div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">◷</span><h3 data-i18n="feature.card1.title">A calendar for your story</h3><p data-i18n="feature.card1.copy">Browse your dates and revisit what you were doing on the same day in earlier years.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">✎</span><h3 data-i18n="feature.card2.title">Keep every detail</h3><p data-i18n="feature.card2.copy">Add notes, photos, audio, music and places to the moments you want to remember.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">⌕</span><h3 data-i18n="feature.card3.title">Find memories by date</h3><p data-i18n="feature.card3.copy">Explore your timeline and find saved moments whenever you want to revisit them.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">▦</span><h3 data-i18n="feature.card4.title">Your memories at a glance</h3><p data-i18n="feature.card4.copy">See your moments in timeline widgets and on your memory map.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">◎</span><h3 data-i18n="feature.card5.title">Discover what happened that day</h3><p data-i18n="feature.card5.copy">Pair your memories with historical events connected to each date.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">✦</span><h3 data-i18n="feature.card6.title">Crumbie, your memory companion</h3><p data-i18n="feature.card6.copy">Ask for writing prompts, year summaries and new ways to explore your memories.</p></article>
+        </div>
+      </div>
     </section>
 
-    <section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Soulful Design</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">An aesthetic that feels crafted, not industrial.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-palette text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Retro iOS Style</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Tactile textures, careful sounds,
-                            and Dopamine design principles. An interface that feels good to use.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-shield-halved text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Privacy First</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Your memories belong to you. iCloud
-                            sync, no external servers, no tracking, no selling your data.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card p-8 group hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative z-10">
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/10">
-                            <i class="fas fa-globe-americas text-2xl text-mirlo-orange"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">History & You</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Connect your personal story with the
-                            world's History. See your life in context.</p>
-                    </div>
-                </div>
-            </div>
+    <section class="section gallery-section" id="screens">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="screens.eyebrow">A look inside</p>
+          <h2 data-i18n="screens.title">Made to feel at home on your devices</h2>
+          <p data-i18n="screens.intro">A familiar iOS feel, with a little Old OS 4 personality.</p>
         </div>
+        <div class="carousel" aria-label="App screenshot carousel">
+          <button class="carousel-control previous" type="button" aria-label="Previous screenshots" data-carousel-prev>‹</button>
+          <div class="carousel-track" tabindex="0">
+            <figure class="gallery-card"><img src="appstore/calendar.webp" width="1284" height="2778" loading="lazy" alt="A calendar for your memories"><figcaption><h3 data-i18n="screen.card1.title">A calendar for your memories</h3><p data-i18n="screen.card1.copy">See your moments by date</p></figcaption></figure>
+            <figure class="gallery-card"><img src="appstore/timeline.webp" width="1284" height="2778" loading="lazy" alt="See your memories over time"><figcaption><h3 data-i18n="screen.card2.title">See your memories over time</h3><p data-i18n="screen.card2.copy">Watch your story unfold across the years</p></figcaption></figure>
+            <figure class="gallery-card"><img src="appstore/add-memory.webp" width="1284" height="2778" loading="lazy" alt="Save a moment"><figcaption><h3 data-i18n="screen.card3.title">Save a moment</h3><p data-i18n="screen.card3.copy">Add a memory to the date it belongs to</p></figcaption></figure>
+            <figure class="gallery-card"><img src="appstore/categories.webp" width="1242" height="2688" loading="lazy" alt="Everything you want to remember"><figcaption><h3 data-i18n="screen.card4.title">Everything you want to remember</h3><p data-i18n="screen.card4.copy">Memories, places, music, images and special days</p></figcaption></figure>
+            <figure class="gallery-card"><img src="appstore/statistics.webp" width="1242" height="2688" loading="lazy" alt="See your story in perspective"><figcaption><h3 data-i18n="screen.card5.title">See your story in perspective</h3><p data-i18n="screen.card5.copy">Explore your memory patterns</p></figcaption></figure>
+            <figure class="gallery-card"><img src="appstore/special-days.webp" width="1242" height="2688" loading="lazy" alt="Keep special days close"><figcaption><h3 data-i18n="screen.card6.title">Keep special days close</h3><p data-i18n="screen.card6.copy">Bring together memories linked to meaningful dates</p></figcaption></figure>
+          </div>
+          <button class="carousel-control next" type="button" aria-label="Next screenshots" data-carousel-next>›</button>
+        </div>
+      </div>
     </section>
 
-    <!-- CHANGELOG SECTION -->
-    <section class="py-24 px-6 bg-grain border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Constant evolution.</p>
-            </div>
 
-            <div class="space-y-12">
 
-                <!-- Version 1.3 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-mirlo-orange ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.3</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Create a map with all your saved favorite places.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Create a playlist with all your saved favorite songs.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Crumbie provides daily ephemerides from Wikipedia that you can add to your own
-                                calendar.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Optimized energy consumption, memory usage, and disk space.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>It's now easier to send your Instagram, Facebook, or other memories to Ephemerides and
-                                save them forever.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Bug fixes, performance improvements, stability enhancements, and increased
-                                efficiency.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Version 1.2 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Crumbie 1.0: A blackbird with local AI capabilities that will help you connect
-                                memories and ideas.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Change the icon from 3 available options.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Share your memories in a beautiful postcard using the share function.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New Audio Notes category in the Store.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Being able to add memories from the share menu of any app.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Added three new shortcuts from the control center.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>New and improved style for Calendar sheets.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Two new timeline widgets.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Huge improvement to the sample efemeris. Much more detailed and better
-                                translated.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-mirlo-orange mt-1.5 mr-3 text-xs"></i>
-                            <span>Refinement design and performance improvements, and minor bug fixes.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Version 1.1 -->
-                <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-                    </div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Timeline View.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New Heatmap Streaks Widget.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Slide to Record: New audio memory type + transcription.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Native Spotlight integration.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Reverse Calendar Sync (Import your important events to Ephemerides: Birthdays, special
-                                days, important appointments…).</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>New, improved search with enhanced filters.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Now you can selectively choose which events sync to your calendar.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Translation into 8 more languages: German, French, Italian, Portuguese, Korean, Hindi,
-                                Simplified Chinese, and Japanese.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Change the text font between 5 options.</span>
-                        </li>
-                        <li class="flex items-start"><i class="fas fa-check text-gray-400 mt-1.5 mr-3 text-xs"></i>
-                            <span>Refinement design and performance improvements, and minor bug fixes.</span>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow" data-i18n="faq.eyebrow">Quick answers</p><h2 data-i18n="faq.title">Frequently asked questions</h2></div>
+        <div class="faq">
+          <details><summary data-i18n="faq.q1">What is Ephemerides?</summary><p data-i18n="faq.a1">Ephemerides is a personal memory journal and calendar. Save moments by date and return to them as the calendar comes around again.</p></details>
+          <details><summary data-i18n="faq.q2">What can I save in Ephemerides?</summary><p data-i18n="faq.a2">You can keep written memories and add photos, music, places and other personal moments to their dates.</p></details>
+          <details><summary data-i18n="faq.q3">What is Crumbie?</summary><p>Crumbie is Ephemerides’ assistant. It offers writing prompts and helps you explore your memories.</p></details>
+          <details><summary data-i18n="faq.q4">Can I create memory types?</summary><p data-i18n="faq.a4">Yes. Create custom types to organize your memories.</p></details>
+          <details><summary data-i18n="faq.q5">What can I discover on a date?</summary><p data-i18n="faq.a5">See your memories from that date and related historical events.</p></details>
+          <details><summary data-i18n="faq.q6">Does Ephemerides have widgets?</summary><p data-i18n="faq.a6">Yes. You can see your memories in timeline widgets and on the memory map.</p></details>
         </div>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="history-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="history.eyebrow">Version history</p>
+          <h2 id="history-title" data-i18n="history.title">Version history</h2>
+        </div>
+        <div class="history">
+          <details><summary>Version 1.4</summary><ul><li>Adapted for iPhone Duo and optimized for all iPad models.</li><li>Create new custom types for your memories.</li><li>February finally gets 29 days.</li><li>Redesigned and improved welcome screens.</li><li>Crumbie, the intelligent assistant, gets better at helping you explore.</li><li>Visual refinements with more Old OS 4 character.</li><li>Add a weather component for that date across the years.</li><li>Code optimization, bug fixes and a general polish for greater efficiency.</li></ul></details>
+
+          <details><summary data-i18n="history.v13.title">Version 1.3</summary><ul><li data-i18n="history.v13.1">Create a map with your saved favorite places.</li><li data-i18n="history.v13.2">Create a playlist with your saved favorite songs.</li><li data-i18n="history.v13.3">Crumbie brings daily historical events from Wikipedia into your calendar.</li><li data-i18n="history.v13.4">Improved energy, memory and storage efficiency.</li><li data-i18n="history.v13.5">Send moments from Instagram, Facebook and other apps to Ephemerides.</li><li data-i18n="history.v13.6">Bug fixes, performance improvements and stability enhancements.</li></ul></details>
+          <details><summary data-i18n="history.v12.title">Version 1.2</summary><ul><li data-i18n="history.v12.1">Crumbie 1.0: a blackbird assistant with local AI capabilities to help connect memories and ideas.</li><li data-i18n="history.v12.2">Choose from three app icons.</li><li data-i18n="history.v12.3">Share memories as postcards.</li><li data-i18n="history.v12.4">New Audio Notes category in the Store.</li><li data-i18n="history.v12.5">Add memories from the share menu in other apps.</li><li data-i18n="history.v12.6">Three new Control Center shortcuts.</li><li data-i18n="history.v12.7">Updated calendar sheets and two new timeline widgets.</li><li data-i18n="history.v12.8">More detailed and better translated sample ephemerides.</li><li data-i18n="history.v12.9">Design refinements, performance improvements and bug fixes.</li></ul></details>
+          <details><summary data-i18n="history.v11.title">Version 1.1</summary><ul><li data-i18n="history.v11.1">New Timeline view and Memory Heatmap widget.</li><li data-i18n="history.v11.2">Record audio memories with transcription.</li><li data-i18n="history.v11.3">Spotlight integration.</li><li data-i18n="history.v11.4">Import birthdays, special days and appointments from Calendar.</li><li data-i18n="history.v11.5">Improved search and filters.</li><li data-i18n="history.v11.6">Choose which events sync to Calendar.</li><li data-i18n="history.v11.7">Added German, French, Italian, Portuguese, Korean, Hindi, Simplified Chinese and Japanese.</li><li data-i18n="history.v11.8">Choose between five typefaces.</li><li data-i18n="history.v11.9">Design and performance refinements.</li></ul></details>
+        </div>
+      </div>
     </section>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
-                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                    mirlo apps<span class="text-mirlo-orange">.</span>
-                </a>
-            </div>
+    <section class="cta-band"><div class="container"><h2 data-i18n="cta.title">Give your memories a date to come back to</h2><p data-i18n="cta.copy">Discover Ephemerides on the App Store.</p><a class="app-store-button" href="https://apps.apple.com/es/app/ephemerides-recuerdos/id6755878830" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.32 2.99-2.53 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.3 2.58-2.3 4.5-3.79 4.25z"/></svg><span class="store-copy"><span data-i18n="hero.download">Download on the</span><strong>App Store</strong></span></a></div></section>
+  </main>
 
-            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
-                © 2026 mirlo apps. Made in Spain 🇪🇸
-            </div>
-
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
-                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
-                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.threads.com/@paoloac"
-                    class="text-gray-400 hover:text-purple-400 text-xl transition-colors"><i
-                        class="fab fa-threads"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
-            <i class="fas fa-times text-3xl"></i>
-        </button>
-
-        <a href="../apps/" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">About</a>
-        <a href="../#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contact</a>
-
-        <!-- Mobile Dark Mode Switch -->
-        <div class="flex items-center gap-4 mt-8">
-            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
-            <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                </div>
-            </label>
-        </div>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            }
-        }
-
-        // Initialize switch state
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
-        });
-    </script>
-
-    <script src="/cookies.js" defer></script>
+  <footer class="footer"><div class="container footer-inner">
+    <a class="brand" href="../"><img src="ephemerides-icon-small.webp" width="256" height="256" alt=""><span>mirlo apps</span></a>
+    <span data-i18n="footer.copyright">© 2026 mirlo apps · Made in Spain</span>
+    <nav class="footer-links" aria-label="Footer"><a href="../privacidad.html" data-i18n="footer.privacy">Privacy &amp; Terms</a><a href="#" onclick="window.mirloCookiePrefs(); return false;" data-i18n="footer.cookies">Cookies</a><a href="../soporte.html" data-i18n="footer.support">Support</a><a href="https://x.com/PaoloAC" aria-label="X">X</a><a href="https://www.threads.com/@paoloac" aria-label="Threads">Threads</a></nav>
+  </div></footer>
+  <script>document.querySelectorAll(".carousel").forEach(carousel => { const track = carousel.querySelector(".carousel-track"); const step = () => track.querySelector(".gallery-card").getBoundingClientRect().width + 18; carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" })); carousel.querySelector("[data-carousel-next]").addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" })); });</script>
+  <script src="/cookies.js" defer></script>
 </body>
-
 </html>
