@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/leisure/en/soporte.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/leisure/soporte.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/leisure/en/soporte.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/leisure/soporte.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support - Leisure Shelf by Mirlo Apps">
+    <meta name="twitter:description" content="Help Center and customer support for Leisure Shelf. Direct assistance and common troubleshooting guides.">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Leisure Shelf - mirlo apps</title>
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'leisure-terracotta': '#E05A47',
+                        'leisure-amber': '#D97706',
+                        'leisure-sand': '#FAF7F2',
+                        'leisure-dark': '#141210',
+                        'leisure-surface': '#1F1B18',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+    <style>
+        .serif-text {
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(224, 90, 71, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .dark .tech-card {
+            background: #1A1614;
+            border: 1px solid rgba(224, 90, 71, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-leisure-sand dark:bg-[#0F0D0C] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <header class="fixed top-0 w-full bg-[#FAF7F2]/90 dark:bg-[#0F0D0C]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="./" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">
+                    Back to Leisure Shelf
+                </a>
+
+                <a href="../soporte.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-leisure-terracotta hover:text-leisure-terracotta transition-colors">
+                    ES
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Toggle dark mode">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-leisure-terracotta"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-6 py-16 pt-36">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+                <img src="../icon.webp" width="1024" height="1024" alt="Leisure Shelf App Icon" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold mb-4 serif-text">Support Center</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400">We are here to help you get the most out of Leisure Shelf</p>
+        </div>
+
+        <!-- Direct Contact -->
+        <div class="bg-gradient-to-br from-leisure-terracotta/10 to-leisure-terracotta/5 rounded-3xl p-8 mb-16 text-center border border-leisure-terracotta/20">
+            <div class="inline-flex items-center justify-center w-14 h-14 bg-leisure-terracotta/20 rounded-full mb-4">
+                <i class="fas fa-envelope text-2xl text-leisure-terracotta"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 serif-text">Have a question, feedback, or need assistance?</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm">We typically respond within 24 hours.</p>
+            <a href="mailto:soporte@mirloapps.es" class="inline-flex items-center space-x-2 bg-leisure-terracotta text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-leisure-terracotta/90 hover:scale-105 shadow-lg transition-all">
+                <span>soporte@mirloapps.es</span>
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
+        <!-- Contact channels -->
+        <div class="mb-16">
+            <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <div class="text-center p-8 tech-card hover:border-leisure-terracotta/40">
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-leisure-terracotta/10 rounded-2xl mb-4">
+                        <i class="fas fa-envelope text-2xl text-leisure-terracotta"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 serif-text">Email support</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">Direct help with bugs and sync questions</p>
+                    <a href="mailto:soporte@mirloapps.es" class="text-leisure-terracotta font-medium hover:underline text-sm">
+                        soporte@mirloapps.es
+                    </a>
+                </div>
+
+                <div class="text-center p-8 tech-card hover:border-leisure-terracotta/40">
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-leisure-terracotta/10 rounded-2xl mb-4">
+                        <i class="fab fa-x-twitter text-2xl text-leisure-terracotta"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 serif-text">X / Twitter</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">Release news and public announcements</p>
+                    <a href="https://x.com/mirloapps" target="_blank" rel="noopener noreferrer" class="text-leisure-terracotta font-medium hover:underline text-sm">
+                        @mirloapps
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical guides -->
+        <div class="space-y-6">
+            <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white text-center mb-8">
+                Common Technical Questions
+            </h2>
+
+            <div class="tech-card p-6">
+                <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">How do I import Goodreads or Letterboxd data?</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Export your library as a CSV file from Goodreads or Letterboxd. In Leisure Shelf, open the Settings tab, tap "Import &amp; export CSV", pick your source, and select your file from iOS Files. The import runs locally and is completely free.
+                </p>
+            </div>
+
+            <div class="tech-card p-6">
+                <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">How do I restore my Leisure Shelf Pro purchase?</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Open Settings, tap on the Leisure Shelf Pro subscription card, and choose "Restore purchases". If you reinstall the app or set up a new iPhone or iPad with the same Apple ID, your subscription or lifetime unlock will be restored immediately.
+                </p>
+            </div>
+
+            <div class="tech-card p-6">
+                <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Why is there a 1 item per day limit on the free tier?</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    The free tier is tailored for logging everyday consumption pace (one book, movie, game, or album each day). If you want to catalogue large historical backlogs or perform unlimited simultaneous searches, Leisure Shelf Pro is available as an upgrade.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#0F0D0C] border-t border-gray-200 dark:border-gray-800 py-12 text-sm text-gray-500 dark:text-gray-400 mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-gray-900 dark:text-white">mirlo apps<span class="text-mirlo-orange">.</span></span>
+                <span>— Thoughtfully crafted iOS software</span>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="../../apps/" class="hover:text-leisure-terracotta transition-colors">All apps</a>
+                <a href="./" class="hover:text-leisure-terracotta transition-colors">Leisure Shelf</a>
+                <a href="privacidad.html" class="hover:text-leisure-terracotta transition-colors">Privacy</a>
+                <a href="../soporte.html" class="hover:text-leisure-terracotta transition-colors">Español</a>
+            </div>
+
+            <p class="text-xs">&copy; 2026 mirlo apps. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/leisure/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/leisure/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/leisure/en/privacidad.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/leisure/privacidad.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - Leisure Shelf - mirlo apps</title>
+    <meta name="description" content="Política de privacidad de Leisure Shelf: almacenamiento local y en iCloud personal, ausencia de cuentas, permisos del dispositivo y protección total de tus datos.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacidad - Leisure Shelf">
+    <meta name="twitter:description" content="Conoce cómo Leisure Shelf protege tu biblioteca, tus valoraciones y tu privacidad sin recopilar cuentas ni datos personales.">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'leisure-terracotta': '#E05A47',
+                        'leisure-amber': '#D97706',
+                        'leisure-sand': '#FAF7F2',
+                        'leisure-dark': '#141210',
+                        'leisure-surface': '#1F1B18',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        .serif-text {
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        .policy-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(224, 90, 71, 0.12);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .policy-card {
+            background: #1A1614;
+            border: 1px solid rgba(224, 90, 71, 0.2);
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-leisure-sand dark:bg-[#0F0D0C] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full bg-[#FAF7F2]/90 dark:bg-[#0F0D0C]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="flex items-center space-x-6">
+                <a href="./" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">
+                    Volver a Leisure Shelf
+                </a>
+
+                <a href="en/privacidad.html" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-leisure-terracotta hover:text-leisure-terracotta transition-colors">
+                    EN
+                </a>
+
+                <label class="inline-flex items-center cursor-pointer" aria-label="Cambiar tema">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-leisure-terracotta"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-36 pb-24">
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-leisure-terracotta/10 text-leisure-terracotta text-xs font-bold uppercase tracking-wider mb-4">
+                <i class="fas fa-shield-halved"></i>
+                <span>Transparencia y Privacidad</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                Privacidad en Leisure Shelf
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Tu colección cultural, tus valoraciones y tus hábitos de ocio son íntimos. Aquí te detallamos cómo tratamos tus datos con total respeto a tu privacidad.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Sección 1 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-leisure-terracotta/10 text-leisure-terracotta flex items-center justify-center font-bold">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Sin cuentas ni registros</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Leisure Shelf no requiere que crees ningún usuario, proporciones tu dirección de correo electrónico ni inventes contraseñas. Puedes abrir la aplicación y empezar a catalogar tus obras de inmediato sin ceder ningún dato de identidad.
+                </p>
+            </div>
+
+            <!-- Sección 2 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-leisure-terracotta/10 text-leisure-terracotta flex items-center justify-center font-bold">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Almacenamiento de tu biblioteca</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Toda tu biblioteca (libros, películas, series, juegos, discos de música, notas privadas, valoraciones e historial de préstamos) se almacena localmente en la base de datos interna de tu dispositivo (usando la tecnología SwiftData de Apple).
+                </p>
+                <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Si eres usuario de Leisure Shelf Pro y activas la sincronización con iCloud, la información viaja exclusivamente a través del contenedor privado de CloudKit de tu propia cuenta de Apple. Mirlo Apps no tiene servidores intermedios de almacenamiento ni acceso a lo que guardas.
+                </p>
+            </div>
+
+            <!-- Sección 3 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-leisure-terracotta/10 text-leisure-terracotta flex items-center justify-center font-bold">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Búsqueda en catálogos abiertos</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Cuando realizas una búsqueda online dentro de la app, el término introducido o el código ISBN se envía de forma puntual a las APIs públicas de Open Library (libros), The Movie Database (TMDB / MOTN), RAWG y Steam (videojuegos) o MusicBrainz (música) para recuperar portadas, sinopsis y fechas técnicas.
+                </p>
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    Estas consultas no asocian ningún identificador personal ni vinculan tus búsquedas con tu identidad.
+                </p>
+            </div>
+
+            <!-- Sección 4 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-leisure-terracotta/10 text-leisure-terracotta flex items-center justify-center font-bold">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Permisos del dispositivo</h2>
+                </div>
+                <ul class="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-300">
+                    <li>
+                        <strong>Cámara:</strong> Se solicita únicamente si decides escanear el código de barras ISBN de un libro físico. El procesamiento del código se realiza íntegramente en el dispositivo y no se almacena ni transmite ninguna imagen ni vídeo.
+                    </li>
+                    <li>
+                        <strong>Notificaciones:</strong> Se solicitan de manera voluntaria para avisarte sobre la fecha de devolución programada cuando le prestas un libro, juego o disco físico a un amigo. Son notificaciones locales generadas por tu propio teléfono.
+                    </li>
+                    <li>
+                        <strong>Fototeca:</strong> Opcional si decides subir una fotografía propia para usarla como fondo personalizado de tu estantería física. La imagen se guarda en tu dispositivo.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección 5 -->
+            <div class="policy-card p-8">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-leisure-terracotta/10 text-leisure-terracotta flex items-center justify-center font-bold">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold serif-text text-gray-900 dark:text-white">Compras dentro de la app</h2>
+                </div>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Las compras y suscripciones de Leisure Shelf Pro se procesan a través de Apple StoreKit y RevenueCat. Nosotros no tenemos acceso a tus datos de pago, números de tarjeta ni dirección de facturación; toda esa información está protegida por la infraestructura de Apple.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#0F0D0C] border-t border-gray-200 dark:border-gray-800 py-12 text-sm text-gray-500 dark:text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-gray-900 dark:text-white">mirlo apps<span class="text-mirlo-orange">.</span></span>
+                <span>— Artesanía de software para iOS</span>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="../apps/" class="hover:text-leisure-terracotta transition-colors">Todas las apps</a>
+                <a href="./" class="hover:text-leisure-terracotta transition-colors">Leisure Shelf</a>
+                <a href="soporte.html" class="hover:text-leisure-terracotta transition-colors">Soporte</a>
+                <a href="en/privacidad.html" class="hover:text-leisure-terracotta transition-colors">English</a>
+            </div>
+
+            <p class="text-xs">&copy; 2026 mirlo apps. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="canonical" href="https://www.mirloapps.es/leisure/en/">
+    <link rel="alternate" hreflang="es" href="https://www.mirloapps.es/leisure/">
+    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/leisure/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.mirloapps.es/leisure/">
+
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6758765026">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Leisure Shelf | Books, movies, games & music">
+    <meta name="twitter:description" content="Organize books, movies, TV series, games, and music in an interactive 2.5D physical shelf and detailed lists. No account or registration needed.">
+    <meta name="twitter:image" content="https://www.mirloapps.es/leisure/icon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leisure Shelf | Books, movies, games & music</title>
+    <meta name="description" content="Organize books, movies, TV series, video games, and music in one place. Interactive 2.5D bookshelf, open catalog search, Goodreads & Letterboxd import, loan tracking, and 100% privacy without accounts.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/leisure/en/">
+    <meta property="og:title" content="Leisure Shelf | Books, movies, games & music">
+    <meta property="og:description" content="Organize books, movies, TV series, video games, and music in one place. Interactive 2.5D bookshelf, multi-database search, free import, and physical loan tracking. Completely private.">
+    <meta property="og:image" content="https://www.mirloapps.es/leisure/icon.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'leisure-terracotta': '#E05A47',
+                        'leisure-amber': '#D97706',
+                        'leisure-sand': '#FAF7F2',
+                        'leisure-dark': '#141210',
+                        'leisure-surface': '#1F1B18',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['Crimson Pro', 'Georgia', 'serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .serif-text {
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        .bg-grain {
+            position: relative;
+            background-color: #FAF7F2;
+        }
+
+        .dark .bg-grain {
+            background-color: #0F0D0C;
+        }
+
+        .dark .bg-grain::before {
+            display: none;
+        }
+
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .leisure-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(224, 90, 71, 0.12);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .leisure-card {
+            background: #1A1614;
+            border: 1px solid rgba(224, 90, 71, 0.2);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-plastic {
+            background: linear-gradient(to bottom, #3A1F18 0%, #20100C 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(224, 90, 71, 0.4);
+        }
+
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data: SoftwareApplication + FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Leisure Shelf",
+          "alternateName": "Leisure",
+          "description": "Personal library app to organize books, movies, TV series, video games, and music. Interactive 2.5D physical shelf view, multi-provider search, Goodreads and Letterboxd import, loan tracking, and private sync.",
+          "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later",
+          "applicationCategory": "EntertainmentApplication",
+          "applicationSubCategory": "Lifestyle",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Free download with 1 daily addition, 1 daily online search, unlimited imports, 2.5D shelf, and loan tracking. Optional Pro upgrade available."
+          },
+          "url": "https://www.mirloapps.es/leisure/en/",
+          "downloadUrl": "https://apps.apple.com/app/leisure-shelf/id6758765026",
+          "softwareVersion": "1.0",
+          "author": {
+            "@type": "Person",
+            "name": "Paolo Alvarez"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "mirlo apps",
+            "url": "https://www.mirloapps.es/"
+          },
+          "inLanguage": "en",
+          "featureList": [
+            "Organize 5 media types in one place: books, movies, series, games, and music",
+            "Interactive 2.5D wooden bookshelf with realistic spine textures and colors",
+            "Detailed list view with filters for status, media type, and loans",
+            "Integrated search across Open Library, TMDB, RAWG, Steam, and MusicBrainz",
+            "Barcode and ISBN camera scanning for books",
+            "Free and unlimited import from Goodreads and Letterboxd CSV files",
+            "Physical loan tracking with due dates and local notification reminders",
+            "Customization: linen textures, colors, 4 typography choices, and 4 app icons",
+            "Family library sharing via .leisurelibrary package files",
+            "100% private: no accounts, no sign-up, and no email required",
+            "Private iCloud sync (CloudKit) with Leisure Shelf Pro",
+            "Advanced statistics, yearly goals, and CSV backups with Pro"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need to create an account to use Leisure Shelf?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Leisure Shelf requires no sign-up, username, password, or email. Your collection is saved locally on your device and, if you choose Pro, syncs via your personal private iCloud."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is included in the free version?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The free version includes full access to the 2.5D bookshelf and list views, unlimited CSV imports from Goodreads and Letterboxd, physical loan management with reminders, appearance customization, and allows 1 online search and 1 library addition per day."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does Leisure Shelf Pro unlock?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Leisure Shelf Pro unlocks unlimited library additions, unlimited online searches across all integrated databases, automatic private iCloud sync between iPhone and iPad, advanced statistics and yearly entertainment goals, and full CSV backups."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which databases are used for search?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The app queries Open Library for books and ISBN lookups; TMDB, MOTN, and Wikipedia for movies and TV series; RAWG, Steam, and Wikipedia for video games; and MusicBrainz with Cover Art Archive for music and vinyl records."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I import my existing Goodreads or Letterboxd data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can import CSV export files from Goodreads and Letterboxd directly into the app for free and without limits, keeping your titles, creators, and ratings intact."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the app work offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can view your full library, browse the 2.5D shelf, update statuses, manage loans, and add items manually without an internet connection. Connection is only required to fetch online metadata or sync with iCloud."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-leisure-sand dark:bg-[#0F0D0C] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- Header / Navigation Bar -->
+    <header class="fixed top-0 w-full bg-[#FAF7F2]/90 dark:bg-[#0F0D0C]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <li><a href="../../apps/" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Apps</a></li>
+                <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">About</a></li>
+                <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">How it works</a></li>
+                <li><a href="#gallery" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Screenshots</a></li>
+                <li><a href="#plans" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Plans</a></li>
+                <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">FAQ</a></li>
+                <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Support</a></li>
+                <li><a href="../" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-leisure-terracotta hover:text-leisure-terracotta transition-colors">ES</a></li>
+
+                <!-- Theme selector -->
+                <li>
+                    <label class="inline-flex items-center cursor-pointer" aria-label="Toggle dark mode">
+                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-leisure-terracotta"></div>
+                    </label>
+                </li>
+            </ul>
+
+            <!-- Mobile controls -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <a href="../" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">ES</a>
+                <label class="inline-flex items-center cursor-pointer" aria-label="Toggle dark mode">
+                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-9 h-5 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-leisure-terracotta"></div>
+                </label>
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 p-2" aria-label="Open menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile dropdown -->
+        <div id="mobile-menu" class="hidden flex-col px-6 py-4 space-y-3 bg-[#FAF7F2] dark:bg-[#0F0D0C] border-b border-gray-200 dark:border-gray-800 md:hidden text-sm font-medium">
+            <a href="../../apps/" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Apps</a>
+            <a href="#about" onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">About</a>
+            <a href="#how-it-works" onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">How it works</a>
+            <a href="#gallery" onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Screenshots</a>
+            <a href="#plans" onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Plans</a>
+            <a href="#faq" onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">FAQ</a>
+            <a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-leisure-terracotta">Support</a>
+        </div>
+    </header>
+
+    <main class="overflow-x-hidden">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grain">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-leisure-terracotta/10 text-leisure-terracotta text-xs font-bold uppercase tracking-wider">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Your unified cultural library</span>
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight serif-text leading-tight text-gray-900 dark:text-white">
+                        Books, movies, games &amp; music.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Leisure Shelf brings together everything you read, watch, play, and listen to in a single place. Browse your collection on a tactile 2.5D physical wooden shelf with detailed spines or clean filterable lists, completely private and without requiring any user account.
+                    </p>
+
+                    <!-- Feature pills -->
+                    <div class="flex flex-wrap gap-2 justify-center lg:justify-start text-xs font-medium text-gray-600 dark:text-gray-300 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-leisure-terracotta mr-1.5"></i>5 media types in 1 app</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-leisure-terracotta mr-1.5"></i>2.5D physical wooden shelf</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-leisure-terracotta mr-1.5"></i>Goodreads &amp; Letterboxd import</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-leisure-terracotta mr-1.5"></i>Physical loan tracking</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-zinc-800/80 border border-gray-200 dark:border-gray-700 shadow-sm"><i class="fas fa-check text-leisure-terracotta mr-1.5"></i>100% private without accounts</span>
+                    </div>
+
+                    <!-- App Store Button -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <a href="https://apps.apple.com/app/leisure-shelf/id6758765026" class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                            <i class="fab fa-apple text-3xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider opacity-80">Download on the</div>
+                                <div class="font-bold text-lg leading-tight">App Store</div>
+                            </div>
+                        </a>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">Designed for iPhone and iPad</span>
+                    </div>
+                </div>
+
+                <!-- Mockup of 2.5D shelf screenshot -->
+                <div class="flex-1 relative flex justify-center w-full max-w-sm lg:max-w-md">
+                    <div class="absolute -inset-4 bg-leisure-terracotta/20 blur-3xl rounded-full"></div>
+                    <div class="relative bg-white dark:bg-zinc-800 rounded-[2.8rem] p-3 shadow-2xl border-2 border-gray-200 dark:border-zinc-700">
+                        <div class="bg-black rounded-[2.3rem] overflow-hidden border border-gray-800 aspect-[600/873] max-w-[340px] mx-auto">
+                            <img src="../screen1.webp" width="600" height="873" alt="Leisure Shelf - 2.5D physical wooden bookshelf with books, movies, and games" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section: 5 unified media types -->
+        <section id="about" class="py-20 bg-white dark:bg-[#141210] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                        Your entire cultural collection in one catalog
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Stop scattering your leisure history across separate tracking apps. Leisure Shelf organizes your hobbies while preserving format-specific nuances.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Books & Comics -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-book-open text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Books &amp; Comics</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Look up books instantly via Open Library or scan ISBN barcodes. Track authors, publishers, pages read, and format (hardcover, paperback, or ebook).
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">Open Library &amp; ISBN Barcode</span>
+                    </div>
+
+                    <!-- Movies & TV Series -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-film text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Movies &amp; Series</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Access synopses, directors, cast members, and release dates through TMDB and Movie of the Night. Log completed seasons and physical Blu-ray discs.
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">TMDB &amp; Movie of the Night</span>
+                    </div>
+
+                    <!-- Video Games -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-gamepad text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Video Games</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Connect with RAWG and Steam game databases. Track games by platform, physical cartridges, expansions, and estimated play time.
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">RAWG &amp; Steam Database</span>
+                    </div>
+
+                    <!-- Music & Vinyl -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-compact-disc text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Music &amp; Vinyl</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Explore discographies via MusicBrainz and the Cover Art Archive. Catalog vinyl records, audio cassettes, CDs, and favorite digital albums.
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">MusicBrainz &amp; Cover Art Archive</span>
+                    </div>
+
+                    <!-- Loan Tracking -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-hand-holding-hand text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Loan Tracking</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Never lose track of a lent book or game again. Record recipient names, dates lent, and schedule local notification reminders for return.
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">Local return reminders</span>
+                    </div>
+
+                    <!-- Free CSV Import -->
+                    <div class="leisure-card p-8 group hover:-translate-y-1 transition-all">
+                        <div class="w-14 h-14 bg-leisure-terracotta/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-leisure-terracotta group-hover:text-white text-leisure-terracotta transition-colors">
+                            <i class="fas fa-file-arrow-up text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Free Data Import</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Import your full reading list from Goodreads or your film history from Letterboxd via standard CSV files. Import is free and unlimited.
+                        </p>
+                        <span class="text-xs font-semibold text-leisure-terracotta">Goodreads, Letterboxd &amp; CSV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section id="how-it-works" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-leisure-terracotta">Frictionless workflow</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Organize your media in three steps
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Designed to make adding a new item as satisfying as admiring your completed shelf.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="bg-white dark:bg-[#1A1614] rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm relative">
+                        <div class="text-4xl font-bold serif-text text-leisure-terracotta/30 mb-4">01</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Search or add manually</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Search by title, creator, or ISBN barcode to fetch covers and verified metadata instantly, or create custom entries for vintage editions and rare finds.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white dark:bg-[#1A1614] rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm relative">
+                        <div class="text-4xl font-bold serif-text text-leisure-terracotta/30 mb-4">02</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Choose your view</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Switch seamlessly between the 2.5D wooden physical shelf with realistic spines and the structured list view with filters for reading, watching, or playing status.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white dark:bg-[#1A1614] rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm relative">
+                        <div class="text-4xl font-bold serif-text text-leisure-terracotta/30 mb-4">03</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Track notes &amp; loans</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Add 10-point ratings, personal notes, dates finished, and keep tabs on which friends currently have your physical books or media discs borrowed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Screenshot Gallery -->
+        <section id="gallery" class="py-20 bg-white dark:bg-[#141210] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-leisure-terracotta">Real interface</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Inside the app
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Real screenshots of Leisure Shelf running on iPhone and iPad.
+                    </p>
+                </div>
+
+                <!-- Horizontal scroll gallery -->
+                <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar">
+                    <!-- Screen 1 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2.5 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/873]">
+                                <img src="../screen1.webp" loading="lazy" width="600" height="873" alt="2.5D physical wooden shelf with spines" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Interactive 2.5D wooden bookshelf</p>
+                    </div>
+
+                    <!-- Screen 2 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2.5 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/873]">
+                                <img src="../screen2.webp" loading="lazy" width="600" height="873" alt="Home dashboard with in-progress items and quick filters" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Home dashboard with in-progress items</p>
+                    </div>
+
+                    <!-- Screen 3 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2.5 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/873]">
+                                <img src="../screen3.webp" loading="lazy" width="600" height="873" alt="Detailed list catalog view with ratings and status badges" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">List catalog with ratings &amp; filters</p>
+                    </div>
+
+                    <!-- Screen 4 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2.5 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/873]">
+                                <img src="../screen4.webp" loading="lazy" width="600" height="873" alt="Entertainment statistics and goals preview" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Insights &amp; goals with Leisure Shelf Pro</p>
+                    </div>
+
+                    <!-- Screen 5 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px]">
+                        <div class="bg-gray-100 dark:bg-zinc-800 rounded-3xl p-2.5 shadow-lg border border-gray-200 dark:border-zinc-700">
+                            <div class="rounded-2xl overflow-hidden aspect-[600/873]">
+                                <img src="../screen5.webp" loading="lazy" width="600" height="873" alt="Appearance settings, family sharing, and data options" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-center text-gray-500 dark:text-gray-400 mt-3">Appearance, family library &amp; settings</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans: Free vs Pro -->
+        <section id="plans" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-leisure-terracotta">Clear limits</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Two ways to use Leisure Shelf
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        The free version lets you track everyday cultural consumption without spending a cent. Leisure Shelf Pro expands capabilities for collectors with larger libraries and multiple devices.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Free Card -->
+                    <div class="bg-white dark:bg-[#1A1614] rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 mb-4">
+                                Getting started
+                            </div>
+                            <h3 class="text-3xl font-bold serif-text text-gray-900 dark:text-white mb-2">Free Tier</h3>
+                            <p class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                                €0 <span class="text-sm font-normal text-gray-500">forever</span>
+                            </p>
+
+                            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400 mb-8">
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>1 library addition per day</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>1 online database search per day</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>Unlimited imports from Goodreads &amp; Letterboxd</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>Interactive 2.5D bookshelf and full list view</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>Physical loan tracking with local reminders</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>Full customization: linen textures, colors, 4 fonts, 4 icons</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span>100% private on-device storage</span></li>
+                                <li class="flex items-start text-gray-400 dark:text-gray-600"><i class="fas fa-minus mt-1 mr-3 shrink-0"></i><span>No iCloud sync or advanced statistics</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-100 dark:border-zinc-800 text-xs text-gray-500 dark:text-gray-400">
+                            No payment card or account registration required.
+                        </div>
+                    </div>
+
+                    <!-- Pro Card -->
+                    <div class="bg-white dark:bg-[#1A1614] rounded-3xl p-8 border-2 border-leisure-terracotta shadow-xl relative flex flex-col justify-between">
+                        <div class="absolute -top-3.5 right-6 bg-leisure-terracotta text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
+                            Recommended
+                        </div>
+
+                        <div>
+                            <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-leisure-terracotta/10 text-leisure-terracotta mb-4">
+                                Complete experience
+                            </div>
+                            <h3 class="text-3xl font-bold serif-text text-gray-900 dark:text-white mb-2">Leisure Shelf Pro</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-bold text-gray-900 dark:text-white">€2.99</span>
+                                <span class="text-sm text-gray-500">/ month (with 7-day free trial)</span>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    Or €14.99/year or €24.99 one-time lifetime purchase.
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300 mb-8">
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Unlimited library additions</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Unlimited online searches</span> across Open Library, TMDB, RAWG &amp; MusicBrainz</li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Private iCloud Sync</span> (CloudKit) across iPhone and iPad</li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Advanced statistics</span>: format breakdowns, ratings &amp; annual trends</li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Annual leisure goals</span> with live progress tracking</li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Full CSV export</span> for complete library backups</li>
+                                <li class="flex items-start"><i class="fas fa-check text-leisure-terracotta mt-1 mr-3 shrink-0"></i><span class="font-medium">Apple Family Sharing</span> enabled</li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-100 dark:border-zinc-800">
+                            <a href="https://apps.apple.com/app/leisure-shelf/id6758765026" class="w-full block text-center py-3 px-4 rounded-xl font-semibold text-white bg-leisure-terracotta hover:bg-leisure-terracotta/90 transition-colors">
+                                Try 7 days free in the app
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section id="faq" class="py-20 bg-white dark:bg-[#141210] border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-leisure-terracotta">Answers to common questions</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
+                        Frequently asked questions
+                    </h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>Is an account or sign-up required?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            No. Leisure Shelf is built with absolute privacy in mind. There are no registration forms, usernames, passwords, or email collections. Your collection belongs entirely to your device.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 2 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>How does the 2.5D bookshelf work?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            Every book, film, game, or vinyl record in your library automatically gets a realistic 3D spine rendered with artwork-matched colors, subtle beveling, and vertical typography. Swiping along shelves offers the tactile feeling of browsing a physical collection.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>Can I import my Goodreads or Letterboxd data for free?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            Yes. Importing CSV files from Goodreads and Letterboxd is completely free and unlimited. You can bring your entire historical catalog into the free tier in one go.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>What are the exact limits of the free tier?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            The free tier allows 1 online search and 1 item addition to your library each calendar day. The 2.5D shelf, list view, CSV imports, appearance customization, and loan management are fully functional without expiration. To perform unlimited searches and mass additions, you can upgrade to Leisure Shelf Pro.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>Where is my data stored and how does sync work?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            On the free tier, all data remains in local on-device storage. With Leisure Shelf Pro, your collection syncs automatically through your personal Apple CloudKit container linked to your Apple ID, with no intermediary servers.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 6 -->
+                    <details class="group bg-gray-50 dark:bg-[#1A1614] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-gray-900 dark:text-white text-lg">
+                            <span>How does physical loan tracking work?</span>
+                            <span class="transition group-open:rotate-180 text-leisure-terracotta">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4 leading-relaxed">
+                            On the detail view of any physical item (printed books, vinyl discs, console cartridges, or Blu-rays), you can enter the borrower's name and set an expected return date. The app schedules a local notification on your device so you remember to follow up.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+                    <img src="../icon.webp" width="1024" height="1024" alt="Leisure Shelf App Icon" class="w-full h-full object-cover">
+                </div>
+
+                <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
+                    Start your personal shelf today
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
+                    Books, movies, TV series, video games, and music living in order and elegance on your iPhone and iPad.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://apps.apple.com/app/leisure-shelf/id6758765026" class="btn-plastic inline-flex items-center space-x-3.5 text-white px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                        <i class="fab fa-apple text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase tracking-wider opacity-80">Download on the</div>
+                            <div class="font-bold text-lg leading-tight">App Store</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#0F0D0C] border-t border-gray-200 dark:border-gray-800 py-12 text-sm text-gray-500 dark:text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-gray-900 dark:text-white">mirlo apps<span class="text-mirlo-orange">.</span></span>
+                <span>— Thoughtfully crafted iOS software</span>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="../../apps/" class="hover:text-leisure-terracotta transition-colors">All apps</a>
+                <a href="privacidad.html" class="hover:text-leisure-terracotta transition-colors">Privacy</a>
+                <a href="soporte.html" class="hover:text-leisure-terracotta transition-colors">Support</a>
+                <a href="../" class="hover:text-leisure-terracotta transition-colors">Español</a>
+            </div>
+
+            <p class="text-xs">&copy; 2026 mirlo apps. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
