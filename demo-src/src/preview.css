@@ -1,0 +1,13 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f8fafc; color: #111827; font-family: system-ui, -apple-system, BlinkMacSystemFont, Inter, sans-serif; }
+.pv { min-height: 100vh; padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; max-width: 1120px; margin: 0 auto; }
+.pv-hero { display: grid; gap: 32px; align-items: center; }
+.pv-eyebrow { font-size: 13px; font-weight: 600; color: #6b7280; }
+.pv-copy h1 { font-size: clamp(40px, 7vw, 68px); letter-spacing: -0.03em; margin: 8px 0 12px; line-height: 1; }
+.pv-copy h1 span { color: #FF9E00; }
+.pv-copy p { font-size: 19px; line-height: 1.5; color: #4b5563; max-width: 440px; margin: 0; }
+.pv-demo { width: 100%; min-width: 0; }
+.pv-hero > * { min-width: 0; }
+.pv-note { text-align: center; font-size: 12px; color: #9ca3af; margin-top: 32px; }
+@media (min-width: 860px) { .pv-hero { grid-template-columns: 1fr 440px; gap: 64px; } .pv-demo { justify-self: end; } }
