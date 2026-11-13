@@ -1,321 +1,536 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <link rel="canonical" href="https://www.mirloapps.es/72h/">
-    <link rel="alternate" hreflang="en" href="https://www.mirloapps.es/72h/en/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="72 horas: app de preparación doméstica para cortes y emergencias">
-    <meta name="twitter:description" content="Calcula cuántos días de autonomía tiene tu hogar en agua, comida, energía y salud, y recibe el siguiente paso. Sin registro. Gratis, con desbloqueo único Premium. iPhone y iPad.">
-    <meta name="twitter:image" content="https://www.mirloapps.es/72h/icon.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>72 horas: app de preparación doméstica para cortes y emergencias</title>
-    <meta name="description" content="Calcula cuántos días de autonomía tiene tu hogar en agua, comida, energía y salud, y recibe el siguiente paso. Sin registro. Gratis, con desbloqueo único Premium. iPhone y iPad.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.mirloapps.es/72h/">
-    <meta property="og:title" content="72 horas: app de preparación doméstica para cortes y emergencias">
-    <meta property="og:description" content="Calcula cuántos días de autonomía tiene tu hogar en agua, comida, energía y salud, y recibe el siguiente paso. Sin registro. Gratis, con desbloqueo único Premium. iPhone y iPad.">
-    <meta property="og:image" content="https://www.mirloapps.es/72h/icon.png">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="shortcut icon" href="../favicon.ico">
-    <script type="application/ld+json">
-    {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      "name": "72 horas",
-      "description": "App para calcular la autonomía doméstica ante cortes de suministro y emergencias, con inventario, fichas de preparación y herramientas offline.",
-      "operatingSystem": "iOS 18.0 or later, iPadOS 18.0 or later",
-      "applicationCategory": "LifestyleApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "description": "Descarga gratuita. Desbloqueo Premium por 4,99 € (pago único)."
-      },
-      "url": "https://www.mirloapps.es/72h/",
-      "author": {
-        "@type": "Person",
-        "name": "Paolo Alvarez"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "mirlo apps",
-        "url": "https://www.mirloapps.es/"
-      },
-      "inLanguage": "es",
-      "featureList": [
-        "Autonomía estimada",
-        "7 áreas clave",
-        "Fichas de preparación",
-        "Inventario",
-        "Aprender",
-        "Consultor de campo",
-        "Copia de seguridad",
-        "Español e inglés"
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Necesito crear una cuenta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. No hay registro, ni correo, ni contraseña. Tus existencias, fotos y notas se guardan en tu dispositivo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué incluye la versión gratuita?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El cálculo de autonomía, las 4 primeras fichas, las áreas de agua, alimentación, energía y salud, el inventario, los artículos, el Consultor de campo y la copia de seguridad."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué desbloquea Premium?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Todas las fichas, las áreas de documentos, comunicaciones y hogar, y el Cuaderno de Herramientas. Es un pago único de 4,99 € (precio en el App Store de tu región)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Funciona sin conexión?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Las funciones principales no necesitan conexión. Comprar o restaurar Premium sí la necesita. El mapa dispone de cartografía offline."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Hay publicidad?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "La app no muestra banners. La guía de almacenamiento de agua incluye enlaces de compra a tiendas, algunos de afiliado de Amazon, que se abren fuera de la app."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué datos recopila?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No recoge datos personales y no hay cuentas. Las compras se gestionan con Apple y el servicio RevenueCat mediante un identificador anónimo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿En qué idiomas está?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Español e inglés. Por defecto sigue el idioma del sistema y puedes cambiarlo en Ajustes."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿En qué dispositivos funciona?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "iPhone y iPad con iOS 18.0 o superior. El Consultor de campo requiere un dispositivo compatible con Apple Intelligence."
-          }
-        }
-      ]
-    }
-  ]
-}
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = { theme: { extend: { colors: { 'mirlo-orange': '#FF9E00', 'seventy-primary': '#245C4D' }, fontFamily: { 'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'] } } }, darkMode: 'class' }
-    </script>
-    <style>
-        html, body { overflow-x: hidden; width: 100%; position: relative; }
-        html { scroll-behavior: smooth; }
-        * { transition: all 0.3s ease; }
-        .bg-grain { position: relative; background-color: #f3f4f6; }
-        .dark .bg-grain { background-color: #0a0a0a; }
-        .scrollbar-none { scrollbar-width: none; }
-        .scrollbar-none::-webkit-scrollbar { display: none; }
-        .btn-plastic { background: linear-gradient(to bottom, #333333 0%, #000000 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 4px 6px -1px rgba(0,0,0,.3); border: 1px solid rgba(0,0,0,.8); }
-    </style>
-    <script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark') } else { document.documentElement.classList.remove('dark') }
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) { document.documentElement.classList.remove('dark'); localStorage.theme = 'light'; }
-            else { document.documentElement.classList.add('dark'); localStorage.theme = 'dark'; }
-        }
-    </script>
-</head>
-
-<body class="bg-grain text-gray-900 dark:text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-emerald-700 selection:text-white">
-
-    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80">mirlo apps<span class="text-mirlo-orange">.</span></a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="../apps/" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a>
-                <a href="../#nosotros" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Nosotros</a>
-                <a href="../#contacto" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Contacto</a>
-                <a href="#como-funciona" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cómo funciona</a><a href="#funciones" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Funciones</a><a href="#premium" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Gratis y Premium</a><a href="#faq" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a>
-                <a href="soporte.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Soporte</a>
-                <a href="en/" class="text-xs font-semibold px-2 py-1 rounded border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-emerald-600">EN</a>
-                <label class="inline-flex items-center cursor-pointer"><input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer" aria-label="Dark mode"><div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div></label>
-            </div>
-            <div class="flex items-center space-x-4 md:hidden">
-                <a href="en/" class="text-xs font-semibold px-2 py-1 rounded border border-gray-300 dark:border-gray-700">EN</a>
-                <button onclick="toggleMenu()" aria-label="Menu" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="flex-grow pt-24">
-        <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-6 overflow-hidden">
-            <div class="max-w-6xl mx-auto"><div class="flex flex-col items-center text-center">
-                <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-black mb-8 shadow-2xl overflow-hidden p-1 border border-gray-800">
-                    <img src="icon.webp" width="1024" height="1024" alt="72 horas" class="w-full h-full object-cover rounded-[1.3rem]">
-                </div>
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-700/10 text-emerald-700 dark:text-emerald-300 text-sm font-semibold mb-6 border border-emerald-700/20">
-                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>iOS 18.0+ · iPhone y iPad · Español e inglés
-                </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6">72 horas: cuántos días aguanta tu hogar sin suministros</h1>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-normal">Indica quién vive en casa y qué tienes guardado. La app calcula tu autonomía frente al objetivo de 72 horas, te muestra qué falta por área y te propone un siguiente paso concreto. Funciona sin registro y guarda tus datos en tu dispositivo.</p>
-                <div class="flex flex-col sm:flex-row items-center gap-4 mb-14">
-                    <span class="btn-plastic text-white px-8 py-3.5 rounded-2xl font-bold flex items-center gap-3 opacity-80 cursor-not-allowed" aria-disabled="true">
-                        <i class="fab fa-apple text-2xl"></i><span class="text-lg leading-tight font-semibold">Próximamente en el App Store</span>
-                    </span>
-                </div>
-                <div class="w-full max-w-6xl mt-2">
-                    <div class="overflow-x-auto pb-4 pt-4 px-4 snap-x snap-mandatory scrollbar-none"><div class="flex gap-4 w-max mx-auto"><div class="flex-shrink-0 w-56 md:w-52 snap-center">
-  <div class="rounded-[2rem] border-[6px] border-gray-900 dark:border-gray-700 bg-[#F5F4EE] shadow-xl overflow-hidden aspect-[9/19] flex flex-col text-[#20352D]" role="img" aria-label="Mockup: Hoy">
-    <div class="bg-[#8a5226] h-6"></div>
-    <div class="p-3 flex-1 space-y-2 text-[11px]"><div class="rounded-lg bg-[#8a5226] text-white p-2"><div class="text-[8px] tracking-widest">AUTONOMÍA ESTIMADA</div><div class="text-lg font-bold">2 horas</div></div>
-<div class="rounded-lg bg-white border border-black/10 p-2"><div class="text-[8px] text-[#59685F]">FICHA 1 DE 4</div><div class="font-bold text-xs leading-tight mt-1">Consigue 24 L de agua para 2 personas</div><div class="mt-2 flex gap-1"><span class="flex-1 rounded bg-[#E1ECE5] text-center py-1">Cómo lo hago</span><span class="flex-1 rounded bg-[#245C4D] text-white text-center py-1">Ya lo tengo</span></div></div>
-<div class="rounded-lg bg-white border border-black/10 p-2 text-center"><div class="font-semibold">7 áreas clave</div><div class="mx-auto mt-1 w-16 h-16 rounded-full border-2 border-[#245C4D]/50"></div></div></div>
-    <div class="border-t border-black/10 bg-white/80 py-2 flex justify-around text-[8px] font-semibold text-[#59685F]"><span class="text-[#245C4D]">●</span><span>○</span><span>○</span><span>○</span><span>○</span></div>
-  </div></div><div class="flex-shrink-0 w-56 md:w-52 snap-center">
-  <div class="rounded-[2rem] border-[6px] border-gray-900 dark:border-gray-700 bg-[#F5F4EE] shadow-xl overflow-hidden aspect-[9/19] flex flex-col text-[#20352D]" role="img" aria-label="Mockup: Inventario">
-    <div class="bg-[#8a5226] h-6"></div>
-    <div class="p-3 flex-1 space-y-2 text-[11px]"><div class="rounded-lg bg-white border border-black/10 p-2 flex justify-between"><span class="font-semibold">Agua</span><span class="text-[#59685F]">12 L</span></div><div class="rounded-lg bg-white border border-black/10 p-2 flex justify-between"><span class="font-semibold">Arroz</span><span class="text-[#59685F]">2 kg</span></div><div class="rounded-lg bg-white border border-black/10 p-2 flex justify-between"><span class="font-semibold">Linterna LED</span><span class="text-[#59685F]">1</span></div><div class="rounded-lg bg-white border border-black/10 p-2 flex justify-between"><span class="font-semibold">Botiquín</span><span class="text-[#59685F]">1</span></div></div>
-    <div class="border-t border-black/10 bg-white/80 py-2 flex justify-around text-[8px] font-semibold text-[#59685F]"><span class="text-[#245C4D]">●</span><span>○</span><span>○</span><span>○</span><span>○</span></div>
-  </div></div><div class="flex-shrink-0 w-56 md:w-52 snap-center">
-  <div class="rounded-[2rem] border-[6px] border-gray-900 dark:border-gray-700 bg-[#F5F4EE] shadow-xl overflow-hidden aspect-[9/19] flex flex-col text-[#20352D]" role="img" aria-label="Mockup: Herramientas">
-    <div class="bg-[#8a5226] h-6"></div>
-    <div class="p-3 flex-1 space-y-2 text-[11px]"><div class="text-center font-bold pt-2">Cuaderno de Herramientas</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Mapa</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Linterna SOS</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Silbato SOS</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Brújula y radio</div></div>
-    <div class="border-t border-black/10 bg-white/80 py-2 flex justify-around text-[8px] font-semibold text-[#59685F]"><span class="text-[#245C4D]">●</span><span>○</span><span>○</span><span>○</span><span>○</span></div>
-  </div></div><div class="flex-shrink-0 w-56 md:w-52 snap-center">
-  <div class="rounded-[2rem] border-[6px] border-gray-900 dark:border-gray-700 bg-[#F5F4EE] shadow-xl overflow-hidden aspect-[9/19] flex flex-col text-[#20352D]" role="img" aria-label="Mockup: Aprender">
-    <div class="bg-[#8a5226] h-6"></div>
-    <div class="p-3 flex-1 space-y-2 text-[11px]"><div class="rounded-lg bg-white border border-black/10 p-2"><div class="font-semibold">Cuánta agua necesitas</div><div class="text-[9px] text-[#59685F]">Protección Civil</div></div><div class="rounded-lg bg-white border border-black/10 p-2"><div class="font-semibold">Apagones y cortes</div><div class="text-[9px] text-[#59685F]">Protección Civil</div></div><div class="rounded-lg bg-white border border-black/10 p-2"><div class="font-semibold">Botiquín doméstico</div><div class="text-[9px] text-[#59685F]">Cruz Roja</div></div></div>
-    <div class="border-t border-black/10 bg-white/80 py-2 flex justify-around text-[8px] font-semibold text-[#59685F]"><span class="text-[#245C4D]">●</span><span>○</span><span>○</span><span>○</span><span>○</span></div>
-  </div></div><div class="flex-shrink-0 w-56 md:w-52 snap-center">
-  <div class="rounded-[2rem] border-[6px] border-gray-900 dark:border-gray-700 bg-[#F5F4EE] shadow-xl overflow-hidden aspect-[9/19] flex flex-col text-[#20352D]" role="img" aria-label="Mockup: Ajustes">
-    <div class="bg-[#8a5226] h-6"></div>
-    <div class="p-3 flex-1 space-y-2 text-[11px]"><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Modificar datos del hogar</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Idioma: Sistema / Español / English</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Exportar copia en JSON</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Importar copia</div><div class="rounded-lg bg-white border border-black/10 p-2 font-semibold">Restaurar compras</div></div>
-    <div class="border-t border-black/10 bg-white/80 py-2 flex justify-around text-[8px] font-semibold text-[#59685F]"><span class="text-[#245C4D]">●</span><span>○</span><span>○</span><span>○</span><span>○</span></div>
-  </div></div></div></div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Mockups ilustrativos · las capturas reales llegarán con el lanzamiento</p>
-                </div>
-            </div></div>
-        </section>
-
-        <section id="como-funciona" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-12"><h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Cómo funciona</h2><p class="text-gray-600 dark:text-gray-400 text-lg">Tres pasos, sin cuentas ni formularios de registro.</p></div>
-                <div class="grid md:grid-cols-3 gap-8"><div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm"><div class="w-12 h-12 rounded-2xl bg-emerald-700/10 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-bold text-xl mb-6">1</div><h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Describe tu hogar</h3><p class="text-gray-600 dark:text-gray-400">Adultos, niños, mascotas, personas vulnerables y clima. Con eso la app ajusta los objetivos de agua y comida.</p></div><div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm"><div class="w-12 h-12 rounded-2xl bg-emerald-700/10 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-bold text-xl mb-6">2</div><h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Registra lo que tienes</h3><p class="text-gray-600 dark:text-gray-400">Añade existencias al inventario con cantidad, ubicación, caducidad, foto y notas. La app calcula la cobertura de cada área.</p></div><div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm"><div class="w-12 h-12 rounded-2xl bg-emerald-700/10 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-bold text-xl mb-6">3</div><h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Sigue las fichas</h3><p class="text-gray-600 dark:text-gray-400">Cada ficha es un siguiente paso («Ya lo tengo» o «Cómo lo hago»). Al completarla se actualiza tu autonomía.</p></div></div>
-            </div>
-        </section>
-
-        <section id="funciones" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-12"><h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Funciones de la aplicación</h2><p class="text-gray-600 dark:text-gray-400 text-lg">Lo que hace la app hoy, tal como está implementado.</p></div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-gauge-high text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Autonomía estimada</h3><p class="text-sm text-gray-600 dark:text-gray-400">Horas o días de autonomía frente al objetivo de 72 horas, con el desglose del cálculo a la vista.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-droplet text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">7 áreas clave</h3><p class="text-sm text-gray-600 dark:text-gray-400">Agua, alimentación, energía, salud, documentos, comunicaciones y seguridad del hogar, en brújula o barras.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-layer-group text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Fichas de preparación</h3><p class="text-sm text-gray-600 dark:text-gray-400">Un mazo de hasta 4 fichas activas con el siguiente paso prioritario según lo que te falta.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-box-open text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Inventario</h3><p class="text-sm text-gray-600 dark:text-gray-400">Existencias con cantidad, ubicación, caducidad, fotos y notas. Espacios del hogar configurables.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-book-open text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Aprender</h3><p class="text-sm text-gray-600 dark:text-gray-400">Artículos breves por área con su fuente oficial, ordenados según tus carencias.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-comment-dots text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Consultor de campo</h3><p class="text-sm text-gray-600 dark:text-gray-400">Preguntas sobre preparación doméstica respondidas en el dispositivo con Apple Intelligence. Requiere un iPhone compatible.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-file-export text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Copia de seguridad</h3><p class="text-sm text-gray-600 dark:text-gray-400">Exporta e importa tu inventario en un archivo JSON local.</p></div><div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><i class="fas fa-language text-2xl text-emerald-700 dark:text-emerald-300 mb-4"></i><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Español e inglés</h3><p class="text-sm text-gray-600 dark:text-gray-400">Sigue el idioma del sistema o elige uno en Ajustes.</p></div></div>
-            </div>
-        </section>
-
-        <section id="premium" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-12"><h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Gratis y Premium</h2><p class="text-gray-600 dark:text-gray-400 text-lg">Una descarga gratuita y un único pago opcional. Sin suscripciones.</p></div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Gratis</h3><p class="text-sm text-gray-500 mb-5">0 €</p>
-                        <ul class="space-y-3 text-gray-600 dark:text-gray-300"><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Cálculo de autonomía y desglose</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Las 4 primeras fichas de preparación</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Áreas de agua, alimentación, energía y salud</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Inventario y espacios del hogar</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Aprender y Consultor de campo (con Apple Intelligence)</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Copia de seguridad en JSON</span></li><li class="flex items-start"><i class="fas fa-check text-emerald-600 dark:text-emerald-400 mt-1.5 mr-3 text-xs"></i><span>Guía de almacenamiento de agua con enlaces de compra</span></li></ul>
-                    </div>
-                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border-2 border-emerald-700/40">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Premium</h3><p class="text-sm text-gray-500 mb-5">4,99 € · pago único</p>
-                        <p class="text-sm font-semibold text-gray-500 mb-3">Todo lo gratuito, y además:</p>
-                        <ul class="space-y-3 text-gray-600 dark:text-gray-300"><li class="flex items-start"><i class="fas fa-star text-amber-500 mt-1.5 mr-3 text-xs"></i><span>Todas las fichas de preparación, más allá de las 4 primeras</span></li><li class="flex items-start"><i class="fas fa-star text-amber-500 mt-1.5 mr-3 text-xs"></i><span>Áreas de documentos, comunicaciones y seguridad del hogar</span></li><li class="flex items-start"><i class="fas fa-star text-amber-500 mt-1.5 mr-3 text-xs"></i><span>Cuaderno de Herramientas: mapa con puntos de encuentro, linterna SOS, silbato SOS, brújula con guion para radio, frecuencias de emergencia y calculadora de racionamiento de agua</span></li><li class="flex items-start"><i class="fas fa-star text-amber-500 mt-1.5 mr-3 text-xs"></i><span>Restaurar compras con tu cuenta de Apple</span></li></ul>
-                    </div>
-                </div>
-                <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-6">El precio final lo muestra el App Store en tu región. La compra es un desbloqueo permanente, no una suscripción.</p>
-            </div>
-        </section>
-
-        <section class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Fuentes del contenido</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Cada artículo y objetivo cita su fuente.</p>
-                <p class="text-gray-700 dark:text-gray-300 mb-6">Contenido de referencia basado en Protección Civil de España, Cruz Roja Española, Ministerio de Sanidad y Banco de España. Fuera de España, la app enlaza referencias de FEMA (Ready.gov). Parámetros base: 4 litros de agua por persona y día, 2.200 kcal por adulto y 1.500 kcal por niño al día.</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">72 horas es una herramienta de diagnóstico doméstico. No garantiza ni certifica seguridad. En una emergencia real, sigue las instrucciones de Protección Civil y de las autoridades.</p>
-            </div>
-        </section>
-
-        <section id="faq" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12"><h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Preguntas frecuentes</h2><p class="text-gray-600 dark:text-gray-400">Respuestas directas sobre el funcionamiento y las condiciones de la app.</p></div>
-                <div class="space-y-6"><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Necesito crear una cuenta?</h3><p class="text-gray-600 dark:text-gray-300">No. No hay registro, ni correo, ni contraseña. Tus existencias, fotos y notas se guardan en tu dispositivo.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué incluye la versión gratuita?</h3><p class="text-gray-600 dark:text-gray-300">El cálculo de autonomía, las 4 primeras fichas, las áreas de agua, alimentación, energía y salud, el inventario, los artículos, el Consultor de campo y la copia de seguridad.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué desbloquea Premium?</h3><p class="text-gray-600 dark:text-gray-300">Todas las fichas, las áreas de documentos, comunicaciones y hogar, y el Cuaderno de Herramientas. Es un pago único de 4,99 € (precio en el App Store de tu región).</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Funciona sin conexión?</h3><p class="text-gray-600 dark:text-gray-300">Las funciones principales no necesitan conexión. Comprar o restaurar Premium sí la necesita. El mapa dispone de cartografía offline.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Hay publicidad?</h3><p class="text-gray-600 dark:text-gray-300">La app no muestra banners. La guía de almacenamiento de agua incluye enlaces de compra a tiendas, algunos de afiliado de Amazon, que se abren fuera de la app.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué datos recopila?</h3><p class="text-gray-600 dark:text-gray-300">No recoge datos personales y no hay cuentas. Las compras se gestionan con Apple y el servicio RevenueCat mediante un identificador anónimo.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿En qué idiomas está?</h3><p class="text-gray-600 dark:text-gray-300">Español e inglés. Por defecto sigue el idioma del sistema y puedes cambiarlo en Ajustes.</p></div><div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800"><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿En qué dispositivos funciona?</h3><p class="text-gray-600 dark:text-gray-300">iPhone y iPad con iOS 18.0 o superior. El Consultor de campo requiere un dispositivo compatible con Apple Intelligence.</p></div></div>
-            </div>
-        </section>
-
-        <section class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Ficha técnica</h2>
-                <div class="bg-white dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800"><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Nombre oficial:</span><span class="font-semibold text-gray-900 dark:text-white text-right">72 horas</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Desarrollador:</span><span class="font-semibold text-gray-900 dark:text-white text-right">Paolo Alvarez (mirlo apps)</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Compatibilidad:</span><span class="font-semibold text-gray-900 dark:text-white text-right">iOS 18.0+ / iPadOS 18.0+</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Idiomas:</span><span class="font-semibold text-gray-900 dark:text-white text-right">Español, inglés</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Modelo de precio:</span><span class="font-semibold text-gray-900 dark:text-white text-right">Gratis (Premium por 4,99 €, pago único)</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Registro:</span><span class="font-semibold text-gray-900 dark:text-white text-right">No requerido</span></div><div class="flex justify-between gap-4 py-3.5 px-6 text-sm"><span class="text-gray-500">Estado:</span><span class="font-semibold text-gray-900 dark:text-white text-right">Pendiente de lanzamiento en el App Store</span></div></div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex-1 min-w-0 flex justify-center md:justify-start"><a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">mirlo apps<span class="text-mirlo-orange">.</span></a></div>
-            <div class="text-sm text-gray-500 dark:text-gray-400 text-center">© 2026 mirlo apps. Made in Spain 🇪🇸</div>
-            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange">Privacidad y Términos</a>
-                <a href="#" onclick="window.mirloCookiePrefs &amp;&amp; window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange">Cookies</a>
-                <a href="soporte.html" class="hover:text-mirlo-orange">Soporte</a>
-                <a href="https://x.com/PaoloAC" aria-label="X" class="text-gray-400 hover:text-blue-400 text-xl"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8">
-        <button onclick="toggleMenu()" aria-label="Close" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2"><i class="fas fa-times text-3xl"></i></button>
-        <a href="../apps/" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
-        <a href="#como-funciona" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cómo funciona</a><a href="#funciones" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Funciones</a><a href="#premium" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Gratis y Premium</a><a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
-        <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Soporte</a>
-        <a href="en/" class="text-2xl font-bold text-emerald-600" onclick="toggleMenu()">English version</a>
-        <div class="flex items-center gap-4 mt-8"><span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span><label class="inline-flex items-center cursor-pointer"><input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer" aria-label="Dark mode"><div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div></label></div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   72 horas: app de preparacionismo doméstico y preparación ante emergencias | mirlo apps
+  </title>
+  <meta content="App de preparación doméstica para organizar provisiones y el kit de emergencia de 72 horas. Registra reservas del hogar, consulta cobertura y prepara cortes de agua o luz." name="description"/>
+  <link href="https://www.mirloapps.es/72h/" rel="canonical"/>
+  <link href="https://www.mirloapps.es/72h/" hreflang="es" rel="alternate"/>
+  <link href="https://www.mirloapps.es/72h/en/" hreflang="en" rel="alternate"/>
+  <link href="https://www.mirloapps.es/72h/" hreflang="x-default" rel="alternate"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://www.mirloapps.es/72h/" property="og:url"/>
+  <meta content="72 horas: app de preparacionismo doméstico y kit de emergencia" property="og:title"/>
+  <meta content="Organiza las provisiones de emergencia de tu hogar, compara la cobertura para 72 horas y revisa qué falta." property="og:description"/>
+  <meta content="https://www.mirloapps.es/72h/screens/today.webp" property="og:image"/>
+  <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"72 horas","applicationCategory":"LifestyleApplication","operatingSystem":"iOS 18 or later, iPadOS 18 or later","inLanguage":"es","description":"App de preparacionismo doméstico para registrar provisiones de emergencia, estimar cobertura de 72 horas y organizar un inventario del hogar.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Descarga gratuita con desbloqueo opcional de acceso completo mediante compra única. El precio se muestra en el App Store."},"publisher":{"@type":"Organization","name":"mirlo apps","url":"https://www.mirloapps.es/"}}
+  </script>
+ </head>
+ <body>
+  <header class="site-header">
+   <nav aria-label="Navegación principal" class="nav">
+    <a class="brand" href="../">
+     mirlo apps
+     <b>
+      .
+     </b>
+    </a>
+    <div class="nav-links">
+     <a href="../apps/">
+      Apps
+     </a>
+     <a href="../#nosotros">
+      Nosotros
+     </a>
+     <a href="#funciones">
+      Funciones
+     </a>
+     <a href="../#contacto">
+      Contacto
+     </a>
+     <a href="#como-funciona">
+      Cómo funciona
+     </a>
+     <a href="#premium">
+      Gratis y Premium
+     </a>
+     <a href="#faq">
+      FAQ
+     </a>
     </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) { menu.classList.remove('hidden'); menu.classList.add('flex'); }
-            else { menu.classList.add('hidden'); menu.classList.remove('flex'); }
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = isDark);
-        });
-    </script>
-    <script src="/cookies.js" defer></script>
-</body>
+    <div class="nav-actions">
+     <a class="language" href="en/" lang="en">
+      EN
+     </a>
+     <button aria-label="Cambiar tema" class="theme-toggle" data-theme-toggle="">
+      ◐
+     </button>
+     <button aria-label="Abrir menú" class="menu-toggle" data-menu-open="">
+      ☰
+     </button>
+    </div>
+   </nav>
+  </header>
+  <div aria-label="Menú móvil" class="mobile-menu">
+   <button aria-label="Cerrar menú" class="close-menu" data-menu-close="">
+    ×
+   </button>
+   <a href="../apps/">
+    Apps
+   </a>
+   <a href="#como-funciona">
+    Cómo funciona
+   </a>
+   <a href="#funciones">
+    Funciones
+   </a>
+   <a href="#premium">
+    Gratis y Premium
+   </a>
+   <a href="#faq">
+    Preguntas frecuentes
+   </a>
+   <a href="soporte.html">
+    Soporte
+   </a>
+   <a href="en/" lang="en">
+    English
+   </a>
+   <button class="theme-toggle" data-theme-toggle="">
+    Cambiar tema
+   </button>
+  </div>
+  <main class="main">
+   <section class="hero">
+    <div class="wrap hero-grid">
+     <div>
+      <img alt="Icono de 72 horas" class="app-icon" height="1024" src="icon.webp" width="1024"/>
+      <span class="eyebrow">
+       <i>
+       </i>
+       iPhone y iPad · iOS 18 o posterior
+      </span>
+      <h1>
+       Prepara tu hogar para una emergencia de 72 horas
+      </h1>
+      <p class="hero-copy">
+       Registra quién vive en casa y organiza tus provisiones de emergencia por espacios, incluida la mochila de 72 horas. Consulta una estimación de agua, comida, energía y salud frente al objetivo de tres días, y revisa las carencias que puedes preparar para un apagón, un corte de agua u otra emergencia.
+      </p>
+      <div class="hero-facts">
+       <span>
+        Español e inglés
+       </span>
+       <span>
+        Sin crear cuenta
+       </span>
+       <span>
+        Gratis con acceso Premium opcional
+       </span>
+      </div>
+     </div>
+     <figure class="hero-screenshot">
+      <div class="device-frame">
+       <img alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" height="2622" src="screens/today.webp" width="1206"/>
+      </div>
+      <figcaption class="caption">Captura real de la app en español · Hoy</figcaption>
+     </figure>
+    </div>
+   </section>
+   <section class="band alt" id="como-funciona">
+    <div class="wrap">
+     <div class="section-head">
+      <h2>
+       Organiza las provisiones de emergencia para 72 horas
+      </h2>
+      <p>
+       Para el preparacionismo doméstico y la preparación tipo prepper: registra agua, alimentos, energía y salud, compara las provisiones con un objetivo de 72 horas y revisa qué puedes completar en casa.
+      </p>
+     </div>
+     <div class="steps">
+      <article class="card">
+       <span class="step-no">
+        1
+       </span>
+       <h3>
+        Describe el hogar
+       </h3>
+       <p>
+        Indica adultos, niños, mascotas, clima y algunas necesidades de atención. La app ajusta sus referencias de agua y alimentación a esos datos.
+       </p>
+      </article>
+      <article class="card">
+       <span class="step-no">
+        2
+       </span>
+       <h3>
+        Registra tus provisiones
+       </h3>
+       <p>
+        Añade productos, cantidades, caducidades, fotos, notas y el espacio donde los guardas. Puedes configurar espacios como despensa o trastero.
+       </p>
+      </article>
+      <article class="card">
+       <span class="step-no">
+        3
+       </span>
+       <h3>
+        Revisa la cobertura
+       </h3>
+       <p>
+        Consulta la estimación de autonomía y el estado de las áreas disponibles. Las fichas sugieren tareas; puedes marcarlas como completadas o abrir su guía.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="band alt app-gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+     <div class="section-head">
+      <h2 id="gallery-title">Pantallas de Hoy, inventario, aprendizaje y herramientas</h2>
+      <p>Desliza para ver cómo se estima la autonomía, se organizan las provisiones y se consultan los artículos y utilidades Premium.</p>
+     </div>
+     <figure class="app-carousel" aria-label="Capturas de la app 72 horas">
+      <div class="device-frame">
+       <img class="carousel-slide is-active" data-caption-es="Hoy: autonomía estimada, prioridad de preparación y cobertura de las siete áreas." data-caption-en="Today: estimated autonomy, a preparation priority and coverage across seven areas." alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" height="2622" src="screens/today.webp" width="1206"/>
+       <img class="carousel-slide" data-caption-es="Inventario: organiza provisiones en estancias del hogar o en la mochila de 72 horas." data-caption-en="Inventory: organise supplies in household rooms or in a 72-hour go-bag." alt="Inventario de emergencia organizado por estancias, con despensa, cocina y mochila de 72 horas" height="2622" src="screens/inventory.webp" width="1206" hidden=""/>
+       <img class="carousel-slide" data-caption-es="Aprender: artículos breves de preparación con referencias enlazadas." data-caption-en="Learn: short preparedness articles with linked references." alt="Pantalla Aprender con artículos de preparación y enlaces a sus fuentes" height="2622" src="screens/learn.webp" width="1206" hidden=""/>
+       <img class="carousel-slide" data-caption-es="Mapa Premium: consulta cartografía y guarda puntos de encuentro para usarla en el terreno." data-caption-en="Premium map: view map coverage and save meeting points for field use." alt="Mapa del Cuaderno de Herramientas Premium con cartografía, ubicación GPS y puntos guardados" height="2622" src="screens/field-map.webp" width="1206" hidden=""/>
+      </div>
+      <div class="carousel-controls">
+       <button type="button" data-carousel-prev aria-label="Captura anterior">‹</button>
+       <span aria-live="polite" data-carousel-count>1 / 4</span>
+       <button type="button" data-carousel-next aria-label="Captura siguiente">›</button>
+      </div>
+      <figcaption class="caption" data-carousel-caption aria-live="polite">Captura real de la app en español · Hoy</figcaption>
+     </figure>
+    </div>
+   </section>
+   <section class="band" id="funciones">
+    <div class="wrap">
+     <div class="section-head">
+      <h2>
+       Qué puedes hacer
+      </h2>
+      <p>
+       Las funciones que corresponden a las pantallas y servicios de la versión actual.
+      </p>
+     </div>
+     <div class="feature-grid">
+      <article class="card">
+       <span class="icon">
+        ◷
+       </span>
+       <h3>
+        Autonomía estimada
+       </h3>
+       <p>
+        Compara las existencias registradas con un objetivo de 72 horas y consulta el desglose del cálculo.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ◉
+       </span>
+       <h3>
+        Siete áreas de preparación
+       </h3>
+       <p>
+        Agua, alimentación, energía, salud, documentos, comunicación y seguridad del hogar; tres áreas requieren acceso completo.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ▤
+       </span>
+       <h3>
+        Fichas de siguiente paso
+       </h3>
+       <p>
+        Un mazo de hasta cuatro tareas visibles prioriza qué puedes preparar a continuación según las carencias detectadas.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ▣
+       </span>
+       <h3>
+        Inventario doméstico
+       </h3>
+       <p>
+        Organiza cantidad, ubicación, caducidad, notas e imágenes. Exporta e importa una copia local en formato JSON.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ▧
+       </span>
+       <h3>
+        Aprender con fuentes
+       </h3>
+       <p>
+        Consulta artículos breves con referencias enlazadas. La lista puede ordenarse en función de la cobertura del hogar.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ✳
+       </span>
+       <h3>
+        Consultor de campo
+       </h3>
+       <p>
+        Responde dudas sobre preparación en el propio dispositivo con Apple Intelligence, cuando el modelo y el dispositivo sean compatibles.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ⌖
+       </span>
+       <h3>
+        Utilidades para el terreno
+       </h3>
+       <p>
+        Premium reúne seis páginas: mapa y puntos guardados, destello SOS, silbato, brújula, frecuencias y cálculo de racionamiento de agua.
+       </p>
+      </article>
+      <article class="card">
+       <span class="icon">
+        ⇄
+       </span>
+       <h3>
+        Dos idiomas
+       </h3>
+       <p>
+        La interfaz se ofrece en español e inglés. Sigue el idioma del sistema o permite elegirlo en Ajustes.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="band alt" id="premium">
+    <div class="wrap">
+     <div class="section-head">
+      <h2>
+       Qué incluye Gratis y qué añade Premium
+      </h2>
+      <p>
+       La descarga y las funciones básicas son gratuitas. El acceso completo se compra una sola vez; no es una suscripción.
+      </p>
+     </div>
+     <div class="premium-grid">
+      <article class="price-card">
+       <h3>
+        Gratis
+       </h3>
+       <p class="price">
+        Descarga gratuita
+       </p>
+       <ul class="list">
+        <li>
+         Estimación de autonomía y desglose
+        </li>
+        <li>
+         Las cuatro primeras fichas de preparación
+        </li>
+        <li>
+         Áreas de agua, alimentación, energía y salud
+        </li>
+        <li>
+         Perfil del hogar e inventario con espacios configurables
+        </li>
+        <li>
+         Artículos de Aprender y Consultor de campo, sujeto a compatibilidad con Apple Intelligence
+        </li>
+        <li>
+         Importación y exportación de copia JSON
+        </li>
+        <li>
+         Guía de almacenamiento de agua y enlaces a tiendas
+        </li>
+       </ul>
+      </article>
+      <article class="price-card premium">
+       <h3>
+        Premium · Acceso completo
+       </h3>
+       <p class="price">
+        Compra única no consumible · precio mostrado por el App Store en tu región
+       </p>
+       <p class="small-note">
+        Incluye lo gratuito, además de:
+       </p>
+       <ul class="list">
+        <li>
+         Fichas posteriores a las cuatro primeras
+        </li>
+        <li>
+         Áreas de documentos, comunicación y seguridad del hogar
+        </li>
+        <li>
+         Cuaderno de Herramientas con sus seis utilidades
+        </li>
+        <li>
+         Restauración de la compra desde Ajustes
+        </li>
+       </ul>
+      </article>
+     </div>
+     <p class="note">
+      El inventario y el perfil se guardan localmente. La copia JSON no incluye los archivos de imagen. La compra y la restauración pasan por Apple y requieren conexión; no se crea una cuenta de 72 horas.
+     </p>
+    </div>
+   </section>
+   <section class="band">
+    <div class="wrap">
+     <div class="source-box">
+      <div class="section-head">
+       <h2>
+        Referencias y límites
+       </h2>
+       <p>
+        Las fichas y artículos muestran sus fuentes para que puedas consultarlas.
+       </p>
+      </div>
+      <p>
+       Las referencias se adaptan a la región: en España, consulta
+       <a href="https://www.proteccioncivil.es/coordinacion/gestion-de-riesgos/autoproteccion" rel="noopener">
+        Protección Civil
+       </a>
+       ,
+       <a href="https://www2.cruzroja.es" rel="noopener">
+        Cruz Roja Española
+       </a>
+       y
+       <a href="https://www.sanidad.gob.es" rel="noopener">
+        Ministerio de Sanidad
+       </a>
+       y Banco de España; fuera de España, algunas referencias enlazan
+       <a href="https://www.ready.gov" rel="noopener">
+        FEMA Ready.gov
+       </a>
+       . Los cálculos usan valores orientativos para el hogar; no sustituyen las instrucciones de las autoridades ni consejos médicos.
+      </p>
+      <p>
+       <strong>
+        La estimación no garantiza ni certifica la seguridad del hogar.
+       </strong>
+       En una emergencia real, sigue las instrucciones de los servicios de emergencia y las autoridades competentes.
+      </p>
+      <p class="small-note">
+       Las funciones de inventario y cálculo usan datos locales. Para descargar cartografía sin conexión, abrir enlaces externos o comprar/restaurar Premium se necesita conexión. GPS requiere permiso de ubicación.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="band alt" id="faq">
+    <div class="wrap">
+     <div class="section-head">
+      <h2>
+       Preguntas frecuentes
+      </h2>
+     </div>
+     <div class="faq-grid">
+      <article class="card">
+       <h3>
+        ¿Hace falta crear una cuenta?
+       </h3>
+       <p>
+        No. No hay registro, correo ni contraseña de 72 horas. El perfil, el inventario, las fotos y las notas se guardan en el dispositivo. Las compras usan la infraestructura de Apple y RevenueCat.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿Qué hace el cálculo de autonomía?
+       </h3>
+       <p>
+        Compara las cantidades registradas con referencias de agua y calorías para el hogar y muestra una estimación y su desglose. Es orientativa, no una garantía de seguridad.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿Qué desbloquea la compra única?
+       </h3>
+       <p>
+        Las fichas que siguen a las primeras cuatro, las áreas de documentos, comunicación y seguridad del hogar, y el Cuaderno de Herramientas completo con seis utilidades.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿Funciona sin conexión?
+       </h3>
+       <p>
+        El inventario, los cálculos y el contenido incluido funcionan en el dispositivo. Las descargas de mapas, las compras y su restauración necesitan conexión. Descarga la cartografía antes de depender de ella sin red.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿El Consultor de campo funciona en todos los dispositivos?
+       </h3>
+       <p>
+        No. Usa Apple Intelligence y solo responde cuando la función está disponible en el dispositivo y el sistema compatibles; si no está disponible, la app lo indica.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿Hay enlaces a tiendas?
+       </h3>
+       <p>
+        La guía de agua abre enlaces externos a comercios; algunos pueden ser enlaces de afiliación.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        ¿En qué idiomas y dispositivos está la app?
+       </h3>
+       <p>
+        Interfaz en español e inglés para iPhone y iPad con iOS/iPadOS 18 o posterior. El Consultor tiene requisitos de compatibilidad adicionales.
+       </p>
+      </article>
+     </div>
+     <div class="tech">
+      <span>
+       iPhone y iPad
+      </span>
+      <span>
+       iOS/iPadOS 18+
+      </span>
+      <span>
+       Español · English
+      </span>
+      <span>
+       Sin cuenta de 72 horas
+      </span>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="site-footer">
+   <div class="footer-inner">
+    <a class="brand" href="../">
+     mirlo apps
+     <b>
+      .
+     </b>
+    </a>
+    <span class="copyright">
+     © 2026 mirlo apps · Made in Spain 🇪🇸
+    </span>
+    <div class="footer-links">
+     <a href="../privacidad.html">
+      Privacidad y términos
+     </a>
+     <a href="#" onclick="window.mirloCookiePrefs?.();return false">
+      Cookies
+     </a>
+     <a href="soporte.html">
+      Soporte
+     </a>
+     <a aria-label="X" href="https://x.com/PaoloAC">
+      X
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script src="site.js">
+  </script>
+  <script defer="" src="/cookies.js">
+  </script>
+ </body>
 </html>
