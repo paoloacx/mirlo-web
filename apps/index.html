@@ -1,33 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
-    <link rel="canonical" href="https://www.mirloapps.es/apps/">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.mirloapps.es/apps/">
-    <meta property="og:title" content="Apps - mirlo apps">
-    <meta property="og:description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
-    <meta property="og:image" content="https://www.mirloapps.es/mirlo-banner.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Apps - mirlo apps">
-    <meta name="twitter:description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
-    <meta name="twitter:image" content="https://www.mirloapps.es/mirlo-banner.png">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apps - mirlo apps</title>
-    <meta name="description" content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more.">
-
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="shortcut icon" href="../favicon.ico">
-
-    <script type="application/ld+json">
+<link href="https://www.mirloapps.es/apps/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.mirloapps.es/apps/" property="og:url"/>
+<meta content="Apps - mirlo apps" property="og:title"/>
+<meta content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more." property="og:description"/>
+<meta content="https://www.mirloapps.es/mirlo-banner.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Apps - mirlo apps" name="twitter:title"/>
+<meta content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more." name="twitter:description"/>
+<meta content="https://www.mirloapps.es/mirlo-banner.png" name="twitter:image"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apps - mirlo apps</title>
+<meta content="Explore all handcrafted iOS apps by mirlo apps: Poetry Companion, Weather for Humans, 24h Routines, Wishlist Genie, I'm OK, Embalses España, Balizas España and more." name="description"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../favicon.ico" rel="shortcut icon"/>
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -55,11 +51,9 @@
       }
     }
     </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -77,8 +71,7 @@
             darkMode: 'class',
         }
     </script>
-
-    <style>
+<style>
         html {
             scroll-behavior: smooth;
         }
@@ -114,8 +107,7 @@
             z-index: 1;
         }
     </style>
-
-    <script>
+<script>
         // Dark Mode Logic
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
@@ -133,440 +125,366 @@
             }
         }
     </script>
-</head>
-
-<body
-    class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 flex flex-col min-h-screen">
-
-    <header
-        class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-        <nav class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
-            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+<style id="catalog-architecture">
+/* Architectural drawing study: elevation, construction lines and ruled sheets. */
+:root{--paper:#fff;--ink:#202629;--muted:#647078;--line:#d7dfe2;--faint:#edf0f2;--accent:#dc8700}
+.dark{--paper:#111619;--ink:#edf1f3;--muted:#a2afb6;--line:#3b484f;--faint:#222e34;--accent:#ffb33b}
+body{background:var(--paper)!important;color:var(--ink)!important}
+header{background:var(--paper)!important;border-color:var(--line)!important}header nav{max-width:1248px!important;padding:22px 32px!important}
+.catalog-main{flex-grow:1;padding:112px 32px 88px;background:var(--paper);overflow:hidden}
+.catalog-wrap{max-width:1184px;margin:auto;position:relative}
+.catalog-wrap:before{content:'';position:absolute;inset:-24px -18px;pointer-events:none;border-left:1px solid var(--faint);border-right:1px solid var(--faint)}
+.catalog-hero{position:relative;min-height:290px;display:flex;flex-direction:column;justify-content:center;padding:30px 0 46px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.catalog-eyebrow,.app-index,.app-category{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:400;text-transform:uppercase;letter-spacing:.09em}
+.catalog-eyebrow{font-size:11px;color:var(--muted);margin-bottom:15px}
+.catalog-title{font-size:clamp(54px,7vw,88px);font-weight:450;line-height:1.05;letter-spacing:-.065em;color:var(--ink)}
+.catalog-dot{color:var(--accent)}
+.catalog-intro{position:relative;max-width:390px;font-size:14px;line-height:1.8;margin-top:20px;color:var(--muted);z-index:2}
+.architecture{position:absolute;width:49%;right:-8px;top:0;color:#bdc8ce;pointer-events:none}.dark .architecture{color:#52636d}.architecture svg{width:100%;height:auto}.architecture .guide{stroke:var(--faint)}.architecture .dimension{opacity:.7}.architecture .flutes{opacity:.55}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.app-sheet{display:block;position:relative;min-width:0;min-height:228px;padding:25px 25px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink);transition:background .2s}
+.app-sheet:before{content:'';position:absolute;left:-5px;top:-5px;width:9px;height:9px;background:linear-gradient(var(--muted),var(--muted)) center/9px 1px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1px 9px no-repeat;opacity:.6;z-index:2}
+.app-sheet:hover{background:repeating-linear-gradient(135deg,transparent 0 7px,var(--faint) 7px 8px)}
+.app-sheet:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.app-index{font-size:11px;color:var(--muted);position:absolute;left:25px;top:26px}
+.app-icon{width:58px;height:58px;border-radius:14px;object-fit:cover;margin:0 0 24px auto;box-shadow:none!important;--tw-ring-shadow:0 0 #0000}
+.app-copy{min-width:0}.app-category{display:block;font-size:9px;letter-spacing:.045em;line-height:1.5;color:var(--muted)!important;margin-bottom:6px;padding-right:5px}
+.app-name{font-size:21px!important;font-weight:500!important;line-height:1.2;letter-spacing:-.035em;color:var(--ink)!important;white-space:normal!important;overflow:visible!important}
+.app-description{display:block!important;color:var(--muted)!important;font-size:12px!important;line-height:1.65;white-space:normal!important;overflow:visible!important;-webkit-line-clamp:unset!important;margin-top:9px;padding-right:15px}
+.app-plus{position:absolute;right:24px;bottom:25px;font-size:19px;font-weight:300;color:var(--muted)}
+.catalog-archive{margin-top:64px;padding-top:24px;border-top:1px solid var(--line)}
+.archive-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.archive-heading h2{font-size:22px!important;font-weight:450!important;letter-spacing:-.035em}.archive-heading p{color:var(--muted)!important}.archive-heading span{background:none!important;border:1px solid var(--line);border-radius:0!important;color:var(--muted)!important;font:10px ui-monospace,monospace}
+.catalog-grid-retired{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-grid-retired .app-sheet{min-height:180px}.catalog-grid-retired .app-icon{width:44px;height:44px;margin-bottom:16px}.catalog-grid-retired .app-copy>div{display:flex;flex-wrap:wrap}.catalog-grid-retired .app-copy span{background:none!important;color:var(--muted)!important}
+footer{background:var(--paper)!important;border-color:var(--line)!important}footer>div{max-width:1184px!important}footer>div>div:last-child{flex-wrap:wrap;gap:18px;margin-left:0}footer>div>div:last-child>*{margin-left:0!important}
+@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.architecture{width:48%;top:40px}.catalog-intro{max-width:45%}.catalog-title{font-size:70px}.app-sheet{min-height:230px}}
+@media(max-width:600px){header nav{padding:17px 22px!important}.catalog-main{padding:94px 22px 56px}.catalog-wrap:before{inset:-12px -10px}.catalog-hero{padding:14px 0 28px;min-height:0;margin-bottom:24px}.catalog-title{font-size:64px}.catalog-eyebrow{font-size:10px}.catalog-intro{max-width:100%;font-size:13px;line-height:1.7;margin-top:16px}.architecture{position:relative;right:auto;top:auto;align-self:center;width:100%;max-width:440px;margin:15px 0 -5px}.catalog-grid,.catalog-grid-retired{grid-template-columns:1fr}.app-sheet{min-height:192px;padding:22px}.app-index{left:22px;top:24px}.app-icon{width:52px;height:52px;margin-bottom:15px}.app-name{font-size:23px!important}.app-category{font-size:9px}.app-description{font-size:13px!important}.archive-heading{display:block}.archive-heading>p{margin-top:12px}.catalog-archive{margin-top:44px}.catalog-grid-retired .app-sheet{min-height:172px}footer{padding:32px 20px!important}footer>div>div:last-child{gap:16px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head>
+<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 flex flex-col min-h-screen">
+<header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
+<nav class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
+<a class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight" href="../">
                 mirlo apps<span class="text-mirlo-orange">.</span>
-            </a>
-
-            <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                <li><a href="./" class="text-mirlo-orange">Apps</a></li>
-                <li><a href="../#contacto"
-                        class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors">Contact</a>
-                </li>
-
-                <!-- Dark Mode Switch -->
-                <li class="flex items-center">
-                    <label class="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                        <div
-                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                        </div>
-                    </label>
-                </li>
-            </ul>
-
-            <button onclick="toggleMenu()" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </nav>
-    </header>
-
-    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 bg-grain">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Compact Header -->
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-                <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mirlo-orange/10 border border-mirlo-orange/20 text-mirlo-orange text-xs font-semibold tracking-wide uppercase mb-3">
-                        <i class="fab fa-apple"></i> iOS App Catalog
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Our Apps<span class="text-mirlo-orange">.</span>
-                    </h1>
-                </div>
-                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-md">
+</a>
+<ul class="hidden md:flex space-x-8 text-sm font-medium">
+<li><a class="text-mirlo-orange" href="./">Apps</a></li>
+<li><a class="text-gray-600 dark:text-gray-300 hover:text-mirlo-orange dark:hover:text-mirlo-orange transition-colors" href="../#contacto">Contact</a>
+</li>
+<!-- Dark Mode Switch -->
+<li class="flex items-center">
+<label class="inline-flex items-center cursor-pointer">
+<input aria-label="Dark mode" class="sr-only peer" onclick="toggleDarkMode()" type="checkbox"/>
+<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+</div>
+</label>
+</li>
+</ul>
+<button aria-label="Toggle navigation" class="md:hidden text-gray-600 dark:text-white hover:text-mirlo-orange p-2" onclick="toggleMenu()">
+<i class="fas fa-bars text-xl"></i>
+</button>
+</nav>
+</header>
+<main class="catalog-main">
+<div class="catalog-wrap">
+<!-- Compact Header -->
+<div class="catalog-hero">
+<div>
+<div class="catalog-eyebrow">APP CATALOG</div>
+<h1 class="catalog-title">Our Apps<span class="catalog-dot">.</span></h1>
+</div>
+<p class="catalog-intro">
                     Handcrafted software with personality and character. Built to be useful, private, and fast.
                 </p>
-            </div>
+<div aria-hidden="true" class="architecture"><svg fill="none" viewbox="0 0 580 290" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="1"><path class="guide" d="M15 238H565M58 25V275M522 25V275M290 12V280M20 85H560"></path><path d="M75 102L290 30L505 102H75ZM106 94L290 43L474 94M70 110H510V122H70V110ZM85 130H495M85 231H495V240H85V231ZM72 240H508V250H72V240ZM58 250H522V261H58V250Z"></path><path d="M98 124H142V134H98ZM102 134L107 223H133L138 134M100 224H140V231H100ZM183 124H227V134H183ZM187 134L192 223H218L223 134M185 224H225V231H185ZM268 124H312V134H268ZM272 134L277 223H303L308 134M270 224H310V231H270ZM353 124H397V134H353ZM357 134L362 223H388L393 134M355 224H395V231H355ZM438 124H482V134H438ZM442 134L447 223H473L478 134M440 224H480V231H440Z"></path><path class="flutes" d="M111 138L114 219M120 138V219M129 138L126 219M196 138L199 219M205 138V219M214 138L211 219M281 138L284 219M290 138V219M299 138L296 219M366 138L369 219M375 138V219M384 138L381 219M451 138L454 219M460 138V219M469 138L466 219"></path><path class="dimension" d="M59 18H521M58 13V23M522 13V23M540 110V261M535 110H545M535 261H545M54 14L62 22M518 14L526 22M536 106L544 114M536 257L544 265"></path><circle cx="290" cy="30" r="4"></circle><path d="M284 30H296M290 24V36"></path></g></svg></div></div>
+<!-- Active Apps Grid (Compact Bento Cards) -->
+<div class="catalog-grid">
+<!-- 72 Hours -->
+<a class="app-sheet" href="../72h/en/"><span aria-hidden="true" class="app-index">01</span>
 
-            <!-- Active Apps Grid (Compact Bento Cards) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
-
-                <!-- 72 Hours -->
-                <a href="../72h/en/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-orange-500/40 dark:hover:border-orange-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-orange-500/10 dark:bg-orange-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../72h/icon.webp" width="1024" height="1024" alt="72 Hours Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400">Home emergency preparedness</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-orange-500 transition-colors">
+<img alt="72 Hours Icon" class="app-icon" height="1024" loading="lazy" src="../72h/icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Home emergency preparedness</span>
+<h2 class="app-name">
                             72 Hours
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Organise emergency supplies and check estimated 72-hour coverage
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-orange-500/10 flex items-center justify-center text-gray-400 group-hover:text-orange-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 0. Leisure Shelf -->
-                <a href="../leisure/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-orange-500/40 dark:hover:border-orange-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-orange-500/10 dark:bg-orange-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../leisure/icon.webp" width="1024" height="1024" alt="Leisure Shelf Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400">Books &bull; Movies &bull; Games &bull; Music</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-orange-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 0. Leisure Shelf -->
+<a class="app-sheet" href="../leisure/"><span aria-hidden="true" class="app-index">02</span>
+
+<img alt="Leisure Shelf Icon" class="app-icon" height="1024" loading="lazy" src="../leisure/icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Books • Movies • Games • Music</span>
+<h2 class="app-name">
                             Leisure Shelf
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Books, movies, games &amp; music in an interactive 2.5D shelf
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-orange-500/10 flex items-center justify-center text-gray-400 group-hover:text-orange-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 1. Poetry Companion -->
-                <a href="../poetrycompanion/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-violet-500/40 dark:hover:border-violet-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-violet-500/10 dark:bg-violet-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../poetrycompanion/icon.webp" width="1024" height="1024" alt="Poetry Companion Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">Writing &bull; Literature</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-violet-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 1. Poetry Companion -->
+<a class="app-sheet" href="../poetrycompanion/"><span aria-hidden="true" class="app-index">03</span>
+
+<img alt="Poetry Companion Icon" class="app-icon" height="1024" loading="lazy" src="../poetrycompanion/icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Writing • Literature</span>
+<h2 class="app-name">
                             Poetry companion
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Poetry writing app for iPhone and iPad
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-violet-500/10 flex items-center justify-center text-gray-400 group-hover:text-violet-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 2. Weather for Humans -->
-                <a href="../weatherforhumans/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-sky-500/40 dark:hover:border-sky-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/WFH1.png" loading="lazy" width="1024" height="1024" alt="Weather for Humans Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Weather</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-sky-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 2. Weather for Humans -->
+<a class="app-sheet" href="../weatherforhumans/"><span aria-hidden="true" class="app-index">04</span>
+
+<img alt="Weather for Humans Icon" class="app-icon" height="1024" loading="lazy" src="/WFH1.png" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Weather</span>
+<h2 class="app-name">
                             Weather for humans
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Made to understand weather
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-sky-500/10 flex items-center justify-center text-gray-400 group-hover:text-sky-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 3. Yeah! -->
-                <a href="../yeahapp/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-mirlo-orange/40 dark:hover:border-mirlo-orange/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-mirlo-orange/10 dark:bg-mirlo-orange/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/yeahapp/yeah-icon.webp" loading="lazy" width="1024" height="1024" alt="Yeah! Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-mirlo-orange">Places &bull; Maps</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-mirlo-orange transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 3. Yeah! -->
+<a class="app-sheet" href="../yeahapp/"><span aria-hidden="true" class="app-index">05</span>
+
+<img alt="Yeah! Icon" class="app-icon" height="1024" loading="lazy" src="/yeahapp/yeah-icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Places • Maps</span>
+<h2 class="app-name">
                             yeah!
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Track your life on a map
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-mirlo-orange/10 flex items-center justify-center text-gray-400 group-hover:text-mirlo-orange transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 4. Ephemerides -->
-                <a href="../ephemerides/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-purple-500/40 dark:hover:border-purple-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/ephemerides/ephemerides-icon.webp" loading="lazy" width="1024" height="1024" alt="Ephemerides Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">Journal &bull; Calendar</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-purple-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 4. Ephemerides -->
+<a class="app-sheet" href="../ephemerides/"><span aria-hidden="true" class="app-index">06</span>
+
+<img alt="Ephemerides Icon" class="app-icon" height="1024" loading="lazy" src="/ephemerides/ephemerides-icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Journal • Calendar</span>
+<h2 class="app-name">
                             Ephemerides
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Calendar, diary and memories
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-purple-500/10 flex items-center justify-center text-gray-400 group-hover:text-purple-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 5. A Sun in Your Pocket -->
-                <a href="../asuninyourpocket/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-yellow-500/40 dark:hover:border-yellow-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-yellow-500/10 dark:bg-yellow-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/asuninyourpocket/sun.webp" loading="lazy" width="1024" height="1024" alt="A Sun in Your Pocket Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">Astronomy &bull; Sky</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-yellow-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 5. A Sun in Your Pocket -->
+<a class="app-sheet" href="../asuninyourpocket/"><span aria-hidden="true" class="app-index">07</span>
+
+<img alt="A Sun in Your Pocket Icon" class="app-icon" height="1024" loading="lazy" src="/asuninyourpocket/sun.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Astronomy • Sky</span>
+<h2 class="app-name">
                             A Sun in Your Pocket
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Sun &amp; Moon tracker
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-yellow-500/10 flex items-center justify-center text-gray-400 group-hover:text-yellow-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 6. 24h Routines -->
-                <a href="../24hroutines/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-teal-500/40 dark:hover:border-teal-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/24hroutines/icon-24h.webp" loading="lazy" width="1024" height="1024" alt="24h Routines Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-400">Habits &bull; Productivity</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-teal-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 6. 24h Routines -->
+<a class="app-sheet" href="../24hroutines/"><span aria-hidden="true" class="app-index">08</span>
+
+<img alt="24h Routines Icon" class="app-icon" height="1024" loading="lazy" src="/24hroutines/icon-24h.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Habits • Productivity</span>
+<h2 class="app-name">
                             24h Routines
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Minimalist routines planner
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-teal-500/10 flex items-center justify-center text-gray-400 group-hover:text-teal-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 7. Wishlist Genie -->
-                <a href="../wishlistgenie/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../wishlistgenie/icon.webp" loading="lazy" width="400" height="400" alt="Wishlist Genie Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Shopping &bull; Gifts</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-indigo-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 7. Wishlist Genie -->
+<a class="app-sheet" href="../wishlistgenie/"><span aria-hidden="true" class="app-index">09</span>
+
+<img alt="Wishlist Genie Icon" class="app-icon" height="400" loading="lazy" src="../wishlistgenie/icon.webp" width="400"/>
+<div class="app-copy">
+<span class="app-category">Shopping • Gifts</span>
+<h2 class="app-name">
                             Wishlist Genie
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Smart shopping &amp; gift wishlist
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-indigo-500/10 flex items-center justify-center text-gray-400 group-hover:text-indigo-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 8. I'm OK -->
-                <a href="../ImOK/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-green-500/40 dark:hover:border-green-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-green-500/10 dark:bg-green-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../ImOK/imok.webp" loading="lazy" width="1024" height="1024" alt="I'm OK Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">Family &bull; Safety</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-green-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 8. I'm OK -->
+<a class="app-sheet" href="../ImOK/"><span aria-hidden="true" class="app-index">10</span>
+
+<img alt="I'm OK Icon" class="app-icon" height="1024" loading="lazy" src="../ImOK/imok.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Family • Safety</span>
+<h2 class="app-name">
                             I'm OK
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Peace of mind for families
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-green-500/10 flex items-center justify-center text-gray-400 group-hover:text-green-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 9. Balizas España -->
-                <a href="../balizas/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-red-500/40 dark:hover:border-red-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-red-500/10 dark:bg-red-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/Balizas.png" loading="lazy" width="1024" height="1024" alt="Balizas España Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">Roads &bull; Spain</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-red-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 9. Balizas España -->
+<a class="app-sheet" href="../balizas/"><span aria-hidden="true" class="app-index">11</span>
+
+<img alt="Balizas España Icon" class="app-icon" height="1024" loading="lazy" src="/Balizas.png" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Roads • Spain</span>
+<h2 class="app-name">
                             Balizas España
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Live V-16 beacon map
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-red-500/10 flex items-center justify-center text-gray-400 group-hover:text-red-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 10. Embalses España -->
-                <a href="../embalses/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-sky-500/40 dark:hover:border-sky-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="/Embalses.png" loading="lazy" width="1024" height="1024" alt="Embalses España Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Water &bull; Spain</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-sky-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 10. Embalses España -->
+<a class="app-sheet" href="../embalses/"><span aria-hidden="true" class="app-index">12</span>
+
+<img alt="Embalses España Icon" class="app-icon" height="1024" loading="lazy" src="/Embalses.png" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Water • Spain</span>
+<h2 class="app-name">
                             Embalses España
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Spain's water reservoirs, live
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-sky-500/10 flex items-center justify-center text-gray-400 group-hover:text-sky-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-                <!-- 11. My Health Keeper -->
-                <a href="../myhealthkeeper/"
-                    class="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 p-4 sm:p-5 border border-gray-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 transition-all duration-300 flex items-center gap-4">
-                    <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
-                    <img src="../myhealthkeeper/icon.webp" loading="lazy" width="1024" height="1024" alt="My Health Keeper Icon"
-                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Health &bull; Medical</span>
-                        <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-emerald-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- 11. My Health Keeper -->
+<a class="app-sheet" href="../myhealthkeeper/"><span aria-hidden="true" class="app-index">13</span>
+
+<img alt="My Health Keeper Icon" class="app-icon" height="1024" loading="lazy" src="../myhealthkeeper/icon.webp" width="1024"/>
+<div class="app-copy">
+<span class="app-category">Health • Medical</span>
+<h2 class="app-name">
                             My Health Keeper
                         </h2>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
+<p class="app-description">
                             Personal health ledger &amp; AI companion
                         </p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-emerald-500/10 flex items-center justify-center text-gray-400 group-hover:text-emerald-500 transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </a>
+</div>
 
-            </div>
-
-            <!-- Retired Apps Section -->
-            <div class="mt-16 pt-12 border-t border-gray-200/80 dark:border-zinc-800/80">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
-                    <div class="flex items-center gap-3">
-                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Retired apps</h2>
-                        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-200/80 dark:bg-zinc-800 text-gray-600 dark:text-gray-400">
+<span aria-hidden="true" class="app-plus">+</span></a>
+</div>
+<!-- Retired Apps Section -->
+<div class="catalog-archive">
+<div class="archive-heading">
+<div class="flex items-center gap-3">
+<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Retired apps</h2>
+<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-200/80 dark:bg-zinc-800 text-gray-600 dark:text-gray-400">
                             Archive
                         </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+</div>
+<p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                         No longer on the App Store, but still part of our story.
                     </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
-                    <!-- Brainrot Stories -->
-                    <a href="../Brainrotstories/"
-                        class="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-zinc-900/50 p-4 sm:p-5 border border-gray-200/60 dark:border-zinc-800/70 hover:bg-white dark:hover:bg-zinc-900 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 opacity-80 hover:opacity-100">
-                        <img src="../Brainrotstories/brainrot-stories.webp" loading="lazy" width="1024" height="1024" alt="Brainrot Stories Icon"
-                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow flex-shrink-0 grayscale-[30%] group-hover:grayscale-0 transition-all">
-                        <div class="min-w-0 flex-1">
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-base font-bold text-gray-900 dark:text-white truncate group-hover:text-purple-500 transition-colors">
+</div>
+<div class="catalog-grid catalog-grid-retired">
+<!-- Brainrot Stories -->
+<a class="app-sheet" href="../Brainrotstories/"><span aria-hidden="true" class="app-index">A01</span>
+<img alt="Brainrot Stories Icon" class="app-icon" height="1024" loading="lazy" src="../Brainrotstories/brainrot-stories.webp" width="1024"/>
+<div class="app-copy">
+<div class="flex items-center gap-2">
+<h3 class="app-name">
                                     Brainrot Stories
                                 </h3>
-                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
+<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
                                     Retired
                                 </span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+</div>
+<p class="app-description">
                                 AI story generator &amp; writer
                             </p>
-                        </div>
-                        <i class="fas fa-arrow-right text-xs text-gray-400 group-hover:text-purple-500 group-hover:translate-x-0.5 transition-all flex-shrink-0"></i>
-                    </a>
+</div>
 
-                    <!-- Who am I? -->
-                    <a href="../Whoami/"
-                        class="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-zinc-900/50 p-4 sm:p-5 border border-gray-200/60 dark:border-zinc-800/70 hover:bg-white dark:hover:bg-zinc-900 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4 opacity-80 hover:opacity-100">
-                        <img src="/Whoami/whoai.webp" loading="lazy" width="512" height="512" alt="Who am I? Icon"
-                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow flex-shrink-0 grayscale-[30%] group-hover:grayscale-0 transition-all">
-                        <div class="min-w-0 flex-1">
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-base font-bold text-gray-900 dark:text-white truncate group-hover:text-blue-500 transition-colors">
+<span aria-hidden="true" class="app-plus">+</span></a>
+<!-- Who am I? -->
+<a class="app-sheet" href="../Whoami/"><span aria-hidden="true" class="app-index">A02</span>
+<img alt="Who am I? Icon" class="app-icon" height="512" loading="lazy" src="/Whoami/whoai.webp" width="512"/>
+<div class="app-copy">
+<div class="flex items-center gap-2">
+<h3 class="app-name">
                                     Who am I?
                                 </h3>
-                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
+<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
                                     Retired
                                 </span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+</div>
+<p class="app-description">
                                 Compare your stats with the world
                             </p>
-                        </div>
-                        <i class="fas fa-arrow-right text-xs text-gray-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all flex-shrink-0"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+</div>
 
-    <footer
-        class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-10 px-6 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
-                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+<span aria-hidden="true" class="app-plus">+</span></a>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-10 px-6 transition-colors duration-300">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex-1 min-w-0 flex justify-center md:justify-start">
+<a class="text-xl font-bold text-gray-900 dark:text-white tracking-tight" href="../">
                     mirlo apps<span class="text-mirlo-orange">.</span>
-                </a>
-            </div>
-
-            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+</a>
+</div>
+<div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
                 © 2026 mirlo apps. Made in Spain 🇪🇸
             </div>
-
-            <div
-                class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-                <a href="../privacidad.html" class="hover:text-mirlo-orange transition-colors">Privacy & Terms</a>
-                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange transition-colors">Cookies</a>
-                <a href="../soporte.html" class="hover:text-mirlo-orange transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl transition-colors"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.threads.com/@paoloac"
-                    class="text-gray-400 hover:text-purple-400 text-xl transition-colors"><i
-                        class="fab fa-threads"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
-            <i class="fas fa-times text-3xl"></i>
-        </button>
-
-        <a href="./" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Apps</a>
-        <a href="../#nosotros"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">About</a>
-        <a href="../#contacto"
-            class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange"
-            onclick="toggleMenu()">Contact</a>
-
-        <!-- Mobile Dark Mode Switch -->
-        <div class="flex items-center gap-4 mt-8">
-            <span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
-            <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
-                <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
-                </div>
-            </label>
-        </div>
-    </div>
-
-    <script>
+<div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+<a class="hover:text-mirlo-orange transition-colors" href="../privacidad.html">Privacy &amp; Terms</a>
+<a class="hover:text-mirlo-orange transition-colors" href="#" onclick="window.mirloCookiePrefs(); return false;">Cookies</a>
+<a class="hover:text-mirlo-orange transition-colors" href="../soporte.html">Support</a>
+<a class="text-gray-400 hover:text-blue-400 text-xl transition-colors" href="https://x.com/PaoloAC"><i class="fab fa-twitter"></i></a>
+<a class="text-gray-400 hover:text-purple-400 text-xl transition-colors" href="https://www.threads.com/@paoloac"><i class="fab fa-threads"></i></a>
+</div>
+</div>
+</footer>
+<div class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300" id="mobile-menu">
+<button aria-label="Toggle navigation" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" onclick="toggleMenu()">
+<i class="fas fa-times text-3xl"></i>
+</button>
+<a class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" href="./" onclick="toggleMenu()">Apps</a>
+<a class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" href="../#nosotros" onclick="toggleMenu()">About</a>
+<a class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" href="../#contacto" onclick="toggleMenu()">Contact</a>
+<!-- Mobile Dark Mode Switch -->
+<div class="flex items-center gap-4 mt-8">
+<span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
+<label class="inline-flex items-center cursor-pointer">
+<input aria-label="Dark mode" class="sr-only peer" onclick="toggleDarkMode()" type="checkbox"/>
+<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange">
+</div>
+</label>
+</div>
+</div>
+<script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -585,7 +503,6 @@
             checkboxes.forEach(cb => cb.checked = isDark);
         });
     </script>
-    <script src="/cookies.js" defer></script>
+<script defer="" src="/cookies.js"></script>
 </body>
-
 </html>
