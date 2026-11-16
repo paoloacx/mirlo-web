@@ -121,8 +121,12 @@
 
     <title>yeah! — Place Check-In App &amp; Travel Journal</title>
 <style>.older-changelogs{margin-top:2rem}.older-changelogs>summary{cursor:pointer;display:list-item;list-style:disclosure-closed;padding:14px 18px;border:2px solid currentColor;border-radius:12px;font-weight:600;width:fit-content}.older-changelogs[open]>summary{list-style:disclosure-open}.older-changelog-list{display:grid;gap:2rem;padding-top:2rem}</style><style>
-/* Changelog toggle aligned to the right */
-.older-changelogs > summary{margin-left:auto;width:fit-content;max-width:100%;box-sizing:border-box}
+/* Changelog button left, arrow after label */
+.older-changelogs > summary{margin-left:0;margin-right:auto;width:fit-content;max-width:100%;box-sizing:border-box;display:flex;align-items:center;gap:.75rem;list-style:none}
+.older-changelogs > summary::marker{content:""}
+.older-changelogs > summary::-webkit-details-marker{display:none}
+.older-changelogs > summary::after{content:"▸";display:inline-block;transition:transform .15s}
+.older-changelogs[open] > summary::after{transform:rotate(90deg)}
 </style>
 </head>
 
