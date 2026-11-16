@@ -247,8 +247,12 @@
     }
     </script>
 <style>
-/* Changelog toggle aligned to the right */
-.older-changelogs > summary{margin-left:auto;width:fit-content;max-width:100%;box-sizing:border-box}
+/* Changelog button left, arrow after label */
+.older-changelogs > summary{margin-left:0;margin-right:auto;width:fit-content;max-width:100%;box-sizing:border-box;display:flex;align-items:center;gap:.75rem;list-style:none}
+.older-changelogs > summary::marker{content:""}
+.older-changelogs > summary::-webkit-details-marker{display:none}
+.older-changelogs > summary::after{content:"▸";display:inline-block;transition:transform .15s}
+.older-changelogs[open] > summary::after{transform:rotate(90deg)}
 </style>
 </head>
 
