@@ -177,105 +177,48 @@
 
     <!-- Schema.org Structured Data: SoftwareApplication + FAQPage -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "SoftwareApplication",
-          "name": "Poetry Companion",
-          "description": "A poetry writing app for Android, iPhone, and iPad with optional AI poem generation, tone, style and meter controls, persistent AI instructions, excluded words, and tools for writing without AI.",
-          "operatingSystem": "Android, iOS, iPadOS",
-          "applicationCategory": "ProductivityApplication",
-          "applicationSubCategory": "Books & Reference",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR",
-            "description": "Free download with tools for writing and analyzing poems. Optional AI generation and additional features are available in-app."
-          },
-          "url": "https://www.mirloapps.es/poetrycompanion/en/",
-          "downloadUrl": ["https://apps.apple.com/app/poetry-companion/id6758765026", "https://play.google.com/store/apps/details?id=com.paoloac.poetrycompanion"],
-          "author": {
-            "@type": "Person",
-            "name": "Paolo Alvarez"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "mirlo apps",
-            "url": "https://www.mirloapps.es/"
-          },
-          "inLanguage": "en",
-          "featureList": [
-            "Real-time syllable counting and meter analysis",
-            "Optional AI poem generation with tone, style, and meter controls",
-            "Selectable tones: romantic and melancholic; styles: sonnet and free verse; meter: none or hendecasyllable",
-            "Presets for Premium users: satirical, intimate, radiant, mystical, minimalist, and bucolic tones; haiku, villanelle, prose poem, and ode; octosyllabic, Alexandrine, heroic verse, and iambic pentameter meters",
-            "Persistent instructions for AI revisions and excluded words",
-            "Built-in rhyme and synonym dictionary",
-            "Organize poems into themed books and collections",
-            "Version tree to save and compare every draft",
-            "Focus mode for distraction-free reading and writing",
-            "Audio recording for recited poems",
-            "Native Home Screen widgets for featured verses",
-            "Private synchronization with personal iCloud"
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Can I generate poems with AI and also write without AI?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. You can ask AI for ideas or drafts and choose the tone, style, and meter. AI is optional: you can also write, check meter, find rhymes and synonyms, and organize poems without using it."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is Poetry Companion free?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The app includes a free option to write, analyze meter, and organize poetry books. An optional Pro upgrade is available for creators who want expanded features."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Where are my poems stored?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Save your poems and organize your collections in the app. On iPhone and iPad, you can also sync them through your iCloud account."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I control the AI's style and revisions?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. The selector includes Romantic and Melancholic tones, Sonnet and Free verse styles, and the choice of no set meter or hendecasyllable. Other presets are for Premium users, such as Haiku, Ode, octosyllabic, and Alexandrine. Add persistent instructions to guide revisions and exclude words from AI suggestions."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does it work offline?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. You can write, read your books, edit verses, and browse past versions anytime without internet. Only external dictionary lookups or optional suggestion features require network access."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I hear how my poem sounds?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. You can record your own recitation to evaluate cadence, rhythm, and acoustic flow alongside the written text."
-              }
-            }
-          ]
-        }
+      "@type": "SoftwareApplication",
+      "name": "Poetry Companion",
+      "description": "Write poems, analyze meter, find rhymes, and organize collections, with optional AI.",
+      "operatingSystem": "Android, iOS, iPadOS",
+      "applicationCategory": "ProductivityApplication",
+      "applicationSubCategory": "Books & Reference",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Free download with tools for writing and analyzing poems. Optional AI generation and additional features are available in-app."
+      },
+      "url": "https://www.mirloapps.es/poetrycompanion/en/",
+      "downloadUrl": [
+        "https://apps.apple.com/app/poetry-companion/id6758765026",
+        "https://play.google.com/store/apps/details?id=com.paoloac.poetrycompanion"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Paolo Alvarez"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mirlo apps",
+        "url": "https://www.mirloapps.es/"
+      },
+      "inLanguage": "en",
+      "featureList": [
+        "Real-time meter analysis",
+        "Rhymes and synonyms",
+        "Optional AI generation",
+        "Poem versions",
+        "Books and collections"
       ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 
 <body class="bg-poetry-sand dark:bg-[#09090b] text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
@@ -291,7 +234,7 @@
                 <li><a href="../../apps/" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Apps</a></li>
                 <li><a href="#what-is-it" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">What is it</a></li>
                 <li><a href="#how-it-works" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">How it works</a></li>
-                <li><a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Features</a></li>
+                <li></li>
                 <li><a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">FAQ</a></li>
                 <li><a href="#changes" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Changelog</a></li>
                 <li><a href="soporte.html" class="text-gray-600 dark:text-gray-300 hover:text-poetry-violet">Support</a></li>
@@ -376,16 +319,7 @@
 
         <!-- What is it / What you can do -->
         
-        <section id="plataformas" class="py-12 bg-white dark:bg-[#121214] border-y border-gray-200 dark:border-gray-800">
-          <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold serif-text text-gray-900 dark:text-white mb-3">Choose your platform</h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">Available for iPhone and iPad on the App Store, and for Android on Google Play.</p>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-gray-700"><h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">iPhone / iPad</h3><p class="text-sm text-gray-600 dark:text-gray-300">Download Poetry Companion for iPhone and iPad on the App Store.</p></div>
-              <div id="android" class="p-6 rounded-2xl bg-poetry-violet/10 border border-poetry-violet/20"><h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Android</h3><p class="text-sm text-gray-600 dark:text-gray-300">Download Poetry Companion for Android on Google Play.</p><div class="mt-5"><a href="https://play.google.com/store/apps/details?id=com.paoloac.poetrycompanion" target="_blank" rel="noopener noreferrer" class="btn-plastic inline-flex items-center justify-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform"><i class="fab fa-google-play text-2xl" aria-hidden="true"></i><span class="font-bold text-base">Get it on Google Play</span></a></div></div>
-            </div>
-          </div>
-        </section>
+        
 <section id="what-is-it" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-16">
@@ -465,39 +399,13 @@
                     </div>
 
                     <!-- Card 5 -->
-                    <div class="poetry-card order-5 p-8 group hover:-translate-y-1 transition-all">
-                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
-                            <i class="fas fa-microphone-lines text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Recitation Recording</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                            Record yourself reciting each poem to hear acoustic flow, pauses, and cadence alongside the written text.
-                        </p>
-                    </div>
+                    
 
                     <!-- Card 6 -->
-                    <div class="poetry-card order-6 p-8 group hover:-translate-y-1 transition-all">
-                        <div class="w-14 h-14 bg-poetry-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-poetry-violet group-hover:text-white text-poetry-violet transition-colors">
-                            <i class="fas fa-feather text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Focus Mode on iOS</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                            A serene, distraction-free environment dedicated solely to reading or composing your verses in peace.
-                        </p>
-                    </div>
+                    
                 </div>
 
-                <div class="mt-12 rounded-3xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800/60 p-8">
-                    <h3 class="text-2xl font-bold serif-text text-gray-900 dark:text-white mb-3">Choose a tone, style, and meter</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        The selector lets you choose Romantic or Melancholic tone, Sonnet or Free verse style, and no set meter or hendecasyllable. It also offers additional presets for Premium users.
-                    </p>
-                    <div class="grid sm:grid-cols-3 gap-6 text-sm text-gray-600 dark:text-gray-300">
-                        <p><strong class="text-gray-900 dark:text-white">Tones for Premium users:</strong> Satirical, Intimate, Radiant, Mystical, Minimalist, and Bucolic.</p>
-                        <p><strong class="text-gray-900 dark:text-white">Styles for Premium users:</strong> Haiku, Villanelle, Prose poem, and Ode.</p>
-                        <p><strong class="text-gray-900 dark:text-white">Meters for Premium users:</strong> Octosyllabic, Alexandrine, Heroic verse, and Iambic pentameter.</p>
-                    </div>
-                </div>
+                <div class="mt-12 rounded-3xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800/60 p-8"><h3 class="text-2xl font-bold serif-text text-gray-900 dark:text-white mb-3">Tones, styles, and meter</h3><p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Give your ideas the shape you want: choose a tone, style, and meter to guide AI drafts.</p></div>
             </div>
         </section>
 
@@ -522,7 +430,7 @@
                         </div>
                         <h3 class="text-2xl font-bold mb-3 serif-text text-gray-900 dark:text-white">Start with an idea or write by hand</h3>
                         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                            Type or dictate your verses, scan paper notes, explore poetic themes, or ask AI for ideas. You can also leave AI off.
+                            Type your verses, explore poetic themes, or ask AI for ideas. You can also leave AI off.
                         </p>
                     </div>
 
@@ -557,7 +465,7 @@
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">A refined experience</span>
                     <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
-                        Screenshots of the iOS version
+                        Poetry Companion screenshots
                     </h2>
                     <p class="text-gray-600 dark:text-gray-400">
                         Every screen is thoughtfully designed for writing comfort and the beauty of verse.
@@ -620,52 +528,7 @@
         </section>
 
         <!-- System & iOS Features -->
-        <section id="features" class="py-20 bg-grain border-t border-gray-200 dark:border-gray-800">
-            <details class="group"><summary class="cursor-pointer text-center text-lg font-bold text-poetry-violet">See extras for iPhone and iPad</summary><div class="max-w-7xl mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mb-4">
-                        Extras for the iPhone and iPad version
-                    </h2>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Designed to make writing a natural, delightful part of your day.
-                    </p>
-                </div>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
-                        <i class="fas fa-table-cells-large text-2xl text-poetry-violet mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Verse Widgets</h3>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Display random lines from your own poems right on your Home Screen to keep inspiration near.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
-                        <i class="fas fa-cloud text-2xl text-poetry-violet mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">iCloud Sync</h3>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Your poems sync directly between your iPhone and iPad via your personal iCloud account.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
-                        <i class="fas fa-shield-halved text-2xl text-poetry-violet mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Your Words Stay Yours</h3>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Your poems are stored on your device and in your iCloud, and you can use the app completely locally.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
-                        <i class="fas fa-bell text-2xl text-poetry-violet mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2 serif-text text-gray-900 dark:text-white">Live Activities</h3>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Track background progress right from the Dynamic Island or Lock Screen.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </details></section>
+        
 
         <!-- FAQ Section -->
         <section id="faq" class="py-20 bg-white dark:bg-[#121214] border-t border-gray-200 dark:border-gray-800">
@@ -706,9 +569,7 @@
                             <span>Where are my poems stored?</span>
                             <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
                         </summary>
-                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                            Save your poems and organize your collections in the app. On iPhone and iPad, you can also sync them through your iCloud account.
-                        </p>
+                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Save your poems and organize your collections in the app.</p>
                     </details>
 
                     <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
@@ -729,15 +590,7 @@
                         <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">On iPhone and iPad, you can record yourself reciting a poem to hear its rhythm.</p>
                     </details>
 
-                    <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60">
-                        <summary class="flex justify-between items-center cursor-pointer font-bold serif-text text-xl text-gray-900 dark:text-white">
-                            <span>Can I hear how my poem sounds?</span>
-                            <i class="fas fa-chevron-down text-sm text-poetry-violet group-open:rotate-180 transition-transform"></i>
-                        </summary>
-                        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                            Yes. You can record your own voice reciting each poem to check musicality, pauses, and cadence alongside the written text.
-                        </p>
-                    </details>
+                    
                 </div>
             </div>
         </section>
@@ -748,10 +601,10 @@
                 <div class="text-center mb-16">
                     <span class="text-xs font-bold uppercase tracking-wider text-poetry-violet">Evolution</span>
                     <h2 class="text-4xl sm:text-5xl font-bold serif-text text-gray-900 dark:text-white mt-2 mb-4">
-                        iOS Version History
+                        Version History
                     </h2>
                     <p class="text-gray-600 dark:text-gray-400">
-                        Continuous refinements to enhance your writing experience.
+                        Release notes from the App Store edition. See Google Play for Android updates.
                     </p>
                 </div>
 
@@ -863,7 +716,7 @@
         <a href="../../apps/" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Apps</a>
         <a href="#what-is-it" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">What is it</a>
         <a href="#how-it-works" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">How it works</a>
-        <a href="#features" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Features</a>
+        
         <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">FAQ</a>
         <a href="#changes" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Changelog</a>
         <a href="soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-poetry-violet" onclick="toggleMenu()">Support</a>
