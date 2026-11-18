@@ -1,30 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="es">
- <head>
-  <base href="/72h/"/>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   72 horas: app de preparacionismo doméstico y preparación ante emergencias | mirlo apps
-  </title>
-  <meta content="App de preparación doméstica para organizar provisiones y el kit de emergencia de 72 horas. Registra reservas del hogar, consulta cobertura y prepara cortes de agua o luz." name="description"/>
-  <link href="https://www.mirloapps.es/72h/" rel="canonical"/>
-  <link href="https://www.mirloapps.es/72h/" hreflang="es" rel="alternate"/>
-  <link href="https://www.mirloapps.es/72h/en/" hreflang="en" rel="alternate"/>
-  <link href="https://www.mirloapps.es/72h/" hreflang="x-default" rel="alternate"/>
-  <meta content="website" property="og:type"/>
-  <meta content="https://www.mirloapps.es/72h/" property="og:url"/>
-  <meta content="72 horas: app de preparacionismo doméstico y kit de emergencia" property="og:title"/>
-  <meta content="Organiza las provisiones de emergencia de tu hogar, compara la cobertura para 72 horas y revisa qué falta." property="og:description"/>
-  <meta content="https://www.mirloapps.es/72h/screens/today.webp" property="og:image"/>
-  <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
-  <link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
-  <link href="styles.css" rel="stylesheet"/>
-  <script type="application/ld+json">
-   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"72 horas","applicationCategory":"LifestyleApplication","operatingSystem":"iOS 18 or later, iPadOS 18 or later","inLanguage":"es","description":"App de preparacionismo doméstico para registrar provisiones de emergencia, estimar cobertura de 72 horas y organizar un inventario del hogar.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Descarga gratuita con desbloqueo opcional de acceso completo mediante compra única. El precio se muestra en el App Store."},"publisher":{"@type":"Organization","name":"mirlo apps","url":"https://www.mirloapps.es/"}}
-  </script>
- <meta name="apple-itunes-app" content="app-id=6831191322">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<head>
+<base href="/72h/"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>72 horas: app para tu kit de emergencia e inventario | mirlo apps</title>
+<meta content="Organiza tu kit de emergencia de 72 horas: agua, alimentos, caducidades y mochila de supervivencia. App para iPhone y iPad con inventario y autonomía estimada." name="description"/>
+<link href="https://www.mirloapps.es/72h/" rel="canonical"/>
+<link href="https://www.mirloapps.es/72h/" hreflang="es" rel="alternate"/>
+<link href="https://www.mirloapps.es/72h/en/" hreflang="en" rel="alternate"/>
+<link href="https://www.mirloapps.es/72h/" hreflang="x-default" rel="alternate"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.mirloapps.es/72h/" property="og:url"/>
+<meta content="72 horas: app para tu kit de emergencia e inventario | mirlo apps" property="og:title"/>
+<meta content="Organiza tu kit de emergencia de 72 horas: agua, alimentos, caducidades y mochila de supervivencia. App para iPhone y iPad con inventario y autonomía estimada." property="og:description"/>
+<meta content="https://www.mirloapps.es/72h/screens/today.webp" property="og:image"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="styles.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "72 horas", "applicationCategory": "UtilitiesApplication", "operatingSystem": "iOS 18 or later, iPadOS 18 or later", "inLanguage": ["es", "en"], "description": "App de preparacionismo doméstico para registrar provisiones de emergencia, estimar cobertura de 72 horas y organizar un inventario del hogar.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Descarga gratuita con desbloqueo opcional de acceso completo mediante compra única. El precio se muestra en el App Store."}, "publisher": {"@type": "Organization", "name": "mirlo apps", "url": "https://www.mirloapps.es/"}, "@id": "https://www.mirloapps.es/72h/#app", "url": "https://www.mirloapps.es/72h/", "downloadUrl": "https://apps.apple.com/app/72-horas-kit-de-supervivencia/id6831191322", "installUrl": "https://apps.apple.com/app/72-horas-kit-de-supervivencia/id6831191322", "image": "https://www.mirloapps.es/72h/icon.webp", "screenshot": ["https://www.mirloapps.es/72h/screens/today.webp", "https://www.mirloapps.es/72h/screens/inventory.webp", "https://www.mirloapps.es/72h/screens/learn.webp", "https://www.mirloapps.es/72h/screens/field-map.webp"], "isAccessibleForFree": true}</script>
+<meta content="app-id=6831191322" name="apple-itunes-app"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <style>
         .btn-plastic {
             background: linear-gradient(to bottom, #333333 0%, #000000 100%);
@@ -39,374 +36,369 @@
 .app-store-download .store-name {font-size:18px;line-height:1.25;font-weight:600}
 
 </style>
-</head>
- <body>
-  <header class="site-header">
-   <nav aria-label="Navegación principal" class="nav">
-    <a class="brand" href="../">
+<style>
+.gallery-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;align-items:start}
+.gallery-grid figure {margin:0;min-width:0}
+.gallery-grid .device-frame {padding:6px;border-radius:28px;transform:none;max-width:100%}
+.gallery-grid img {border-radius:21px}
+.gallery-grid figcaption {font-size:.85rem;line-height:1.5;color:var(--muted);margin-top:16px}
+.gallery-grid figcaption strong {display:block;color:var(--ink);font-size:1rem;margin-bottom:6px}
+.preparedness-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.preparedness-grid ul {padding-left:20px;color:var(--muted)}
+.preparedness-grid li {margin:8px 0}
+.editorial {max-width:850px;margin:auto}
+.editorial h3 {margin:28px 0 10px;font-size:1.25rem;line-height:1.35}
+.editorial p {color:var(--muted)}
+.reference-list {text-align:left;display:grid;gap:18px;padding-left:22px}
+.reference-list a {color:var(--green);font-weight:700;text-underline-offset:3px}
+@media(max-width:900px) and (min-width:701px) {.gallery-grid {grid-template-columns:repeat(2,minmax(0,1fr));max-width:650px;margin:auto}}
+@media(max-width:700px) {
+.gallery-grid {display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:4px 4px 20px;scrollbar-width:thin}
+.gallery-grid figure {flex:0 0 84%;flex-basis:84%;scroll-snap-align:center}
+.gallery-grid .device-frame {max-width:290px}
+.preparedness-grid {grid-template-columns:1fr}
+}
+</style><meta content="es_ES" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="72 horas: app para tu kit de emergencia e inventario | mirlo apps" name="twitter:title"/><meta content="Organiza tu kit de emergencia de 72 horas: agua, alimentos, caducidades y mochila de supervivencia. App para iPhone y iPad con inventario y autonomía estimada." name="twitter:description"/><meta content="https://www.mirloapps.es/72h/screens/today.webp" name="twitter:image"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "es", "mainEntity": [{"@type": "Question", "name": "¿Hace falta crear una cuenta?", "acceptedAnswer": {"@type": "Answer", "text": "No. No hay registro, correo ni contraseña de 72 horas. El perfil, el inventario, las fotos y las notas se guardan en el dispositivo. Las compras usan la infraestructura de Apple y RevenueCat."}}, {"@type": "Question", "name": "¿Qué hace el cálculo de autonomía?", "acceptedAnswer": {"@type": "Answer", "text": "Compara las cantidades registradas con referencias de agua y calorías para el hogar y muestra una estimación y su desglose. Es orientativa, no una garantía de seguridad."}}, {"@type": "Question", "name": "¿Qué desbloquea la compra única?", "acceptedAnswer": {"@type": "Answer", "text": "Las fichas que siguen a las primeras cuatro, las áreas de documentos, comunicación y seguridad del hogar, y el Cuaderno de Herramientas completo con seis utilidades."}}, {"@type": "Question", "name": "¿Funciona sin conexión?", "acceptedAnswer": {"@type": "Answer", "text": "El inventario, los cálculos y el contenido incluido funcionan en el dispositivo. Las descargas de mapas, las compras y su restauración necesitan conexión. Descarga la cartografía antes de depender de ella sin red."}}, {"@type": "Question", "name": "¿El Consultor de campo funciona en todos los dispositivos?", "acceptedAnswer": {"@type": "Answer", "text": "No. Usa Apple Intelligence y solo responde cuando la función está disponible en el dispositivo y el sistema compatibles; si no está disponible, la app lo indica."}}, {"@type": "Question", "name": "¿Hay enlaces a tiendas?", "acceptedAnswer": {"@type": "Answer", "text": "La guía de agua abre enlaces externos a comercios; algunos pueden ser enlaces de afiliación."}}, {"@type": "Question", "name": "¿En qué idiomas y dispositivos está la app?", "acceptedAnswer": {"@type": "Answer", "text": "Interfaz en español e inglés para iPhone y iPad con iOS/iPadOS 18 o posterior. El Consultor tiene requisitos de compatibilidad adicionales."}}]}</script></head>
+<body>
+<header class="site-header">
+<nav aria-label="Navegación principal" class="nav">
+<a class="brand" href="../">
      mirlo apps
      <b>
       .
      </b>
-    </a>
-    <div class="nav-links">
-     <a href="../apps/">
+</a>
+<div class="nav-links">
+<a href="../apps/">
       Apps
      </a>
-     <a href="../#nosotros">
+<a href="../#nosotros">
       Nosotros
      </a>
-     <a href="#funciones">
+<a href="#funciones">
       Funciones
      </a>
-     <a href="../#contacto">
+<a href="../#contacto">
       Contacto
      </a>
-     <a href="#como-funciona">
+<a href="#como-funciona">
       Cómo funciona
      </a>
-     <a href="#premium">
+<a href="#premium">
       Gratis y Premium
      </a>
-     <a href="#faq">
+<a href="#faq">
       FAQ
      </a>
-    </div>
-    <div class="nav-actions">
-     <a class="language" href="en/" lang="en">
+</div>
+<div class="nav-actions">
+<a class="language" href="en/" lang="en">
       EN
      </a>
-     <button aria-label="Cambiar tema" class="theme-toggle" data-theme-toggle="">
+<button aria-label="Cambiar tema" class="theme-toggle" data-theme-toggle="">
       ◐
      </button>
-     <button aria-label="Abrir menú" class="menu-toggle" data-menu-open="">
+<button aria-label="Abrir menú" class="menu-toggle" data-menu-open="">
       ☰
      </button>
-    </div>
-   </nav>
-  </header>
-  <div aria-label="Menú móvil" class="mobile-menu">
-   <button aria-label="Cerrar menú" class="close-menu" data-menu-close="">
+</div>
+</nav>
+</header>
+<div aria-label="Menú móvil" class="mobile-menu">
+<button aria-label="Cerrar menú" class="close-menu" data-menu-close="">
     ×
    </button>
-   <a href="../apps/">
+<a href="../apps/">
     Apps
    </a>
-   <a href="#como-funciona">
+<a href="#como-funciona">
     Cómo funciona
    </a>
-   <a href="#funciones">
+<a href="#funciones">
     Funciones
    </a>
-   <a href="#premium">
+<a href="#premium">
     Gratis y Premium
    </a>
-   <a href="#faq">
+<a href="#faq">
     Preguntas frecuentes
    </a>
-   <a href="soporte.html">
+<a href="soporte.html">
     Soporte
    </a>
-   <a href="en/" lang="en">
+<a href="en/" lang="en">
     English
    </a>
-   <button class="theme-toggle" data-theme-toggle="">
+<button class="theme-toggle" data-theme-toggle="">
     Cambiar tema
    </button>
-  </div>
-  <main class="main">
-   <section class="hero">
-    <div class="wrap hero-grid">
-     <div>
-      <img alt="Icono de 72 horas" class="app-icon" height="1024" src="icon.webp" width="1024"/>
-      <span class="eyebrow">
-       <i>
-       </i>
-       iPhone y iPad · iOS 18 o posterior
-      </span>
-      <h1>
+</div>
+<main class="main">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<img alt="Icono de 72 horas" class="app-icon" height="1024" src="icon.webp" width="1024"/>
+
+<h1>
        Prepara tu hogar para una emergencia de 72 horas
       </h1>
-      <p class="hero-copy">
+<p class="hero-copy">
        Registra quién vive en casa y organiza tus provisiones de emergencia por espacios, incluida la mochila de 72 horas. Consulta una estimación de agua, comida, energía y salud frente al objetivo de tres días, y revisa las carencias que puedes preparar para un apagón, un corte de agua u otra emergencia.
       </p>
-      <div style="margin:16px 0"><a href="https://apps.apple.com/app/72-horas-kit-de-supervivencia/id6831191322" class="btn-plastic app-store-download"><i class="fab fa-apple" aria-hidden="true"></i><div class="store-copy"><div class="store-label">Descargar en el</div><div class="store-name">App Store</div></div></a></div>
-      <div class="hero-facts">
-       <span>
-        Español e inglés
-       </span>
-       <span>
-        Sin crear cuenta
-       </span>
-       <span>
-        Gratis con acceso Premium opcional
-       </span>
-      </div>
-     </div>
-     <figure class="hero-screenshot">
-      <div class="device-frame">
-       <img alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" height="2622" src="screens/today.webp" width="1206"/>
-      </div>
-      <figcaption class="caption">Captura real de la app en español · Hoy</figcaption>
-     </figure>
-    </div>
-   </section>
-   <section class="band alt" id="como-funciona">
-    <div class="wrap">
-     <div class="section-head">
-      <h2>
+<div style="margin:16px 0"><a class="btn-plastic app-store-download" href="https://apps.apple.com/app/72-horas-kit-de-supervivencia/id6831191322"><i aria-hidden="true" class="fab fa-apple"></i><div class="store-copy"><div class="store-label">Descargar en el</div><div class="store-name">App Store</div></div></a></div>
+
+</div>
+<figure class="hero-screenshot">
+<div class="device-frame">
+<img alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" height="2622" src="screens/today.webp" width="1206"/>
+</div>
+<figcaption class="caption">Captura real de la app en español · Hoy</figcaption>
+</figure>
+</div>
+</section>
+<section class="band alt" id="como-funciona">
+<div class="wrap">
+<div class="section-head">
+<h2>
        Organiza las provisiones de emergencia para 72 horas
       </h2>
-      <p>
+<p>
        Para el preparacionismo doméstico y la preparación tipo prepper: registra agua, alimentos, energía y salud, compara las provisiones con un objetivo de 72 horas y revisa qué puedes completar en casa.
       </p>
-     </div>
-     <div class="steps">
-      <article class="card">
-       <span class="step-no">
+</div>
+<div class="steps">
+<article class="card">
+<span class="step-no">
         1
        </span>
-       <h3>
+<h3>
         Describe el hogar
        </h3>
-       <p>
+<p>
         Indica adultos, niños, mascotas, clima y algunas necesidades de atención. La app ajusta sus referencias de agua y alimentación a esos datos.
        </p>
-      </article>
-      <article class="card">
-       <span class="step-no">
+</article>
+<article class="card">
+<span class="step-no">
         2
        </span>
-       <h3>
+<h3>
         Registra tus provisiones
        </h3>
-       <p>
+<p>
         Añade productos, cantidades, caducidades, fotos, notas y el espacio donde los guardas. Puedes configurar espacios como despensa o trastero.
        </p>
-      </article>
-      <article class="card">
-       <span class="step-no">
+</article>
+<article class="card">
+<span class="step-no">
         3
        </span>
-       <h3>
+<h3>
         Revisa la cobertura
        </h3>
-       <p>
+<p>
         Consulta la estimación de autonomía y el estado de las áreas disponibles. Las fichas sugieren tareas; puedes marcarlas como completadas o abrir su guía.
        </p>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="band alt app-gallery" aria-labelledby="gallery-title">
-    <div class="wrap">
-     <div class="section-head">
-      <h2 id="gallery-title">Pantallas de Hoy, inventario, aprendizaje y herramientas</h2>
-      <p>Desliza para ver cómo se estima la autonomía, se organizan las provisiones y se consultan los artículos y utilidades Premium.</p>
-     </div>
-     <figure class="app-carousel" aria-label="Capturas de la app 72 horas">
-      <div class="device-frame">
-       <img class="carousel-slide is-active" data-caption-es="Hoy: autonomía estimada, prioridad de preparación y cobertura de las siete áreas." data-caption-en="Today: estimated autonomy, a preparation priority and coverage across seven areas." alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" height="2622" src="screens/today.webp" width="1206"/>
-       <img class="carousel-slide" data-caption-es="Inventario: organiza provisiones en estancias del hogar o en la mochila de 72 horas." data-caption-en="Inventory: organise supplies in household rooms or in a 72-hour go-bag." alt="Inventario de emergencia organizado por estancias, con despensa, cocina y mochila de 72 horas" height="2622" src="screens/inventory.webp" width="1206" hidden=""/>
-       <img class="carousel-slide" data-caption-es="Aprender: artículos breves de preparación con referencias enlazadas." data-caption-en="Learn: short preparedness articles with linked references." alt="Pantalla Aprender con artículos de preparación y enlaces a sus fuentes" height="2622" src="screens/learn.webp" width="1206" hidden=""/>
-       <img class="carousel-slide" data-caption-es="Mapa Premium: consulta cartografía y guarda puntos de encuentro para usarla en el terreno." data-caption-en="Premium map: view map coverage and save meeting points for field use." alt="Mapa del Cuaderno de Herramientas Premium con cartografía, ubicación GPS y puntos guardados" height="2622" src="screens/field-map.webp" width="1206" hidden=""/>
-      </div>
-      <div class="carousel-controls">
-       <button type="button" data-carousel-prev aria-label="Captura anterior">‹</button>
-       <span aria-live="polite" data-carousel-count>1 / 4</span>
-       <button type="button" data-carousel-next aria-label="Captura siguiente">›</button>
-      </div>
-      <figcaption class="caption" data-carousel-caption aria-live="polite">Captura real de la app en español · Hoy</figcaption>
-     </figure>
-    </div>
-   </section>
-   <section class="band" id="funciones">
-    <div class="wrap">
-     <div class="section-head">
-      <h2>
+</article>
+</div>
+</div>
+</section>
+<section aria-labelledby="gallery-title" class="band alt app-gallery">
+<div class="wrap">
+<div class="section-head">
+<h2 id="gallery-title">Pantallas de Hoy, inventario, aprendizaje y herramientas</h2>
+<p>Las cuatro pantallas se muestran juntas en escritorio. En el móvil puedes deslizar la galería horizontalmente. Capturas reales de la app en español.</p>
+</div>
+<div class="gallery-grid"><figure><div class="device-frame"><img alt="Pantalla Hoy de 72 horas con estimación de autonomía, prioridad para completar agua y gráfico de siete áreas de preparación" class="" data-caption-en="Today: estimated autonomy, a preparation priority and coverage across seven areas." data-caption-es="Hoy: autonomía estimada, prioridad de preparación y cobertura de las siete áreas." decoding="async" height="2622" loading="lazy" src="screens/today.webp" width="1206"/></div><figcaption><strong>Autonomía y cobertura</strong>Hoy: autonomía estimada, prioridad de preparación y cobertura de las siete áreas. Captura real en español.</figcaption></figure><figure><div class="device-frame"><img alt="Inventario de emergencia organizado por estancias, con despensa, cocina y mochila de 72 horas" class="" data-caption-en="Inventory: organise supplies in household rooms or in a 72-hour go-bag." data-caption-es="Inventario: organiza provisiones en estancias del hogar o en la mochila de 72 horas." decoding="async" height="2622" loading="lazy" src="screens/inventory.webp" width="1206"/></div><figcaption><strong>Inventario de emergencia</strong>Inventario: organiza provisiones en estancias del hogar o en la mochila de 72 horas. Captura real en español.</figcaption></figure><figure><div class="device-frame"><img alt="Pantalla Aprender con artículos de preparación y enlaces a sus fuentes" class="" data-caption-en="Learn: short preparedness articles with linked references." data-caption-es="Aprender: artículos breves de preparación con referencias enlazadas." decoding="async" height="2622" loading="lazy" src="screens/learn.webp" width="1206"/></div><figcaption><strong>Guías de preparación</strong>Aprender: artículos breves de preparación con referencias enlazadas. Captura real en español.</figcaption></figure><figure><div class="device-frame"><img alt="Mapa del Cuaderno de Herramientas Premium con cartografía, ubicación GPS y puntos guardados" class="" data-caption-en="Premium map: view map coverage and save meeting points for field use." data-caption-es="Mapa Premium: consulta cartografía y guarda puntos de encuentro para usarla en el terreno." decoding="async" height="2622" loading="lazy" src="screens/field-map.webp" width="1206"/></div><figcaption><strong>Mapa y herramientas Premium</strong>Mapa Premium: consulta cartografía y guarda puntos de encuentro para usarla en el terreno. Captura real en español.</figcaption></figure></div>
+</div>
+</section>
+<section class="band" id="kit-emergencia-72-horas"><div class="wrap"><div class="section-head"><h2>Kit de emergencia de 72 horas: de la lista al inventario</h2><p>Una mochila de emergencia y las reservas de casa cumplen funciones distintas. 72 horas te ayuda a registrar dónde está cada provisión y a revisar qué falta antes de un apagón o un corte de agua.</p></div><div class="preparedness-grid"><article class="card"><h3>Qué revisar en tu kit de supervivencia</h3><ul><li><strong>Agua y alimentos:</strong> comprueba reservas de agua potable, comida no perecedera y necesidades de cada persona del hogar.</li><li><strong>Luz y energía:</strong> revisa linterna, pilas, radio y batería externa para el móvil.</li><li><strong>Salud e higiene:</strong> localiza el botiquín y ten presentes los tratamientos y cuidados personales.</li><li><strong>Documentos y comunicación:</strong> revisa copias de documentos, contactos importantes y un punto de encuentro familiar.</li><li><strong>Niños y mascotas:</strong> adapta las provisiones a quienes viven contigo, al clima y a sus necesidades.</li></ul><p>Es una orientación inicial, no una lista universal ni una recomendación médica. Consulta las fuentes oficiales y adapta tu plan de emergencia familiar.</p></article><article class="card"><h3>Cómo organizar las provisiones con la app</h3><ul><li>Crea el perfil del hogar y separa los espacios: despensa, cocina, trastero o mochila de 72 horas.</li><li>Añade alimentos, agua y otros productos con cantidad, ubicación y fecha de caducidad.</li><li>Consulta la autonomía estimada y el desglose para detectar carencias en las reservas registradas.</li><li>Revisa las fichas de preparación y los artículos antes de completar tu inventario de emergencia.</li><li>Actualiza el registro al consumir o reponer productos y guarda una copia JSON local.</li></ul><p>El registro permite consultar las caducidades anotadas; no se afirma que envíe avisos automáticos. La estimación depende de los datos que introduces.</p></article></div><div class="editorial"><h3>Preparacionismo doméstico sin compras a ciegas</h3><p>No hace falta empezar con un gran equipo de supervivencia. El primer paso es saber qué tienes, dónde lo guardas y qué necesidades no cubres. Tanto si acabas de empezar como si ya practicas preparacionismo o buscas una app prepper, el inventario doméstico permite revisar tus reservas antes de añadir más material.</p><h3>Apagones, cortes de agua y preparación familiar</h3><p>Preparar el hogar para una interrupción de suministros es distinto de resolver una emergencia en curso. Revisa con antelación tu plan familiar, el acceso a agua y alimentos y las fuentes oficiales de información. 72 horas sirve para organizar y aprender; no es un sistema de alertas de Protección Civil, no predice emergencias y no sustituye al 112.</p></div></div></section><section class="band" id="funciones">
+<div class="wrap">
+<div class="section-head">
+<h2>
        Qué puedes hacer
       </h2>
-      <p>
+<p>
        Las funciones que corresponden a las pantallas y servicios de la versión actual.
       </p>
-     </div>
-     <div class="feature-grid">
-      <article class="card">
-       <span class="icon">
+</div>
+<div class="feature-grid">
+<article class="card">
+<span class="icon">
         ◷
        </span>
-       <h3>
+<h3>
         Autonomía estimada
        </h3>
-       <p>
+<p>
         Compara las existencias registradas con un objetivo de 72 horas y consulta el desglose del cálculo.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ◉
        </span>
-       <h3>
+<h3>
         Siete áreas de preparación
        </h3>
-       <p>
+<p>
         Agua, alimentación, energía, salud, documentos, comunicación y seguridad del hogar; tres áreas requieren acceso completo.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ▤
        </span>
-       <h3>
+<h3>
         Fichas de siguiente paso
        </h3>
-       <p>
+<p>
         Un mazo de hasta cuatro tareas visibles prioriza qué puedes preparar a continuación según las carencias detectadas.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ▣
        </span>
-       <h3>
+<h3>
         Inventario doméstico
        </h3>
-       <p>
+<p>
         Organiza cantidad, ubicación, caducidad, notas e imágenes. Exporta e importa una copia local en formato JSON.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ▧
        </span>
-       <h3>
+<h3>
         Aprender con fuentes
        </h3>
-       <p>
+<p>
         Consulta artículos breves con referencias enlazadas. La lista puede ordenarse en función de la cobertura del hogar.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ✳
        </span>
-       <h3>
+<h3>
         Consultor de campo
        </h3>
-       <p>
+<p>
         Responde dudas sobre preparación en el propio dispositivo con Apple Intelligence, cuando el modelo y el dispositivo sean compatibles.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ⌖
        </span>
-       <h3>
+<h3>
         Utilidades para el terreno
        </h3>
-       <p>
+<p>
         Premium reúne seis páginas: mapa y puntos guardados, destello SOS, silbato, brújula, frecuencias y cálculo de racionamiento de agua.
        </p>
-      </article>
-      <article class="card">
-       <span class="icon">
+</article>
+<article class="card">
+<span class="icon">
         ⇄
        </span>
-       <h3>
+<h3>
         Dos idiomas
        </h3>
-       <p>
+<p>
         La interfaz se ofrece en español e inglés. Sigue el idioma del sistema o permite elegirlo en Ajustes.
        </p>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="band alt" id="premium">
-    <div class="wrap">
-     <div class="section-head">
-      <h2>
+</article>
+</div>
+</div>
+</section>
+<section class="band alt" id="premium">
+<div class="wrap">
+<div class="section-head">
+<h2>
        Qué incluye Gratis y qué añade Premium
       </h2>
-      <p>
+<p>
        La descarga y las funciones básicas son gratuitas. El acceso completo se compra una sola vez; no es una suscripción.
       </p>
-     </div>
-     <div class="premium-grid">
-      <article class="price-card">
-       <h3>
+</div>
+<div class="premium-grid">
+<article class="price-card">
+<h3>
         Gratis
        </h3>
-       <p class="price">
+<p class="price">
         Descarga gratuita
        </p>
-       <ul class="list">
-        <li>
+<ul class="list">
+<li>
          Estimación de autonomía y desglose
         </li>
-        <li>
+<li>
          Las cuatro primeras fichas de preparación
         </li>
-        <li>
+<li>
          Áreas de agua, alimentación, energía y salud
         </li>
-        <li>
+<li>
          Perfil del hogar e inventario con espacios configurables
         </li>
-        <li>
+<li>
          Artículos de Aprender y Consultor de campo, sujeto a compatibilidad con Apple Intelligence
         </li>
-        <li>
+<li>
          Importación y exportación de copia JSON
         </li>
-        <li>
+<li>
          Guía de almacenamiento de agua y enlaces a tiendas
         </li>
-       </ul>
-      </article>
-      <article class="price-card premium">
-       <h3>
+</ul>
+</article>
+<article class="price-card premium">
+<h3>
         Premium · Acceso completo
        </h3>
-       <p class="price">
+<p class="price">
         Compra única no consumible · precio mostrado por el App Store en tu región
        </p>
-       <p class="small-note">
+<p class="small-note">
         Incluye lo gratuito, además de:
        </p>
-       <ul class="list">
-        <li>
+<ul class="list">
+<li>
          Fichas posteriores a las cuatro primeras
         </li>
-        <li>
+<li>
          Áreas de documentos, comunicación y seguridad del hogar
         </li>
-        <li>
+<li>
          Cuaderno de Herramientas con sus seis utilidades
         </li>
-        <li>
+<li>
          Restauración de la compra desde Ajustes
         </li>
-       </ul>
-      </article>
-     </div>
-     <p class="note">
+</ul>
+</article>
+</div>
+<p class="note">
       El inventario y el perfil se guardan localmente. La copia JSON no incluye los archivos de imagen. La compra y la restauración pasan por Apple y requieren conexión; no se crea una cuenta de 72 horas.
      </p>
-    </div>
-   </section>
-   <section class="band">
-    <div class="wrap">
-     <div class="source-box">
-      <div class="section-head">
-       <h2>
+</div>
+</section>
+<section class="band">
+<div class="wrap">
+<div class="source-box">
+<div class="section-head">
+<h2>
         Referencias y límites
        </h2>
-       <p>
+<p>
         Las fichas y artículos muestran sus fuentes para que puedas consultarlas.
        </p>
-      </div>
-      <p>
+</div>
+<p>
        Las referencias se adaptan a la región: en España, consulta
        <a href="https://www.proteccioncivil.es/coordinacion/gestion-de-riesgos/autoproteccion" rel="noopener">
         Protección Civil
@@ -425,130 +417,130 @@
        </a>
        . Los cálculos usan valores orientativos para el hogar; no sustituyen las instrucciones de las autoridades ni consejos médicos.
       </p>
-      <p>
-       <strong>
+<p>
+<strong>
         La estimación no garantiza ni certifica la seguridad del hogar.
        </strong>
        En una emergencia real, sigue las instrucciones de los servicios de emergencia y las autoridades competentes.
       </p>
-      <p class="small-note">
+<p class="small-note">
        Las funciones de inventario y cálculo usan datos locales. Para descargar cartografía sin conexión, abrir enlaces externos o comprar/restaurar Premium se necesita conexión. GPS requiere permiso de ubicación.
       </p>
-     </div>
-    </div>
-   </section>
-   <section class="band alt" id="faq">
-    <div class="wrap">
-     <div class="section-head">
-      <h2>
+<h3>Fuentes oficiales para ampliar tu preparación</h3><p>Estas guías aportan contexto para preparar un kit de emergencia y un plan familiar. No certifican, recomiendan ni avalan la app 72 horas.</p><ol class="reference-list"><li><a href="https://commission.europa.eu/topics/preparedness_en">Comisión Europea: Estrategia de la Unión de Preparación</a><br/>Incluye el desarrollo de directrices para que la población alcance una autosuficiencia mínima de 72 horas. Es contexto de preparación, no una garantía sobre las reservas de cada hogar.</li><li><a href="https://webinfantil.proteccioncivil.es/sismos">Protección Civil: autoprotección y kit de emergencia</a><br/>Su guía educativa sobre terremotos menciona agua y comida de reserva, linterna, radio, pilas, botiquín y documentos personales.</li><li><a href="https://www.ready.gov/kit">FEMA Ready.gov: Build A Kit</a><br/>Lista de suministros básicos, adaptación a necesidades familiares y revisión de productos caducados. Es una guía de Estados Unidos; sigue las instrucciones locales donde vivas.</li></ol></div>
+</div>
+</section>
+<section class="band alt" id="faq">
+<div class="wrap">
+<div class="section-head">
+<h2>
        Preguntas frecuentes
       </h2>
-     </div>
-     <div class="faq-grid">
-      <article class="card">
-       <h3>
+</div>
+<div class="faq-grid">
+<article class="card">
+<h3>
         ¿Hace falta crear una cuenta?
        </h3>
-       <p>
+<p>
         No. No hay registro, correo ni contraseña de 72 horas. El perfil, el inventario, las fotos y las notas se guardan en el dispositivo. Las compras usan la infraestructura de Apple y RevenueCat.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿Qué hace el cálculo de autonomía?
        </h3>
-       <p>
+<p>
         Compara las cantidades registradas con referencias de agua y calorías para el hogar y muestra una estimación y su desglose. Es orientativa, no una garantía de seguridad.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿Qué desbloquea la compra única?
        </h3>
-       <p>
+<p>
         Las fichas que siguen a las primeras cuatro, las áreas de documentos, comunicación y seguridad del hogar, y el Cuaderno de Herramientas completo con seis utilidades.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿Funciona sin conexión?
        </h3>
-       <p>
+<p>
         El inventario, los cálculos y el contenido incluido funcionan en el dispositivo. Las descargas de mapas, las compras y su restauración necesitan conexión. Descarga la cartografía antes de depender de ella sin red.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿El Consultor de campo funciona en todos los dispositivos?
        </h3>
-       <p>
+<p>
         No. Usa Apple Intelligence y solo responde cuando la función está disponible en el dispositivo y el sistema compatibles; si no está disponible, la app lo indica.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿Hay enlaces a tiendas?
        </h3>
-       <p>
+<p>
         La guía de agua abre enlaces externos a comercios; algunos pueden ser enlaces de afiliación.
        </p>
-      </article>
-      <article class="card">
-       <h3>
+</article>
+<article class="card">
+<h3>
         ¿En qué idiomas y dispositivos está la app?
        </h3>
-       <p>
+<p>
         Interfaz en español e inglés para iPhone y iPad con iOS/iPadOS 18 o posterior. El Consultor tiene requisitos de compatibilidad adicionales.
        </p>
-      </article>
-     </div>
-     <div class="tech">
-      <span>
+</article>
+</div>
+<div class="tech">
+<span>
        iPhone y iPad
       </span>
-      <span>
+<span>
        iOS/iPadOS 18+
       </span>
-      <span>
+<span>
        Español · English
       </span>
-      <span>
+<span>
        Sin cuenta de 72 horas
       </span>
-     </div>
-    </div>
-   </section>
-  </main>
-  <footer class="site-footer">
-   <div class="footer-inner">
-    <a class="brand" href="../">
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<a class="brand" href="../">
      mirlo apps
      <b>
       .
      </b>
-    </a>
-    <span class="copyright">
+</a>
+<span class="copyright">
      © 2026 mirlo apps · Made in Spain 🇪🇸
     </span>
-    <div class="footer-links">
-     <a href="../privacidad.html">
+<div class="footer-links">
+<a href="../privacidad.html">
       Privacidad y términos
      </a>
-     <a href="#" onclick="window.mirloCookiePrefs?.();return false">
+<a href="#" onclick="window.mirloCookiePrefs?.();return false">
       Cookies
      </a>
-     <a href="soporte.html">
+<a href="soporte.html">
       Soporte
      </a>
-     <a aria-label="X" href="https://x.com/PaoloAC">
+<a aria-label="X" href="https://x.com/PaoloAC">
       X
      </a>
-    </div>
-   </div>
-  </footer>
-  <script src="site.js">
-  </script>
-  <script defer="" src="/cookies.js">
-  </script>
- </body>
+</div>
+</div>
+</footer>
+<script src="site.js">
+</script>
+<script defer="" src="/cookies.js">
+</script>
+</body>
 </html>
