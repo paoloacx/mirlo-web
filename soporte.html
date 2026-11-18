@@ -359,7 +359,14 @@
 <div class="overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm bg-[#faf9f6]">
 <iframe title="Explore a classic iPhone, layer by layer" src="anatomy-iphone.html?lang=en" loading="lazy" sandbox="allow-scripts" style="display:block;width:100%;height:650px;border:0" id="anatomy-iphone-frame"></iframe>
 </div>
-<style>@media(max-width:600px){#anatomy-iphone-frame{height:545px!important}}</style>
+<script>
+window.addEventListener('message',function(event){
+  var frame=document.getElementById('anatomy-iphone-frame');
+  if(!frame||event.source!==frame.contentWindow||!event.data||event.data.type!=='mirlo-iphone-height')return;
+  var height=event.data.height;
+  if(typeof height==='number'&&Number.isFinite(height)&&height>=300&&height<=1600)frame.style.height=(height+12)+'px';
+});
+</script>
 </section>
 
 <footer class="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
