@@ -283,7 +283,7 @@
                 <!-- Dark Mode Switch -->
                 <li>
                     <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
-                        <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                        <input aria-label="Dark mode" type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
                         <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-imok-primary"></div>
                     </label>
                 </li>
@@ -294,7 +294,7 @@
             <div class="flex items-center space-x-3 md:hidden">
                 <a href="../" class="text-xs px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">ES</a>
                 <label class="inline-flex items-center cursor-pointer" aria-label="Toggle theme">
-                    <input type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <input aria-label="Dark mode" type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
                     <div class="relative w-9 h-5 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-imok-primary"></div>
                 </label>
                 <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 p-2" aria-label="Open menu">
@@ -770,8 +770,8 @@
                 <a href="privacidad.html" class="hover:text-imok-primary transition-colors">Privacy</a>
                 <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-imok-primary transition-colors">Cookies</a>
                 <a href="../soporte.html" class="hover:text-imok-primary transition-colors">Support</a>
-                <a href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.threads.com/@paoloac" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-threads"></i></a>
+                <a aria-label="X (Twitter)" href="https://x.com/PaoloAC" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+                <a aria-label="Threads" href="https://www.threads.com/@paoloac" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-imok-primary text-xl transition-colors"><i class="fab fa-threads"></i></a>
             </div>
         </div>
     </footer>
