@@ -6,12 +6,14 @@
   var ES = (document.documentElement.lang || 'en').toLowerCase().indexOf('es') === 0;
   var T = ES ? {
     msg: 'Usamos cookies de análisis (Google Analytics) para entender cómo se usa la web. Puedes aceptar o rechazar; tu elección se recuerda y puedes cambiarla cuando quieras desde el enlace "Cookies" del pie.',
-    more: 'Más información',
+    more: 'Política de privacidad',
+    label: 'Preferencias de cookies',
     accept: 'Aceptar',
     reject: 'Rechazar'
   } : {
     msg: 'We use analytics cookies (Google Analytics) to understand how the site is used. You can accept or reject; your choice is remembered and you can change it anytime from the "Cookies" link in the footer.',
-    more: 'Learn more',
+    more: 'Privacy policy',
+    label: 'Cookie preferences',
     accept: 'Accept',
     reject: 'Reject'
   };
@@ -45,6 +47,7 @@
     var b = document.createElement('div');
     b.id = 'mirlo-cookie-banner';
     b.setAttribute('role', 'dialog');
+    b.setAttribute('aria-label', T.label);
     b.className = 'fixed bottom-0 inset-x-0 z-50 p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg';
     var btnClass = 'px-4 py-2 rounded-lg border border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium transition-colors';
     b.innerHTML =
