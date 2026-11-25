@@ -477,7 +477,8 @@
         width: 100%;
         max-width: 1180px;
         margin: 0 auto;
-        padding: clamp(120px, 18vh, 190px) clamp(20px, 5vw, 48px) clamp(96px, 17vh, 180px);
+        padding: clamp(120px, 18vh, 190px) clamp(20px, 5vw, 48px)
+            calc(clamp(96px, 17vh, 180px) + var(--cookie-space, 0px));
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -1916,6 +1917,21 @@
                 labRange.addEventListener('input', paintLab);
             }
 
+            var cookieSpace = 0;
+
+            function syncCookieSpace() {
+                var banner = document.getElementById('mirlo-cookie-banner');
+                var height = banner ? Math.round(banner.getBoundingClientRect().height) : 0;
+                if (height === cookieSpace) return;
+                cookieSpace = height;
+                document.body.style.setProperty('--cookie-space', height + 'px');
+            }
+
+            if (window.MutationObserver) {
+                new MutationObserver(syncCookieSpace).observe(document.body, { childList: true });
+            }
+            window.addEventListener('load', syncCookieSpace);
+
             function onScroll() {
                 if (header) header.classList.toggle('is-scrolled', window.scrollY > 40);
             }
@@ -1929,6 +1945,7 @@
                 resizeTimer = setTimeout(function () {
                     if (heroCanvas) paintHero();
                     if (labCanvas) paintLab();
+                    syncCookieSpace();
                 }, 140);
             });
         })();
