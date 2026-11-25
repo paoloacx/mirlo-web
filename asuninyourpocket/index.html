@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://www.mirloapps.es/asuninyourpocket/" rel="canonical"/>
 <meta content="app-id=6756734880" name="apple-itunes-app"/>
 <meta content="https://www.mirloapps.es/asuninyourpocket/" property="og:url"/>
@@ -11,8 +12,6 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Sun &amp; Moon Tracker for iPhone | A Sun in Your Pocket" name="twitter:title"/>
 <meta content="Follow sunrise, sunset, moon phases and golden hour on iPhone and iPad. Explore celestial paths, weather, widgets and Zen mode." name="twitter:description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sun &amp; Moon Tracker for iPhone | A Sun in Your Pocket</title>
 <meta content="Follow sunrise, sunset, moon phases and golden hour on iPhone and iPad. Explore celestial paths, weather, widgets and Zen mode." name="description"/>
 <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
@@ -22,182 +21,27 @@
 <link href="../favicon.ico" rel="shortcut icon"/>
 <meta content="https://www.mirloapps.es/asuninyourpocket/sun.webp" property="og:image"/>
 <meta content="https://www.mirloapps.es/asuninyourpocket/sun.webp" name="twitter:image"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mirlo-orange': '#FF9E00',
-                        'sun-yellow': '#FBBF24',
-                        'sun-orange': '#F97316',
-                        'sun-gold': '#FCD34D',
-                    },
-                    fontFamily: {
-                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
-                    }
-                }
-            },
-            darkMode: 'class',
-        }
-    </script>
-<style>
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            transition: all 0.3s ease;
-        }
-
-        /* --- EFECTO GRANO --- */
-        .bg-grain {
-            position: relative;
-            background-color: #f3f4f6;
-        }
-
-        .dark .bg-grain {
-            background-color: #0a0a0a;
-        }
-
-        .dark .bg-grain::before {
-            display: none;
-        }
-
-        .bg-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .bg-grain>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* --- BOTONES PLÁSTICO --- */
-        .btn-plastic {
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-        }
-
-        .btn-plastic:hover {
-            transform: translateY(-1px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn-plastic:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
-            border: 2px solid #FBBF24;
-            color: #FBBF24;
-        }
-
-        .btn-sun {
-            background: linear-gradient(to bottom, #FCD34D 0%, #F97316 100%);
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 6px -1px rgba(251, 191, 36, 0.3);
-            border: 1px solid #EA580C;
-        }
-
-        .btn-sun:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 12px -1px rgba(251, 191, 36, 0.4);
-        }
-
-        /* --- TARJETAS PRO --- */
-        .tech-card {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .tech-card {
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-            pointer-events: none;
-        }
-
-        .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
-
-        /* Sun glow animation */
-        @keyframes sunGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 60px rgba(251, 191, 36, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 80px rgba(251, 191, 36, 0.5);
-            }
-        }
-
-        .sun-glow {
-            animation: sunGlow 3s ease-in-out infinite;
-        }
-    </style>
-<script>
-        // Dark Mode Logic
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+    function toggleDarkMode() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
         }
-
-        function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-    </script>
+    }
+</script>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -291,211 +135,1805 @@
   ]
 }</script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap');
-.sun-page{--gold:#b66a0a;--paper:#faf7f1;--ink:#181c26;background:var(--paper);color:var(--ink)}.sun-page h1,.sun-page h2,.sun-page h3{font-family:'Crimson Pro',Georgia,serif;letter-spacing:-.035em;line-height:1.08}.sun-page h1{font-size:clamp(3.1rem,5.6vw,5.6rem);font-weight:600}.sun-page h2{font-size:clamp(2.3rem,4vw,3.5rem);font-weight:600}.sun-page h3{font-size:1.7rem;font-weight:600}.sun-wrap{max-width:1200px;margin:auto;padding:0 24px}.sun-section{padding:90px 0;border-top:1px solid #ddd7cb}.sun-hero{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:80px;padding:145px 0 85px}.sun-lead{font-size:1.15rem;line-height:1.8;color:#555b66;max-width:660px;margin-top:25px}.sun-kicker{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:22px}.sun-chips{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0}.sun-chips span{background:#fff9;border:1px solid #e3dccf;border-radius:8px;padding:8px 12px;font-size:.78rem}.sun-phone{max-width:310px;margin:auto;border-radius:35px;padding:10px;background:#fff;box-shadow:0 24px 65px #b17c2933;border:1px solid #e4d8c6}.sun-phone img{width:100%;height:auto;border-radius:26px;display:block}.sun-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}.sun-card{border:1px solid #e3dccf;border-radius:24px;padding:30px;background:#fff8}.sun-card p{font-size:.96rem;line-height:1.8;color:#555b66;margin-top:15px}.sun-num{color:var(--gold);font-size:.75rem;letter-spacing:.14em;margin-bottom:25px}.sun-gallery{display:flex;gap:22px;overflow-x:auto;padding:35px 2px 25px;scroll-snap-type:x mandatory}.sun-gallery figure{min-width:210px;max-width:240px;flex:0 0 23%;scroll-snap-align:start}.sun-gallery img{width:100%;height:auto;border-radius:20px;border:1px solid #dfd7c8}.sun-gallery figcaption{font-size:.84rem;margin:14px 4px;line-height:1.5;color:#555b66}.sun-next{background:#172838;color:#fff;border-radius:30px;padding:44px;display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}.sun-next p,.sun-next li{color:#d4dce2;line-height:1.8}.sun-next li{margin:10px 0}.sun-cta{display:inline-flex;align-items:center;gap:14px;background:#1c2027;color:white;border-radius:14px;padding:14px 25px;font-weight:600;margin:8px 0}.sun-fine{font-size:.8rem;color:#666;line-height:1.7}.dark .sun-kicker,.dark .sun-num{color:#f2bb63}.dark .sun-page{--paper:#141618;--ink:#f5f1e8}.dark .sun-lead,.dark .sun-card p,.dark .sun-gallery figcaption,.dark .sun-fine{color:#bcc2c8}.dark .sun-card,.dark .sun-chips span{background:#22272b;border-color:#394048}.dark .sun-section{border-color:#394048}.dark .sun-phone{background:#282e32;border-color:#444}.sun-page a:focus-visible{outline:3px solid #b66a0a;outline-offset:5px}
-@media(max-width:800px){.sun-hero{grid-template-columns:1fr;gap:45px;padding:115px 0 65px}.sun-grid{grid-template-columns:1fr 1fr}.sun-next{grid-template-columns:1fr;gap:25px;padding:30px}.sun-section{padding:65px 0}.sun-phone{max-width:280px}.sun-gallery figure{flex-basis:70%}}
-@media(max-width:480px){.sun-grid{grid-template-columns:1fr}.sun-wrap{padding:0 20px}.sun-card{padding:27px}.sun-hero h1{font-size:3.25rem}.sun-gallery figure{min-width:200px}}
-</style></head>
-<body class="bg-white dark:bg-black text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300 overflow-x-hidden">
-<header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50 transition-colors duration-300">
-<nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-<a class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity" href="../">
-                mirlo apps<span class="text-mirlo-orange">.</span>
-</a>
-<ul class="hidden md:flex space-x-8 text-sm font-medium">
-<li><a class="text-gray-600 dark:text-gray-300 hover:text-sun-yellow dark:hover:text-sun-yellow" href="../apps/">Apps</a>
-</li>
-<!-- Dark Mode Switch -->
-<li><a class="hover:text-sun-yellow transition-colors" href="#features">Features</a></li><li><a class="hover:text-sun-yellow transition-colors" href="#screenshots">Screenshots</a></li><li><a class="hover:text-sun-yellow transition-colors" href="#changes">Version 1.3</a></li><li><a class="hover:text-sun-yellow transition-colors" href="#faq">FAQ</a></li><li><a class="hover:text-sun-yellow transition-colors" href="soporte.html">Support</a></li><li class="flex items-center">
-<label class="inline-flex items-center cursor-pointer">
-<input aria-label="Dark mode" class="sr-only peer" onclick="toggleDarkMode()" type="checkbox"/>
-<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-sun-yellow">
-</div>
-</label>
-</li></ul>
-<button aria-label="Open menu" class="md:hidden text-gray-600 dark:text-white hover:text-sun-yellow p-2" onclick="toggleMenu()">
-<i class="fas fa-bars text-xl"></i>
-</button>
-</nav>
-</header>
-<main class="sun-page"><div class="sun-wrap"><section class="sun-hero"><div><p class="sun-kicker">A Sun in Your Pocket · Sun, moon &amp; sky</p><h1>A little closer<br/>to the sky.</h1><p class="sun-lead">Follow the sun and moon, find the light for your next photo and explore the rhythm of the sky. Your personal planetarium on iPhone and iPad. Now available on Apple TV.</p><div class="sun-chips"><span>Sunrise &amp; sunset</span><span>Moon phases</span><span>Golden hour</span><span>Zen mode</span></div><a class="sun-cta" href="https://apps.apple.com/app/a-sun-in-your-pocket/id6756734880"><i aria-hidden="true" class="fab fa-apple"></i>Download on the App Store</a><p class="sun-fine">Free to download · In-app purchases<br/>iPhone, iPad &amp; Apple TV</p></div><div class="sun-phone"><img alt="Actual App Store screenshot: sun and moon tracking" height="693" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2a/86/d0/2a86d05b-c723-6477-000c-e72f21f4470d/Apple_iPhone_14_Plus_Screenshot_1.png/320x480bb.jpg" width="320"/></div></section></div><section class="sun-section" id="features"><div class="sun-wrap"><p class="sun-kicker">Your personal planetarium</p><h2>From the first light<br/>to the last star.</h2><div class="sun-grid"><article class="sun-card"><p class="sun-num">01</p><h3>Follow the light.</h3><p>See the sun and moon move across a 3D sky. Check sunrise, sunset, moonrise and moonset for your location.</p></article><article class="sun-card"><p class="sun-num">02</p><h3>Find your golden hour.</h3><p>Plan a photo, a walk or a night outside with golden hour, blue hour, twilight and weather forecasts.</p></article><article class="sun-card"><p class="sun-num">03</p><h3>A sky full of events.</h3><p>Explore lunar phases, eclipses, meteor showers, solstices and equinoxes in the astronomical timeline.</p></article><article class="sun-card"><p class="sun-num">04</p><h3>Look around the sky.</h3><p>Explore solar and lunar paths, stars, planets and constellations in compass mode. Camera and AR features are for iPhone and iPad, not Apple TV.</p></article><article class="sun-card"><p class="sun-num">05</p><h3>Keep the sky close.</h3><p>Home screen and lock screen widgets bring the next sunrise, sunset and astronomical events to your iPhone or iPad.</p></article><article class="sun-card"><p class="sun-num">06</p><h3>Take a quieter view.</h3><p>Slow down with Zen mode: Earth in space, day and night cycles and a view of the stars.</p></article></div></div></section><section class="sun-section" id="screenshots"><div class="sun-wrap"><p class="sun-kicker">Inside the app</p><h2>The sky, as you see it.</h2><p class="sun-lead">Real screenshots of the current iPhone version. Scroll through tracking, weather, events and quieter moments.</p><div class="sun-gallery"><figure><img alt="A Sun in Your Pocket: Sun and moon tracking" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2a/86/d0/2a86d05b-c723-6477-000c-e72f21f4470d/Apple_iPhone_14_Plus_Screenshot_1.png/320x480bb.jpg" width="320"/><figcaption>Sun and moon tracking</figcaption></figure><figure><img alt="A Sun in Your Pocket: Weather forecasts" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e4/0c/f9/e40cf927-ac29-43bb-db56-a7a6e1f8774f/Apple_iPhone_14_Plus_Screenshot_6.png/320x480bb.jpg" width="320"/><figcaption>Weather forecasts</figcaption></figure><figure><img alt="A Sun in Your Pocket: Astronomical timeline" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bc/f1/c5/bcf1c511-7e39-a0b3-a3da-a3c99375bebf/Apple_iPhone_14_Plus_Screenshot_3.png/320x480bb.jpg" width="320"/><figcaption>Astronomical timeline</figcaption></figure><figure><img alt="A Sun in Your Pocket: Widgets on iPhone and iPad" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7d/dc/26/7ddc262a-1263-bae6-9100-a0c78b6e65eb/Apple_iPhone_14_Plus_Screenshot_2.png/320x480bb.jpg" width="320"/><figcaption>Widgets on iPhone and iPad</figcaption></figure><figure><img alt="A Sun in Your Pocket: Your personal planetarium" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b1/7f/56/b17f56e7-e8aa-8fbe-10e0-c3256212c00e/Apple_iPhone_14_Plus_Screenshot_4.png/320x480bb.jpg" width="320"/><figcaption>Your personal planetarium</figcaption></figure><figure><img alt="A Sun in Your Pocket: Zen mode" height="693" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/76/d8/ee76d8f5-5da9-b635-84ea-654f36b8fbad/Apple_iPhone_14_Plus_Screenshot_5.png/320x480bb.jpg" width="320"/><figcaption>Zen mode</figcaption></figure></div></div></section><section class="sun-section" id="changes">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4 tracking-tight">Changelog</h2>
-<p class="text-xl text-gray-500 dark:text-gray-400">Illuminating updates.</p>
-</div>
-<div class="space-y-12">
-<!-- Version 1.3 -->
-<div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-sun-yellow ring-4 ring-gray-100 dark:ring-black"></div>
-<div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-<h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.3</h3>
-</div>
-<ul class="space-y-3 text-gray-600 dark:text-gray-300">
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Apple TV version: We’ve launched an app for your TV. If you’re already a Premium user, the TV version is automatically unlocked for you.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>FINALLY: We’ve added cloud cover! Realistic, volumetric clouds synchronized with actual weather conditions. This is version 1.0. We’ll keep working to improve it.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>New Augmented Reality (AR) mode: Use your phone’s camera to overlay the view.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Visual enhancements for rainy weather, including the addition of background mist.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Design tweaks, translation updates, improved calculation accuracy, and general performance optimizations (you might not see every change, but you’ll notice the difference).</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>The moon now features its own realistic, independent rotation.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Enhanced alerts and notifications.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Improved landscape-mode display, now including a low-power mode when the device is positioned this way.</span></li>
-</ul>
-</div>
-<!-- Version 1.2.5 -->
-<div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-sun-yellow ring-4 ring-gray-100 dark:ring-black"></div>
-<div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-<h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2.5</h3>
-</div>
-<ul class="space-y-3 text-gray-600 dark:text-gray-300">
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>New landscapes, including lakes and grass, with wind and fog weather effects.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>Explore stars, planets and constellations for your location in compass mode, with solar and lunar paths.</span></li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i><span>New lunar zenith and weather notifications, plus performance and stability improvements.</span></li>
-</ul>
-</div>
-<!-- Version 1.2 -->
-<div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-sun-yellow ring-4 ring-gray-100 dark:ring-black">
-</div>
-<div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-<h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.2</h3>
-</div>
-<ul class="space-y-3 text-gray-600 dark:text-gray-300">
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New landscapes and visual elements: Lake and grass.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New real-time weather elements: Wind and fog.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>At night, you can see the most relevant constellations, planets, and stars for your
-                                geographic location and time of year, with educational information about each
-                                one.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>You can now also see the Moon, constellations, planets, and stars in compass
-                                mode.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Lunar and solar paths in compass mode, as well as cardinal point markings.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New notifications: Lunar zenith and 6 new weather notifications.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Bug fixes, performance improvements, stability, and efficiency enhancements.</span>
-</li>
-</ul>
-</div>
-<!-- Version 1.1 -->
-<div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-800">
-<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-100 dark:ring-black">
-</div>
-<div class="flex flex-col sm:flex-row sm:items-baseline gap-4 mb-4">
-<h3 class="text-2xl font-bold text-gray-900 dark:text-white">Version 1.1</h3>
-</div>
-<ul class="space-y-3 text-gray-600 dark:text-gray-300">
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New visual element: Light a lamp post to illuminate the night (with live insects
-                                fluttering around the light).</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New weather events alter the landscape in real-time (Freezing, snow, and rain).</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>New Compass and AR mode to see the real path of the sun.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>16 different visual states of the Moon.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>ZEN Mode with 6 relaxing sounds.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Planetarium improvement with more detailed information and new celestial
-                                bodies.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Real texture of the Moon.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Export featured events to your calendar.</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Moonrise and moonset are now much more precise using a real astronomical algorithm
-                                (Jean Meeus).</span>
-</li>
-<li class="flex items-start"><i class="fas fa-check text-sun-yellow mt-1.5 mr-3 text-xs"></i>
-<span>Minor bug fixes and improvements.</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</section><section class="py-20 px-6 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800" id="faq">
-<div class="max-w-4xl mx-auto">
-<h2 class="text-4xl font-bold mb-10 tracking-tight text-center">Frequently asked questions</h2>
-<div class="grid gap-5">
-<div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">What does A Sun in Your Pocket track?</h3><p class="text-gray-600 dark:text-gray-300">It is a sun and moon tracker for iPhone and iPad. Follow their positions and paths, check rise and set times, explore moon phases, and plan around golden hour and astronomical events.</p></div>
-<div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Can I check sunrise, sunset, moon phases, and golden hour?</h3><p class="text-gray-600 dark:text-gray-300">Yes. The app includes sunrise, sunset, moonrise, moonset, twilight phases, golden hour, blue hour, moon phases, eclipses, meteor showers, solstices, and equinoxes.</p></div>
-<div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Does the app work offline, and is my location private?</h3><p class="text-gray-600 dark:text-gray-300">Your location stays on your device. Solar and lunar calculations run locally, so core tracking works offline. Weather forecasts require an internet connection.</p></div>
-<div class="tech-card p-6"><h3 class="text-xl font-bold mb-2">Which languages does the app support?</h3><p class="text-gray-600 dark:text-gray-300">The app is available in English, Spanish, French, German, Italian, Japanese, Korean, Portuguese, and Simplified Chinese.</p></div>
-</div>
-</div>
-</section><section class="sun-section"><div class="sun-wrap" style="text-align:center"><img alt="A Sun in Your Pocket icon" height="72" src="sun.webp" style="border-radius:18px;margin:0 auto 24px" width="72"/><h2>Make time for the sky.</h2><a class="sun-cta" href="https://apps.apple.com/app/a-sun-in-your-pocket/id6756734880">Download on the App Store</a><p class="sun-fine">Weather forecasts need an internet connection.</p></div></section></main>
-<footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6 transition-colors duration-300">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="flex-1 min-w-0 flex justify-center md:justify-start">
-<a class="text-xl font-bold text-gray-900 dark:text-white tracking-tight" href="../">
-                    mirlo apps<span class="text-mirlo-orange">.</span>
-</a>
-</div>
-<div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
-                © 2026 mirlo apps. Made in Spain 🇪🇸
-            </div>
-<div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
-<a class="hover:text-sun-yellow transition-colors" href="../privacidad.html">Privacy &amp; Terms</a>
-<a class="hover:text-sun-yellow transition-colors" href="#" onclick="window.mirloCookiePrefs(); return false;">Cookies</a>
-<a class="hover:text-sun-yellow transition-colors" href="soporte.html">Support</a>
-<a aria-label="X (Twitter)" class="text-gray-400 hover:text-blue-400 text-xl transition-colors" href="https://x.com/PaoloAC"><i class="fab fa-twitter"></i></a>
-<a aria-label="Threads" class="text-gray-400 hover:text-purple-400 text-xl transition-colors" href="https://www.threads.com/@paoloac"><i class="fab fa-threads"></i></a>
-</div>
-</div>
-</footer>
-<div class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8 transition-opacity duration-300" id="mobile-menu">
-<button aria-label="Close menu" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2" onclick="toggleMenu()">
-<i class="fas fa-times text-3xl"></i>
-</button>
-<!-- Mobile Dark Mode Switch -->
-<div class="flex items-center gap-4 mt-8">
-<span class="text-gray-600 dark:text-gray-300 font-medium">Dark Mode</span>
-<label class="inline-flex items-center cursor-pointer">
-<input aria-label="Dark mode" class="sr-only peer" onclick="toggleDarkMode()" type="checkbox"/>
-<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-sun-yellow">
-</div>
-</label>
-</div>
-<a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="../apps/" onclick="toggleMenu()">Apps</a><a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="#features" onclick="toggleMenu()">Features</a><a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="#screenshots" onclick="toggleMenu()">Screenshots</a><a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="#changes" onclick="toggleMenu()">Version 1.3</a><a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="#faq" onclick="toggleMenu()">FAQ</a><a class="text-2xl font-bold text-gray-900 dark:text-white hover:text-sun-yellow" href="soporte.html" onclick="toggleMenu()">Support</a></div>
-<script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            }
+    /* ---------- tokens ---------- */
+    :root {
+        --font: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        --text-display: clamp(3.1rem, 7.4vw, 7.2rem);
+        --text-h2: clamp(2rem, 3.5vw, 3.05rem);
+        --text-body: 1.0625rem;
+        --text-sm: 0.875rem;
+
+        --paper: #edeff3;
+        --paper-soft: #e2e7ed;
+        --ink: #0a0e16;
+        --muted: #545d6c;
+        --line: #d2d8e1;
+        --accent: #e85d04;
+        --paper-blur: rgba(237, 239, 243, 0.88);
+
+        --night: #06090f;
+        --night-line: rgba(255, 255, 255, 0.12);
+        --night-ink: #edf1f7;
+        --night-muted: #97a3b6;
+    }
+
+    html.dark {
+        --paper: #080b11;
+        --paper-soft: #0e131c;
+        --ink: #f2f4f8;
+        --muted: #9ba5b4;
+        --line: #202734;
+        --accent: #ff8a3d;
+        --paper-blur: rgba(8, 11, 17, 0.88);
+    }
+
+    /* ---------- base ---------- */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: var(--text-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.06;
+    }
+
+    h1 {
+        font-size: var(--text-display);
+        line-height: 0.94;
+        letter-spacing: -0.045em;
+    }
+
+    h2 {
+        font-size: var(--text-h2);
+        max-width: 24ch;
+    }
+
+    h3 {
+        font-size: var(--text-body);
+        font-weight: 600;
+        letter-spacing: -0.012em;
+        line-height: 1.35;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+        border-radius: 2px;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .wrap {
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 clamp(20px, 5vw, 48px);
+    }
+
+    .wrap--narrow > * {
+        max-width: 760px;
+    }
+
+    .prose {
+        margin-top: 20px;
+        max-width: 58ch;
+        color: var(--muted);
+    }
+
+    /* ---------- header ---------- */
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 60;
+        border-bottom: 1px solid transparent;
+        color: var(--ink);
+        transition: background-color 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+            color 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body[data-hero-tone="night"] .site-header:not(.is-scrolled) {
+        color: #f5f8fc;
+    }
+
+    body[data-hero-tone="day"] .site-header:not(.is-scrolled) {
+        color: #0a0e16;
+    }
+
+    .site-header.is-scrolled {
+        background: var(--paper-blur);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border-bottom-color: var(--line);
+        color: var(--ink);
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .brand {
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        text-decoration: none;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .brand span {
+        color: var(--accent);
+    }
+
+    body[data-hero-tone="night"] .site-header:not(.is-scrolled) .brand span {
+        color: #ffb020;
+    }
+
+    .nav__links {
+        display: flex;
+        align-items: center;
+        gap: clamp(14px, 1.9vw, 26px);
+        font-size: var(--text-sm);
+        font-weight: 500;
+    }
+
+    .nav__links a {
+        position: relative;
+        padding: 4px 0;
+        text-decoration: none;
+        opacity: 0.82;
+        transition: opacity 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav__links a:hover {
+        opacity: 1;
+    }
+
+    .nav__links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0.6;
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a:focus-visible::after {
+        transform: scaleX(1);
+    }
+
+    .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        background: transparent;
+        color: inherit;
+        opacity: 0.62;
+        cursor: pointer;
+        transition: opacity 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .theme-toggle:hover {
+        opacity: 1;
+        transform: rotate(-14deg);
+    }
+
+    .theme-toggle svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .theme-toggle .icon-sun {
+        display: none;
+    }
+
+    html.dark .theme-toggle .icon-sun {
+        display: block;
+    }
+
+    html.dark .theme-toggle .icon-moon {
+        display: none;
+    }
+
+    .nav__burger {
+        display: none;
+        padding: 8px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .nav__burger svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    @media (max-width: 980px) {
+        .nav__links {
+            display: none;
         }
 
-        // Initialize switch state
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => cb.checked = isDark);
+        .nav__burger {
+            display: inline-flex;
+        }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        min-height: 100vh;
+        min-height: 100svh;
+        background:
+            radial-gradient(120% 90% at 78% 18%, #24405f 0%, transparent 62%),
+            linear-gradient(#0b1220, #131a26);
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    .hero__sky {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .hero__veil {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    body[data-hero-tone="night"] .hero__veil {
+        background: radial-gradient(70% 55% at 14% 74%,
+                rgba(3, 5, 10, 0.34) 0%,
+                rgba(3, 5, 10, 0.16) 45%,
+                rgba(3, 5, 10, 0) 78%);
+    }
+
+    body[data-hero-tone="day"] .hero__veil {
+        background: none;
+    }
+
+    .hero__inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: clamp(120px, 18vh, 190px) clamp(20px, 5vw, 48px) clamp(96px, 17vh, 180px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #f6f8fb;
+    }
+
+    body[data-hero-tone="day"] .hero__inner {
+        color: #0a0e16;
+    }
+
+    .hero h1 {
+        max-width: 15ch;
+    }
+
+    .hero__sub {
+        margin-top: 24px;
+        max-width: 42ch;
+        font-size: var(--text-body);
+        color: rgba(238, 243, 250, 0.8);
+    }
+
+    body[data-hero-tone="day"] .hero__sub {
+        color: #3f4859;
+    }
+
+    .hero .btn {
+        margin-top: 34px;
+        background: #f7f9fc;
+        color: #0a0e16;
+    }
+
+    body[data-hero-tone="day"] .hero .btn {
+        background: #0a0e16;
+        color: #f6f8fb;
+    }
+
+    .hero__inner > * {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: rise 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero__inner > *:nth-child(1) {
+        animation-delay: 0.04s;
+    }
+
+    .hero__inner > *:nth-child(2) {
+        animation-delay: 0.12s;
+    }
+
+    .hero__inner > *:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    @keyframes rise {
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* ---------- buttons ---------- */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 24px;
+        border: 0;
+        border-radius: 11px;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+            background-color 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .btn i {
+        font-size: 1.15rem;
+        line-height: 1;
+    }
+
+    /* ---------- sections ---------- */
+    .section {
+        padding: clamp(72px, 9vw, 128px) 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .section:first-of-type {
+        border-top: 0;
+    }
+
+    /* ---------- sky lab ---------- */
+    .lab {
+        margin-top: clamp(34px, 4.5vw, 56px);
+    }
+
+    .lab__readout {
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+    }
+
+    .lab__time {
+        font-size: var(--text-h2);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+    }
+
+    .lab__phase {
+        color: var(--muted);
+    }
+
+    .lab__sky {
+        display: block;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        aspect-ratio: 12 / 5;
+        background: #0b1220;
+    }
+
+    .lab__slider {
+        display: block;
+        margin-top: 26px;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        width: 100%;
+        height: 26px;
+        margin: 0;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        height: 1px;
+        background: var(--line);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        margin-top: -7.5px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--ink);
+        box-shadow: 0 0 0 5px var(--paper);
+        transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+        transform: scale(1.15);
+    }
+
+    input[type="range"]::-moz-range-track {
+        height: 1px;
+        border: 0;
+        background: var(--line);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--ink);
+    }
+
+    .lab__ticks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 30px;
+        margin-top: 20px;
+    }
+
+    .lab__ticks li {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-size: var(--text-sm);
+        line-height: 1.5;
+        color: var(--muted);
+        white-space: nowrap;
+    }
+
+    .lab__ticks strong {
+        font-weight: 600;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- night band ---------- */
+    .band-night {
+        background: var(--night);
+        color: var(--night-ink);
+    }
+
+    .band-night .prose {
+        color: var(--night-muted);
+    }
+
+    #screenshots {
+        padding: clamp(64px, 8vw, 104px) 0 0;
+    }
+
+    .rail {
+        display: flex;
+        gap: clamp(16px, 2vw, 26px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: clamp(20px, 5vw, 48px);
+        padding: clamp(36px, 4.5vw, 54px) clamp(20px, 5vw, 48px) clamp(56px, 7vw, 92px);
+        scrollbar-width: thin;
+    }
+
+    @media (min-width: 1276px) {
+        .rail {
+            padding-left: calc((100vw - 1180px) / 2 + 48px);
+            padding-right: calc((100vw - 1180px) / 2 + 48px);
+            scroll-padding-left: calc((100vw - 1180px) / 2 + 48px);
+        }
+    }
+
+    .shot {
+        flex: 0 0 auto;
+        width: clamp(222px, 22vw, 292px);
+        margin: 0;
+        scroll-snap-align: start;
+    }
+
+    .shot img {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .shot figcaption {
+        margin-top: 14px;
+        font-size: var(--text-sm);
+        color: var(--night-muted);
+    }
+
+    /* ---------- features ---------- */
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: clamp(36px, 6vw, 96px);
+        margin-top: clamp(32px, 4.5vw, 56px);
+    }
+
+    .feature {
+        padding: 26px 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .feature p {
+        margin-top: 10px;
+        max-width: 44ch;
+        color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+        .features {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ---------- updates ---------- */
+    .change-list {
+        margin-top: clamp(30px, 4vw, 44px);
+    }
+
+    .change-list li {
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+    }
+
+    .change-list li:last-child {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .earlier {
+        margin-top: 34px;
+    }
+
+    .earlier summary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        font-weight: 600;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .earlier summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .earlier summary::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .earlier[open] summary::after {
+        transform: rotate(-135deg) translateY(-2px);
+    }
+
+    .earlier__body {
+        padding-top: 22px;
+    }
+
+    .earlier__group + .earlier__group {
+        margin-top: 30px;
+    }
+
+    .earlier__group h3 {
+        color: var(--muted);
+    }
+
+    .earlier__group ul {
+        margin-top: 12px;
+        max-width: 66ch;
+    }
+
+    .earlier__group li {
+        padding: 9px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+    }
+
+    /* ---------- faq ---------- */
+    .faq {
+        margin-top: clamp(30px, 4vw, 44px);
+        border-top: 1px solid var(--line);
+    }
+
+    .faq details {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .faq summary {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 20px 0;
+        font-weight: 600;
+        letter-spacing: -0.012em;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq summary::after {
+        content: "";
+        flex: none;
+        width: 9px;
+        height: 9px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq details[open] summary::after {
+        transform: rotate(-135deg) translateY(-2px);
+    }
+
+    .faq p {
+        padding-bottom: 24px;
+        max-width: 64ch;
+        color: var(--muted);
+    }
+
+    /* ---------- closing ---------- */
+    .band-close {
+        padding: clamp(76px, 9vw, 118px) 0;
+    }
+
+    .close {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+        text-align: center;
+    }
+
+    .close__icon {
+        border-radius: 20px;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5);
+    }
+
+    .close h2 {
+        max-width: none;
+    }
+
+    .band-close .btn {
+        background: #f7f9fc;
+        color: #0a0e16;
+    }
+
+    .close__note {
+        font-size: var(--text-sm);
+        color: var(--night-muted);
+        max-width: 50ch;
+    }
+
+    /* ---------- footer ---------- */
+    .site-footer {
+        border-top: 1px solid var(--night-line);
+        padding: 34px 0 40px;
+    }
+
+    .footer__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+
+    .footer__copy {
+        font-size: var(--text-sm);
+        color: var(--night-muted);
+    }
+
+    .footer__links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        font-size: var(--text-sm);
+    }
+
+    .footer__links a {
+        color: var(--night-muted);
+        text-decoration: none;
+        transition: color 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .footer__links a:hover {
+        color: var(--night-ink);
+    }
+
+    .footer__links i {
+        font-size: 1.05rem;
+    }
+
+    /* ---------- mobile menu ---------- */
+    .menu {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: clamp(28px, 8vw, 56px);
+        background: var(--paper);
+        color: var(--ink);
+    }
+
+    .menu.is-open {
+        display: flex;
+    }
+
+    .menu a {
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        text-decoration: none;
+        padding: 6px 0;
+    }
+
+    .menu__close {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        padding: 8px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .menu__close svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .menu__theme {
+        align-self: flex-start;
+        margin-top: 22px;
+        padding: 10px 0;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-family: inherit;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    /* ---------- cookie banner (cookies.js injects plain Tailwind markup) ---------- */
+    #mirlo-cookie-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 90;
+        padding: 18px clamp(20px, 5vw, 48px);
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.08);
+        color: var(--muted);
+        font-size: var(--text-sm);
+    }
+
+    #mirlo-cookie-banner > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 18px;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    #mirlo-cookie-banner p {
+        flex: 1 1 420px;
+        max-width: 74ch;
+    }
+
+    #mirlo-cookie-banner a {
+        color: var(--ink);
+    }
+
+    #mirlo-cookie-banner > div > div {
+        display: flex;
+        flex: none;
+        gap: 10px;
+    }
+
+    #mirlo-cookie-banner button {
+        padding: 9px 16px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: transparent;
+        color: var(--ink);
+        font-family: inherit;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #mirlo-cookie-banner button:hover {
+        background: var(--paper-soft);
+    }
+
+    #mirlo-cookie-banner #mirlo-cookie-accept {
+        border-color: transparent;
+        background: var(--ink);
+        color: var(--paper);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        .hero__inner > * {
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+
+        .theme-toggle:hover,
+        .btn:hover,
+        input[type="range"]:active::-webkit-slider-thumb {
+            transform: none;
+        }
+    }
+</style>
+</head>
+<body data-hero-tone="night">
+    <header class="site-header" id="siteHeader">
+        <nav class="nav wrap" aria-label="Main">
+            <a class="brand" href="../">mirlo apps<span>.</span></a>
+
+            <ul class="nav__links">
+                <li><a href="../apps/">Apps</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#changes">Updates</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="soporte.html">Support</a></li>
+                <li>
+                    <button class="theme-toggle" type="button" onclick="toggleDarkMode()" aria-label="Switch colour theme">
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button class="nav__burger" type="button" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobile-menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                    <path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <canvas class="hero__sky" id="heroSky" aria-hidden="true"></canvas>
+            <div class="hero__veil" aria-hidden="true"></div>
+            <div class="hero__inner">
+                <h1>A Sun in<br>Your Pocket</h1>
+                <p class="hero__sub">Follow the sun and moon across the sky, catch golden hour, and plan your day around the light.</p>
+                <a class="btn" href="https://apps.apple.com/app/a-sun-in-your-pocket/id6756734880">
+                    <i class="fab fa-apple" aria-hidden="true"></i>Download on the App Store
+                </a>
+            </div>
+        </section>
+
+        <section class="section" id="sky">
+            <div class="wrap">
+                <h2>Follow the light through the day</h2>
+                <p class="prose">Drag the handle from sunrise to night and watch the sky change. The times are today's, worked out for your region.</p>
+
+                <div class="lab">
+                    <div class="lab__readout">
+                        <span class="lab__time" id="labTime" aria-live="polite">--:--</span>
+                        <span class="lab__phase" id="labPhase">&nbsp;</span>
+                    </div>
+                    <canvas class="lab__sky" id="labSky" aria-hidden="true"></canvas>
+                    <label class="lab__slider">
+                        <span class="sr-only">Time of day</span>
+                        <input id="labRange" type="range" min="0" max="1439" step="1" value="720">
+                    </label>
+                    <ul class="lab__ticks" id="labTicks"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="band-night" id="screenshots">
+            <div class="wrap">
+                <h2>Inside the app</h2>
+                <p class="prose">Real screenshots of version 1.3 on iPhone.</p>
+            </div>
+
+            <div class="rail">
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2a/86/d0/2a86d05b-c723-6477-000c-e72f21f4470d/Apple_iPhone_14_Plus_Screenshot_1.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: sun and moon tracking">
+                    <figcaption>Sun and moon tracking</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e4/0c/f9/e40cf927-ac29-43bb-db56-a7a6e1f8774f/Apple_iPhone_14_Plus_Screenshot_6.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: weather forecasts">
+                    <figcaption>Weather forecasts</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bc/f1/c5/bcf1c511-7e39-a0b3-a3da-a3c99375bebf/Apple_iPhone_14_Plus_Screenshot_3.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: astronomical timeline">
+                    <figcaption>Astronomical timeline</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7d/dc/26/7ddc262a-1263-bae6-9100-a0c78b6e65eb/Apple_iPhone_14_Plus_Screenshot_2.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: widgets on iPhone and iPad">
+                    <figcaption>Widgets on iPhone and iPad</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b1/7f/56/b17f56e7-e8aa-8fbe-10e0-c3256212c00e/Apple_iPhone_14_Plus_Screenshot_4.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: your personal planetarium">
+                    <figcaption>Your personal planetarium</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/76/d8/ee76d8f5-5da9-b635-84ea-654f36b8fbad/Apple_iPhone_14_Plus_Screenshot_5.png/643x0w.jpg" width="643" height="1394" loading="lazy" alt="A Sun in Your Pocket: Zen mode">
+                    <figcaption>Zen mode</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="section" id="features">
+            <div class="wrap">
+                <h2>One app, the whole sky.</h2>
+                <div class="features">
+                    <article class="feature">
+                        <h3>Follow the light</h3>
+                        <p>The sun and moon move across a 3D sky, with sunrise, sunset, moonrise and moonset for where you are.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Catch the golden hour</h3>
+                        <p>Golden hour, blue hour and twilight times, plus weather forecasts, so you know when the light will be right.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Never miss an event</h3>
+                        <p>Moon phases, eclipses, meteor showers, solstices and equinoxes in a single astronomical timeline.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Look around you</h3>
+                        <p>Compass and AR modes trace the real path of the sun and moon, with the stars, planets and constellations overhead.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Keep the sky close</h3>
+                        <p>Home screen and lock screen widgets bring the next sunrise, sunset and celestial event without opening the app.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Slow down with Zen mode</h3>
+                        <p>Earth in space, accurate day and night cycles and a quiet view of the stars.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="changes">
+            <div class="wrap wrap--narrow">
+                <h2>What's new in 1.3</h2>
+                <ul class="change-list">
+                    <li>Apple TV version: we've launched an app for your TV. If you're already a Premium user, the TV version is automatically unlocked for you.</li>
+                    <li>Finally, cloud cover: realistic, volumetric clouds synchronized with actual weather conditions. This is version 1.0 and we'll keep working to improve it.</li>
+                    <li>New Augmented Reality (AR) mode: use your phone's camera to overlay the view.</li>
+                    <li>Visual enhancements for rainy weather, including background mist.</li>
+                    <li>Design tweaks, translation updates, improved calculation accuracy and general performance optimizations.</li>
+                    <li>The moon now features its own realistic, independent rotation.</li>
+                    <li>Enhanced alerts and notifications.</li>
+                    <li>Improved landscape-mode display, now including a low-power mode when the device is positioned this way.</li>
+                </ul>
+
+                <details class="earlier">
+                    <summary>Earlier versions</summary>
+                    <div class="earlier__body">
+                        <div class="earlier__group">
+                            <h3>Version 1.2.5</h3>
+                            <ul>
+                                <li>New landscapes, including lakes and grass, with wind and fog weather effects.</li>
+                                <li>Explore stars, planets and constellations for your location in compass mode, with solar and lunar paths.</li>
+                                <li>New lunar zenith and weather notifications, plus performance and stability improvements.</li>
+                            </ul>
+                        </div>
+                        <div class="earlier__group">
+                            <h3>Version 1.2</h3>
+                            <ul>
+                                <li>New landscapes and visual elements: lake and grass.</li>
+                                <li>New real-time weather elements: wind and fog.</li>
+                                <li>At night, you can see the most relevant constellations, planets and stars for your location and time of year, with educational information about each one.</li>
+                                <li>You can now also see the Moon, constellations, planets and stars in compass mode.</li>
+                                <li>Lunar and solar paths in compass mode, as well as cardinal point markings.</li>
+                                <li>New notifications: lunar zenith and 6 new weather notifications.</li>
+                                <li>Bug fixes, performance improvements, stability and efficiency enhancements.</li>
+                            </ul>
+                        </div>
+                        <div class="earlier__group">
+                            <h3>Version 1.1</h3>
+                            <ul>
+                                <li>New visual element: light a lamp post to illuminate the night, with live insects fluttering around the light.</li>
+                                <li>New weather events alter the landscape in real time: freezing, snow and rain.</li>
+                                <li>New compass and AR mode to see the real path of the sun.</li>
+                                <li>16 different visual states of the Moon.</li>
+                                <li>Zen mode with 6 relaxing sounds.</li>
+                                <li>Planetarium improvement with more detailed information and new celestial bodies.</li>
+                                <li>Real texture of the Moon.</li>
+                                <li>Export featured events to your calendar.</li>
+                                <li>Moonrise and moonset are now much more precise using a real astronomical algorithm (Jean Meeus).</li>
+                                <li>Minor bug fixes and improvements.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="section" id="faq">
+            <div class="wrap wrap--narrow">
+                <h2>Questions</h2>
+                <div class="faq">
+                    <details>
+                        <summary>What does A Sun in Your Pocket track?</summary>
+                        <p>It is a sun and moon tracker for iPhone and iPad. Follow their positions and paths, check rise and set times, explore moon phases, and plan around golden hour and astronomical events.</p>
+                    </details>
+                    <details>
+                        <summary>Can I check sunrise, sunset, moon phases and golden hour?</summary>
+                        <p>Yes. The app includes sunrise, sunset, moonrise, moonset, twilight phases, golden hour, blue hour, moon phases, eclipses, meteor showers, solstices and equinoxes.</p>
+                    </details>
+                    <details>
+                        <summary>Does the app work offline, and is my location private?</summary>
+                        <p>Your location stays on your device. Solar and lunar calculations run locally, so core tracking works offline. Weather forecasts require an internet connection.</p>
+                    </details>
+                    <details>
+                        <summary>Which languages does the app support?</summary>
+                        <p>The app is available in English, Spanish, French, German, Italian, Japanese, Korean, Portuguese and Simplified Chinese.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="band-night band-close">
+            <div class="wrap close">
+                <img class="close__icon" src="sun.webp" width="88" height="88" alt="A Sun in Your Pocket app icon">
+                <h2>Make time for the sky.</h2>
+                <a class="btn" href="https://apps.apple.com/app/a-sun-in-your-pocket/id6756734880">
+                    <i class="fab fa-apple" aria-hidden="true"></i>Download on the App Store
+                </a>
+                <p class="close__note">Free to download. In-app purchases unlock Premium. Weather forecasts need an internet connection.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer band-night">
+        <div class="wrap footer__inner">
+            <a class="brand" href="../">mirlo apps<span>.</span></a>
+            <p class="footer__copy">&copy; 2026 mirlo apps. Made in Spain &#127466;&#127480;</p>
+            <ul class="footer__links">
+                <li><a href="../privacidad.html">Privacy &amp; Terms</a></li>
+                <li><a href="#" onclick="window.mirloCookiePrefs(); return false;">Cookies</a></li>
+                <li><a href="soporte.html">Support</a></li>
+                <li><a href="https://x.com/PaoloAC" aria-label="X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.threads.com/@paoloac" aria-label="Threads"><i class="fab fa-threads" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <div class="menu" id="mobile-menu" aria-hidden="true">
+        <button class="menu__close" type="button" onclick="toggleMenu()" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+            </svg>
+        </button>
+        <a href="../apps/" onclick="toggleMenu()">Apps</a>
+        <a href="#features" onclick="toggleMenu()">Features</a>
+        <a href="#screenshots" onclick="toggleMenu()">Screenshots</a>
+        <a href="#changes" onclick="toggleMenu()">Updates</a>
+        <a href="#faq" onclick="toggleMenu()">FAQ</a>
+        <a href="soporte.html" onclick="toggleMenu()">Support</a>
+        <button class="menu__theme" type="button" onclick="toggleDarkMode()">Switch colour theme</button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            var open = menu.classList.toggle('is-open');
+            menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                var menu = document.getElementById('mobile-menu');
+                if (menu.classList.contains('is-open')) toggleMenu();
+            }
         });
     </script>
-<script defer="" src="/cookies.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            var RAD = Math.PI / 180;
+            var DEG = 180 / Math.PI;
+            var SYNODIC = 29.530588853;
+            var NEW_MOON = Date.UTC(2000, 0, 6, 18, 14);
+
+            var PLACES = {
+                'Europe/Madrid': [40.4168, -3.7038],
+                'Atlantic/Canary': [28.4636, -16.2518],
+                'Europe/London': [51.5072, -0.1276],
+                'Europe/Dublin': [53.3498, -6.2603],
+                'Europe/Lisbon': [38.7223, -9.1393],
+                'Europe/Paris': [48.8566, 2.3522],
+                'Europe/Berlin': [52.52, 13.405],
+                'Europe/Rome': [41.9028, 12.4964],
+                'Europe/Amsterdam': [52.3676, 4.9041],
+                'Europe/Brussels': [50.8503, 4.3517],
+                'Europe/Zurich': [47.3769, 8.5417],
+                'Europe/Vienna': [48.2082, 16.3738],
+                'Europe/Warsaw': [52.2297, 21.0122],
+                'Europe/Stockholm': [59.3293, 18.0686],
+                'Europe/Oslo': [59.9139, 10.7522],
+                'Europe/Copenhagen': [55.6761, 12.5683],
+                'Europe/Helsinki': [60.1699, 24.9384],
+                'Europe/Athens': [37.9838, 23.7275],
+                'Europe/Bucharest': [44.4268, 26.1025],
+                'Europe/Istanbul': [41.0082, 28.9784],
+                'Europe/Moscow': [55.7558, 37.6173],
+                'Europe/Kyiv': [50.4501, 30.5234],
+                'America/New_York': [40.7128, -74.006],
+                'America/Chicago': [41.8781, -87.6298],
+                'America/Denver': [39.7392, -104.9903],
+                'America/Los_Angeles': [34.0522, -118.2437],
+                'America/Phoenix': [33.4484, -112.074],
+                'America/Toronto': [43.6532, -79.3832],
+                'America/Vancouver': [49.2827, -123.1207],
+                'America/Mexico_City': [19.4326, -99.1332],
+                'America/Bogota': [4.711, -74.0721],
+                'America/Lima': [-12.0464, -77.0428],
+                'America/Santiago': [-33.4489, -70.6693],
+                'America/Sao_Paulo': [-23.5505, -46.6333],
+                'America/Argentina/Buenos_Aires': [-34.6037, -58.3816],
+                'America/Havana': [23.1136, -82.3666],
+                'Asia/Tokyo': [35.6762, 139.6503],
+                'Asia/Seoul': [37.5665, 126.978],
+                'Asia/Shanghai': [31.2304, 121.4737],
+                'Asia/Hong_Kong': [22.3193, 114.1694],
+                'Asia/Singapore': [1.3521, 103.8198],
+                'Asia/Taipei': [25.033, 121.5654],
+                'Asia/Bangkok': [13.7563, 100.5018],
+                'Asia/Jakarta': [-6.2088, 106.8456],
+                'Asia/Manila': [14.5995, 120.9842],
+                'Asia/Kolkata': [19.076, 72.8777],
+                'Asia/Dubai': [25.2048, 55.2708],
+                'Asia/Jerusalem': [31.7683, 35.2137],
+                'Asia/Riyadh': [24.7136, 46.6753],
+                'Asia/Karachi': [24.8607, 67.0011],
+                'Asia/Dhaka': [23.8103, 90.4125],
+                'Asia/Ho_Chi_Minh': [10.8231, 106.6297],
+                'Africa/Cairo': [30.0444, 31.2357],
+                'Africa/Lagos': [6.5244, 3.3792],
+                'Africa/Johannesburg': [-26.2041, 28.0473],
+                'Africa/Nairobi': [-1.2921, 36.8219],
+                'Africa/Casablanca': [33.5731, -7.5898],
+                'Australia/Sydney': [-33.8688, 151.2093],
+                'Australia/Melbourne': [-37.8136, 144.9631],
+                'Australia/Brisbane': [-27.4698, 153.0251],
+                'Australia/Perth': [-31.9505, 115.8605],
+                'Pacific/Auckland': [-36.8485, 174.7633],
+                'Pacific/Honolulu': [21.3069, -157.8583]
+            };
+
+            function place() {
+                var zone = '';
+                try {
+                    zone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+                } catch (error) { }
+                var found = PLACES[zone] || [40.4168, -3.7038];
+                return { lat: found[0], lon: found[1] };
+            }
+
+            function julian(date) {
+                return date.getTime() / 86400000 + 2440587.5;
+            }
+
+            function horizontal(ra, dec, date, lat, lon) {
+                var n = julian(date) - 2451545.0;
+                var lst = (18.697374558 + 24.06570982441908 * n) * 15 + lon;
+                lst = ((lst % 360) + 360) % 360;
+                var H = ((lst - ra * DEG + 540) % 360) - 180;
+                var hr = H * RAD;
+                var phi = lat * RAD;
+                var sinAlt = Math.sin(phi) * Math.sin(dec) + Math.cos(phi) * Math.cos(dec) * Math.cos(hr);
+                var alt = Math.asin(Math.max(-1, Math.min(1, sinAlt))) * DEG;
+                var az = Math.atan2(Math.sin(hr), Math.cos(hr) * Math.sin(phi) - Math.tan(dec) * Math.cos(phi));
+                az = (((az * DEG + 180) % 360) + 360) % 360;
+                return { alt: alt, az: az };
+            }
+
+            function sunPosition(date, lat, lon) {
+                var n = julian(date) - 2451545.0;
+                var L = (280.46 + 0.9856474 * n) % 360;
+                var g = ((357.528 + 0.9856003 * n) % 360) * RAD;
+                var lambda = (L + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g)) * RAD;
+                var eps = (23.439 - 0.0000004 * n) * RAD;
+                var ra = Math.atan2(Math.cos(eps) * Math.sin(lambda), Math.cos(lambda));
+                var dec = Math.asin(Math.sin(eps) * Math.sin(lambda));
+                return horizontal(ra, dec, date, lat, lon);
+            }
+
+            function moonPosition(date, lat, lon) {
+                var d = julian(date) - 2451545.0;
+                var L = (218.316 + 13.176396 * d) % 360;
+                var M = ((134.963 + 13.064993 * d) % 360) * RAD;
+                var F = ((93.272 + 13.22935 * d) % 360) * RAD;
+                var lonEcl = (L + 6.289 * Math.sin(M)) * RAD;
+                var latEcl = 5.128 * Math.sin(F) * RAD;
+                var eps = 23.439 * RAD;
+                var ra = Math.atan2(
+                    Math.sin(lonEcl) * Math.cos(eps) - Math.tan(latEcl) * Math.sin(eps),
+                    Math.cos(lonEcl)
+                );
+                var dec = Math.asin(
+                    Math.sin(latEcl) * Math.cos(eps) + Math.cos(latEcl) * Math.sin(eps) * Math.sin(lonEcl)
+                );
+                return horizontal(ra, dec, date, lat, lon);
+            }
+
+            function moonPhase(date) {
+                var days = (date.getTime() - NEW_MOON) / 86400000;
+                var age = ((days % SYNODIC) + SYNODIC) % SYNODIC;
+                var fraction = age / SYNODIC;
+                return { fraction: fraction, illum: (1 - Math.cos(2 * Math.PI * fraction)) / 2 };
+            }
+
+            function crossing(a, b, lat, lon, target) {
+                var lo = a.getTime();
+                var hi = b.getTime();
+                var fLo = sunPosition(new Date(lo), lat, lon).alt - target;
+                for (var i = 0; i < 26; i++) {
+                    var mid = (lo + hi) / 2;
+                    var fMid = sunPosition(new Date(mid), lat, lon).alt - target;
+                    if (fMid * fLo > 0) {
+                        lo = mid;
+                        fLo = fMid;
+                    } else {
+                        hi = mid;
+                    }
+                }
+                return new Date((lo + hi) / 2);
+            }
+
+            function dayEvents(date, lat, lon) {
+                var start = new Date(date);
+                start.setHours(0, 0, 0, 0);
+                var step = 5 * 60000;
+                var events = { sunrise: null, sunset: null, golden: null, blue: null, moonrise: null, moonset: null, noon: start, maxAlt: -99 };
+                var previous = null;
+
+                for (var i = 0; i <= 288; i++) {
+                    var time = new Date(start.getTime() + i * step);
+                    var alt = sunPosition(time, lat, lon).alt;
+                    var moonAlt = moonPosition(time, lat, lon).alt;
+                    if (previous) {
+                        if (previous.moonAlt < -0.3 && moonAlt >= -0.3 && !events.moonrise) {
+                            events.moonrise = time;
+                        }
+                        if (previous.moonAlt >= -0.3 && moonAlt < -0.3 && !events.moonset) {
+                            events.moonset = time;
+                        }
+                    }
+                    if (alt > events.maxAlt) {
+                        events.maxAlt = alt;
+                        events.noon = time;
+                    }
+                    if (previous) {
+                        if (previous.alt < -0.833 && alt >= -0.833 && !events.sunrise) {
+                            events.sunrise = crossing(previous.time, time, lat, lon, -0.833);
+                        }
+                        if (previous.alt >= -0.833 && alt < -0.833 && !events.sunset) {
+                            events.sunset = crossing(previous.time, time, lat, lon, -0.833);
+                        }
+                        if (previous.alt >= 6 && alt < 6 && !events.golden) {
+                            events.golden = crossing(previous.time, time, lat, lon, 6);
+                        }
+                        if (previous.alt >= -6 && alt < -6 && !events.blue) {
+                            events.blue = crossing(previous.time, time, lat, lon, -6);
+                        }
+                    }
+                    previous = { time: time, alt: alt, moonAlt: moonAlt };
+                }
+                return events;
+            }
+
+            function phaseName(alt, rising) {
+                if (alt > 6) return 'Daylight';
+                if (alt > 0.4) return 'Golden hour';
+                if (alt > -4) return rising ? 'Sunrise' : 'Sunset';
+                if (alt > -6) return 'Blue hour';
+                if (alt > -12) return 'Twilight';
+                return 'Night';
+            }
+
+            function mix(a, b, t) {
+                return [
+                    Math.round(a[0] + (b[0] - a[0]) * t),
+                    Math.round(a[1] + (b[1] - a[1]) * t),
+                    Math.round(a[2] + (b[2] - a[2]) * t)
+                ];
+            }
+
+            function rgb(c, alpha) {
+                return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (alpha === undefined ? 1 : alpha) + ')';
+            }
+
+            var SKY_STOPS = [
+                [-90, [5, 8, 18], [13, 20, 36]],
+                [-18, [6, 10, 22], [18, 26, 46]],
+                [-12, [8, 13, 32], [34, 28, 60]],
+                [-6, [15, 25, 56], [104, 58, 74]],
+                [-1, [30, 52, 96], [204, 106, 70]],
+                [4, [46, 78, 130], [236, 152, 98]],
+                [10, [78, 132, 196], [238, 206, 180]],
+                [24, [70, 134, 206], [206, 226, 244]],
+                [90, [64, 128, 204], [212, 232, 248]]
+            ];
+
+            function skyColors(alt) {
+                var i = 0;
+                while (i < SKY_STOPS.length - 2 && alt > SKY_STOPS[i + 1][0]) i++;
+                var a = SKY_STOPS[i];
+                var b = SKY_STOPS[i + 1];
+                var t = Math.max(0, Math.min(1, (alt - a[0]) / (b[0] - a[0])));
+                return { top: mix(a[1], b[1], t), bottom: mix(a[2], b[2], t) };
+            }
+
+            function horizonGlow(alt) {
+                if (alt > 34 || alt < -10) return null;
+                var reach = Math.max(0, Math.min(1, (34 - alt) / 44));
+                var warmth = Math.max(0, Math.min(1, (14 - alt) / 22));
+                return {
+                    color: mix([255, 224, 186], [255, 116, 60], warmth),
+                    alpha: 0.06 + 0.36 * reach
+                };
+            }
+
+            var starCache = {};
+
+            function stars(w, h) {
+                var key = Math.round(w) + 'x' + Math.round(h);
+                if (starCache[key]) return starCache[key];
+                var seed = (Math.round(w) * 7919 + Math.round(h) * 104729) % 4294967296;
+                function random() {
+                    seed = (seed * 1664525 + 1013904223) % 4294967296;
+                    return seed / 4294967296;
+                }
+                var total = Math.max(30, Math.round((w * h) / 13000));
+                var list = [];
+                for (var i = 0; i < total; i++) {
+                    list.push({
+                        x: random() * w,
+                        y: random() * h * 0.8,
+                        r: 0.4 + random() * 1.1,
+                        a: 0.28 + random() * 0.55
+                    });
+                }
+                starCache[key] = list;
+                return list;
+            }
+
+            var moonCache = {};
+
+            function moonSprite(illum, fraction) {
+                var key = Math.round(illum * 40) + (fraction < 0.5 ? 'w' : 'x');
+                if (moonCache[key]) return moonCache[key];
+                var size = 96;
+                var canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                var ctx = canvas.getContext('2d');
+                var r = size / 2 - 2;
+                var cx = size / 2;
+                var cy = size / 2;
+                var phaseAngle = Math.acos(Math.max(-1, Math.min(1, 2 * illum - 1)));
+                var sinA = Math.sin(phaseAngle) * (fraction < 0.5 ? 1 : -1);
+                var cosA = Math.cos(phaseAngle);
+                var image = ctx.createImageData(size, size);
+
+                for (var y = 0; y < size; y++) {
+                    for (var x = 0; x < size; x++) {
+                        var index = (y * size + x) * 4;
+                        var dx = (x - cx) / r;
+                        var dy = (y - cy) / r;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist > 1) {
+                            image.data[index + 3] = 0;
+                            continue;
+                        }
+                        var z = Math.sqrt(Math.max(0, 1 - dx * dx - dy * dy));
+                        var lit = dx * sinA + z * cosA > 0;
+                        var tone = 0.5 + 0.5 * z;
+                        var level = lit ? 232 * tone + 18 : 18 + 12 * tone;
+                        image.data[index] = level;
+                        image.data[index + 1] = lit ? level - 6 : level + 2;
+                        image.data[index + 2] = lit ? level - 14 : level + 8;
+                        image.data[index + 3] = Math.round(255 * Math.min(1, (1 - dist) * 8) * (lit ? 1 : 0.5));
+                    }
+                }
+                ctx.putImageData(image, 0, 0);
+                moonCache[key] = canvas;
+                return canvas;
+            }
+
+            function azimuthX(az, w) {
+                return w * (1 - (((az + 180) % 360) / 360));
+            }
+
+            function pathX(date, rise, set, w, az, spread) {
+                if (rise && !set) set = new Date(rise.getTime() + 12.4 * 3600000);
+                if (!rise && set) rise = new Date(set.getTime() - 12.4 * 3600000);
+                if (rise && set && set.getTime() <= rise.getTime()) {
+                    set = new Date(set.getTime() + 24 * 3600000);
+                }
+                var from = spread ? spread.from : 0.075;
+                var to = spread ? spread.to : 0.925;
+                if (rise && set && set.getTime() > rise.getTime()) {
+                    var span = set.getTime() - rise.getTime();
+                    var share = Math.max(0, Math.min(1, (date.getTime() - rise.getTime()) / span));
+                    return w * (from + (to - from) * share);
+                }
+                return azimuthX(az, w);
+            }
+
+            function altitudeY(alt, h, horizonY) {
+                var top = h * 0.12;
+                return horizonY - (Math.max(-8, Math.min(90, alt)) / 90) * (horizonY - top);
+            }
+
+            function drawGround(ctx, w, h, horizonY) {
+                ctx.fillStyle = 'rgba(10, 14, 22, 0.97)';
+                ctx.beginPath();
+                ctx.moveTo(0, horizonY);
+                ctx.bezierCurveTo(w * 0.14, horizonY - h * 0.022, w * 0.28, horizonY + h * 0.004, w * 0.44, horizonY - h * 0.008);
+                ctx.bezierCurveTo(w * 0.58, horizonY - h * 0.019, w * 0.72, horizonY + h * 0.009, w * 0.86, horizonY - h * 0.002);
+                ctx.bezierCurveTo(w * 0.94, horizonY - h * 0.012, w * 0.98, horizonY - h * 0.004, w, horizonY - h * 0.009);
+                ctx.lineTo(w, h);
+                ctx.lineTo(0, h);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            function drawSky(canvas, date, events, spread) {
+                if (!canvas) return null;
+                var rect = canvas.getBoundingClientRect();
+                var w = Math.round(rect.width);
+                var h = Math.round(rect.height);
+                if (w < 2 || h < 2) return null;
+
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+                    canvas.width = Math.round(w * dpr);
+                    canvas.height = Math.round(h * dpr);
+                }
+
+                var ctx = canvas.getContext('2d');
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, w, h);
+
+                var spot = place();
+                var sun = sunPosition(date, spot.lat, spot.lon);
+                var moon = moonPosition(date, spot.lat, spot.lon);
+                var phase = moonPhase(date);
+                var colors = skyColors(sun.alt);
+                var horizonY = h * (w < 720 ? 0.895 : 0.86);
+
+                var pinch = Math.max(0, Math.min(1, (sun.alt - 2) / 14));
+                var midAt = 0.55 + 0.16 * pinch;
+                var midMix = 0.5 - 0.22 * pinch;
+
+                var gradient = ctx.createLinearGradient(0, 0, 0, h);
+                gradient.addColorStop(0, rgb(colors.top));
+                gradient.addColorStop(midAt, rgb(mix(colors.top, colors.bottom, midMix)));
+                gradient.addColorStop(1, rgb(colors.bottom));
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, w, h);
+
+                var sunX = pathX(date, events && events.sunrise, events && events.sunset, w, sun.az, spread);
+                var glowBand = horizonGlow(sun.alt);
+
+                if (glowBand) {
+                    var band = ctx.createLinearGradient(0, horizonY - h * 0.34, 0, horizonY);
+                    band.addColorStop(0, rgb(glowBand.color, 0));
+                    band.addColorStop(1, rgb(glowBand.color, glowBand.alpha));
+                    ctx.fillStyle = band;
+                    ctx.fillRect(0, 0, w, horizonY);
+                }
+
+                var warmth = Math.max(0, Math.min(1, 1 - Math.abs(sun.alt + 2) / 26));
+
+                if (warmth > 0) {
+                    var haze = ctx.createRadialGradient(sunX, horizonY, 0, sunX, horizonY, Math.max(w, h) * 0.42);
+                    haze.addColorStop(0, 'rgba(255,170,92,' + (0.3 * warmth).toFixed(3) + ')');
+                    haze.addColorStop(0.45, 'rgba(255,140,80,' + (0.1 * warmth).toFixed(3) + ')');
+                    haze.addColorStop(1, 'rgba(255,140,80,0)');
+                    ctx.fillStyle = haze;
+                    ctx.fillRect(0, 0, w, h);
+                }
+
+                if (sun.alt < 6) {
+                    var starAlpha = Math.max(0, Math.min(0.9, (6 - sun.alt) / 14));
+                    var field = stars(w, h);
+                    for (var s = 0; s < field.length; s++) {
+                        var star = field[s];
+                        if (star.y > horizonY * 0.94) continue;
+                        ctx.fillStyle = 'rgba(255,255,255,' + (star.a * starAlpha).toFixed(3) + ')';
+                        ctx.beginPath();
+                        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                if (events && events.sunrise && events.sunset && sun.alt > -10) {
+                    var span = events.sunset.getTime() - events.sunrise.getTime();
+                    ctx.beginPath();
+                    for (var m = 0; m <= 96; m++) {
+                        var t = new Date(events.sunrise.getTime() + (span * m) / 96);
+                        var state = sunPosition(t, spot.lat, spot.lon);
+                        var px = pathX(t, events.sunrise, events.sunset, w, state.az, spread);
+                        var py = altitudeY(state.alt, h, horizonY);
+                        if (m === 0) {
+                            ctx.moveTo(px, py);
+                        } else {
+                            ctx.lineTo(px, py);
+                        }
+                    }
+                    ctx.strokeStyle = 'rgba(255,255,255,' + (0.06 + 0.18 * Math.max(0, Math.min(1, (sun.alt + 10) / 18))).toFixed(3) + ')';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([2, 6]);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                if (sun.alt > -8) {
+                    var sunY = altitudeY(sun.alt, h, horizonY);
+                    var radius = Math.min(w, h) * 0.024;
+                    var glowRadius = radius * (sun.alt > 8 ? 4.6 : 6.4);
+                    var glow = ctx.createRadialGradient(sunX, sunY, radius * 0.2, sunX, sunY, glowRadius);
+                    glow.addColorStop(0, sun.alt > 8 ? 'rgba(255,246,214,0.95)' : 'rgba(255,214,150,0.95)');
+                    glow.addColorStop(0.28, 'rgba(255,196,124,0.34)');
+                    glow.addColorStop(1, 'rgba(255,170,90,0)');
+                    ctx.fillStyle = glow;
+                    ctx.beginPath();
+                    ctx.arc(sunX, sunY, glowRadius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    if (sun.alt > -1.5) {
+                        var disc = ctx.createRadialGradient(sunX, sunY - radius * 0.3, radius * 0.1, sunX, sunY, radius);
+                        disc.addColorStop(0, '#fffdf3');
+                        disc.addColorStop(1, sun.alt > 6 ? '#ffe6ab' : '#ffc06a');
+                        ctx.fillStyle = disc;
+                        ctx.beginPath();
+                        ctx.arc(sunX, sunY, radius, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                if (moon.alt > 0.5 && sun.alt < 16) {
+                    var moonX = pathX(date, events && events.moonrise, events && events.moonset, w, moon.az, spread);
+                    var moonY = altitudeY(moon.alt, h, horizonY);
+                    var moonSize = Math.min(w, h) * 0.032;
+                    var visibility = Math.max(0.15, Math.min(1, (16 - sun.alt) / 16));
+                    ctx.globalAlpha = 0.35 + 0.65 * visibility;
+                    ctx.drawImage(moonSprite(phase.illum, phase.fraction), moonX - moonSize, moonY - moonSize, moonSize * 2, moonSize * 2);
+                    ctx.globalAlpha = 1;
+                }
+
+                drawGround(ctx, w, h, horizonY);
+
+                return { sun: sun, colors: colors, moon: moon, phase: phase, spot: spot };
+            }
+
+            var timeFormat = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' });
+            var heroCanvas = document.getElementById('heroSky');
+            var labCanvas = document.getElementById('labSky');
+            var labRange = document.getElementById('labRange');
+            var labTime = document.getElementById('labTime');
+            var labPhase = document.getElementById('labPhase');
+            var labTicks = document.getElementById('labTicks');
+            var header = document.getElementById('siteHeader');
+
+            var spot = place();
+            var events = dayEvents(new Date(), spot.lat, spot.lon);
+
+            function formatTime(date) {
+                return timeFormat.format(date);
+            }
+
+            function paintHero() {
+                var result = drawSky(heroCanvas, new Date(), events, { from: 0.56, to: 0.965 });
+                if (result) {
+                    document.body.dataset.heroTone = result.sun.alt >= 8 ? 'day' : 'night';
+                }
+            }
+
+            function paintLab() {
+                if (!labCanvas) return;
+                var when = new Date();
+                when.setHours(0, 0, 0, 0);
+                when.setMinutes(Number(labRange.value));
+
+                var result = drawSky(labCanvas, when, events);
+                if (!result) return;
+
+                var before = new Date(when.getTime() - 600000);
+                var rising = result.sun.alt > sunPosition(before, spot.lat, spot.lon).alt;
+
+                labTime.textContent = formatTime(when);
+                labPhase.textContent = phaseName(result.sun.alt, rising);
+            }
+
+            function buildTicks() {
+                if (!labTicks) return;
+                var marks = [
+                    ['Sunrise', events.sunrise],
+                    ['Golden hour', events.golden],
+                    ['Sunset', events.sunset],
+                    ['Night', events.blue]
+                ];
+
+                labTicks.innerHTML = '';
+                marks.forEach(function (mark) {
+                    if (!mark[1]) return;
+                    var item = document.createElement('li');
+                    var label = document.createElement('span');
+                    label.textContent = mark[0];
+                    var value = document.createElement('strong');
+                    value.textContent = formatTime(mark[1]);
+                    item.appendChild(label);
+                    item.appendChild(value);
+                    labTicks.appendChild(item);
+                });
+            }
+
+            if (heroCanvas) paintHero();
+
+            if (labCanvas && labRange) {
+                var now = new Date();
+                labRange.value = String(Math.max(0, Math.min(1439, now.getHours() * 60 + now.getMinutes())));
+                buildTicks();
+                paintLab();
+                labRange.addEventListener('input', paintLab);
+            }
+
+            function onScroll() {
+                if (header) header.classList.toggle('is-scrolled', window.scrollY > 40);
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            var resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    if (heroCanvas) paintHero();
+                    if (labCanvas) paintLab();
+                }, 140);
+            });
+        })();
+    </script>
+
+    <script src="/cookies.js" defer></script>
 </body>
 </html>
