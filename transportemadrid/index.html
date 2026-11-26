@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios, paradas y avisos del transporte público de Madrid | Transporte Madrid</title>
+    <meta name="description" content="App para consultar las paradas, líneas, horarios y avisos del CRTM de Metro, EMT, autobuses interurbanos, Cercanías y Metro Ligero, planificar el viaje y seguirlo en la isla dinámica. iPhone y iPad, iOS 18 o superior.">
+    <link rel="canonical" href="https://www.mirloapps.es/transportemadrid/">
+    <!-- Safari Smart App Banner: el id es el de App Store Connect -->
+    <meta name="apple-itunes-app" content="app-id=6839260259">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mirloapps.es/transportemadrid/">
+    <meta property="og:title" content="Horarios, paradas y avisos del transporte público de Madrid | Transporte Madrid">
+    <meta property="og:description" content="App para consultar las paradas, líneas, horarios y avisos del CRTM de Metro, EMT, autobuses interurbanos, Cercanías y Metro Ligero, planificar el viaje y seguirlo en la isla dinámica. iPhone y iPad, iOS 18 o superior.">
+    <meta property="og:image" content="/TransporteMadrid.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Horarios, paradas y avisos del transporte público de Madrid | Transporte Madrid">
+    <meta name="twitter:description" content="App para consultar las paradas, líneas, horarios y avisos del CRTM de Metro, EMT, autobuses interurbanos, Cercanías y Metro Ligero, planificar el viaje y seguirlo en la isla dinámica. iPhone y iPad, iOS 18 o superior.">
+    <meta name="twitter:image" content="/TransporteMadrid.png">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <!-- Schema.org: SoftwareApplication + FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Transporte Madrid",
+      "description": "App para consultar paradas, líneas, horarios y avisos del CRTM de Metro, EMT, interurbanos, Cercanías y Metro Ligero, planificar viajes y seguirlos en directo.",
+      "operatingSystem": "iOS 18.0 o superior, iPadOS 18.0 o superior",
+      "applicationCategory": "TravelApplication",
+      "applicationSubCategory": "Public Transport",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Descarga gratuita. Premium por 2,99 € en un solo pago, no es suscripción."
+      },
+      "url": "https://www.mirloapps.es/transportemadrid/",
+      "downloadUrl": "https://apps.apple.com/es/app/id6839260259",
+      "author": {
+        "@type": "Person",
+        "name": "Paolo Alvarez"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mirlo apps",
+        "url": "https://www.mirloapps.es/"
+      },
+      "inLanguage": "es",
+      "featureList": [
+        "Mapa con las paradas de Metro, EMT, interurbanos, Cercanías y Metro Ligero",
+        "Próximas salidas de cada parada con el horario oficial del CRTM",
+        "Planificador de viajes que calcula en el teléfono, con tramos andando y transbordos",
+        "Seguimiento del viaje con pastilla, isla dinámica y pantalla de bloqueo",
+        "Avisos de servicio del CRTM agrupados por zona",
+        "Cartel de horarios en PDF de cada línea y sentido",
+        "Paradas y líneas favoritas, destinos recientes y viajes guardados",
+        "Localidad manual para consultar paradas sin permiso de ubicación"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿De dónde salen los horarios?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Del Consorcio Regional de Transportes de Madrid (CRTM). El paquete de horarios viaja dentro de la app, así que las salidas de cada parada y los planes de viaje salen del mismo dato que publica el consorcio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Los tiempos son en tiempo real?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuando el CRTM o la EMT publican su feed y la app lo recibe, se añaden los minutos que faltan. Si el feed no responde, se enseña la hora programada y la app no inventa minutos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona sin conexión?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las paradas, las líneas y los horarios están en el teléfono. El mapa necesita internet para dibujar el callejero, y los avisos y el tiempo real también."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué redes cubre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Metro, EMT, autobuses interurbanos del CRTM, Cercanías y Metro Ligero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La descarga es gratuita. Premium son 2,99 € en un solo pago, no una suscripción, y desbloquea programar viajes con día y hora, el trayecto en tiempo real con su pastilla y la isla dinámica, el mapa de la línea y mantiene la app sin publicidad. La compra se puede restaurar desde el muro de Premium."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Guarda mi ubicación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No hay cuentas ni servidor propio: las paradas favoritas, los viajes guardados y los ajustes se quedan en el teléfono. La ubicación se usa mientras la app está abierta, para marcar la parada más cercana."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué dispositivos funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En iPhone y iPad con iOS 18 o superior."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mirlo-orange': '#FF9E00',
+                        'embalses-primary': '#0EA5E9',
+                        'tm-green': '#006B3D',
+                        'tm-green-bright': '#3FB27A',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        * {
+            transition: all 0.3s ease;
+        }
+        .bg-grain {
+            position: relative;
+            background-color: #f3f4f6;
+        }
+        .dark .bg-grain {
+            background-color: #0a0a0a;
+        }
+        .dark .bg-grain::before {
+            display: none;
+        }
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .bg-grain>* {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-plastic {
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+        .btn-plastic:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 12px -1px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-plastic:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #333333 0%, #000000 100%);
+            border: 2px solid #0EA5E9;
+            color: #0EA5E9;
+        }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+<body class="bg-grain text-gray-900 dark:text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-tm-green selection:text-white">
+
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-50">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80">
+                mirlo apps<span class="text-mirlo-orange">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../apps/" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Apps</a>
+                <a href="../#nosotros" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Nosotros</a>
+                <a href="../#contacto" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Contacto</a>
+                <a href="#como-funciona" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Cómo funciona</a>
+                <a href="#funciones" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Funciones</a>
+                <a href="#faq" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">FAQ</a>
+                <a href="../soporte.html" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-mirlo-orange">Soporte</a>
+                
+
+                <!-- Dark Mode Switch -->
+                <label class="inline-flex items-center cursor-pointer">
+                    <input aria-label="Modo oscuro" type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+                </label>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <button onclick="toggleMenu()" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-24">
+
+        <!-- Portada -->
+        <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-6 overflow-hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-black mb-8 shadow-2xl overflow-hidden p-1 border border-gray-800">
+                        <img src="/TransporteMadrid.png" alt="Icono de Transporte Madrid" class="w-full h-full object-cover rounded-[1.3rem]">
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-tm-green/10 text-tm-green dark:text-tm-green-bright text-sm font-semibold mb-6 border border-tm-green/20">
+                        <span class="w-2 h-2 rounded-full bg-tm-green animate-pulse"></span>
+                        Metro, EMT, interurbanos, Cercanías y Metro Ligero
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6">
+                        Paradas, horarios y avisos del transporte público de Madrid
+                    </h1>
+
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-normal">
+                        Las cinco redes del CRTM en un mapa, con las próximas salidas de cada parada, un
+                        planificador que calcula el viaje en el teléfono y el trayecto en directo en la isla
+                        dinámica. Sin cuenta y sin anuncios.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row flex-wrap items-center gap-4 mb-14">
+                    <!-- El enlace responde cuando la app esté publicada en el App Store -->
+                    <a href="https://apps.apple.com/es/app/id6839260259" class="btn-plastic text-white px-8 py-3.5 rounded-2xl font-bold flex items-center gap-3 transition-transform">
+                        <i class="fab fa-apple text-2xl"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase tracking-wider opacity-80 leading-none">Descargar en</div>
+                            <div class="text-lg leading-tight font-semibold">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#como-funciona" class="px-6 py-3.5 rounded-2xl font-semibold border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:border-tm-green hover:text-tm-green dark:hover:border-tm-green-bright dark:hover:text-tm-green-bright transition-transform text-base">
+                        Cómo funciona
+                    </a>
+                </div>
+
+                    <div class="w-full max-w-5xl mt-6">
+                        <div class="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto pb-8 pt-4 px-4 snap-x snap-mandatory scrollbar-none">
+                <!-- Captura real 1: mapa con las paradas de las cinco redes (1206 × 2622 px, WebP) -->
+                <div class="flex-shrink-0 w-full md:w-auto rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                    <img src="screen1.webp" alt="Captura 1: mapa con las paradas de las cinco redes" class="w-full h-auto">
+                </div>
+                <!-- Captura real 2: ficha de parada con las próximas salidas (1206 × 2622 px, WebP) -->
+                <div class="flex-shrink-0 w-full md:w-auto rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                    <img src="screen2.webp" alt="Captura 2: ficha de parada con las próximas salidas" class="w-full h-auto">
+                </div>
+                <!-- Captura real 3: planificador con origen y destino (1206 × 2622 px, WebP) -->
+                <div class="flex-shrink-0 w-full md:w-auto rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                    <img src="screen3.webp" alt="Captura 3: planificador con origen y destino" class="w-full h-auto">
+                </div>
+                <!-- Captura real 4: viaje en marcha: pastilla e isla dinámica (1206 × 2622 px, WebP) -->
+                <div class="flex-shrink-0 w-full md:w-auto rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                    <img src="screen4.webp" alt="Captura 4: viaje en marcha: pastilla e isla dinámica" class="w-full h-auto">
+                </div>
+                <!-- Captura real 5: avisos del CRTM agrupados por zona (1206 × 2622 px, WebP) -->
+                <div class="flex-shrink-0 w-full md:w-auto rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 snap-center">
+                    <img src="screen5.webp" alt="Captura 5: avisos del CRTM agrupados por zona" class="w-full h-auto">
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo funciona -->
+        <section id="como-funciona" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Cómo funciona</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">
+                        Tres pasos, los mismos de siempre: buscar la parada, mirar cuándo sale y echar a andar.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-tm-green/10 flex items-center justify-center text-tm-green dark:text-tm-green-bright font-bold text-xl mb-6">1</div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Busca la parada o la línea</h3>
+                <p class="text-gray-600 dark:text-gray-400">El mapa abre en tu posición y marca la parada más cercana. Puedes buscar por nombre o por número de línea, filtrar por red y entrar en una línea para ver sus paradas en orden.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-tm-green/10 flex items-center justify-center text-tm-green dark:text-tm-green-bright font-bold text-xl mb-6">2</div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mira las próximas salidas</h3>
+                <p class="text-gray-600 dark:text-gray-400">Cada parada enseña las salidas de los próximos 90 minutos con la hora del horario oficial del CRTM. Cuando el CRTM o la EMT publican datos en tiempo real, aparecen también los minutos que faltan.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-tm-green/10 flex items-center justify-center text-tm-green dark:text-tm-green-bright font-bold text-xl mb-6">3</div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Planifica y sigue el viaje</h3>
+                <p class="text-gray-600 dark:text-gray-400">Con origen y destino calcula las paradas de subida y bajada, el tiempo andando y los transbordos. Al empezar, la pastilla y la isla dinámica dicen cuánto queda y en qué parada hay que bajarse.</p>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funciones -->
+        <section id="funciones" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Lo que hace la app</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">
+                        Sin adornos: esto es lo que hay dentro y de dónde sale cada dato.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Mapa de las cinco redes</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Paradas de Metro, EMT, interurbanos, Cercanías y Metro Ligero, cada red con su forma y su color, filtro por red y los vehículos de la EMT cuando publican su posición.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Salidas de cada parada</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Las próximas salidas de las líneas que pasan por una parada, en orden, con la hora programada y los minutos reales cuando hay feed.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Planificador en el teléfono</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">El horario del CRTM viaja con la app, así que el viaje se calcula en el dispositivo: tramos andando, transbordos y la opción de llegar antes de una hora.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Trayecto en directo</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Al empezar un viaje, una pastilla dentro de la app y la isla dinámica muestran la siguiente acción, la línea y el tiempo que queda. La cuenta atrás de la pantalla de bloqueo la dibuja el sistema, con la app cerrada.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Avisos del CRTM</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Los avisos de servicio del CRTM, agrupados por zona, en su pestaña y en la ficha de la parada afectada.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Cartel de horarios</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">El cartel en PDF que publica el CRTM para cada línea y sentido, descargado desde la app y guardado 30 días para abrirlo sin conexión.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Favoritas y recientes</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Paradas y líneas marcadas para tenerlas arriba, y los últimos destinos usados, para no volver a escribirlos.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Sin permiso de ubicación</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Si no das permiso de ubicación, o quieres mirar otro municipio, eliges la localidad a mano y consultas sus paradas igual.</p>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gratis y Premium -->
+        <section id="premium" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Gratis y Premium</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">
+                        Premium es un solo pago de 2,99 €, no una suscripción. Nada de renovaciones.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Gratis</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Todo lo de consultar, sin pagar nada.</p>
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Mapa y paradas de las cinco redes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Salidas de cada parada (90 minutos)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Planificador para salir ahora</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Avisos del CRTM agrupados por zona</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Carteles de horarios en PDF</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Favoritas, recientes y viajes guardados</span>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-8 rounded-3xl border-2 border-tm-green/40 dark:border-tm-green/40 relative">
+                        <span class="absolute -top-3 left-8 text-[11px] font-bold uppercase tracking-wider bg-tm-green text-white px-3 py-1 rounded-full">2,99 € · pago único</span>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1 mt-2">Premium</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Se paga una vez y no caduca. Sin renovaciones.</p>
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Sin publicidad</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>Programar viajes con día y hora, o llegar antes de una hora</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>La pastilla del trayecto y la isla dinámica con sus tiempos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-sm mt-1.5 text-tm-green dark:text-tm-green-bright"></i>
+                            <span>El mapa de la línea entera, con tu subida y tu bajada</span>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos y fuentes -->
+        <section id="datos" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-black/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">De dónde sale cada dato</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">
+                        Horarios, avisos y carteles son del CRTM; los minutos en directo, de su feed o del de la EMT.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Horarios: CRTM</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">El paquete de horarios (GTFS) del Consorcio Regional de Transportes de Madrid se publica con la app y se cambia cuando el CRTM publica uno nuevo.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tiempo real: CRTM y EMT</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Cuando el feed del CRTM o de la EMT responde, se añaden los minutos que faltan y la posición de los vehículos. Cuando no, se enseña la hora programada.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Avisos: CRTM</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Se leen de la página de información actualizada del CRTM, que no publica feed, y se agrupan por zona.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Carteles: CRTM</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">PDF oficiales de crtm.es para cada línea y sentido; se descargan una vez y se guardan en el teléfono.</p>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Preguntas frecuentes</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Lo que me preguntan por correo, con la respuesta corta.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿De dónde salen los horarios?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Del Consorcio Regional de Transportes de Madrid (CRTM). El paquete de horarios viaja dentro de la app, así que las salidas de cada parada y los planes de viaje salen del mismo dato que publica el consorcio.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Los tiempos son en tiempo real?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Cuando el CRTM o la EMT publican su feed y la app lo recibe, se añaden los minutos que faltan. Si el feed no responde, se enseña la hora programada y la app no inventa minutos.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Funciona sin conexión?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Las paradas, las líneas y los horarios están en el teléfono. El mapa necesita internet para dibujar el callejero, y los avisos y el tiempo real también.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Qué redes cubre?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Metro, EMT, autobuses interurbanos del CRTM, Cercanías y Metro Ligero.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Cuánto cuesta?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">La descarga es gratuita. Premium son 2,99 € en un solo pago, no una suscripción, y desbloquea programar viajes con día y hora, el trayecto en tiempo real con su pastilla y la isla dinámica, el mapa de la línea y mantiene la app sin publicidad. La compra se puede restaurar desde el muro de Premium.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿Guarda mi ubicación?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">No hay cuentas ni servidor propio: las paradas favoritas, los viajes guardados y los ajustes se quedan en el teléfono. La ubicación se usa mientras la app está abierta, para marcar la parada más cercana.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">¿En qué dispositivos funciona?</h3>
+                        <p class="text-gray-600 dark:text-gray-300">En iPhone y iPad con iOS 18 o superior.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ficha técnica -->
+        <section class="py-16 px-6 border-t border-gray-200 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Ficha técnica</h2>
+                <div class="bg-white dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Nombre oficial:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Transporte Madrid</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Desarrollador:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Paolo Alvarez (mirlo apps)</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Compatibilidad:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">iPhone y iPad con iOS 18.0 o superior</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Redes:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Metro, EMT, interurbanos del CRTM, Cercanías y Metro Ligero</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Modelo de precio:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Gratis. Premium por 2,99 € en un solo pago, no es suscripción</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Idiomas:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Español</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Privacidad:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right">Sin cuentas. Favoritas, viajes y ajustes se guardan en el teléfono</span>
+                    </div>
+                    <div class="flex justify-between gap-6 py-3.5 px-6 text-sm">
+                        <span class="text-gray-500">Soporte:</span>
+                        <span class="font-semibold text-gray-900 dark:text-white text-right"><a class="underline hover:text-tm-green dark:hover:text-tm-green-bright" href="mailto:soporte@mirloapps.es">soporte@mirloapps.es</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1 min-w-0 flex justify-center md:justify-start">
+                <a href="../" class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    mirlo apps<span class="text-mirlo-orange">.</span>
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center whitespace-nowrap">
+                © 2026 mirlo apps. Made in Spain 🇪🇸
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-400 flex-1 justify-center md:justify-end min-w-0">
+                <a href="../privacidad.html" class="hover:text-mirlo-orange">Privacidad y Términos</a>
+                <a href="#" onclick="window.mirloCookiePrefs(); return false;" class="hover:text-mirlo-orange">Cookies</a>
+                <a href="../soporte.html" class="hover:text-mirlo-orange">Soporte</a>
+                <a aria-label="X (Twitter)" href="https://x.com/PaoloAC" class="text-gray-400 hover:text-blue-400 text-xl"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-50 hidden flex-col justify-center items-center space-y-8">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 p-2">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <a href="../apps/" class="text-3xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Apps</a>
+        <a href="../#nosotros" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Nosotros</a>
+        <a href="../#contacto" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Contacto</a>
+        <a href="#como-funciona" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Cómo funciona</a>
+        <a href="#funciones" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Funciones</a>
+        <a href="#faq" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">FAQ</a>
+        <a href="../soporte.html" class="text-2xl font-bold text-gray-900 dark:text-white hover:text-mirlo-orange" onclick="toggleMenu()">Soporte</a>
+        
+
+        <div class="flex items-center gap-4 mt-8">
+            <span class="text-gray-600 dark:text-gray-300 font-medium">Modo Oscuro</span>
+            <label class="inline-flex items-center cursor-pointer">
+                <input aria-label="Modo oscuro" type="checkbox" onclick="toggleDarkMode()" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-mirlo-orange"></div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = isDark);
+        });
+    </script>
+
+    <script src="/cookies.js" defer></script>
+</body>
+</html>
