@@ -1815,30 +1815,23 @@
 
                     var height = h - topY;
                     var shade = Math.max(0, Math.min(1, (8 - sun.alt) / 16));
-                    var grade = mix([252, 247, 238], [24, 32, 56], shade);
                     var warm = Math.max(0, Math.min(1, 1 - Math.abs(sun.alt - 0.5) / 8));
 
-                    g.globalCompositeOperation = 'multiply';
-                    g.fillStyle = rgb(grade);
+                    g.globalCompositeOperation = 'source-atop';
+
+                    var dim = g.createLinearGradient(0, topY, 0, h);
+                    dim.addColorStop(0, 'rgba(16, 23, 40, ' + (0.1 + 0.76 * shade).toFixed(3) + ')');
+                    dim.addColorStop(1, 'rgba(9, 13, 24, ' + (0.14 + 0.78 * shade).toFixed(3) + ')');
+                    g.fillStyle = dim;
                     g.fillRect(0, topY, w, height);
 
                     if (warm > 0.01) {
-                        g.globalCompositeOperation = 'source-atop';
-                        var lit = g.createLinearGradient(0, topY, 0, topY + height * 0.45);
+                        var lit = g.createLinearGradient(0, topY, 0, topY + height * 0.5);
                         lit.addColorStop(0, 'rgba(255, 176, 116, ' + (0.16 * warm).toFixed(3) + ')');
                         lit.addColorStop(1, 'rgba(255, 176, 116, 0)');
                         g.fillStyle = lit;
                         g.fillRect(0, topY, w, height);
                     }
-
-                    g.globalCompositeOperation = 'destination-in';
-                    g.drawImage(
-                        terrainImage,
-                        (w - terrainImage.naturalWidth * scale) / 2,
-                        topY,
-                        terrainImage.naturalWidth * scale,
-                        terrainImage.naturalHeight * scale
-                    );
 
                     g.globalCompositeOperation = 'source-over';
                     groundCache.key = key;
@@ -1890,7 +1883,7 @@
                     band.addColorStop(0, rgb(glowBand.color, 0));
                     band.addColorStop(1, rgb(glowBand.color, glowBand.alpha));
                     ctx.fillStyle = band;
-                    ctx.fillRect(0, 0, w, horizonY);
+                    ctx.fillRect(0, 0, w, h);
                 }
 
                 var warmth = Math.max(0, Math.min(1, 1 - Math.abs(sun.alt + 2) / 26));
