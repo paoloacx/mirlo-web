@@ -23,6 +23,7 @@
 <meta content="https://www.mirloapps.es/asuninyourpocket/sun.webp" name="twitter:image"/>
 <link rel="preload" as="image" href="sun-real.webp">
 <link rel="preload" as="image" href="moon-real.webp">
+<link rel="preload" as="image" href="terrain.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1638,6 +1639,7 @@
 
             var sunImage = new Image();
             var moonImage = new Image();
+            var terrainImage = new Image();
             var imagesReady = false;
             var moonCache = {};
 
@@ -1700,7 +1702,7 @@
             }
 
             function loadBodies(repaint) {
-                var pending = 2;
+                var pending = 3;
                 function ready() {
                     pending -= 1;
                     if (pending === 0) {
@@ -1712,8 +1714,11 @@
                 sunImage.onerror = ready;
                 moonImage.onload = ready;
                 moonImage.onerror = ready;
+                terrainImage.onload = ready;
+                terrainImage.onerror = ready;
                 sunImage.src = 'sun-real.webp';
                 moonImage.src = 'moon-real.webp';
+                terrainImage.src = 'terrain.webp';
             }
 
             function azimuthX(az, w) {
@@ -1741,17 +1746,83 @@
                 return horizonY - (Math.max(-8, Math.min(90, alt)) / 90) * (horizonY - top);
             }
 
-            function drawGround(ctx, w, h, horizonY) {
-                ctx.fillStyle = 'rgba(10, 14, 22, 0.97)';
-                ctx.beginPath();
-                ctx.moveTo(0, horizonY);
-                ctx.bezierCurveTo(w * 0.14, horizonY - h * 0.022, w * 0.28, horizonY + h * 0.004, w * 0.44, horizonY - h * 0.008);
-                ctx.bezierCurveTo(w * 0.58, horizonY - h * 0.019, w * 0.72, horizonY + h * 0.009, w * 0.86, horizonY - h * 0.002);
-                ctx.bezierCurveTo(w * 0.94, horizonY - h * 0.012, w * 0.98, horizonY - h * 0.004, w, horizonY - h * 0.009);
-                ctx.lineTo(w, h);
-                ctx.lineTo(0, h);
-                ctx.closePath();
-                ctx.fill();
+            var groundCache = { key: null, canvas: null };
+
+            function drawGround(ctx, w, h, horizonY, sun, colors, dpr) {
+                if (!imagesReady || !terrainImage.naturalWidth) {
+                    ctx.fillStyle = 'rgba(10, 14, 22, 0.97)';
+                    ctx.beginPath();
+                    ctx.moveTo(0, horizonY);
+                    ctx.bezierCurveTo(w * 0.14, horizonY - h * 0.022, w * 0.28, horizonY + h * 0.004, w * 0.44, horizonY - h * 0.008);
+                    ctx.bezierCurveTo(w * 0.58, horizonY - h * 0.019, w * 0.72, horizonY + h * 0.009, w * 0.86, horizonY - h * 0.002);
+                    ctx.bezierCurveTo(w * 0.94, horizonY - h * 0.012, w * 0.98, horizonY - h * 0.004, w, horizonY - h * 0.009);
+                    ctx.lineTo(w, h);
+                    ctx.lineTo(0, h);
+                    ctx.closePath();
+                    ctx.fill();
+                    return;
+                }
+
+                var scale = w / terrainImage.naturalWidth;
+                var topY = horizonY - 14 * scale;
+                var key = [w, h, Math.round(sun.alt * 2), dpr].join('|');
+
+                if (groundCache.key !== key) {
+                    var layer = groundCache.canvas || (groundCache.canvas = document.createElement('canvas'));
+                    layer.width = Math.round(w * dpr);
+                    layer.height = Math.round((h - topY) * dpr);
+
+                    var g = layer.getContext('2d');
+                    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    g.translate(0, -topY);
+                    g.clearRect(0, topY, w, h - topY);
+                    g.drawImage(
+                        terrainImage,
+                        (w - terrainImage.naturalWidth * scale) / 2,
+                        topY,
+                        terrainImage.naturalWidth * scale,
+                        terrainImage.naturalHeight * scale
+                    );
+
+                    var height = h - topY;
+                    var night = Math.max(0, Math.min(1, (2.5 - sun.alt) / 10));
+                    var day = Math.max(0, Math.min(1, (sun.alt + 2) / 12));
+                    var warm = Math.max(0, Math.min(1, 1 - Math.abs(sun.alt - 0.5) / 8));
+
+                    g.globalCompositeOperation = 'source-atop';
+
+                    var washAlpha = (0.34 + 0.3 * (1 - day)).toFixed(3);
+                    var wash = g.createLinearGradient(0, topY, 0, h);
+                    wash.addColorStop(0, rgb(colors.top, washAlpha));
+                    wash.addColorStop(1, rgb(colors.bottom, washAlpha));
+                    g.fillStyle = wash;
+                    g.fillRect(0, topY, w, height);
+
+                    g.fillStyle = 'rgba(4, 8, 18, ' + (0.34 * night).toFixed(3) + ')';
+                    g.fillRect(0, topY, w, height);
+
+                    if (warm > 0.01) {
+                        var lit = g.createLinearGradient(0, topY, 0, topY + height * 0.7);
+                        lit.addColorStop(0, 'rgba(255, 172, 108, ' + (0.3 * warm).toFixed(3) + ')');
+                        lit.addColorStop(1, 'rgba(255, 172, 108, 0)');
+                        g.fillStyle = lit;
+                        g.fillRect(0, topY, w, height);
+                    }
+
+                    var fade = Math.max(10, height * 0.34);
+                    g.globalCompositeOperation = 'destination-out';
+                    var feather = g.createLinearGradient(0, topY, 0, topY + fade);
+                    feather.addColorStop(0, 'rgba(0, 0, 0, 0.6)');
+                    feather.addColorStop(0.45, 'rgba(0, 0, 0, 0.12)');
+                    feather.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    g.fillStyle = feather;
+                    g.fillRect(0, topY, w, fade);
+
+                    g.globalCompositeOperation = 'source-over';
+                    groundCache.key = key;
+                }
+
+                ctx.drawImage(groundCache.canvas, 0, topY, w, h - topY);
             }
 
             function drawSky(canvas, date, events, spread) {
@@ -1899,7 +1970,7 @@
                     ctx.globalAlpha = 1;
                 }
 
-                drawGround(ctx, w, h, horizonY);
+                drawGround(ctx, w, h, horizonY, sun, colors, dpr);
 
                 return { sun: sun, colors: colors, moon: moon, phase: phase, spot: spot };
             }
