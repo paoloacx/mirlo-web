@@ -21,7 +21,6 @@
 <link href="../favicon.ico" rel="shortcut icon"/>
 <meta content="https://www.mirloapps.es/asuninyourpocket/sun.webp" property="og:image"/>
 <meta content="https://www.mirloapps.es/asuninyourpocket/sun.webp" name="twitter:image"/>
-<link rel="preload" as="image" href="sun-real.webp">
 <link rel="preload" as="image" href="moon-real.webp">
 <link rel="preload" as="image" href="terrain.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1637,7 +1636,6 @@
                 return list;
             }
 
-            var sunImage = new Image();
             var moonImage = new Image();
             var terrainImage = new Image();
             var imagesReady = false;
@@ -1702,7 +1700,7 @@
             }
 
             function loadBodies(repaint) {
-                var pending = 3;
+                var pending = 2;
                 function ready() {
                     pending -= 1;
                     if (pending === 0) {
@@ -1710,19 +1708,50 @@
                         repaint();
                     }
                 }
-                sunImage.onload = ready;
-                sunImage.onerror = ready;
                 moonImage.onload = ready;
                 moonImage.onerror = ready;
                 terrainImage.onload = ready;
                 terrainImage.onerror = ready;
-                sunImage.src = 'sun-real.webp';
                 moonImage.src = 'moon-real.webp';
                 terrainImage.src = 'terrain.webp';
             }
 
             function azimuthX(az, w) {
                 return w * (1 - (((az + 180) % 360) / 360));
+            }
+
+            var moonArcCache = {};
+
+            function moonArc(date, lat, lon) {
+                var key = [lat.toFixed(2), lon.toFixed(2), date.getFullYear(), date.getMonth(), date.getDate()].join(',');
+                if (moonArcCache[key]) return moonArcCache[key];
+
+                var step = 10 * 60000;
+                var ridge = -0.3;
+                var rise = null;
+                var set = null;
+                var now = new Date(date.getTime()).getTime();
+                var alt = moonPosition(new Date(now), lat, lon).alt;
+
+                var previous = alt;
+                for (var back = 1; back <= 180 && rise === null; back++) {
+                    var earlier = moonPosition(new Date(now - back * step), lat, lon).alt;
+                    if (earlier < ridge && previous >= ridge) rise = new Date(now - back * step);
+                    previous = earlier;
+                }
+
+                previous = alt;
+                for (var ahead = 1; ahead <= 180 && set === null; ahead++) {
+                    var later = moonPosition(new Date(now + ahead * step), lat, lon).alt;
+                    if (previous >= ridge && later < ridge) set = new Date(now + ahead * step);
+                    previous = later;
+                }
+
+                if (rise && !set) set = new Date(rise.getTime() + 12.4 * 3600000);
+                if (!rise && set) rise = new Date(set.getTime() - 12.4 * 3600000);
+
+                moonArcCache[key] = { rise: rise, set: set };
+                return moonArcCache[key];
             }
 
             function pathX(date, rise, set, w, az, spread) {
@@ -1785,38 +1814,31 @@
                     );
 
                     var height = h - topY;
-                    var night = Math.max(0, Math.min(1, (2.5 - sun.alt) / 10));
-                    var day = Math.max(0, Math.min(1, (sun.alt + 2) / 12));
+                    var shade = Math.max(0, Math.min(1, (8 - sun.alt) / 16));
+                    var grade = mix([252, 247, 238], [24, 32, 56], shade);
                     var warm = Math.max(0, Math.min(1, 1 - Math.abs(sun.alt - 0.5) / 8));
 
-                    g.globalCompositeOperation = 'source-atop';
-
-                    var washAlpha = (0.34 + 0.3 * (1 - day)).toFixed(3);
-                    var wash = g.createLinearGradient(0, topY, 0, h);
-                    wash.addColorStop(0, rgb(colors.top, washAlpha));
-                    wash.addColorStop(1, rgb(colors.bottom, washAlpha));
-                    g.fillStyle = wash;
-                    g.fillRect(0, topY, w, height);
-
-                    g.fillStyle = 'rgba(4, 8, 18, ' + (0.34 * night).toFixed(3) + ')';
+                    g.globalCompositeOperation = 'multiply';
+                    g.fillStyle = rgb(grade);
                     g.fillRect(0, topY, w, height);
 
                     if (warm > 0.01) {
-                        var lit = g.createLinearGradient(0, topY, 0, topY + height * 0.7);
-                        lit.addColorStop(0, 'rgba(255, 172, 108, ' + (0.3 * warm).toFixed(3) + ')');
-                        lit.addColorStop(1, 'rgba(255, 172, 108, 0)');
+                        g.globalCompositeOperation = 'source-atop';
+                        var lit = g.createLinearGradient(0, topY, 0, topY + height * 0.45);
+                        lit.addColorStop(0, 'rgba(255, 176, 116, ' + (0.16 * warm).toFixed(3) + ')');
+                        lit.addColorStop(1, 'rgba(255, 176, 116, 0)');
                         g.fillStyle = lit;
                         g.fillRect(0, topY, w, height);
                     }
 
-                    var fade = Math.max(10, height * 0.34);
-                    g.globalCompositeOperation = 'destination-out';
-                    var feather = g.createLinearGradient(0, topY, 0, topY + fade);
-                    feather.addColorStop(0, 'rgba(0, 0, 0, 0.6)');
-                    feather.addColorStop(0.45, 'rgba(0, 0, 0, 0.12)');
-                    feather.addColorStop(1, 'rgba(0, 0, 0, 0)');
-                    g.fillStyle = feather;
-                    g.fillRect(0, topY, w, fade);
+                    g.globalCompositeOperation = 'destination-in';
+                    g.drawImage(
+                        terrainImage,
+                        (w - terrainImage.naturalWidth * scale) / 2,
+                        topY,
+                        terrainImage.naturalWidth * scale,
+                        terrainImage.naturalHeight * scale
+                    );
 
                     g.globalCompositeOperation = 'source-over';
                     groundCache.key = key;
@@ -1895,31 +1917,10 @@
                     }
                 }
 
-                if (events && events.sunrise && events.sunset && sun.alt > -10) {
-                    var span = events.sunset.getTime() - events.sunrise.getTime();
-                    ctx.beginPath();
-                    for (var m = 0; m <= 96; m++) {
-                        var t = new Date(events.sunrise.getTime() + (span * m) / 96);
-                        var state = sunPosition(t, spot.lat, spot.lon);
-                        var px = pathX(t, events.sunrise, events.sunset, w, state.az, spread);
-                        var py = altitudeY(state.alt, h, horizonY);
-                        if (m === 0) {
-                            ctx.moveTo(px, py);
-                        } else {
-                            ctx.lineTo(px, py);
-                        }
-                    }
-                    ctx.strokeStyle = 'rgba(255,255,255,' + (0.06 + 0.18 * Math.max(0, Math.min(1, (sun.alt + 10) / 18))).toFixed(3) + ')';
-                    ctx.lineWidth = 1;
-                    ctx.setLineDash([2, 6]);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-                }
-
                 if (sun.alt > -8) {
                     var sunY = altitudeY(sun.alt, h, horizonY);
-                    var radius = Math.min(w, h) * 0.028;
-                    var glowRadius = radius * (sun.alt > 8 ? 3.6 : 5.2);
+                    var radius = Math.min(w, h) * (0.024 + 0.006 * Math.max(0, Math.min(1, (sun.alt + 4) / 12)));
+                    var glowRadius = radius * (sun.alt > 8 ? 4.6 : 6.4);
                     var glow = ctx.createRadialGradient(sunX, sunY, radius * 0.2, sunX, sunY, glowRadius);
                     glow.addColorStop(0, sun.alt > 8 ? 'rgba(255,246,214,0.95)' : 'rgba(255,214,150,0.95)');
                     glow.addColorStop(0.28, 'rgba(255,196,124,0.34)');
@@ -1929,29 +1930,23 @@
                     ctx.arc(sunX, sunY, glowRadius, 0, Math.PI * 2);
                     ctx.fill();
 
-                    if (sun.alt > 1.2) {
-                        var fade = Math.max(0, Math.min(1, (sun.alt - 1.2) / 3.2));
-                        if (imagesReady) {
-                            var discSize = radius * 4.2;
-                            ctx.globalAlpha = 0.95 * fade;
-                            ctx.drawImage(sunImage, sunX - discSize / 2, sunY - discSize / 2, discSize, discSize);
-                            ctx.globalAlpha = 1;
-                        } else {
-                            var disc = ctx.createRadialGradient(sunX, sunY - radius * 0.3, radius * 0.1, sunX, sunY, radius);
-                            disc.addColorStop(0, '#fffdf3');
-                            disc.addColorStop(1, sun.alt > 6 ? '#ffe6ab' : '#ffc06a');
-                            ctx.fillStyle = disc;
-                            ctx.beginPath();
-                            ctx.arc(sunX, sunY, radius, 0, Math.PI * 2);
-                            ctx.fill();
-                        }
+                    if (sun.alt > -1.5) {
+                        var disc = ctx.createRadialGradient(sunX, sunY - radius * 0.3, radius * 0.1, sunX, sunY, radius);
+                        disc.addColorStop(0, '#fffdf3');
+                        disc.addColorStop(0.7, sun.alt > 6 ? '#fff4d2' : '#ffdfa4');
+                        disc.addColorStop(1, sun.alt > 6 ? '#ffe6ab' : '#ffc06a');
+                        ctx.fillStyle = disc;
+                        ctx.beginPath();
+                        ctx.arc(sunX, sunY, radius, 0, Math.PI * 2);
+                        ctx.fill();
                     }
                 }
 
                 var daylight = sun.alt > -0.833;
 
                 if (imagesReady && moon.alt > 0.5 && sun.alt < 16 && phase.illum > 0.02) {
-                    var moonX = pathX(date, events && events.moonrise, events && events.moonset, w, moon.az, spread);
+                    var arc = moonArc(date, spot.lat, spot.lon);
+                    var moonX = pathX(date, arc.rise, arc.set, w, moon.az, spread);
                     var moonY = altitudeY(moon.alt, h, horizonY);
                     var moonSize = Math.min(w, h) * 0.036;
                     var moonGlow = (0.05 + 0.25 * phase.illum) * (daylight ? 0.35 : 0.8);
